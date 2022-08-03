@@ -48,16 +48,38 @@ public class OptionsMenu : MonoBehaviour
             }
         }
 
+        ResolutionsDropdown.value = PlayerPrefs.GetInt("Resolution");
+        MasterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        StereoPanSlider.value = PlayerPrefs.GetFloat("StereoPan");
+
+        UpdateResolution();
         UpdateVolume();
         UpdateStereoPan();
 
+        DontDestroyOnLoad(gameObject);
+        
         gameObject.SetActive(false);
+    }
+
+    private void Awake()
+    {
+        ResolutionsDropdown.value = PlayerPrefs.GetInt("Resolution");
+        MasterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        StereoPanSlider.value = PlayerPrefs.GetFloat("StereoPan");
+    }
+
+    private void OnEnable()
+    {
+        ResolutionsDropdown.value = PlayerPrefs.GetInt("Resolution");
+        MasterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        StereoPanSlider.value = PlayerPrefs.GetFloat("StereoPan");
     }
 
     public void UpdateResolution()
     {
         Resolution newResolution = AvailableResolutions[ResolutionsDropdown.value];
         Screen.SetResolution(newResolution.width, newResolution.height, Screen.fullScreen, newResolution.refreshRate);
+        PlayerPrefs.SetInt("Resolution", ResolutionsDropdown.value);
     }
 
     public void ToggleFullscreen()
@@ -68,6 +90,7 @@ public class OptionsMenu : MonoBehaviour
     public void UpdateVolume()
     {
         AudioListener.volume = MasterVolumeSlider.value;
+        PlayerPrefs.SetFloat("MasterVolume", AudioListener.volume);
     }
     public void UpdateStereoPan()
     {
@@ -75,5 +98,6 @@ public class OptionsMenu : MonoBehaviour
         {
             audioSource.panStereo = StereoPanSlider.value;
         }
+        PlayerPrefs.SetFloat("StereoPan", StereoPanSlider.value);
     }
 }
