@@ -2399,6 +2399,8 @@ MonoBehaviour:
   ResolutionsDropdown: {fileID: 9151336904975463531}
   MasterVolumeSlider: {fileID: 3583664898929490231}
   StereoPanSlider: {fileID: 6489664324678067636}
+  Title: {fileID: 383149717045117056}
+  ShowTitle: 1
 --- !u!1 &6324451053361249340
 GameObject:
   m_ObjectHideFlags: 0

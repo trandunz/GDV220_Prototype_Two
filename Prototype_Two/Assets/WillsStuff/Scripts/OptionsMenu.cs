@@ -8,7 +8,10 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] TMPro.TMP_Dropdown ResolutionsDropdown;
     [SerializeField] Slider MasterVolumeSlider;
     [SerializeField] Slider StereoPanSlider;
+    [SerializeField] GameObject Title;
     List<UnityEngine.Resolution> AvailableResolutions = new List<UnityEngine.Resolution>();
+
+    [SerializeField] bool ShowTitle = true;
 
     private void Start()
     {
@@ -33,12 +36,14 @@ public class OptionsMenu : MonoBehaviour
 
         ResolutionsDropdown.ClearOptions();
         int nativeResolutionIndex = 0;
+
         foreach (Resolution resolution in AvailableResolutions)
         {
+            
             if (resolution.width == Screen.currentResolution.width
                 && resolution.height == Screen.currentResolution.height)
             {
-                ResolutionsDropdown.AddOptions(new List<string> { "Native (" + resolution.ToString() + ")" });
+                ResolutionsDropdown.AddOptions(new List<string> {resolution.ToString()});
                 ResolutionsDropdown.SetValueWithoutNotify(nativeResolutionIndex);
             }
             else
@@ -56,9 +61,14 @@ public class OptionsMenu : MonoBehaviour
         UpdateVolume();
         UpdateStereoPan();
 
-        DontDestroyOnLoad(gameObject);
-        
-        gameObject.SetActive(false);
+        if (ShowTitle == false)
+        {
+            Title.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void Awake()
