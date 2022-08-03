@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 967311977650399032}
   m_Layer: 0
   m_Name: JellyFish
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe1e64a1a5e4b24387ede94291f39e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fSpeed: 0
   fTimer: 0
   OxygenTank: {fileID: 0}
 --- !u!1 &886093207088240144
