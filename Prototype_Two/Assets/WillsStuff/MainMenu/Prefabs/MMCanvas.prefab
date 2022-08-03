@@ -1987,6 +1987,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3158675977394067289, guid: 43a47c37bc05b8146bd4f3d99efd6303, type: 3}
+      propertyPath: IsMainMenu
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6117310380512713363, guid: 43a47c37bc05b8146bd4f3d99efd6303, type: 3}
       propertyPath: m_Name
       value: OptionsPanel
