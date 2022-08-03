@@ -5,7 +5,7 @@ using UnityEngine;
 public class StaceOxygenCameraMovement : MonoBehaviour
 {
 
-    float fSpeed = 4.0f;
+    public float fSpeed = 1.0f;
 
     // Start is called before the first frame update
     void Start()
