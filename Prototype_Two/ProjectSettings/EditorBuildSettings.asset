@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Wills_Test.unity
     guid: 2b8cf9646164fd148a272ae777e7e323
+  - enabled: 1
+    path: Assets/Scenes/LoadingScreen.unity
+    guid: c7157fbd8524ec540b3df99b67a1d924
   m_configObjects: {}

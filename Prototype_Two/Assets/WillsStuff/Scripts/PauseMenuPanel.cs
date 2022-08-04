@@ -12,7 +12,7 @@ public class PauseMenuPanel : MonoBehaviour
 
     public void GotoBoathouse()
     {
-        SceneManager.LoadScene(1);
+        FindObjectOfType<LevelLoader>().LoadLevel(1);
     }
 
     public void OnResume()

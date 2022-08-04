@@ -12,7 +12,7 @@ public class BoathubPanel : MonoBehaviour
 
     public void OnMainMenuClick()
     {
-        SceneManager.LoadScene(0);
+        FindObjectOfType<LevelLoader>().LoadLevel(0);
     }
 
     public void PointerOverMainMenu()
@@ -35,7 +35,7 @@ public class BoathubPanel : MonoBehaviour
 
     public void OnStartClick()
     {
-        SceneManager.LoadScene(2);
+        FindObjectOfType<LevelLoader>().LoadLevel(2);
     }
     public void PointerOverStart()
     {

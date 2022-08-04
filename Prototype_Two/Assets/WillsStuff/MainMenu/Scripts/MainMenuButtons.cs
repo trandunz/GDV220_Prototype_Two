@@ -9,7 +9,7 @@ public class MainMenuButtons : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        FindObjectOfType<LevelLoader>().LoadLevel(1);
     }
 
     public void QuitGame()
