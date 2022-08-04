@@ -10,81 +10,84 @@ public class PauseMenuPanel : MonoBehaviour
     [SerializeField] Button Resume;
     [SerializeField] Button Settings;
 
+    private void Start()
+    {
+        HoverLeftOption(Boathub.image);
+        HoverLeftOption(Resume.image);
+        HoverLeftOption(Settings.image);
+    }
+
     public void GotoBoathouse()
     {
-        FindObjectOfType<LevelLoader>().LoadLevel(1);
+        LevelLoader.instance.LoadLevel(1);
     }
 
     public void OnResume()
-    { 
+    {
     }
 
     public void PointerOverBoathub()
     {
-        GreyOutAllOptions();
-        Color Boathubcolor = Boathub.image.color;
-        Boathubcolor.a = 255;
-        Boathub.image.color = Boathubcolor;
-        Boathub.transform.localScale = new Vector3(1.2f, 1.2f, 1);
+        HoverOverOption(Boathub.image);
     }
 
     public void PointerLeftBoathub()
     {
-        GreyOutAllOptions();
-        Color Boathubcolor = Boathub.image.color;
-        Boathubcolor.a = 255;
-        Boathub.image.color = Boathubcolor;
-        Boathub.transform.localScale = new Vector3(1, 1, 1);
+        HoverLeftOption(Boathub.image);
     }
     public void PointerOverResume()
     {
-        GreyOutAllOptions();
-        Color Resumecolor = Resume.image.color;
-        Resumecolor.a = 128;
-        Resume.image.color = Resumecolor;
-        Resume.transform.localScale = new Vector3(1.2f, 1.2f, 1);
+        HoverOverOption(Resume.image);
     }
 
     public void PointerLeftResume()
     {
-        GreyOutAllOptions();
-        Color Boathubcolor = Boathub.image.color;
-        Boathubcolor.a = 128;
-        Boathub.image.color = Boathubcolor;
-        Boathub.transform.localScale = new Vector3(1, 1, 1);
+        HoverLeftOption(Resume.image);
     }
-    public void PointerOverSettingss()
+    public void PointerOverSettings()
     {
-        GreyOutAllOptions();
-        Color Settingscolor = Settings.image.color;
-        Settingscolor.a = 255;
-        Settings.image.color = Settingscolor;
-        Settings.transform.localScale = new Vector3(1.2f, 1.2f, 1);
+        HoverOverOption(Settings.image);
     }
 
-    public void PointerLeftSettingss()
+    public void PointerLeftSettings()
     {
-        GreyOutAllOptions();
-        Color Boathubcolor = Boathub.image.color;
-        Boathubcolor.a = 128;
-        Boathub.image.color = Boathubcolor;
-        Boathub.transform.localScale = new Vector3(1, 1, 1);
+        HoverLeftOption(Settings.image);
     }
-    void GreyOutAllOptions()
+
+    void HoverOverOption(Image _image)
     {
-        Color Resumecolor = Resume.image.color;
-        Resumecolor.a = 128;
-        Resume.image.color = Resumecolor;
-        Resume.transform.localScale = new Vector3(1.0f, 1.0f, 1);
+        Color color = _image.color;
+        color.a = 1;
+        StartCoroutine(LerpColor(_image, color, 0.15f));
+        StartCoroutine(LerpScale(_image.transform, new Vector3(1.2f, 1.2f, 1), 0.15f));
+    }
 
-        Color Boathubcolor = Boathub.image.color;
-        Boathubcolor.a = 128;
-        Boathub.image.color = Boathubcolor;
-        Boathub.transform.localScale = new Vector3(1.0f, 1.0f, 1);
+    void HoverLeftOption(Image _image)
+    {
+        Color color = _image.color;
+        color.a = 0.5f;
+        StartCoroutine(LerpColor(_image, color, 0.15f));
+        StartCoroutine(LerpScale(_image.transform, new Vector3(1.0f, 1.0f, 1), 0.15f));
+    }
 
-        Color Settingscolor = Settings.image.color;
-        Settingscolor.a = 128;
-        Settings.image.color = Settingscolor;
-        Settings.transform.localScale = new Vector3(1.0f, 1.0f, 1);
+    IEnumerator LerpColor(Image _image, Color _endColor, float _fadeTime)
+    {
+        float timeElapsed = 0f;
+        while (timeElapsed < _fadeTime)
+        {
+            _image.color = Color.Lerp(_image.color, _endColor, timeElapsed / _fadeTime);
+            timeElapsed += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+    IEnumerator LerpScale(Transform _transform, Vector2 _endScale, float _transitionTime)
+    {
+        float timeElapsed = 0f;
+        while (timeElapsed < _transitionTime)
+        {
+            _transform.localScale = Vector3.Lerp(_transform.localScale, _endScale, timeElapsed / _transitionTime);
+            timeElapsed += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

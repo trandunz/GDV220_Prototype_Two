@@ -5,86 +5,101 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] Button BoathubIcon;
-    [SerializeField] Button UpgradesIcon;
-    [SerializeField] Button SettingsIcon;
-    [SerializeField] Button HelpIcon;
+    [SerializeField] Image BoathubIcon;
+    [SerializeField] Image UpgradesIcon;
+    [SerializeField] Image SettingsIcon;
+    [SerializeField] Image HelpIcon;
 
-    [SerializeField] GameObject Title;
+    [SerializeField] TMPro.TextMeshProUGUI Title;
     [SerializeField] GameObject Boathub;
     [SerializeField] GameObject Upgrades;
     [SerializeField] GameObject Settings;
     [SerializeField] GameObject Help;
 
+    bool doOnce = true;
+
     private void Start()
     {
-        DisableAllMenus();
+        BoathubIcon.color = Color.white;
         SwitchToBoathub();
-       
+        
     }
 
     public void SwitchToBoathub()
     {
-        Title.GetComponent<TMPro.TextMeshProUGUI>().text = "BOATHUB";
+        Title.text = "BOATHUB";
+        HoverLeftOption(UpgradesIcon);
+        HoverLeftOption(SettingsIcon);
+        HoverLeftOption(HelpIcon);
         DisableAllMenus();
         Boathub.SetActive(true);
 
-        Color color = BoathubIcon.image.color;
-        color.a = 1;
-        BoathubIcon.image.color = color;
+        HoverOverOption(BoathubIcon);
     }
     public void SwitchToUpgrades()
     {
-        Title.GetComponent<TMPro.TextMeshProUGUI>().text = "UPGRADES";
+        Title.text = "UPGRADES";
+        HoverLeftOption(BoathubIcon);
+        HoverLeftOption(SettingsIcon);
+        HoverLeftOption(HelpIcon);
         DisableAllMenus();
         Upgrades.SetActive(true);
 
-        Color color = UpgradesIcon.image.color;
-        color.a = 1;
-        UpgradesIcon.image.color = color;
+        HoverOverOption(UpgradesIcon);
     }
     public void SwitchToSettings()
     {
-        Title.GetComponent<TMPro.TextMeshProUGUI>().text = "SETTINGS";
+        Title.text = "SETTINGS";
+        HoverLeftOption(BoathubIcon);
+        HoverLeftOption(UpgradesIcon);
+        HoverLeftOption(HelpIcon);
         DisableAllMenus();
         Settings.SetActive(true);
 
-        Color color = SettingsIcon.image.color;
-        color.a = 1;
-        SettingsIcon.image.color = color;
+        HoverOverOption(SettingsIcon);
     }
     public void SwitchToHelp()
     {
-        Title.GetComponent<TMPro.TextMeshProUGUI>().text = "MANUAL";
+        Title.text = "MANUAL";
+        HoverLeftOption(BoathubIcon);
+        HoverLeftOption(UpgradesIcon);
+        HoverLeftOption(SettingsIcon);
         DisableAllMenus();
         Help.SetActive(true);
 
-        Color color = HelpIcon.image.color;
-        color.a = 1;
-        HelpIcon.image.color = color;
+        HoverOverOption(HelpIcon);
     }
 
     public void DisableAllMenus()
     {
-        Color color = BoathubIcon.image.color;
-        color.a = 0.5f;
-        BoathubIcon.image.color = color;
-
-        color = UpgradesIcon.image.color;
-        color.a = 0.5f;
-        UpgradesIcon.image.color = color;
-
-        color = SettingsIcon.image.color;
-        color.a = 0.5f;
-        SettingsIcon.image.color = color;
-
-        color = HelpIcon.image.color;
-        color.a = 0.5f;
-        HelpIcon.image.color = color;
-
         Boathub.SetActive(false);
         Upgrades.SetActive(false);
         Settings.SetActive(false);
         Help.SetActive(false);
+    }
+
+    void HoverOverOption(Image _image)
+    {
+        Color color = _image.color;
+        color.a = 1;
+        StartCoroutine(LerpColor(_image, color, 0.15f));
+    }
+
+    void HoverLeftOption(Image _image)
+    {
+        Color color = _image.color;
+        color.a = 0.5f;
+        StartCoroutine(LerpColor(_image, color, 0.15f));
+    }
+
+    IEnumerator LerpColor(Image _image, Color _endColor, float _fadeTime)
+    {
+        float timeElapsed = 0f;
+        while (timeElapsed < _fadeTime)
+        {
+            _image.color = Color.Lerp(_image.color, _endColor, timeElapsed / _fadeTime);
+            timeElapsed += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

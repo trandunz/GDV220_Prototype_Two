@@ -7,6 +7,7 @@ public class SelectUpgradePanel : MonoBehaviour
 {
     [SerializeField] UpgradeDescription description;
 
+    public bool HasFinishedInit;
     int Level = 0;
     Image[] IconsAndTicks;
 
@@ -14,7 +15,13 @@ public class SelectUpgradePanel : MonoBehaviour
     {
         IconsAndTicks = GetComponentsInChildren<Image>();
         description.SetUpgradePanel(this);
+        
+    }
+
+    private void Start()
+    {
         UpdateLevel();
+        HasFinishedInit = true;
     }
 
     public void Upgrade()
@@ -35,19 +42,33 @@ public class SelectUpgradePanel : MonoBehaviour
             color.r = 1.0f;
             color.g = 1.0f;
             color.b = 1.0f;
-            IconsAndTicks[i].color = color;
+            if (HasFinishedInit)
+            {
+                if (i == Level + 1)
+                    StartCoroutine(LerpColor(IconsAndTicks[i], color, 0.15f));
+                else
+                    IconsAndTicks[i].color = color;
+            }
+            else
+                IconsAndTicks[i].color = color;
         }
     }
 
     void SetGray()
     {
-        for (int i = 1; i <= 6; i++)
+        for (int i = 2; i <= 6; i++)
         {
             Color color = IconsAndTicks[i].color;
             color.r = 0.66f;
             color.g = 0.66f;
             color.b = 0.66f;
-            IconsAndTicks[i].color = color;
+            if (HasFinishedInit)
+                if (i == Level + 1)
+                    StartCoroutine(LerpColor(IconsAndTicks[i], color, 0.15f));
+                else
+                    IconsAndTicks[i].color = color;
+            else
+                IconsAndTicks[i].color = color;
         }
     }
 
@@ -55,9 +76,7 @@ public class SelectUpgradePanel : MonoBehaviour
     {
         foreach (var icon in IconsAndTicks)
         {
-            Color color = icon.color;
-            color.a = 0.33f;
-            icon.color = color;
+            HoverLeftOption(icon);
         }
         description.gameObject.SetActive(false);
     }
@@ -66,10 +85,40 @@ public class SelectUpgradePanel : MonoBehaviour
     {
         foreach (var icon in IconsAndTicks)
         {
-            Color color = icon.color;
-            color.a = 1.0f;
-            icon.color = color;
+            HoverOverOption(icon);
         }
         description.gameObject.SetActive(true);
     }
+
+    void HoverLeftOption(Image _image)
+    {
+        Color color = _image.color;
+        color.a = 0.33f;
+        if (HasFinishedInit)
+            StartCoroutine(LerpColor(_image, color, 0.15f));
+        else
+            _image.color = color;
+    }
+
+    void HoverOverOption(Image _image)
+    {
+        Color color = _image.color;
+        color.a = 1;
+        if (HasFinishedInit)
+            StartCoroutine(LerpColor(_image, color, 0.15f));
+        else
+            _image.color = color;
+    }
+
+    IEnumerator LerpColor(Image _image, Color _endColor, float _fadeTime)
+    {
+        float timeElapsed = 0f;
+        while (timeElapsed < _fadeTime)
+        {
+            _image.color = Color.Lerp(_image.color, _endColor, timeElapsed / _fadeTime);
+            timeElapsed += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
 }
