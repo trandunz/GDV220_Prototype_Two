@@ -55,7 +55,7 @@ public class MenuController : MonoBehaviour
     }
     public void SwitchToHelp()
     {
-        Title.GetComponent<TMPro.TextMeshProUGUI>().text = "HELP";
+        Title.GetComponent<TMPro.TextMeshProUGUI>().text = "MANUAL";
         DisableAllMenus();
         Help.SetActive(true);
 
