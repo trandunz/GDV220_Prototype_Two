@@ -6,6 +6,16 @@ using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
+    public static LevelLoader instance { get; private set; }
+
+    private void Start()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     public void LoadLevel(int _scene)
     {
         StartCoroutine(LoadAsync(_scene));
@@ -13,7 +23,7 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator LoadAsync(int _scene)
     {
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(instance);
         SceneManager.LoadScene(3);
 
         yield return new WaitForSeconds(0.2f);
@@ -31,7 +41,5 @@ public class LevelLoader : MonoBehaviour
 
             yield return null;
         }
-
-        Destroy(gameObject);
     }
 }

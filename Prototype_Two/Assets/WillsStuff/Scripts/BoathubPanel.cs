@@ -7,30 +7,29 @@ using UnityEngine.SceneManagement;
 public class BoathubPanel : MonoBehaviour
 {
     [SerializeField] Button MainMenu;
-    [SerializeField] Button Start;
+    [SerializeField] Button start;
     [SerializeField] Button Record;
+
+    private void Start()
+    {
+        HoverLeftOption(MainMenu.image);
+        HoverLeftOption(start.image);
+        HoverLeftOption(Record.image);
+    }
 
     public void OnMainMenuClick()
     {
-        FindObjectOfType<LevelLoader>().LoadLevel(0);
+        LevelLoader.instance.LoadLevel(0);
     }
 
     public void PointerOverMainMenu()
     {
-        GreyOutAllOptions();
-        Color MainMenucolor = MainMenu.image.color;
-        MainMenucolor.a = 255;
-        MainMenu.image.color = MainMenucolor;
-        MainMenu.transform.localScale = new Vector3(1.2f, 1.2f, 1);
+        HoverOverOption(MainMenu.image);
     }
 
     public void PointerLeftMainMenu()
     {
-        GreyOutAllOptions();
-        Color MainMenucolor = MainMenu.image.color;
-        MainMenucolor.a = 255;
-        MainMenu.image.color = MainMenucolor;
-        MainMenu.transform.localScale = new Vector3(1, 1, 1);
+        HoverLeftOption(MainMenu.image);
     }
 
     public void OnStartClick()
@@ -39,20 +38,12 @@ public class BoathubPanel : MonoBehaviour
     }
     public void PointerOverStart()
     {
-        GreyOutAllOptions();
-        Color Startcolor = Start.image.color;
-        Startcolor.a = 128;
-        Start.image.color = Startcolor;
-        Start.transform.localScale = new Vector3(1.2f, 1.2f, 1);
+        HoverOverOption(start.image);
     }
 
     public void PointerLeftStart()
     {
-        GreyOutAllOptions();
-        Color MainMenucolor = MainMenu.image.color;
-        MainMenucolor.a = 128;
-        MainMenu.image.color = MainMenucolor;
-        MainMenu.transform.localScale = new Vector3(1, 1, 1);
+        HoverLeftOption(start.image);
     }
 
     public void OnRecordsClick()
@@ -61,37 +52,48 @@ public class BoathubPanel : MonoBehaviour
     }
     public void PointerOverRecords()
     {
-        GreyOutAllOptions();
-        Color Recordcolor = Record.image.color;
-        Recordcolor.a = 255;
-        Record.image.color = Recordcolor;
-        Record.transform.localScale = new Vector3(1.2f, 1.2f, 1);
+        HoverOverOption(Record.image);
     }
 
     public void PointerLeftRecords()
     {
-        GreyOutAllOptions();
-        Color MainMenucolor = MainMenu.image.color;
-        MainMenucolor.a = 128;
-        MainMenu.image.color = MainMenucolor;
-        MainMenu.transform.localScale = new Vector3(1, 1, 1);
+        HoverLeftOption(Record.image);
     }
 
-    public void GreyOutAllOptions()
+    void HoverOverOption(Image _image)
     {
-        Color Startcolor = Start.image.color;
-        Startcolor.a = 128;
-        Start.image.color = Startcolor;
-        Start.transform.localScale = new Vector3(1.0f, 1.0f, 1);
+        Color color = _image.color;
+        color.a = 1;
+        StartCoroutine(LerpColor(_image, color, 0.15f));
+        StartCoroutine(LerpScale(_image.transform, new Vector3(1.2f, 1.2f, 1), 0.15f));
+    }
 
-        Color MainMenucolor = MainMenu.image.color;
-        MainMenucolor.a = 128;
-        MainMenu.image.color = MainMenucolor;
-        MainMenu.transform.localScale = new Vector3(1.0f, 1.0f, 1);
+    void HoverLeftOption(Image _image)
+    {
+        Color color = _image.color;
+        color.a = 0.5f;
+        StartCoroutine(LerpColor(_image, color, 0.15f));
+        StartCoroutine(LerpScale(_image.transform, new Vector3(1.0f, 1.0f, 1), 0.15f));
+    }
 
-        Color Recordcolor = Record.image.color;
-        Recordcolor.a = 128;
-        Record.image.color = Recordcolor;
-        Record.transform.localScale = new Vector3(1.0f, 1.0f, 1);
+    IEnumerator LerpColor(Image _image, Color _endColor, float _fadeTime)
+    {
+        float timeElapsed = 0f;
+        while (timeElapsed < _fadeTime)
+        {
+            _image.color = Color.Lerp(_image.color, _endColor, timeElapsed / _fadeTime);
+            timeElapsed += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+    IEnumerator LerpScale(Transform _transform, Vector2 _endScale, float _transitionTime)
+    {
+        float timeElapsed = 0f;
+        while(timeElapsed < _transitionTime)
+        {
+            _transform.localScale = Vector3.Lerp(_transform.localScale, _endScale, timeElapsed / _transitionTime);
+            timeElapsed += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

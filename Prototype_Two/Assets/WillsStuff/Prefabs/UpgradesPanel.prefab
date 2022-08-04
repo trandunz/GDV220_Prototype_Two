@@ -4608,6 +4608,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4945475109967630710}
@@ -4620,8 +4624,12 @@ PrefabInstance:
       value: UpgradesPanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8762701742875036692}
+    - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: SelectUpgradePanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8700625414708486676, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: description
@@ -4741,6 +4749,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4945475109967630710}
@@ -4753,8 +4765,12 @@ PrefabInstance:
       value: UpgradesPanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 9054660037213808777}
+    - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: SelectUpgradePanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8700625414708486676, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: description
@@ -4874,6 +4890,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4945475109967630710}
@@ -4886,8 +4906,12 @@ PrefabInstance:
       value: UpgradesPanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4687902058782337906}
+    - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: SelectUpgradePanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8700625414708486676, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: description
@@ -5007,6 +5031,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4945475109967630710}
@@ -5019,8 +5047,12 @@ PrefabInstance:
       value: UpgradesPanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 3715199538263797346}
+    - target: {fileID: 6852216298842895046, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: SelectUpgradePanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8700625414708486676, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: description

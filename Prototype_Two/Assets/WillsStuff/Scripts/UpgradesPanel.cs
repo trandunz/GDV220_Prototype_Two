@@ -10,17 +10,21 @@ public class UpgradesPanel : MonoBehaviour
     [SerializeField] SelectUpgradePanel DashUpgradePanel;
     [SerializeField] SelectUpgradePanel TetherUpgradePanel;
 
-    private void Start()
+    private void Awake()
     {
-        SetAllGray();
+        SetAllGray(OxygenUpgradePanel);
         OxygenUpgradePanel.SetVisible();
     }
 
-    public void SetAllGray()
+    public void SetAllGray(SelectUpgradePanel _toAvoid)
     {
-        OxygenUpgradePanel.SetDull();
-        ShotUpgradePanel.SetDull();
-        DashUpgradePanel.SetDull();
-        TetherUpgradePanel.SetDull();
+        if (_toAvoid != OxygenUpgradePanel)
+            OxygenUpgradePanel.SetDull();
+        if (_toAvoid != ShotUpgradePanel)
+            ShotUpgradePanel.SetDull();
+        if (_toAvoid != DashUpgradePanel)
+            DashUpgradePanel.SetDull();
+        if (_toAvoid != TetherUpgradePanel)
+            TetherUpgradePanel.SetDull();
     }
 }
