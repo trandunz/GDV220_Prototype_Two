@@ -33,9 +33,7 @@ public class FastIKFabric : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Target = GameObject.Find("target").transform;
         StartRotationTarget = Target.rotation;
-        Pole = GameObject.Find("pole").transform;
         Init();
     }
 
