@@ -8,6 +8,8 @@ public class LockToRange : MonoBehaviour
     public float ikMaxDistance;
     public float distance;
     public Transform Origin;
+    public Transform finalConnection;
+    public Sink sink;
 
     public Vector3 PreviousPosition;
 
@@ -20,7 +22,8 @@ public class LockToRange : MonoBehaviour
 
     private void Start()
     {
-
+        sink = GetComponent<Sink>();
+        sink.ison = false;
     }
 
     // Update is called once per frame
@@ -31,7 +34,15 @@ public class LockToRange : MonoBehaviour
 
         if (distance >= ikMaxDistance)
         {
-            transform.position = PreviousPosition;
+            if (!sink.ison)
+            {
+                transform.position = PreviousPosition;
+            }
+            sink.ison = true;
+        }
+        else
+        {
+            sink.ison = false;
         }
 
         if (Input.GetKey(Right) && Vector3.Distance((move = new Vector3(transform.position.x + (5 * Time.deltaTime), transform.position.y, transform.position.z)), Origin.position) < ikMaxDistance)
