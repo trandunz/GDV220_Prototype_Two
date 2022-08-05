@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 919016648747315043}
   - component: {fileID: 919016648747315040}
   - component: {fileID: 919016648747315044}
-  - component: {fileID: 919016648747315045}
+  - component: {fileID: -1358307856770669471}
   m_Layer: 0
-  m_Name: TEST_OBJECT (1)
+  m_Name: TEST_P2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,13 +126,9 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 36123e28-cae9-43cc-9558-4aafe0a9cd6d
-    m_ActionName: Gameplay/TESTGrow[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
-  - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 919016648747315045}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: -1358307856770669471}
+        m_TargetAssemblyTypeName: TEST_MOVE, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -146,11 +142,11 @@ MonoBehaviour:
     m_ActionId: 40d02dd0-fb0a-4c4a-8021-7b6abad2c5ee
     m_ActionName: Gameplay/Move[/XInputControllerWindows/leftStick,/XInputControllerWindows1/leftStick]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Player2
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &919016648747315045
+--- !u!114 &-1358307856770669471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,7 +155,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 919016648747315071}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e59ef9a14a9b6d54aaa81fa3a8721659, type: 3}
+  m_Script: {fileID: 11500000, guid: 62826b3522f62f044b3901accb8b0cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5

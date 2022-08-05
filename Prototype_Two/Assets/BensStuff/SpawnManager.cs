@@ -58,9 +58,9 @@ public class SpawnManager : MonoBehaviour
         }
 
         // Simulate moving down
-        Vector3 pos = Main_Camera.transform.position;
-        pos.y -= 1.0f * Time.deltaTime;
-        Main_Camera.transform.SetPositionAndRotation(pos, Quaternion.identity);
+       // Vector3 pos = Main_Camera.transform.position;
+       // pos.y -= 1.0f * Time.deltaTime;
+       // Main_Camera.transform.SetPositionAndRotation(pos, Quaternion.identity);
     }
 
     void SpawnEnemy()
