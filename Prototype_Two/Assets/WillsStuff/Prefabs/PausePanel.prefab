@@ -782,6 +782,10 @@ MonoBehaviour:
   Boathub: {fileID: 3835037787396598416}
   Resume: {fileID: 8846224504725556173}
   Settings: {fileID: 2847597845515435135}
+  TopPanel: {fileID: 5039243272786620333}
+  BotPanel: {fileID: 5039243271862818326}
+  MainPanel: {fileID: 7820585415108567804}
+  OptionsWrapper: {fileID: 8773677857959171415}
 --- !u!1 &5039243272786620333
 GameObject:
   m_ObjectHideFlags: 0

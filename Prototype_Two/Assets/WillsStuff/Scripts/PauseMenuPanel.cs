@@ -10,11 +10,53 @@ public class PauseMenuPanel : MonoBehaviour
     [SerializeField] Button Resume;
     [SerializeField] Button Settings;
 
+    [SerializeField] GameObject TopPanel;
+    [SerializeField] GameObject BotPanel;
+    [SerializeField] GameObject MainPanel;
+    [SerializeField] GameObject OptionsWrapper;
+
+    bool IsOpen = false;
+    bool IsTransitioning = false;
+
     private void Start()
     {
         HoverLeftOption(Boathub.image);
         HoverLeftOption(Resume.image);
         HoverLeftOption(Settings.image);
+        UpdateChildActive();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            TogglePauseMenu();
+        }
+    }
+
+    void TogglePauseMenu()
+    {
+        IsOpen = !IsOpen;
+        UpdateChildActive();
+    }
+
+    void UpdateChildActive()
+    {
+        if (IsOpen)
+        {
+            TopPanel.SetActive(true);
+            BotPanel.SetActive(true);
+            MainPanel.SetActive(true);
+            OptionsWrapper.SetActive(false);
+        }
+        else
+        {
+            ResetAllButtons();
+            TopPanel.SetActive(false);
+            BotPanel.SetActive(false);
+            MainPanel.SetActive(false);
+            OptionsWrapper.SetActive(false);
+        }
     }
 
     public void GotoBoathouse()
@@ -70,6 +112,21 @@ public class PauseMenuPanel : MonoBehaviour
         StartCoroutine(LerpScale(_image.transform, new Vector3(1.0f, 1.0f, 1), 0.15f));
     }
 
+    void ResetAllButtons()
+    {
+        ForceResetButton(Boathub.image);
+        ForceResetButton(Resume.image);
+        ForceResetButton(Settings.image);
+    }
+
+    void ForceResetButton(Image _image)
+    {
+        Color color = _image.color;
+        color.a = 0.5f;
+        _image.color = color;
+        _image.transform.localScale = Vector3.one;
+    }
+
     IEnumerator LerpColor(Image _image, Color _endColor, float _fadeTime)
     {
         float timeElapsed = 0f;
@@ -80,7 +137,7 @@ public class PauseMenuPanel : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
-    IEnumerator LerpScale(Transform _transform, Vector2 _endScale, float _transitionTime)
+    IEnumerator LerpScale(Transform _transform, Vector3 _endScale, float _transitionTime)
     {
         float timeElapsed = 0f;
         while (timeElapsed < _transitionTime)
