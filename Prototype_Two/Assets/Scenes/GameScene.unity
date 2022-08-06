@@ -932,3 +932,57 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1994481846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1994481848}
+  - component: {fileID: 1994481847}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1994481847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994481846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb862b4e04941b4b867defd1beb36d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Main_Camera: {fileID: 963194225}
+  Depth: 0
+  ZOffset: 10
+  YOffset: -10
+  JellyFishSwarmPrefab: {fileID: 3676335368152467275, guid: d2a6a7dddd0d5644e9928896f26be57d, type: 3}
+  JellyFishSwarmSpawnRate: 5
+  OxygemPrefab: {fileID: 8112687895619393160, guid: 9cefaa22459f721498d0603a9dce12ff, type: 3}
+  OxygemSpawnRate: 3
+  SeaUrchinPrefab: {fileID: 748262410246921173, guid: 2472b2eebb5330e479fb7fefafd77828, type: 3}
+  SeaUrchinSpawnRate: 7
+--- !u!4 &1994481848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994481846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.9300267, y: -0.42750263, z: -7.4797173}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
