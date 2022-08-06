@@ -16,7 +16,7 @@ public class Enemy_Jellyfish : MonoBehaviour
     {
         fTimer = Random.Range(fMinRange, fMaxRange);
 
-        OxygenTank = GameObject.FindGameObjectWithTag("Player");
+        OxygenTank = GameObject.FindGameObjectWithTag("SceneCentre");
     }
 
     // Update is called once per frame

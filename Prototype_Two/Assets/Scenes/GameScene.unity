@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 337692180}
   - component: {fileID: 337692181}
   m_Layer: 0
-  m_Name: ScreenCentre
-  m_TagString: Untagged
+  m_Name: SceneCentre
+  m_TagString: SceneCentre
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 1302438702}
   m_Layer: 0
   m_Name: OxyTank
-  m_TagString: Player
+  m_TagString: OxygenTank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
