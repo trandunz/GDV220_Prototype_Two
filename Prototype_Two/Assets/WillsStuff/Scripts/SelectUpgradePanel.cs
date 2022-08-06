@@ -9,13 +9,11 @@ public class SelectUpgradePanel : MonoBehaviour
 
     public bool HasFinishedInit;
     int Level = 0;
-    Image[] IconsAndTicks;
+    [SerializeField] Image[] IconsAndTicks;
 
     private void Awake()
     {
-        IconsAndTicks = GetComponentsInChildren<Image>();
         description.SetUpgradePanel(this);
-        
     }
 
     private void Start()
@@ -24,13 +22,29 @@ public class SelectUpgradePanel : MonoBehaviour
         HasFinishedInit = true;
     }
 
+    private void OnEnable()
+    {
+        GrabSavedLevel();
+    }
+
     public void Upgrade()
     {
         if (Level < 5)
         {
             Level++;
             UpdateLevel();
+            SaveLevel();
         }
+    }
+
+    void GrabSavedLevel()
+    {
+        Level = PlayerPrefs.GetInt(gameObject.name + " Level");
+    }
+
+    public void SaveLevel()
+    {
+        PlayerPrefs.SetInt(gameObject.name + " Level", Level);
     }
 
     void UpdateLevel()

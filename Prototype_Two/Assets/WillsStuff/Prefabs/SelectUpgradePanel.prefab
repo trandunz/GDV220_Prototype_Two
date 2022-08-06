@@ -400,6 +400,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e18315d187ac2a4ea0b04ddace31c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  description: {fileID: 0}
+  HasFinishedInit: 0
+  IconsAndTicks:
+  - {fileID: 2163784225522532491}
+  - {fileID: 2163784224829132769}
+  - {fileID: 2163784223651669165}
+  - {fileID: 2163784225579994148}
+  - {fileID: 2163784225205631647}
+  - {fileID: 2163784225643575552}
+  - {fileID: 2163784224611107854}
 --- !u!114 &6852216298842895046
 MonoBehaviour:
   m_ObjectHideFlags: 0

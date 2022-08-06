@@ -16,13 +16,18 @@ public class MenuController : MonoBehaviour
     [SerializeField] GameObject Settings;
     [SerializeField] GameObject Help;
 
-    bool doOnce = true;
+    [SerializeField] TMPro.TextMeshProUGUI OxygemCountText;
 
     private void Start()
     {
         BoathubIcon.color = Color.white;
         SwitchToBoathub();
         
+    }
+
+    public void Update()
+    {
+        OxygemCountText.text = "X " + GemManager.instance.GetGemCount().ToString();
     }
 
     public void SwitchToBoathub()

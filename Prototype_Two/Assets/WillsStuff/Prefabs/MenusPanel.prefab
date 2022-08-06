@@ -930,6 +930,7 @@ MonoBehaviour:
   Upgrades: {fileID: 1961146786426828137}
   Settings: {fileID: 7881458661753760164}
   Help: {fileID: 4594015000268451346}
+  OxygemCountText: {fileID: 1961146786546763901}
 --- !u!1 &1961146787651888344
 GameObject:
   m_ObjectHideFlags: 0
