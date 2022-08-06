@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/BoatHub.unity
     guid: 6bcfe78c5b7cc8f499de708cc2d0672e
   - enabled: 1
-    path: Assets/Scenes/Wills_Test.unity
-    guid: 2b8cf9646164fd148a272ae777e7e323
+    path: Assets/Scenes/GameScene.unity
+    guid: d53f76be0462523448262a72b9787297
   - enabled: 1
     path: Assets/Scenes/LoadingScreen.unity
     guid: c7157fbd8524ec540b3df99b67a1d924

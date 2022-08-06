@@ -82,7 +82,7 @@ public class BoathubPanel : MonoBehaviour
         while (timeElapsed < _fadeTime)
         {
             _image.color = Color.Lerp(_image.color, _endColor, timeElapsed / _fadeTime);
-            timeElapsed += Time.deltaTime;
+            timeElapsed += Time.unscaledDeltaTime;
             yield return new WaitForEndOfFrame();
         }
     }
@@ -92,7 +92,7 @@ public class BoathubPanel : MonoBehaviour
         while(timeElapsed < _transitionTime)
         {
             _transform.localScale = Vector3.Lerp(_transform.localScale, _endScale, timeElapsed / _transitionTime);
-            timeElapsed += Time.deltaTime;
+            timeElapsed += Time.unscaledDeltaTime;
             yield return new WaitForEndOfFrame();
         }
     }

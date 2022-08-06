@@ -37,6 +37,14 @@ public class PauseMenuPanel : MonoBehaviour
     void TogglePauseMenu()
     {
         IsOpen = !IsOpen;
+        if (IsOpen)
+        {
+            Time.timeScale = 0.0f;
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+        }
         UpdateChildActive();
     }
 
@@ -61,11 +69,15 @@ public class PauseMenuPanel : MonoBehaviour
 
     public void GotoBoathouse()
     {
+        Time.timeScale = 1.0f;
         LevelLoader.instance.LoadLevel(1);
     }
 
     public void OnResume()
     {
+        Time.timeScale = 1.0f;
+        IsOpen = false;
+        UpdateChildActive();
     }
 
     public void PointerOverBoathub()
@@ -133,7 +145,7 @@ public class PauseMenuPanel : MonoBehaviour
         while (timeElapsed < _fadeTime)
         {
             _image.color = Color.Lerp(_image.color, _endColor, timeElapsed / _fadeTime);
-            timeElapsed += Time.deltaTime;
+            timeElapsed += Time.unscaledDeltaTime;
             yield return new WaitForEndOfFrame();
         }
     }
@@ -143,7 +155,7 @@ public class PauseMenuPanel : MonoBehaviour
         while (timeElapsed < _transitionTime)
         {
             _transform.localScale = Vector3.Lerp(_transform.localScale, _endScale, timeElapsed / _transitionTime);
-            timeElapsed += Time.deltaTime;
+            timeElapsed += Time.unscaledDeltaTime;
             yield return new WaitForEndOfFrame();
         }
     }

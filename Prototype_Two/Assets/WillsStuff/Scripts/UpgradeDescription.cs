@@ -15,14 +15,6 @@ public class UpgradeDescription : MonoBehaviour
 
     private void Start()
     {
-        if (GemManager.instance.GetGemCount() >= Price)
-        {
-            UpgradeButton.interactable = true;
-        }
-        else
-        {
-            UpgradeButton.interactable = false;
-        }
         UpdatePriceText();
     }
 

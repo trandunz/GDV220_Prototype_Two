@@ -130,7 +130,7 @@ public class SelectUpgradePanel : MonoBehaviour
         while (timeElapsed < _fadeTime)
         {
             _image.color = Color.Lerp(_image.color, _endColor, timeElapsed / _fadeTime);
-            timeElapsed += Time.deltaTime;
+            timeElapsed += Time.unscaledDeltaTime;
             yield return new WaitForEndOfFrame();
         }
     }
