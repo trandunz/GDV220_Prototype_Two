@@ -10,8 +10,14 @@ public class BoathubPanel : MonoBehaviour
     [SerializeField] Button start;
     [SerializeField] Button Record;
 
+    TMPro.TextMeshProUGUI[] RecordTexts;
     private void Start()
     {
+        RecordTexts = Record.GetComponentsInChildren<TMPro.TextMeshProUGUI>();
+        Color textColor = RecordTexts[1].color;
+        textColor.a = 0;
+        RecordTexts[1].color = textColor;
+
         HoverLeftOption(MainMenu.image);
         HoverLeftOption(start.image);
         HoverLeftOption(Record.image);
@@ -34,7 +40,7 @@ public class BoathubPanel : MonoBehaviour
 
     public void OnStartClick()
     {
-        FindObjectOfType<LevelLoader>().LoadLevel(2);
+        LevelLoader.instance.LoadLevel(2);
     }
     public void PointerOverStart()
     {
@@ -53,11 +59,27 @@ public class BoathubPanel : MonoBehaviour
     public void PointerOverRecords()
     {
         HoverOverOption(Record.image);
+        Color textColor = RecordTexts[0].color;
+        textColor.a = 0;
+        StartCoroutine(LerpColor(RecordTexts[0], textColor, 0.15f));
+
+        Color textColor2 = RecordTexts[1].color;
+        textColor2.a = 1;
+        StartCoroutine(LerpColor(RecordTexts[1], textColor2, 0.15f));
+
+        RecordTexts[1].text = "Deepest\nExpedition\n" + PlayerPrefs.GetInt("DeepestDepth") + "m";
     }
 
     public void PointerLeftRecords()
     {
         HoverLeftOption(Record.image);
+        Color textColor = RecordTexts[0].color;
+        textColor.a = 1;
+        StartCoroutine(LerpColor(RecordTexts[0], textColor, 0.15f));
+
+        Color textColor2 = RecordTexts[1].color;
+        textColor2.a = 0;
+        StartCoroutine(LerpColor(RecordTexts[1], textColor2, 0.15f));
     }
 
     void HoverOverOption(Image _image)
@@ -86,6 +108,18 @@ public class BoathubPanel : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
+
+    IEnumerator LerpColor(TMPro.TextMeshProUGUI _text, Color _endColor, float _fadeTime)
+    {
+        float timeElapsed = 0f;
+        while (timeElapsed < _fadeTime)
+        {
+            _text.color = Color.Lerp(_text.color, _endColor, timeElapsed / _fadeTime);
+            timeElapsed += Time.unscaledDeltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     IEnumerator LerpScale(Transform _transform, Vector2 _endScale, float _transitionTime)
     {
         float timeElapsed = 0f;
