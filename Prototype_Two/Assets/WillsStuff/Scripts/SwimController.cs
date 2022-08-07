@@ -35,6 +35,10 @@ public class SwimController : MonoBehaviour
 
     void Start()
     {
+        MeshObject = GetComponentInChildren<MeshRenderer>().gameObject;
+    }
+    void Update()
+    {
         if (PlayerOne)
         {
             Up = (KeyCode)PlayerPrefs.GetInt("P1Up");
@@ -54,10 +58,6 @@ public class SwimController : MonoBehaviour
             Dash = (KeyCode)PlayerPrefs.GetInt("P2OxyBurst");
         }
 
-        MeshObject = GetComponentInChildren<MeshRenderer>().gameObject;
-    }
-    void Update()
-    {
         Drag();
         Boost();
         FireDart();
