@@ -39,6 +39,10 @@ public class LockToRange : MonoBehaviour
                 transform.position = PreviousPosition;
             }
             sink.ison = true;
+            if (distance >= ikMaxDistance + 0.1f)
+            {
+                transform.position = new Vector3(Origin.position.x, Origin.position.y, transform.position.z);
+            }
         }
         else
         {
