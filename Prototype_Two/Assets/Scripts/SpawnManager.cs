@@ -26,9 +26,14 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject SeaUrchinPrefab;
     [SerializeField] float SeaUrchinSpawnRate = 7.0f;
 
+    [Header("Eel")]
+    [SerializeField] GameObject EelPrefab;
+    [SerializeField] float EelSpawnRate = 9.0f;
+
     public SpawnableObject SeaUrchin;
     public SpawnableObject JellyFishSwarm;
     public SpawnableObject Oxygem;
+    public SpawnableObject Eel;
 
     public struct SpawnableObject{
         public GameObject Object;
@@ -54,6 +59,11 @@ public class SpawnManager : MonoBehaviour
         Oxygem.Object = OxygemPrefab;
         Oxygem.DepthCounter = 0.0f;
         Oxygem.SpawnRate = OxygemSpawnRate;
+
+        // Initialize Eel
+        Eel.Object = EelPrefab;
+        Eel.DepthCounter = 0.0f;
+        Eel.SpawnRate = EelSpawnRate;
     }
     private void Update()
     {
@@ -65,20 +75,22 @@ public class SpawnManager : MonoBehaviour
         camPos.y += YOffset;
         camPos.z += ZOffset;
 
-
-        if ((-Depth) >= SeaUrchin.DepthCounter)
+        // Triggers spawns based on each objects depth counter
+        if ((-Depth) >= JellyFishSwarm.DepthCounter)
         {
             SpawnJellyFishSwarm(camPos);
         }
-        
         if ((-Depth) >= Oxygem.DepthCounter)
         {
             SpawnOxygem(camPos);
         }
-        
         if ((-Depth) >= SeaUrchin.DepthCounter)
         {
             SpawnSeaUrchin(camPos);
+        }
+        if ((-Depth) >= Eel.DepthCounter)
+        {
+            SpawnEel(camPos);
         }
     }
 
@@ -116,5 +128,10 @@ public class SpawnManager : MonoBehaviour
             Instantiate(SeaUrchin.Object, SeaUrchin.SpawnPoint, (rotation));
         }
         SeaUrchin.DepthCounter = -Depth + SeaUrchin.SpawnRate;
+    }
+
+    void SpawnEel(Vector3 camPos)
+    {
+        
     }
 }
