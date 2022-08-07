@@ -8,11 +8,14 @@ public class SwimController : MonoBehaviour
     [SerializeField] float DragForce = 2.0f;
     [SerializeField] float BoostForce = 30.0f;
     [SerializeField] float BoostCooldown = 1.0f;
+    [SerializeField] float DartCooldown = 1.0f;
     [SerializeField] float RotationSpeed = 1000.0f;
+    [SerializeField] GameObject WeaponDart;
 
     GameObject MeshObject;
 
     bool IsBoosting = false;
+    bool IsFiring = false;
 
     Vector3 Acceleration = Vector3.zero;
     Vector3 Velocity = Vector3.zero;
@@ -25,9 +28,8 @@ public class SwimController : MonoBehaviour
     {
         Drag();
         Boost();
+        FireDart();
         Movement();
-        
-        
 
         Velocity += Acceleration * Time.fixedDeltaTime;
         transform.position += Velocity * Time.fixedDeltaTime;
@@ -35,6 +37,17 @@ public class SwimController : MonoBehaviour
 
         RotateToVelocity();
     }
+
+    void FireDart()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+           if (!IsFiring)
+            {
+                StartCoroutine(FireDartRoutine());
+            }
+        }
+    } 
 
     void RotateToVelocity()
     {
@@ -71,13 +84,23 @@ public class SwimController : MonoBehaviour
     
     void Boost()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
            if (!IsBoosting)
             {
                 StartCoroutine(BoostRoutine());
             }
         }
+    }
+
+    IEnumerator FireDartRoutine()
+    {
+        IsFiring = true;
+
+        var dart = Instantiate(WeaponDart, transform.position, Quaternion.identity);
+        dart.GetComponent<Dart>().SetDirection(Vector3.down);
+        yield return new WaitForSeconds(DartCooldown);
+        IsFiring = false;
     }
 
     IEnumerator BoostRoutine()
