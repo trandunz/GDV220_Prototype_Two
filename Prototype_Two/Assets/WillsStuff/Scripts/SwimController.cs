@@ -13,12 +13,14 @@ public class SwimController : MonoBehaviour
     [SerializeField] float RotationSpeed = 1000.0f;
     [SerializeField] GameObject WeaponDart;
 
-    [SerializeField] KeyCode Right = KeyCode.D;
-    [SerializeField] KeyCode Left = KeyCode.A;
-    [SerializeField] KeyCode Up = KeyCode.W;
-    [SerializeField] KeyCode Down = KeyCode.S;
-    [SerializeField] KeyCode Fire = KeyCode.LeftShift;
-    [SerializeField] KeyCode Dash = KeyCode.LeftControl;
+    [SerializeField] bool PlayerOne = false;
+
+    KeyCode Right = KeyCode.D;
+    KeyCode Left = KeyCode.A;
+    KeyCode Up = KeyCode.W;
+    KeyCode Down = KeyCode.S;
+    KeyCode Fire = KeyCode.LeftShift;
+    KeyCode Dash = KeyCode.LeftControl;
 
     GameObject MeshObject;
 
@@ -33,6 +35,25 @@ public class SwimController : MonoBehaviour
 
     void Start()
     {
+        if (PlayerOne)
+        {
+            Up = (KeyCode)PlayerPrefs.GetInt("P1Up");
+            Down = (KeyCode)PlayerPrefs.GetInt("P1Down");
+            Left = (KeyCode)PlayerPrefs.GetInt("P1Left");
+            Right = (KeyCode)PlayerPrefs.GetInt("P1Right");
+            Fire = (KeyCode)PlayerPrefs.GetInt("P1OxyShot");
+            Dash = (KeyCode)PlayerPrefs.GetInt("P1OxyBurst");
+        }
+        else
+        {
+            Up = (KeyCode)PlayerPrefs.GetInt("P2Up");
+            Down = (KeyCode)PlayerPrefs.GetInt("P2Down");
+            Left = (KeyCode)PlayerPrefs.GetInt("P2Left");
+            Right = (KeyCode)PlayerPrefs.GetInt("P2Right");
+            Fire = (KeyCode)PlayerPrefs.GetInt("P2OxyShot");
+            Dash = (KeyCode)PlayerPrefs.GetInt("P2OxyBurst");
+        }
+
         MeshObject = GetComponentInChildren<MeshRenderer>().gameObject;
     }
     void Update()

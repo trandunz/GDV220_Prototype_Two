@@ -28,7 +28,7 @@ public class PauseMenuPanel : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown((KeyCode)PlayerPrefs.GetInt("PauseBind")) && !IsOpen)
         {
             TogglePauseMenu();
         }
@@ -56,12 +56,18 @@ public class PauseMenuPanel : MonoBehaviour
             BotPanel.SetActive(true);
             MainPanel.SetActive(true);
             OptionsWrapper.SetActive(false);
+            Color panelColor = GetComponent<Image>().color;
+            panelColor.a = 0.5f;
+            GetComponent<Image>().color = panelColor;
         }
         else
         {
             ResetAllButtons();
             TopPanel.SetActive(false);
             BotPanel.SetActive(false);
+            Color panelColor = GetComponent<Image>().color;
+            panelColor.a = 0;
+            GetComponent<Image>().color = panelColor;
             MainPanel.SetActive(false);
             OptionsWrapper.SetActive(false);
         }
@@ -131,7 +137,7 @@ public class PauseMenuPanel : MonoBehaviour
         ForceResetButton(Settings.image);
     }
 
-    void ForceResetButton(Image _image)
+    public void ForceResetButton(Image _image)
     {
         Color color = _image.color;
         color.a = 0.5f;
