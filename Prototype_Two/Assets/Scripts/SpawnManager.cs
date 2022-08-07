@@ -28,12 +28,17 @@ public class SpawnManager : MonoBehaviour
 
     [Header("Eel")]
     [SerializeField] GameObject EelPrefab;
-    [SerializeField] float EelSpawnRate = 9.0f;
+    [SerializeField] float EelSpawnRate = 8.0f;
+
+    [Header("School of Fish")]
+    [SerializeField] GameObject SchoolOfFishPrefab;
+    [SerializeField] float SchoolOfFishSpawnRate = 14.0f;
 
     public SpawnableObject SeaUrchin;
     public SpawnableObject JellyFishSwarm;
     public SpawnableObject Oxygem;
     public SpawnableObject Eel;
+    public SpawnableObject SchoolOfFish;
 
     public struct SpawnableObject{
         public GameObject Object;
@@ -64,6 +69,11 @@ public class SpawnManager : MonoBehaviour
         Eel.Object = EelPrefab;
         Eel.DepthCounter = 0.0f;
         Eel.SpawnRate = EelSpawnRate;
+
+        // Initialize School of Fish
+        SchoolOfFish.Object = SchoolOfFishPrefab;
+        SchoolOfFish.DepthCounter = 0.0f;
+        SchoolOfFish.SpawnRate = SchoolOfFishSpawnRate;
     }
     private void Update()
     {
@@ -71,26 +81,37 @@ public class SpawnManager : MonoBehaviour
         Depth = Main_Camera.transform.position.y;
 
         // Update spawnpoints
-        Vector3 camPos = Main_Camera.transform.position;
-        camPos.y += YOffset;
-        camPos.z += ZOffset;
+        Vector3 cameraPosition = Main_Camera.transform.position;
+        cameraPosition.y += YOffset;
+        cameraPosition.z += ZOffset;
 
         // Triggers spawns based on each objects depth counter
         if ((-Depth) >= JellyFishSwarm.DepthCounter)
         {
-            SpawnJellyFishSwarm(camPos);
+            SpawnJellyFishSwarm(cameraPosition);
         }
         if ((-Depth) >= Oxygem.DepthCounter)
         {
-            SpawnOxygem(camPos);
+            SpawnOxygem(cameraPosition);
         }
+
+        // Spawn either SeaUrchin or Eel
         if ((-Depth) >= SeaUrchin.DepthCounter)
         {
-            SpawnSeaUrchin(camPos);
+            int random = Random.Range(-4, 4);
+            if (random <= 0)
+            {
+                SpawnSeaUrchin(cameraPosition);
+            }
+            else
+            {
+                SpawnEel(cameraPosition);
+            }
         }
-        if ((-Depth) >= Eel.DepthCounter)
+
+        if ((-Depth) >= SchoolOfFish.DepthCounter)
         {
-            SpawnEel(camPos);
+            SpawnSchoolOfFish(cameraPosition);
         }
     }
 
@@ -127,11 +148,28 @@ public class SpawnManager : MonoBehaviour
             Quaternion rotation = new Quaternion(0.0f, 180.0f, 0.0f, 1.0f);
             Instantiate(SeaUrchin.Object, SeaUrchin.SpawnPoint, (rotation));
         }
+
+        // Setting SeaUrchin and Eel depth counter because they are together
         SeaUrchin.DepthCounter = -Depth + SeaUrchin.SpawnRate;
+        Eel.DepthCounter = -Depth + Eel.SpawnRate;
     }
 
     void SpawnEel(Vector3 camPos)
     {
-        
+        Eel.Offset = -8.5f;
+        Eel.SpawnPoint = new Vector3(camPos.x + Eel.Offset, camPos.y, camPos.z);
+        Instantiate(Eel.Object, Eel.SpawnPoint, Quaternion.identity);
+
+        // Setting SeaUrchin and Eel depth counter because they are together
+        SeaUrchin.DepthCounter = -Depth + Eel.SpawnRate;
+        Eel.DepthCounter = -Depth + Eel.SpawnRate;
+    }
+
+    void SpawnSchoolOfFish(Vector3 camPos)
+    {
+        SchoolOfFish.Offset = Random.Range(-6.5f, 6.5f);
+        SchoolOfFish.SpawnPoint = new Vector3(camPos.x + SchoolOfFish.Offset, camPos.y, camPos.z);
+        Instantiate(SchoolOfFish.Object, SchoolOfFish.SpawnPoint, Quaternion.identity);
+        SchoolOfFish.DepthCounter = -Depth + SchoolOfFish.SpawnRate;
     }
 }
