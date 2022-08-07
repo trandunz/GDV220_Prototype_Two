@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SwimController : MonoBehaviour
-{ 
+{
+    [SerializeField] FastIKFabric Tether;
     [SerializeField] float SwimSpeed = 10.0f;
     [SerializeField] float DragForce = 2.0f;
     [SerializeField] float BoostForce = 30.0f;
@@ -16,6 +17,9 @@ public class SwimController : MonoBehaviour
 
     bool IsBoosting = false;
     bool IsFiring = false;
+
+    public Transform Origin;
+    public Transform finalConnection;
 
     Vector3 Acceleration = Vector3.zero;
     Vector3 Velocity = Vector3.zero;
