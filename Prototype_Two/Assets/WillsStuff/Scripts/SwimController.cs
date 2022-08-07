@@ -13,6 +13,13 @@ public class SwimController : MonoBehaviour
     [SerializeField] float RotationSpeed = 1000.0f;
     [SerializeField] GameObject WeaponDart;
 
+    [SerializeField] KeyCode Right = KeyCode.D;
+    [SerializeField] KeyCode Left = KeyCode.A;
+    [SerializeField] KeyCode Up = KeyCode.W;
+    [SerializeField] KeyCode Down = KeyCode.S;
+    [SerializeField] KeyCode Fire = KeyCode.LeftShift;
+    [SerializeField] KeyCode Dash = KeyCode.LeftControl;
+
     GameObject MeshObject;
 
     bool IsBoosting = false;
@@ -34,17 +41,29 @@ public class SwimController : MonoBehaviour
         Boost();
         FireDart();
         Movement();
-
+        RestrictMovement();
         Velocity += Acceleration * Time.fixedDeltaTime;
+
         transform.position += Velocity * Time.fixedDeltaTime;
         Acceleration = Vector3.zero;
 
         RotateToVelocity();
     }
 
+    void RestrictMovement()
+    {
+        float distance = Vector3.Distance(transform.position, Origin.position);
+        float ikMaxDistance = Tether.CompleteLength;
+
+        if (distance >= ikMaxDistance)
+        {
+            Velocity *= -1;
+        }
+    }
+
     void FireDart()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(Fire))
         {
            if (!IsFiring)
             {
@@ -88,7 +107,7 @@ public class SwimController : MonoBehaviour
     
     void Boost()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(Dash))
         {
            if (!IsBoosting)
             {
@@ -119,19 +138,19 @@ public class SwimController : MonoBehaviour
     Vector3 GetInput()
     {
         Vector3 input = Vector3.zero;
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(Up))
         {
             input.y++;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(Left))
         {
             input.x--; ;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(Down))
         {
             input.y--;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(Right))
         {
             input.x++;
         }
