@@ -37,7 +37,7 @@ public class Enemy_Jellyfish : MonoBehaviour
         else
         {
             // Movement follows camera speed - makes jellyfish look like they stop moving
-            transform.Translate(0.0f, -OxygenTank.GetComponent<CameraMovement>().fCameraSpeed * Time.deltaTime, 0.0f); 
+            transform.Translate(0.0f, OxygenTank.GetComponentInParent<CameraMovement>().fCameraSpeed * Time.deltaTime, 0.0f); 
         }
     }
 }

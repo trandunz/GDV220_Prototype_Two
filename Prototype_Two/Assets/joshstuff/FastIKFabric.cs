@@ -7,7 +7,6 @@ using UnityEditor;
 
 public class FastIKFabric : MonoBehaviour
 {
-
     public int ChainLength = 2;
 
     public Transform Target;
@@ -31,15 +30,32 @@ public class FastIKFabric : MonoBehaviour
     public Quaternion StartRotationRoot;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         StartRotationTarget = Target.rotation;
         Init();
     }
 
+    public void AttachNewSphere(GameObject _obj, float _distance)
+    {
+        _obj.transform.parent = Bones[Bones.Length - 2];
+        _obj.transform.localPosition = new Vector3(_distance, 0.0f, 0.0f);
+        Transform[] bones2 = new Transform[Bones.Length + 1];
+        for (int i = 0; i < Bones.Length - 1; i++)
+        {
+            bones2[i] = Bones[i];
+        }
+        bones2[bones2.Length - 2] = _obj.transform;
+        bones2[bones2.Length - 1] = Bones[Bones.Length - 1];
+        Bones = bones2;
+        Bones[Bones.Length - 1].parent = _obj.transform;
+        Bones[Bones.Length - 1].localPosition = new Vector3(_distance, 0.0f, 0.0f);
+        ChainLength = Bones.Length - 1;        
+        Init();
+    }
+
     void Init()
     {
-        Bones = new Transform[ChainLength + 1];
         Positions = new Vector3[ChainLength + 1];
         BonesLength = new float[ChainLength];
 
