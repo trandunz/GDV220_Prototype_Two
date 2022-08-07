@@ -28,7 +28,7 @@ public class SpawnManager : MonoBehaviour
 
     [Header("Eel")]
     [SerializeField] GameObject EelPrefab;
-    [SerializeField] float EelSpawnRate = 9.0f;
+    [SerializeField] float EelSpawnRate = 8.0f;
 
     public SpawnableObject SeaUrchin;
     public SpawnableObject JellyFishSwarm;
@@ -84,13 +84,19 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnOxygem(camPos);
         }
+
+        // Spawn either SeaUrchin or Eel
         if ((-Depth) >= SeaUrchin.DepthCounter)
         {
-            SpawnSeaUrchin(camPos);
-        }
-        if ((-Depth) >= Eel.DepthCounter)
-        {
-            SpawnEel(camPos);
+            int random = Random.Range(-4, 4);
+            if (random <= 0)
+            {
+                SpawnSeaUrchin(camPos);
+            }
+            else
+            {
+                SpawnEel(camPos);
+            }
         }
     }
 
@@ -127,11 +133,20 @@ public class SpawnManager : MonoBehaviour
             Quaternion rotation = new Quaternion(0.0f, 180.0f, 0.0f, 1.0f);
             Instantiate(SeaUrchin.Object, SeaUrchin.SpawnPoint, (rotation));
         }
+
+        // Setting SeaUrchin and Eel depth counter because they are together
         SeaUrchin.DepthCounter = -Depth + SeaUrchin.SpawnRate;
+        Eel.DepthCounter = -Depth + Eel.SpawnRate;
     }
 
     void SpawnEel(Vector3 camPos)
     {
-        
+        Eel.Offset = -8.5f;
+        Eel.SpawnPoint = new Vector3(camPos.x + Eel.Offset, camPos.y, camPos.z);
+        Instantiate(Eel.Object, Eel.SpawnPoint, Quaternion.identity);
+
+        // Setting SeaUrchin and Eel depth counter because they are together
+        SeaUrchin.DepthCounter = -Depth + Eel.SpawnRate;
+        Eel.DepthCounter = -Depth + Eel.SpawnRate;
     }
 }
