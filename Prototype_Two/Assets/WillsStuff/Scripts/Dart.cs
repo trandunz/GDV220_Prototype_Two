@@ -14,6 +14,10 @@ public class Dart : MonoBehaviour
 
     private void Update()
     {
+        var dir = MoveDirection.normalized;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        var q = Quaternion.AngleAxis(angle + 90.0f, Vector3.forward);
+        transform.rotation = q;
         transform.position += MoveDirection.normalized * MoveSpeed * Time.deltaTime;
     }
 
