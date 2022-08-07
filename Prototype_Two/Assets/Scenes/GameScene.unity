@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 337692179}
   - component: {fileID: 337692180}
   - component: {fileID: 337692181}
+  - component: {fileID: 337692182}
   m_Layer: 0
   m_Name: SceneCentre
   m_TagString: SceneCentre
@@ -364,6 +365,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fCameraSpeed: 1
+--- !u!114 &337692182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337692178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d7e7b270e1424b4ab2c4a4a0fcbf0f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  length: 19
+  rightPlayer: {fileID: 864154136}
+  leftPlayer: {fileID: 1126040779}
+  Sphere: {fileID: 2627937360697459381, guid: adec3724453a2dd4ab78a1f01c4d3d54, type: 3}
 --- !u!1 &338082264
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,7 +2259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sinkSpeed: 0.5
-  ison: 1
+  ison: 0
 --- !u!136 &1890885370
 CapsuleCollider:
   m_ObjectHideFlags: 0
