@@ -137,6 +137,7 @@ MonoBehaviour:
   DartCooldown: 1
   RotationSpeed: 200
   WeaponDart: {fileID: 8864394732148292560, guid: 7a8299b761dba264fabed2ac1291266a, type: 3}
+  PlayerOne: 0
   Origin: {fileID: 0}
   finalConnection: {fileID: 0}
 --- !u!1 &6076197500965382463

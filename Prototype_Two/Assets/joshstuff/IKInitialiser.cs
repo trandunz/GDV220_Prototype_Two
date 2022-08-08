@@ -21,38 +21,37 @@ public class IKInitialiser : MonoBehaviour
         }
     }
 
-    public void RemoveRight()
+    public IEnumerator RemoveRight()
     {
+        yield return new WaitForEndOfFrame();
         if (rightPlayer.Bones.Length > 9)
         {
-
             rightPlayer.RemomveSphere(0.5f);
             leftPlayer.AttachNewSphere(Instantiate(Sphere), -0.5f);
-
         }
+        moveleft = false;
     }
 
-    public void RemoveLeft()
+    public IEnumerator RemoveLeft()
     {
+        yield return new WaitForEndOfFrame();
         if (leftPlayer.Bones.Length > 9)
         {
             leftPlayer.RemomveSphere(-0.5f);
             rightPlayer.AttachNewSphere(Instantiate(Sphere), 0.5f);
         }
+        moveright = false;
     }
 
     private void Update()
     {
         if (moveright)
         {
-            RemoveLeft();
-            moveright = false;
+            StartCoroutine(RemoveLeft());
         }
-
         if (moveleft)
         {
-            RemoveRight();
-            moveleft = false;
+            StartCoroutine(RemoveRight());
         }
     }
 }

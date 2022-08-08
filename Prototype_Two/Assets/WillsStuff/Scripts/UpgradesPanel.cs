@@ -27,4 +27,6 @@ public class UpgradesPanel : MonoBehaviour
         if (_toAvoid != TetherUpgradePanel)
             TetherUpgradePanel.SetDull();
     }
+
+
 }
