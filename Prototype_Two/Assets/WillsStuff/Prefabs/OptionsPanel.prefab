@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8509156608215820000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3338,6 +3338,7 @@ MonoBehaviour:
   ResolutionsDropdown: {fileID: 9151336904975463531}
   MasterVolumeSlider: {fileID: 3583664898929490231}
   StereoPanSlider: {fileID: 6489664324678067636}
+  KeyBindings: {fileID: 310779120032022403}
 --- !u!1 &6324451053361249340
 GameObject:
   m_ObjectHideFlags: 0
