@@ -204,7 +204,6 @@ public class SwimController : MonoBehaviour
     IEnumerator FireDartRoutine()
     {
         IsFiring = true;
-
         var dart = Instantiate(WeaponDart, transform.position, Quaternion.identity);
         dart.GetComponent<Dart>().SetDirection(Vector3.down);
         yield return new WaitForSeconds(DartCooldown);

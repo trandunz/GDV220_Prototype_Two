@@ -8,6 +8,7 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] TMPro.TMP_Dropdown ResolutionsDropdown;
     [SerializeField] Slider MasterVolumeSlider;
     [SerializeField] Slider StereoPanSlider;
+    [SerializeField] GameObject KeyBindings;
     List<UnityEngine.Resolution> AvailableResolutions = new List<UnityEngine.Resolution>();
 
     private void Start()
@@ -57,6 +58,8 @@ public class OptionsMenu : MonoBehaviour
         UpdateResolution();
         UpdateVolume();
         UpdateStereoPan();
+
+        KeyBindings.SetActive(false);
     }
 
     private void Awake()

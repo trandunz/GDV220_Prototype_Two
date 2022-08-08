@@ -10,7 +10,7 @@ public class KeyBindPanel : MonoBehaviour
     [SerializeField] KeyCode CurrentBind = KeyCode.None;
     bool ResettingBind = false;
 
-    private void Start()
+    private void Awake()
     {
         if ((KeyCode)PlayerPrefs.GetInt(BindName) == KeyCode.None)
         {
