@@ -1711,18 +1711,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c68b1e1c2fc4f43b3d9f01a3040eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeToBlack: {fileID: 1458770646}
+  iMaxOxygen: 0
   fDrainSpeed0: 0.01
   fDrainSpeed1: 0.01
   fDrainSpeed2: 0.01
   fDrainSpeed3: 0.01
   fDrainSpeed4: 0.01
   fDrainSpeed5: 0.01
-  fadeToBlack: {fileID: 1458770646}
-  bDamaged: 0
-  fDamageAmount: 0.2
-  bDashed: 0
-  fDashAmount: 0.1
-  iMaxOxygen: 0
+  fDamageAmount: 0.5
+  iMaxDash: 0
+  fDashLoss0: 0.2
+  fDashLoss1: 0
+  fDashLoss2: 0
+  fDashLoss3: 0
+  fDashLoss4: 0
+  fDashLoss5: 0
+  iMaxShoot: 0
+  fShootLoss0: 0.1
+  fShootLoss1: 0
+  fShootLoss2: 0
+  fShootLoss3: 0
+  fShootLoss4: 0
+  fShootLoss5: 0
 --- !u!4 &1461136507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8692736635721397233, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
@@ -1861,6 +1872,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532836097}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1541909826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1541909828}
+  - component: {fileID: 1541909827}
+  m_Layer: 0
+  m_Name: LevelLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1541909827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541909826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94ef9ecb6e3dfe46b125a09d67f2e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1541909828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541909826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 852.5, y: 479.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1573658770
 PrefabInstance:
   m_ObjectHideFlags: 0

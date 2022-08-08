@@ -45,7 +45,7 @@ public class FadeToBlack : MonoBehaviour
             if (UI_Image.GetComponent<Image>().color.a >= 1)
             {
                 // Change scene
-
+                LevelLoader.instance.LoadLevel(1);
             }
         }
 
