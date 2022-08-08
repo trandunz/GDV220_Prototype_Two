@@ -51,10 +51,6 @@ public class OptionsMenu : MonoBehaviour
             }
         }
 
-        ResolutionsDropdown.value = PlayerPrefs.GetInt("Resolution");
-        MasterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
-        StereoPanSlider.value = PlayerPrefs.GetFloat("StereoPan");
-
         UpdateResolution();
         UpdateVolume();
         UpdateStereoPan();
@@ -64,9 +60,34 @@ public class OptionsMenu : MonoBehaviour
 
     private void Awake()
     {
-        ResolutionsDropdown.value = PlayerPrefs.GetInt("Resolution");
-        MasterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
-        StereoPanSlider.value = PlayerPrefs.GetFloat("StereoPan");
+        if (PlayerPrefs.GetInt("Resolution") == 0)
+        {
+            PlayerPrefs.SetInt("Resolution", ResolutionsDropdown.value);
+        }
+        else
+        {
+            ResolutionsDropdown.value = PlayerPrefs.GetInt("Resolution");
+        }
+        if (PlayerPrefs.GetFloat("MasterVolume") == 0.0f)
+        {
+            PlayerPrefs.SetFloat("MasterVolume", MasterVolumeSlider.value);
+        }
+        else
+        {
+            MasterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        }
+        if (PlayerPrefs.GetFloat("StereoPan") == 0.0f)
+        {
+            PlayerPrefs.SetFloat("StereoPan", StereoPanSlider.value);
+        }
+        else
+        {
+            StereoPanSlider.value = PlayerPrefs.GetFloat("StereoPan");
+        }
+
+        UpdateResolution();
+        UpdateVolume();
+        UpdateStereoPan();
     }
 
     private void OnEnable()
