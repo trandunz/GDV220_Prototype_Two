@@ -9,6 +9,8 @@ public class IKInitialiser : MonoBehaviour
     public FastIKFabric leftPlayer;
     public GameObject Sphere;
 
+    public int MinChainLength = 9;
+
     public bool moveleft = false;
     public bool moveright = false;
     // Start is called before the first frame update
@@ -24,7 +26,7 @@ public class IKInitialiser : MonoBehaviour
     public IEnumerator RemoveRight()
     {
         yield return new WaitForEndOfFrame();
-        if (rightPlayer.Bones.Length > 9)
+        if (rightPlayer.Bones.Length > MinChainLength)
         {
             rightPlayer.RemomveSphere(0.5f);
             leftPlayer.AttachNewSphere(Instantiate(Sphere), -0.5f);
@@ -35,7 +37,7 @@ public class IKInitialiser : MonoBehaviour
     public IEnumerator RemoveLeft()
     {
         yield return new WaitForEndOfFrame();
-        if (leftPlayer.Bones.Length > 9)
+        if (leftPlayer.Bones.Length > MinChainLength)
         {
             leftPlayer.RemomveSphere(-0.5f);
             rightPlayer.AttachNewSphere(Instantiate(Sphere), 0.5f);

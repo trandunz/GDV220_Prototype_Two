@@ -381,6 +381,7 @@ MonoBehaviour:
   rightPlayer: {fileID: 864154136}
   leftPlayer: {fileID: 1126040779}
   Sphere: {fileID: 2627937360697459381, guid: adec3724453a2dd4ab78a1f01c4d3d54, type: 3}
+  MinChainLength: 9
   moveleft: 0
   moveright: 0
 --- !u!1 &338082264

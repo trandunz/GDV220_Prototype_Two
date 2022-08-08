@@ -24,10 +24,13 @@ public class SwimController : MonoBehaviour
 
     GameObject MeshObject;
     SwimController otherPlayer = null;
+    IKInitialiser cord;
 
     bool IsBoosting = false;
     bool IsFiring = false;
     bool IsOnLeftSize = false;
+
+    float DistanceFromOrigin = 0.0f;
 
     public Transform Origin;
     public Transform finalConnection;
@@ -44,7 +47,7 @@ public class SwimController : MonoBehaviour
             IsOnLeftSize = true;
         }
 
-        
+        cord = FindObjectOfType<IKInitialiser>();
         foreach (SwimController player in FindObjectsOfType<SwimController>())
         {
             if (player != this)
@@ -77,8 +80,8 @@ public class SwimController : MonoBehaviour
         Drag();
         Boost();
         FireDart();
-        Movement();
         RestrictMovement();
+        Movement();
 
         Velocity += Acceleration * Time.fixedDeltaTime;
         transform.position += Velocity * Time.fixedDeltaTime;
@@ -89,29 +92,26 @@ public class SwimController : MonoBehaviour
 
     void RestrictMovement()
     {
-        float distance = Vector3.Distance(transform.position, Origin.position);
+        DistanceFromOrigin = Vector3.Distance(transform.position, Origin.position);
         float totalTetherLength = otherPlayer.Tether.CompleteLength + Tether.CompleteLength;
-        float ikMaxDistance = Tether.CompleteLength;
+        float tetherLength = Tether.CompleteLength;
+        int minTetherLength = cord.MinChainLength;
 
-        float chainDifference = (int)PlayerPrefs.GetInt("TetherUpgrade Level") * 1.1f - ikMaxDistance;
-
-        if (distance >= ikMaxDistance)
+        if (DistanceFromOrigin >= tetherLength)
         {
-            if (chainDifference > 0)
+            if (GetInput().magnitude == 0)
             {
-                IKInitialiser cord = FindObjectOfType<IKInitialiser>();
-
-                if (GetInput().magnitude == 0)
+                ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 2.0f);
+            }
+            else
+            {
+                if (IsOnLeftSize)
                 {
-                    ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 1.2f);
-                }
-                else
-                {
-                    if (IsOnLeftSize)
+                    if (otherPlayer?.Tether.Bones.Length > minTetherLength)
                     {
-                        if (otherPlayer?.GetInput().magnitude > 0 && otherPlayer?.GetInput().x >= 0)
+                        if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength + 1.0f)
                         {
-                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 1.2f);
+                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 2.0f);
                         }
                         else
                         {
@@ -121,20 +121,27 @@ public class SwimController : MonoBehaviour
                     }
                     else
                     {
-                        if (otherPlayer?.GetInput().magnitude > 0 && otherPlayer?.GetInput().x <= 0)
+                        ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 2.0f);
+                    }
+                }
+                else
+                {
+                    if (otherPlayer?.Tether.Bones.Length > minTetherLength)
+                    {
+                        if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength + 1.0f)
                         {
-                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 1.2f);
+                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 2.0f);
                         }
                         else
                         {
                             cord.moveright = true;
                         }
                     }
+                    else
+                    {
+                        ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * (DistanceFromOrigin / tetherLength));
+                    }
                 }
-            }
-            else
-            {
-                ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 1.2f);
             }
         }
     }
