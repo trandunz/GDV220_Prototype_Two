@@ -15,6 +15,12 @@ public class EnemyDamage : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        Renderer[] renderer = GetComponentsInChildren<Renderer>();
+        materials = new Material[renderer.Length];
+        for (int i = 0; i < materials.Length; i++)
+        {
+            materials[i] = renderer[i].material;
+        }
         materialColors = new Color[materials.Length];
         for (int i = 0; i < materials.Length; i++)
         {
