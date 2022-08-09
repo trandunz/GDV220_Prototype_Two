@@ -66,10 +66,9 @@ public class SwimController : MonoBehaviour
             }
         }
     }
+
     void Update()
     {
-        Time.fixedDeltaTime = FixedDeltaTime * Time.timeScale;
-
         if (PlayerOne)
         {
             Up = (KeyCode)PlayerPrefs.GetInt("P1Up");
@@ -88,18 +87,22 @@ public class SwimController : MonoBehaviour
             Fire = (KeyCode)PlayerPrefs.GetInt("P2OxyShot");
             Dash = (KeyCode)PlayerPrefs.GetInt("P2OxyBurst");
         }
-
-        Drag();
-        Boost();
         FireDart();
+        RotateToVelocity();
+        Boost();
+    }
+
+    void FixedUpdate()
+    {
+        Time.fixedDeltaTime = FixedDeltaTime * Time.timeScale;
+        
+        Drag();
         RestrictMovement();
         Movement();
 
         Velocity += Acceleration * Time.fixedDeltaTime;
         transform.position += Velocity * Time.fixedDeltaTime;
         Acceleration = Vector3.zero;
-
-        RotateToVelocity();
     }
 
     void RestrictMovement()
@@ -113,7 +116,7 @@ public class SwimController : MonoBehaviour
         {
             if (GetInput().magnitude == 0)
             {
-                ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 2.0f);
+                ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 3.0f);
             }
             else
             {
@@ -123,7 +126,7 @@ public class SwimController : MonoBehaviour
                     {
                         if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength + 1.0f)
                         {
-                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 2.0f);
+                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 3.0f);
                         }
                         else
                         {
@@ -133,7 +136,7 @@ public class SwimController : MonoBehaviour
                     }
                     else
                     {
-                        ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 2.0f);
+                        ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 3.0f);
                     }
                 }
                 else
@@ -142,7 +145,7 @@ public class SwimController : MonoBehaviour
                     {
                         if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength + 1.0f)
                         {
-                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 2.0f);
+                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 3.0f);
                         }
                         else
                         {
@@ -151,7 +154,7 @@ public class SwimController : MonoBehaviour
                     }
                     else
                     {
-                        ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * (DistanceFromOrigin / tetherLength));
+                        ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 3.0f);
                     }
                 }
             }
@@ -178,13 +181,13 @@ public class SwimController : MonoBehaviour
             var q = Quaternion.AngleAxis(angle - 90.0f, Vector3.forward);
             MeshObject.transform.rotation = Quaternion.RotateTowards(MeshObject.transform.rotation, q, RotationSpeed * Time.deltaTime);
         }
-        else
+        /*else
         {
             var dir = Vector3.up;
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             var q = Quaternion.AngleAxis(angle - 90.0f, Vector3.forward);
             MeshObject.transform.rotation = Quaternion.RotateTowards(MeshObject.transform.rotation, q, (RotationSpeed * 0.9f) * Time.deltaTime);
-        }
+        }*/
     }
 
     void ApplyForce(Vector3 _force)

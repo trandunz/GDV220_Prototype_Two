@@ -2138,6 +2138,10 @@ PrefabInstance:
       propertyPath: PlayerOne
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: BoostForce
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 6823134759342629700, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_UseGravity
       value: 0
@@ -3509,6 +3513,10 @@ PrefabInstance:
       propertyPath: Tether
       value: 
       objectReference: {fileID: 864154136}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: BoostForce
+      value: 5000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
 --- !u!4 &1743313967 stripped
