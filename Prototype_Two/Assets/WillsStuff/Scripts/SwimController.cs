@@ -33,7 +33,8 @@ public class SwimController : MonoBehaviour
     bool IsBoosting = false;
     bool IsFiring = false;
     bool IsOnLeftSize = false;
-    bool IsTakingDamage = false;
+    bool IsInvulnrable = false;
+    bool IsComingOutOfInvulnrable = false;
 
     float DistanceFromOrigin = 0.0f;
 
@@ -247,19 +248,73 @@ public class SwimController : MonoBehaviour
         }
         if (other.gameObject.tag is "Enemy")
         {
-            if (!IsTakingDamage)
+            if (!IsInvulnrable)
             {
-                StartCoroutine(TakeDamage(other.gameObject.transform));
+                oxygenTank.DamageOxygenUse();
+                Debug.Log("Player Got Hit!");
+                StartCoroutine(StartInvulnrability());
             }
         }
     }
 
-    IEnumerator TakeDamage(Transform _enemy)
+    private void OnTriggerStay(Collider other)
     {
-        IsTakingDamage = true;
-        ApplyForce(new Vector3(transform.position.x- _enemy.position.x, transform.position.y - _enemy.position.y, 0).normalized * SwimSpeed * 2000.0f);
-        yield return new WaitForSeconds(0.25f);
-        IsTakingDamage = false;
+        if (other.gameObject.tag is "Enemy")
+        {
+            IsInvulnrable = true;
+            IsComingOutOfInvulnrable = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag is "Enemy")
+        {
+            if (IsInvulnrable && !IsComingOutOfInvulnrable)
+            {
+                StartCoroutine(RemoveInvulnrability());
+            }
+        }
+    }
+
+    IEnumerator StartInvulnrability()
+    {
+        IsInvulnrable = true;
+        IsComingOutOfInvulnrable = false;
+        float FlashSpeed = 0.25f;
+        float FlashTimer = FlashSpeed;
+        Color originalColor = MeshObject.GetComponent<Renderer>().material.color;
+        while (IsInvulnrable)
+        {
+            FlashTimer -= Time.deltaTime;
+            if (FlashTimer <= 0)
+            {
+                FlashTimer = FlashSpeed;
+                if (MeshObject.GetComponent<Renderer>().material.color == originalColor)
+                {
+                    MeshObject.GetComponent<Renderer>().material.color = Color.red;
+                }
+                else
+                {
+                    MeshObject.GetComponent<Renderer>().material.color = originalColor;
+                }
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+        MeshObject.GetComponent<Renderer>().material.color = originalColor;
+    }
+
+    IEnumerator RemoveInvulnrability()
+    {
+        IsComingOutOfInvulnrable = true;
+        yield return new WaitForSeconds(0.4f);
+        if (IsComingOutOfInvulnrable == true)
+        {
+            IsInvulnrable = false;
+            Debug.Log("Player Ready for more.");
+            IsComingOutOfInvulnrable = false;
+        }  
     }
 
     Vector3 GetInput()
