@@ -9,6 +9,8 @@ public class SelectUpgradePanel : MonoBehaviour
 
     public bool HasFinishedInit;
     int Level = 0;
+    [SerializeField] Sprite EmptyTick;
+    [SerializeField] Sprite FullTick;
     [SerializeField] Image[] IconsAndTicks;
 
     private void Awake()
@@ -55,8 +57,9 @@ public class SelectUpgradePanel : MonoBehaviour
     void UpdateLevel()
     {
         SetGray();
-        for (int i= Level + 1; i >= 0; i--)
+        for (int i= Level + 1; i > 1; i--)
         {
+            IconsAndTicks[i].sprite = FullTick;
             Color color = IconsAndTicks[i].color;
             color.r = 1.0f;
             color.g = 1.0f;
@@ -77,6 +80,7 @@ public class SelectUpgradePanel : MonoBehaviour
     {
         for (int i = 2; i <= 6; i++)
         {
+            IconsAndTicks[i].sprite = EmptyTick;
             Color color = IconsAndTicks[i].color;
             color.r = 0.66f;
             color.g = 0.66f;

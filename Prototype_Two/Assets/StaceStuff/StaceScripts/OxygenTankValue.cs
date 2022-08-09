@@ -43,7 +43,7 @@ public class OxygenTankValue : MonoBehaviour
     void Start()
     {
         // Get the upgrade levels
-        iMaxOxygen = PlayerPrefs.GetInt("MaxOxygen"); // Get max oxygen upgrade level
+        iMaxOxygen = PlayerPrefs.GetInt("MaxOxygen Level"); // Get max oxygen upgrade level
         iMaxDash = PlayerPrefs.GetInt("DashUpgrade Level"); // Get dash upgrade level (efficiency)
         iMaxShoot = PlayerPrefs.GetInt("ShotUpgrade Level"); // Get shoot upgrade level (efficiency)
 

@@ -12,6 +12,9 @@ public class FadeToBlack : MonoBehaviour
     public float fFadeAmount;
     public float fFadeSpeed = 0.5f;
 
+    // Object to turn off/stop etc
+    public GameObject screenCentre;
+
     public bool bFading = false; // Script wont run unless this is flipped
 
     //public string sceneName; // Scene to transition to
@@ -27,6 +30,9 @@ public class FadeToBlack : MonoBehaviour
     {
         if (bFading == true)
         {
+            // Stop other objects
+            screenCentre.GetComponent<CameraMovement>().fCameraSpeed = 0;
+
             //FadeToBlackObject.SetActive(true);
             if (UI_Image.GetComponent<Image>().color.a < 1)
             {

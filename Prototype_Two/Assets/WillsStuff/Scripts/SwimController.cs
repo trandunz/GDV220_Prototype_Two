@@ -17,6 +17,8 @@ public class SwimController : MonoBehaviour
 
     private float FixedDeltaTime;
 
+    OxygenTankValue oxygenTank;
+
     KeyCode Right = KeyCode.D;
     KeyCode Left = KeyCode.A;
     KeyCode Up = KeyCode.W;
@@ -31,7 +33,8 @@ public class SwimController : MonoBehaviour
     bool IsBoosting = false;
     bool IsFiring = false;
     bool IsOnLeftSize = false;
-    bool IsTakingDamage = false;
+    bool IsInvulnrable = false;
+    bool IsComingOutOfInvulnrable = false;
 
     float DistanceFromOrigin = 0.0f;
 
@@ -44,6 +47,8 @@ public class SwimController : MonoBehaviour
     void Start()
     {
         FixedDeltaTime = Time.fixedDeltaTime;
+
+        oxygenTank = FindObjectOfType<OxygenTankValue>();
 
         MeshObject = GetComponentInChildren<MeshRenderer>().gameObject;
 
@@ -100,8 +105,8 @@ public class SwimController : MonoBehaviour
     void RestrictMovement()
     {
         DistanceFromOrigin = Vector3.Distance(transform.position, Origin.position);
-        float totalTetherLength = otherPlayer.Tether.CompleteLength + Tether.CompleteLength;
         float tetherLength = Tether.CompleteLength;
+        float totalTetherLength = otherPlayer.Tether.CompleteLength + tetherLength;
         int minTetherLength = cord.MinChainLength;
 
         if (DistanceFromOrigin >= tetherLength)
@@ -211,6 +216,7 @@ public class SwimController : MonoBehaviour
     IEnumerator FireDartRoutine()
     {
         IsFiring = true;
+        oxygenTank.ShootOxygenUse();
         var dart = Instantiate(WeaponDart, transform.position, Quaternion.identity);
         dart.GetComponent<Dart>().SetDirection(Vector3.down);
         yield return new WaitForSeconds(DartCooldown);
@@ -219,6 +225,7 @@ public class SwimController : MonoBehaviour
 
     IEnumerator BoostRoutine()
     {
+        oxygenTank.DashOxygenUse();
         float distance = Vector3.Distance(transform.position, Origin.position);
         float ikMaxDistance = Tether.CompleteLength;
         if (distance < ikMaxDistance)
@@ -241,19 +248,73 @@ public class SwimController : MonoBehaviour
         }
         if (other.gameObject.tag is "Enemy")
         {
-            if (!IsTakingDamage)
+            if (!IsInvulnrable)
             {
-                StartCoroutine(TakeDamage(other.gameObject.transform));
+                oxygenTank.DamageOxygenUse();
+                Debug.Log("Player Got Hit!");
+                StartCoroutine(StartInvulnrability());
             }
         }
     }
 
-    IEnumerator TakeDamage(Transform _enemy)
+    private void OnTriggerStay(Collider other)
     {
-        IsTakingDamage = true;
-        ApplyForce(new Vector3(transform.position.x- _enemy.position.x, transform.position.y - _enemy.position.y, 0).normalized * SwimSpeed * 2000.0f);
-        yield return new WaitForSeconds(0.25f);
-        IsTakingDamage = false;
+        if (other.gameObject.tag is "Enemy")
+        {
+            IsInvulnrable = true;
+            IsComingOutOfInvulnrable = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag is "Enemy")
+        {
+            if (IsInvulnrable && !IsComingOutOfInvulnrable)
+            {
+                StartCoroutine(RemoveInvulnrability());
+            }
+        }
+    }
+
+    IEnumerator StartInvulnrability()
+    {
+        IsInvulnrable = true;
+        IsComingOutOfInvulnrable = false;
+        float FlashSpeed = 0.25f;
+        float FlashTimer = FlashSpeed;
+        Color originalColor = MeshObject.GetComponent<Renderer>().material.color;
+        while (IsInvulnrable)
+        {
+            FlashTimer -= Time.deltaTime;
+            if (FlashTimer <= 0)
+            {
+                FlashTimer = FlashSpeed;
+                if (MeshObject.GetComponent<Renderer>().material.color == originalColor)
+                {
+                    MeshObject.GetComponent<Renderer>().material.color = Color.red;
+                }
+                else
+                {
+                    MeshObject.GetComponent<Renderer>().material.color = originalColor;
+                }
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+        MeshObject.GetComponent<Renderer>().material.color = originalColor;
+    }
+
+    IEnumerator RemoveInvulnrability()
+    {
+        IsComingOutOfInvulnrable = true;
+        yield return new WaitForSeconds(0.4f);
+        if (IsComingOutOfInvulnrable == true)
+        {
+            IsInvulnrable = false;
+            Debug.Log("Player Ready for more.");
+            IsComingOutOfInvulnrable = false;
+        }  
     }
 
     Vector3 GetInput()
