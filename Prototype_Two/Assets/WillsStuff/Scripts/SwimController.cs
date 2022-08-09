@@ -100,8 +100,8 @@ public class SwimController : MonoBehaviour
     void RestrictMovement()
     {
         DistanceFromOrigin = Vector3.Distance(transform.position, Origin.position);
-        float totalTetherLength = otherPlayer.Tether.CompleteLength + Tether.CompleteLength;
         float tetherLength = Tether.CompleteLength;
+        float totalTetherLength = otherPlayer.Tether.CompleteLength + tetherLength;
         int minTetherLength = cord.MinChainLength;
 
         if (DistanceFromOrigin >= tetherLength)
