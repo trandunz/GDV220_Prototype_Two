@@ -8,19 +8,20 @@ public class BoathubPanel : MonoBehaviour
 {
     [SerializeField] Button MainMenu;
     [SerializeField] Button start;
-    [SerializeField] Button Record;
+    [SerializeField] Button RecordFull;
+    [SerializeField] Button RecordEmpty;
 
-    TMPro.TextMeshProUGUI[] RecordTexts;
+    TMPro.TextMeshProUGUI RecordText;
     private void Start()
     {
-        RecordTexts = Record.GetComponentsInChildren<TMPro.TextMeshProUGUI>();
-        Color textColor = RecordTexts[1].color;
+        RecordText = RecordEmpty.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        Color textColor = RecordText.color;
         textColor.a = 0;
-        RecordTexts[1].color = textColor;
+        RecordText.color = textColor;
 
         HoverLeftOption(MainMenu.image);
         HoverLeftOption(start.image);
-        HoverLeftOption(Record.image);
+        HoverLeftOption(RecordEmpty.image);
     }
 
     public void OnMainMenuClick()
@@ -58,28 +59,32 @@ public class BoathubPanel : MonoBehaviour
     }
     public void PointerOverRecords()
     {
-        HoverOverOption(Record.image);
-        Color textColor = RecordTexts[0].color;
-        textColor.a = 0;
-        StartCoroutine(LerpColor(RecordTexts[0], textColor, 0.15f));
 
-        Color textColor2 = RecordTexts[1].color;
+        Color textColor2 = RecordText.color;
         textColor2.a = 1;
-        StartCoroutine(LerpColor(RecordTexts[1], textColor2, 0.15f));
+        StartCoroutine(LerpColor(RecordText, textColor2, 0.15f));
 
-        RecordTexts[1].text = "Deepest\nExpedition\n" + PlayerPrefs.GetInt("DeepestDepth") + "m";
+        RecordText.text = PlayerPrefs.GetInt("DeepestDepth") + "m";
+
+        HoverOverOption(RecordEmpty.image);
+        StartCoroutine(LerpScale(RecordFull.transform, new Vector3(1.2f, 1.2f, 1), 0.15f));
+        Color color = RecordFull.image.color;
+        color.a = 0;
+        StartCoroutine(LerpColor(RecordFull.image, color, 0.15f));
     }
 
     public void PointerLeftRecords()
     {
-        HoverLeftOption(Record.image);
-        Color textColor = RecordTexts[0].color;
-        textColor.a = 1;
-        StartCoroutine(LerpColor(RecordTexts[0], textColor, 0.15f));
 
-        Color textColor2 = RecordTexts[1].color;
+        Color textColor2 = RecordText.color;
         textColor2.a = 0;
-        StartCoroutine(LerpColor(RecordTexts[1], textColor2, 0.15f));
+        StartCoroutine(LerpColor(RecordText, textColor2, 0.15f));
+
+        HoverLeftOption(RecordFull.image);
+        StartCoroutine(LerpScale(RecordEmpty.transform, new Vector3(1.0f, 1.0f, 1), 0.15f));
+        Color color = RecordEmpty.image.color;
+        color.a = 0;
+        StartCoroutine(LerpColor(RecordEmpty.image, color, 0.15f));
     }
 
     void HoverOverOption(Image _image)
