@@ -9,6 +9,8 @@ public class FastIKFabric : MonoBehaviour
 {
     public int ChainLength = 2;
 
+    public Transform deletethis;
+
     public Transform Target;
     public Transform Pole;
 
@@ -41,7 +43,7 @@ public class FastIKFabric : MonoBehaviour
         _obj.transform.parent = Bones[Bones.Length - 2];
         _obj.transform.localPosition = new Vector3(_distance, 0.0f, 0.0f);
         Transform[] bones2 = new Transform[Bones.Length + 1];
-        for (int i = 0; i < Bones.Length - 1; i++)
+        for (int i = 0; i < Bones.Length; i++)
         {
             bones2[i] = Bones[i];
         }
@@ -49,13 +51,13 @@ public class FastIKFabric : MonoBehaviour
         bones2[bones2.Length - 1] = Bones[Bones.Length - 1];
         Bones = bones2;
         Bones[Bones.Length - 1].parent = _obj.transform;
-        Bones[Bones.Length - 1].localPosition = new Vector3(_distance, 0.0f, 0.0f);
-        ChainLength = Bones.Length - 1;        
+        Bones[Bones.Length - 1].localPosition = new Vector3(_distance, 0.0f, 0.0f);        
         Init();
     }
 
     void Init()
     {
+        ChainLength = Bones.Length - 1;
         Positions = new Vector3[ChainLength + 1];
         BonesLength = new float[ChainLength];
 
@@ -81,6 +83,26 @@ public class FastIKFabric : MonoBehaviour
             }
             current = current.parent;
         }
+    }
+
+    public void RemomveSphere(float _distance)
+    {
+        Transform[] Bones2 = new Transform[Bones.Length - 1];
+        for (int i = 0; i < Bones2.Length; i++)
+        {
+            Bones2[i] = Bones[i];
+        }
+
+        Bones[Bones.Length - 1].parent = Bones2[Bones2.Length - 2];
+
+        deletethis = Bones2[Bones2.Length - 1];
+        Bones2[Bones2.Length - 1] = Bones[Bones.Length - 1];
+
+        Destroy(deletethis.gameObject);
+        Bones = Bones2;
+        Bones[Bones.Length - 1].localPosition = new Vector3(_distance, 0.0f, 0.0f);
+
+        Init();
     }
 
     private void LateUpdate()

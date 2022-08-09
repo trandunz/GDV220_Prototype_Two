@@ -8,9 +8,14 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] TMPro.TMP_Dropdown ResolutionsDropdown;
     [SerializeField] Slider MasterVolumeSlider;
     [SerializeField] Slider StereoPanSlider;
+    [SerializeField] GameObject KeyBindings;
     List<UnityEngine.Resolution> AvailableResolutions = new List<UnityEngine.Resolution>();
 
     private void Start()
+    {
+        KeyBindings.SetActive(false);
+    }
+    private void Awake()
     {
         Resolution tenEighty = new Resolution();
         tenEighty.height = 1080;
@@ -50,20 +55,34 @@ public class OptionsMenu : MonoBehaviour
             }
         }
 
-        ResolutionsDropdown.value = PlayerPrefs.GetInt("Resolution");
-        MasterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
-        StereoPanSlider.value = PlayerPrefs.GetFloat("StereoPan");
+        if (PlayerPrefs.GetInt("Resolution") == 0)
+        {
+            PlayerPrefs.SetInt("Resolution", ResolutionsDropdown.value);
+        }
+        else
+        {
+            ResolutionsDropdown.value = PlayerPrefs.GetInt("Resolution");
+        }
+        if (PlayerPrefs.GetFloat("MasterVolume") == 0.0f)
+        {
+            PlayerPrefs.SetFloat("MasterVolume", MasterVolumeSlider.value);
+        }
+        else
+        {
+            MasterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        }
+        if (PlayerPrefs.GetFloat("StereoPan") == 0.0f)
+        {
+            PlayerPrefs.SetFloat("StereoPan", StereoPanSlider.value);
+        }
+        else
+        {
+            StereoPanSlider.value = PlayerPrefs.GetFloat("StereoPan");
+        }
 
         UpdateResolution();
         UpdateVolume();
         UpdateStereoPan();
-    }
-
-    private void Awake()
-    {
-        ResolutionsDropdown.value = PlayerPrefs.GetInt("Resolution");
-        MasterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
-        StereoPanSlider.value = PlayerPrefs.GetFloat("StereoPan");
     }
 
     private void OnEnable()

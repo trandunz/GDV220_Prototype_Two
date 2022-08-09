@@ -13,17 +13,26 @@ public class SwimController : MonoBehaviour
     [SerializeField] float RotationSpeed = 1000.0f;
     [SerializeField] GameObject WeaponDart;
 
-    [SerializeField] KeyCode Right = KeyCode.D;
-    [SerializeField] KeyCode Left = KeyCode.A;
-    [SerializeField] KeyCode Up = KeyCode.W;
-    [SerializeField] KeyCode Down = KeyCode.S;
-    [SerializeField] KeyCode Fire = KeyCode.LeftShift;
-    [SerializeField] KeyCode Dash = KeyCode.LeftControl;
+    [SerializeField] bool PlayerOne = false;
+
+    private float FixedDeltaTime;
+
+    KeyCode Right = KeyCode.D;
+    KeyCode Left = KeyCode.A;
+    KeyCode Up = KeyCode.W;
+    KeyCode Down = KeyCode.S;
+    KeyCode Fire = KeyCode.LeftShift;
+    KeyCode Dash = KeyCode.LeftControl;
 
     GameObject MeshObject;
+    SwimController otherPlayer = null;
+    IKInitialiser cord;
 
     bool IsBoosting = false;
     bool IsFiring = false;
+    bool IsOnLeftSize = false;
+
+    float DistanceFromOrigin = 0.0f;
 
     public Transform Origin;
     public Transform finalConnection;
@@ -33,17 +42,54 @@ public class SwimController : MonoBehaviour
 
     void Start()
     {
+        FixedDeltaTime = Time.fixedDeltaTime;
+
         MeshObject = GetComponentInChildren<MeshRenderer>().gameObject;
+
+        if (transform.position.x > Tether.transform.position.x)
+        {
+            IsOnLeftSize = true;
+        }
+
+        cord = FindObjectOfType<IKInitialiser>();
+        foreach (SwimController player in FindObjectsOfType<SwimController>())
+        {
+            if (player != this)
+            {
+                otherPlayer = player;
+            }
+        }
     }
     void Update()
     {
+        Time.fixedDeltaTime = FixedDeltaTime * Time.timeScale;
+
+        if (PlayerOne)
+        {
+            Up = (KeyCode)PlayerPrefs.GetInt("P1Up");
+            Down = (KeyCode)PlayerPrefs.GetInt("P1Down");
+            Left = (KeyCode)PlayerPrefs.GetInt("P1Left");
+            Right = (KeyCode)PlayerPrefs.GetInt("P1Right");
+            Fire = (KeyCode)PlayerPrefs.GetInt("P1OxyShot");
+            Dash = (KeyCode)PlayerPrefs.GetInt("P1OxyBurst");
+        }
+        else
+        {
+            Up = (KeyCode)PlayerPrefs.GetInt("P2Up");
+            Down = (KeyCode)PlayerPrefs.GetInt("P2Down");
+            Left = (KeyCode)PlayerPrefs.GetInt("P2Left");
+            Right = (KeyCode)PlayerPrefs.GetInt("P2Right");
+            Fire = (KeyCode)PlayerPrefs.GetInt("P2OxyShot");
+            Dash = (KeyCode)PlayerPrefs.GetInt("P2OxyBurst");
+        }
+
         Drag();
         Boost();
         FireDart();
-        Movement();
         RestrictMovement();
-        Velocity += Acceleration * Time.fixedDeltaTime;
+        Movement();
 
+        Velocity += Acceleration * Time.fixedDeltaTime;
         transform.position += Velocity * Time.fixedDeltaTime;
         Acceleration = Vector3.zero;
 
@@ -52,12 +98,57 @@ public class SwimController : MonoBehaviour
 
     void RestrictMovement()
     {
-        float distance = Vector3.Distance(transform.position, Origin.position);
-        float ikMaxDistance = Tether.CompleteLength;
+        DistanceFromOrigin = Vector3.Distance(transform.position, Origin.position);
+        float totalTetherLength = otherPlayer.Tether.CompleteLength + Tether.CompleteLength;
+        float tetherLength = Tether.CompleteLength;
+        int minTetherLength = cord.MinChainLength;
 
-        if (distance >= ikMaxDistance)
+        if (DistanceFromOrigin >= tetherLength)
         {
-            Velocity *= -1;
+            if (GetInput().magnitude == 0)
+            {
+                ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 2.0f);
+            }
+            else
+            {
+                if (IsOnLeftSize)
+                {
+                    if (otherPlayer?.Tether.Bones.Length > minTetherLength)
+                    {
+                        if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength + 1.0f)
+                        {
+                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 2.0f);
+                        }
+                        else
+                        {
+                            cord.moveleft = true;
+                        }
+                        
+                    }
+                    else
+                    {
+                        ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 2.0f);
+                    }
+                }
+                else
+                {
+                    if (otherPlayer?.Tether.Bones.Length > minTetherLength)
+                    {
+                        if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength + 1.0f)
+                        {
+                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 2.0f);
+                        }
+                        else
+                        {
+                            cord.moveright = true;
+                        }
+                    }
+                    else
+                    {
+                        ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * (DistanceFromOrigin / tetherLength));
+                    }
+                }
+            }
         }
     }
 
@@ -66,9 +157,9 @@ public class SwimController : MonoBehaviour
         if (Input.GetKeyDown(Fire))
         {
            if (!IsFiring)
-            {
-                StartCoroutine(FireDartRoutine());
-            }
+           {
+               StartCoroutine(FireDartRoutine());
+           }
         }
     } 
 
@@ -110,16 +201,15 @@ public class SwimController : MonoBehaviour
         if (Input.GetKeyDown(Dash))
         {
            if (!IsBoosting)
-            {
-                StartCoroutine(BoostRoutine());
-            }
+           {
+               StartCoroutine(BoostRoutine());
+           }
         }
     }
 
     IEnumerator FireDartRoutine()
     {
         IsFiring = true;
-
         var dart = Instantiate(WeaponDart, transform.position, Quaternion.identity);
         dart.GetComponent<Dart>().SetDirection(Vector3.down);
         yield return new WaitForSeconds(DartCooldown);
@@ -128,11 +218,17 @@ public class SwimController : MonoBehaviour
 
     IEnumerator BoostRoutine()
     {
-        IsBoosting = true;
-        Debug.Log("Boost! : " + (GetInput() * BoostForce).magnitude.ToString());
-        ApplyForce(GetInput() * BoostForce);
-        yield return new WaitForSeconds(BoostCooldown);
-        IsBoosting = false;
+        float distance = Vector3.Distance(transform.position, Origin.position);
+        float ikMaxDistance = Tether.CompleteLength;
+        if (distance < ikMaxDistance)
+        {
+            IsBoosting = true;
+            Debug.Log("Boost! : " + (GetInput() * BoostForce).magnitude.ToString());
+            ApplyForce(GetInput() * BoostForce);
+            yield return new WaitForSeconds(BoostCooldown);
+            IsBoosting = false;
+        }
+        yield return null;
     }
 
     Vector3 GetInput()

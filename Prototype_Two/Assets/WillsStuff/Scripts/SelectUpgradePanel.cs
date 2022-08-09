@@ -47,6 +47,11 @@ public class SelectUpgradePanel : MonoBehaviour
         PlayerPrefs.SetInt(gameObject.name + " Level", Level);
     }
 
+    public int GetLevel()
+    {
+        return Level;
+    }
+
     void UpdateLevel()
     {
         SetGray();
