@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tether: {fileID: 0}
-  SwimSpeed: 3
-  DragForce: 10
-  BoostForce: 1000
+  SwimSpeed: 200
+  DragForce: 50
+  BoostForce: 500
   BoostCooldown: 1
   DartCooldown: 1
   RotationSpeed: 200
