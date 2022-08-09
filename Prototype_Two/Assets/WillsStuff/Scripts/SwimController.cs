@@ -44,6 +44,13 @@ public class SwimController : MonoBehaviour
     Vector3 Acceleration = Vector3.zero;
     Vector3 Velocity = Vector3.zero;
 
+    [Header("Audio")]
+    public GameObject audioDash;
+    public GameObject audioShoot;
+    public GameObject audioHurt;
+    public GameObject audioDead;
+    public GameObject audioOxygem;
+
     void Start()
     {
         FixedDeltaTime = Time.fixedDeltaTime;
@@ -167,6 +174,7 @@ public class SwimController : MonoBehaviour
         {
            if (!IsFiring)
            {
+                Destroy(Instantiate(audioShoot), 2.0f);
                StartCoroutine(FireDartRoutine());
            }
         }
@@ -211,7 +219,8 @@ public class SwimController : MonoBehaviour
         {
            if (!IsBoosting)
            {
-               StartCoroutine(BoostRoutine());
+                Destroy(Instantiate(audioDash), 2.0f);
+                StartCoroutine(BoostRoutine());
            }
         }
     }
@@ -246,6 +255,7 @@ public class SwimController : MonoBehaviour
     {
         if (other.gameObject.tag is "Oxygem")
         {
+            Destroy(Instantiate(audioOxygem), 2.0f);
             Destroy(other.gameObject);
             GemManager.instance.AddGems(1);
         }
@@ -253,6 +263,7 @@ public class SwimController : MonoBehaviour
         {
             if (!IsInvulnrable)
             {
+                Destroy(Instantiate(audioHurt), 2.0f);
                 oxygenTank.DamageOxygenUse();
                 Debug.Log("Player Got Hit!");
                 StartCoroutine(StartInvulnrability());
