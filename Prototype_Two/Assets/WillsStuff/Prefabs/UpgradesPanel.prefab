@@ -597,6 +597,13 @@ PrefabInstance:
       propertyPath: BasePrice
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1331919893696053765, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_text
+      value: 'Capacity ++
+
+
+        Allows you too dive an extra 32 meters deep'
+      objectReference: {fileID: 0}
     - target: {fileID: 3858542788204607871, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -717,6 +724,18 @@ PrefabInstance:
     - target: {fileID: 736128793364302493, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: BasePrice
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331919893696053765, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_text
+      value: 'Oxygen Use --
+
+
+        Decreases the amount of oxygen consumed when
+        using an Oxyburst'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331919894573995622, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_text
+      value: OxyBoost Efficiency
       objectReference: {fileID: 0}
     - target: {fileID: 3858542788204607871, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_Pivot.x
@@ -839,6 +858,18 @@ PrefabInstance:
       propertyPath: BasePrice
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1331919893696053765, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_text
+      value: 'Tether Length ++
+
+
+        Increases the total sharable length of the
+        tether'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331919894573995622, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_text
+      value: Tether Length
+      objectReference: {fileID: 0}
     - target: {fileID: 3858542788204607871, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -959,6 +990,18 @@ PrefabInstance:
     - target: {fileID: 736128793364302493, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: BasePrice
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331919893696053765, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_text
+      value: 'Oxygen Use --
+
+
+        Decreases the amount of oxygen used when firing
+        an Oxyshot'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331919894573995622, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_text
+      value: OxyShot Efficiency
       objectReference: {fileID: 0}
     - target: {fileID: 3858542788204607871, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_Pivot.x
