@@ -203,6 +203,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 337692179}
     m_Modifications:
+    - target: {fileID: 1314215809, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
+      propertyPath: fadeToBlack
+      value: 
+      objectReference: {fileID: 1255763605}
     - target: {fileID: 2288084673205576712, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
       propertyPath: m_Name
       value: OxygenTankUI
@@ -1577,7 +1581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 936388251297128937, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.679
+      value: -1.613
       objectReference: {fileID: 0}
     - target: {fileID: 936388251297128937, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2261,51 +2265,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &1314215807 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2288084673205576712, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
-  m_PrefabInstance: {fileID: 259719193}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1314215808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8692736635721397233, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
   m_PrefabInstance: {fileID: 259719193}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1314215809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314215807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05c68b1e1c2fc4f43b3d9f01a3040eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeToBlack: {fileID: 1255763605}
-  iMaxOxygen: 0
-  fDrainSpeed0: 0.01
-  fDrainSpeed1: 0.01
-  fDrainSpeed2: 0.01
-  fDrainSpeed3: 0.01
-  fDrainSpeed4: 0.01
-  fDrainSpeed5: 0.01
-  fDamageAmount: 0.5
-  iMaxDash: 0
-  fDashLoss0: 0.2
-  fDashLoss1: 0
-  fDashLoss2: 0
-  fDashLoss3: 0
-  fDashLoss4: 0
-  fDashLoss5: 0
-  iMaxShoot: 0
-  fShootLoss0: 0.1
-  fShootLoss1: 0
-  fShootLoss2: 0
-  fShootLoss3: 0
-  fShootLoss4: 0
-  fShootLoss5: 0
 --- !u!1001 &1322733668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2631,7 +2595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 936388251297128937, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.559
+      value: 1.513
       objectReference: {fileID: 0}
     - target: {fileID: 936388251297128937, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalPosition.y

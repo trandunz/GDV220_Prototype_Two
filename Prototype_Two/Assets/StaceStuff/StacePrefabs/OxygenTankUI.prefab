@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8692736635721397233}
+  - component: {fileID: 1314215809}
   m_Layer: 0
   m_Name: OxygenTankUI
   m_TagString: Untagged
@@ -32,6 +33,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1314215809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2288084673205576712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c68b1e1c2fc4f43b3d9f01a3040eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeToBlack: {fileID: 0}
+  iMaxOxygen: 0
+  fDrainSpeed0: 0.025
+  fDrainSpeed1: 0.013888889
+  fDrainSpeed2: 0.009615385
+  fDrainSpeed3: 0.007352941
+  fDrainSpeed4: 0.005952381
+  fDrainSpeed5: 0.005
+  fDamageAmount: 0.25
+  iMaxDash: 0
+  fDashLoss0: 0.2
+  fDashLoss1: 0
+  fDashLoss2: 0
+  fDashLoss3: 0
+  fDashLoss4: 0
+  fDashLoss5: 0
+  iMaxShoot: 0
+  fShootLoss0: 0.1
+  fShootLoss1: 0
+  fShootLoss2: 0
+  fShootLoss3: 0
+  fShootLoss4: 0
+  fShootLoss5: 0
 --- !u!1 &6276710519285553203
 GameObject:
   m_ObjectHideFlags: 0

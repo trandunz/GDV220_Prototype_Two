@@ -13,19 +13,15 @@ public class IKInitialiser : MonoBehaviour
 
     public bool moveleft = false;
     public bool moveright = false;
-    private void Start()
+
+    // Start is called before the first frame update
+    void Start()
     {
-        for (int i = 0; i < length + (PlayerPrefs.GetInt("TetherUpgrade Level")); i++)
+        for (int i = 0; i < length + (1 * PlayerPrefs.GetInt("TetherUpgrade Level")); i++)
         {
             rightPlayer.AttachNewSphere(Instantiate(Sphere), 0.5f);
             leftPlayer.AttachNewSphere(Instantiate(Sphere), -0.5f);
         }
-    }
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        
     }
 
     public IEnumerator RemoveRight()
