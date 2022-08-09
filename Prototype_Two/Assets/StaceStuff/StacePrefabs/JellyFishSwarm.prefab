@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5500001
+      value: -0.979
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.z
@@ -96,14 +96,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: JellyFish (14)
       objectReference: {fileID: 0}
-    - target: {fileID: 623751797359823314, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 967311977650399032, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: fSpeed
-      value: -0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
 --- !u!4 &705704179432574019 stripped
@@ -128,7 +120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0.256
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.z
@@ -166,14 +158,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: JellyFish (15)
       objectReference: {fileID: 0}
-    - target: {fileID: 623751797359823314, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 967311977650399032, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: fSpeed
-      value: -0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
 --- !u!4 &1883776055645803747 stripped
@@ -198,7 +182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0299999
+      value: 0.902
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.z
@@ -236,14 +220,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: JellyFish (10)
       objectReference: {fileID: 0}
-    - target: {fileID: 623751797359823314, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 967311977650399032, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: fSpeed
-      value: -0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
 --- !u!4 &1920892555760961130 stripped
@@ -268,7 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.06
+      value: 1.693
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.z
@@ -306,14 +282,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: JellyFish (11)
       objectReference: {fileID: 0}
-    - target: {fileID: 623751797359823314, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 967311977650399032, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: fSpeed
-      value: -0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
 --- !u!4 &3111491796887048081 stripped
@@ -338,7 +306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.29999986
+      value: 0.564
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.z
@@ -376,14 +344,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: JellyFish (19)
       objectReference: {fileID: 0}
-    - target: {fileID: 623751797359823314, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 967311977650399032, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: fSpeed
-      value: -0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
 --- !u!4 &4328223853967665832 stripped
@@ -408,7 +368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0099999
+      value: 0.882
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.z
@@ -446,14 +406,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: JellyFish (16)
       objectReference: {fileID: 0}
-    - target: {fileID: 623751797359823314, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 967311977650399032, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: fSpeed
-      value: -0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
 --- !u!4 &4666979763099559084 stripped
@@ -478,7 +430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.45000014
+      value: -0.211
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.z
@@ -516,14 +468,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: JellyFish (13)
       objectReference: {fileID: 0}
-    - target: {fileID: 623751797359823314, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 967311977650399032, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: fSpeed
-      value: -0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
 --- !u!4 &5051648514100127977 stripped
@@ -548,7 +492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.32000026
+      value: -0.005
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.z
@@ -586,14 +530,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: JellyFish (18)
       objectReference: {fileID: 0}
-    - target: {fileID: 623751797359823314, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 967311977650399032, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: fSpeed
-      value: -0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
 --- !u!4 &5666808248199086262 stripped
@@ -618,7 +554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4600004
+      value: -0.846
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.z
@@ -656,14 +592,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: JellyFish (12)
       objectReference: {fileID: 0}
-    - target: {fileID: 623751797359823314, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 967311977650399032, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: fSpeed
-      value: -0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
 --- !u!4 &7337356546891980366 stripped
@@ -688,7 +616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6199998
+      value: 1.347
       objectReference: {fileID: 0}
     - target: {fileID: 5582563143553259, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_LocalPosition.z
@@ -725,14 +653,6 @@ PrefabInstance:
     - target: {fileID: 623751797359823314, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
       propertyPath: m_Name
       value: JellyFish (17)
-      objectReference: {fileID: 0}
-    - target: {fileID: 623751797359823314, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 967311977650399032, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
-      propertyPath: fSpeed
-      value: -0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70a0399d0299d784bb4a7838f5b46538, type: 3}
