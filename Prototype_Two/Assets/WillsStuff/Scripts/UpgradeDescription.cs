@@ -10,7 +10,8 @@ public class UpgradeDescription : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI Description;
     [SerializeField] TMPro.TextMeshProUGUI PriceText;
     [SerializeField] Button UpgradeButton;
-    [SerializeField] int Price;
+    int Price;
+    [SerializeField] int BasePrice;
     SelectUpgradePanel UpgradePanel;
 
     private void Start()
@@ -20,6 +21,7 @@ public class UpgradeDescription : MonoBehaviour
 
     private void Update()
     {
+        Price = BasePrice * UpgradePanel.GetLevel();
         if (GemManager.instance.GetGemCount() >= Price && UpgradePanel.GetLevel() < 5)
         {
             UpgradeButton.interactable = true;

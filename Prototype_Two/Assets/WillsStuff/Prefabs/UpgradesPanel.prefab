@@ -573,6 +573,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2243571274944695579}
     m_Modifications:
+    - target: {fileID: 736128793364302493, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: Price
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 736128793364302493, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: BasePrice
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3858542788204607871, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -688,7 +696,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 736128793364302493, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: Price
-      value: 3000
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 736128793364302493, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: BasePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3858542788204607871, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_Pivot.x
@@ -805,7 +817,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 736128793364302493, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: Price
-      value: 4000
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 736128793364302493, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: BasePrice
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3858542788204607871, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_Pivot.x
@@ -922,7 +938,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 736128793364302493, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: Price
-      value: 2000
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 736128793364302493, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: BasePrice
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3858542788204607871, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_Pivot.x
