@@ -2479,6 +2479,7 @@ MonoBehaviour:
   objectColor: {r: 0, g: 0, b: 0, a: 0}
   fFadeAmount: 0
   fFadeSpeed: 0.5
+  screenCentre: {fileID: 337692178}
   bFading: 0
 --- !u!4 &1255763607
 Transform:
