@@ -251,7 +251,7 @@ public class SwimController : MonoBehaviour
     IEnumerator TakeDamage(Transform _enemy)
     {
         IsTakingDamage = true;
-        ApplyForce(new Vector3(transform.position.x- _enemy.position.x, transform.position.y - _enemy.position.y, 0).normalized * SwimSpeed * 2.0f);
+        ApplyForce(new Vector3(transform.position.x- _enemy.position.x, transform.position.y - _enemy.position.y, 0).normalized * SwimSpeed * 2000.0f);
         yield return new WaitForSeconds(0.25f);
         IsTakingDamage = false;
     }
