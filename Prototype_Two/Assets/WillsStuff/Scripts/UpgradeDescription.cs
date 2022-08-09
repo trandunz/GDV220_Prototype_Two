@@ -49,6 +49,9 @@ public class UpgradeDescription : MonoBehaviour
 
     void UpdatePriceText()
     {
-        PriceText.text = Price.ToString();
+        if (Price <= BasePrice * 5)
+            PriceText.text = Price.ToString();
+        else
+            PriceText.text = "Max Level";
     }
 }

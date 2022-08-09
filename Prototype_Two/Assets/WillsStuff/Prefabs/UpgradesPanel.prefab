@@ -263,6 +263,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2243571275906068165}
     m_Modifications:
+    - target: {fileID: 2163784224829132769, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e0efd332b544504abfb282f83bb3442, type: 3}
+    - target: {fileID: 2163784224829132769, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2163784225522532489, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: m_Name
       value: MaxOxygen
@@ -432,6 +440,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2243571275906068165}
     m_Modifications:
+    - target: {fileID: 2163784224829132769, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f45dc48f9837cb44cb8001669daf8013, type: 3}
+    - target: {fileID: 2163784224829132769, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2163784225522532489, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: m_Name
       value: TetherUpgrade
@@ -1057,6 +1073,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2243571275906068165}
     m_Modifications:
+    - target: {fileID: 2163784224829132769, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6dfec0ccb045eb14d929495a34c026bd, type: 3}
+    - target: {fileID: 2163784224829132769, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2163784225522532489, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: m_Name
       value: ShotUpgrade
@@ -1198,6 +1222,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2243571275906068165}
     m_Modifications:
+    - target: {fileID: 2163784224829132769, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fd1e6c2dd28be924dbe9c104078b48ce, type: 3}
+    - target: {fileID: 2163784224829132769, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2163784225522532489, guid: ff42c9a0f58e7d54680ba5e6c36c7d71, type: 3}
       propertyPath: m_Name
       value: DashUpgrade
