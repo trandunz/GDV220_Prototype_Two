@@ -16,7 +16,6 @@ public class PauseMenuPanel : MonoBehaviour
     [SerializeField] GameObject OptionsWrapper;
 
     bool IsOpen = false;
-    bool IsTransitioning = false;
 
     private void Start()
     {
