@@ -260,6 +260,7 @@ MonoBehaviour:
   materialColors: []
   flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashTime: 0.2
+  AudioSound: {fileID: 0}
 --- !u!136 &438490482
 CapsuleCollider:
   m_ObjectHideFlags: 0
