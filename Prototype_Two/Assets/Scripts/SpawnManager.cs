@@ -167,8 +167,8 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnSchoolOfFish(Vector3 camPos)
     {
-        SchoolOfFish.Offset = Random.Range(-6.5f, 6.5f);
-        SchoolOfFish.SpawnPoint = new Vector3(camPos.x + SchoolOfFish.Offset, camPos.y, camPos.z);
+        SchoolOfFish.Offset = 0;  //Random.Range(-6.5f, 6.5f);
+        SchoolOfFish.SpawnPoint = new Vector3(camPos.x + SchoolOfFish.Offset, camPos.y, camPos.z + 10.0f);
         Instantiate(SchoolOfFish.Object, SchoolOfFish.SpawnPoint, Quaternion.identity);
         SchoolOfFish.DepthCounter = -Depth + SchoolOfFish.SpawnRate;
     }
