@@ -70,8 +70,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 53aaed65a15bd424aba83696ae870bfd, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -737,6 +737,14 @@ PrefabInstance:
       propertyPath: m_text
       value: OxyBoost Efficiency
       objectReference: {fileID: 0}
+    - target: {fileID: 1331919894573995622, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_fontSize
+      value: 79.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331919894573995622, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 79.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3858542788204607871, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1002,6 +1010,14 @@ PrefabInstance:
     - target: {fileID: 1331919894573995622, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_text
       value: OxyShot Efficiency
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331919894573995622, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_fontSize
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331919894573995622, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 3858542788204607871, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_Pivot.x
