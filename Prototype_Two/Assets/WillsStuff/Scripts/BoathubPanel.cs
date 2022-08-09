@@ -11,6 +11,10 @@ public class BoathubPanel : MonoBehaviour
     [SerializeField] Button RecordFull;
     [SerializeField] Button RecordEmpty;
 
+    [Header("Audio")]
+    public GameObject MouseOver;
+    public GameObject Select;
+
     TMPro.TextMeshProUGUI RecordText;
     private void Start()
     {
@@ -27,11 +31,13 @@ public class BoathubPanel : MonoBehaviour
     public void OnMainMenuClick()
     {
         LevelLoader.instance.LoadLevel(0);
+        Destroy(Instantiate(Select), 1.0f);
     }
 
     public void PointerOverMainMenu()
     {
         HoverOverOption(MainMenu.image);
+        Destroy(Instantiate(MouseOver), 1.0f);
     }
 
     public void PointerLeftMainMenu()
@@ -42,10 +48,12 @@ public class BoathubPanel : MonoBehaviour
     public void OnStartClick()
     {
         LevelLoader.instance.LoadLevel(2);
+        Destroy(Instantiate(Select), 1.0f);
     }
     public void PointerOverStart()
     {
         HoverOverOption(start.image);
+        Destroy(Instantiate(MouseOver), 1.0f);
     }
 
     public void PointerLeftStart()
@@ -55,10 +63,11 @@ public class BoathubPanel : MonoBehaviour
 
     public void OnRecordsClick()
     {
-        
+        Destroy(Instantiate(Select), 1.0f);
     }
     public void PointerOverRecords()
     {
+        Destroy(Instantiate(MouseOver), 1.0f);
 
         Color textColor2 = RecordText.color;
         textColor2.a = 1;

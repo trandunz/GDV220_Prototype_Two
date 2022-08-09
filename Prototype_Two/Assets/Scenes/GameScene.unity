@@ -3656,9 +3656,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 864154136}
     - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioDash
+      value: 
+      objectReference: {fileID: 6526108001749352514, guid: 9e461108c02b172498fe0eb2b1750388, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioDead
+      value: 
+      objectReference: {fileID: 6756518608097298787, guid: b1db010598726224995768cfc04b8880, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioHurt
+      value: 
+      objectReference: {fileID: 5935291059762974861, guid: 345c2c90990cfb24b8d0a51e75a53bd5, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: BoostForce
       value: 5000
       objectReference: {fileID: 0}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioShoot
+      value: 
+      objectReference: {fileID: 122478365868764272, guid: 21211f532a82f23469f600299dfa6c6f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
 --- !u!4 &1743313967 stripped
