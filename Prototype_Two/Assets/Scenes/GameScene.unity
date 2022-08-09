@@ -949,6 +949,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 324539524}
     m_Modifications:
+    - target: {fileID: 5028910212683554679, guid: ebdc10fcdd9b4d6459af58ef24a33d86, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6565033957460436975, guid: ebdc10fcdd9b4d6459af58ef24a33d86, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -1687,7 +1691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3006,6 +3010,10 @@ PrefabInstance:
       propertyPath: EelSpawnRate
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: OxygemPrefab
+      value: 
+      objectReference: {fileID: 2951123183173000976, guid: 68c43300fc88ab04b80dca0ba63aef8c, type: 3}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: SchoolOfFishPrefab
       value: 

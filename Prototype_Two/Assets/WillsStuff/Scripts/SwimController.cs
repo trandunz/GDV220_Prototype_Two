@@ -31,6 +31,7 @@ public class SwimController : MonoBehaviour
     bool IsBoosting = false;
     bool IsFiring = false;
     bool IsOnLeftSize = false;
+    bool IsTakingDamage = false;
 
     float DistanceFromOrigin = 0.0f;
 
@@ -229,6 +230,30 @@ public class SwimController : MonoBehaviour
             IsBoosting = false;
         }
         yield return null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag is "Oxygem")
+        {
+            Destroy(other.gameObject);
+            GemManager.instance.AddGems(1);
+        }
+        if (other.gameObject.tag is "Enemy")
+        {
+            if (!IsTakingDamage)
+            {
+                StartCoroutine(TakeDamage(other.gameObject.transform));
+            }
+        }
+    }
+
+    IEnumerator TakeDamage(Transform _enemy)
+    {
+        IsTakingDamage = true;
+        ApplyForce(new Vector3(transform.position.x- _enemy.position.x, transform.position.y - _enemy.position.y, 0).normalized * SwimSpeed * 2.0f);
+        yield return new WaitForSeconds(0.25f);
+        IsTakingDamage = false;
     }
 
     Vector3 GetInput()
