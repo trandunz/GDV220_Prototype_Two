@@ -15,6 +15,8 @@ public class SwimController : MonoBehaviour
 
     [SerializeField] bool PlayerOne = false;
 
+    private float FixedDeltaTime;
+
     KeyCode Right = KeyCode.D;
     KeyCode Left = KeyCode.A;
     KeyCode Up = KeyCode.W;
@@ -40,6 +42,8 @@ public class SwimController : MonoBehaviour
 
     void Start()
     {
+        FixedDeltaTime = Time.fixedDeltaTime;
+
         MeshObject = GetComponentInChildren<MeshRenderer>().gameObject;
 
         if (transform.position.x > Tether.transform.position.x)
@@ -58,6 +62,8 @@ public class SwimController : MonoBehaviour
     }
     void Update()
     {
+        Time.fixedDeltaTime = FixedDeltaTime * Time.timeScale;
+
         if (PlayerOne)
         {
             Up = (KeyCode)PlayerPrefs.GetInt("P1Up");
