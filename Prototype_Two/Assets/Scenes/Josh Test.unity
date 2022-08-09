@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 438490482}
   - component: {fileID: 438490481}
   - component: {fileID: 438490486}
+  - component: {fileID: 438490487}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -255,11 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   currentHealth: 0
-  materials:
-  - {fileID: 2100000, guid: 3ef59cc976bad3548846f329aaad41c1, type: 2}
-  materialColors: []
-  flashColor: {r: 1, g: 1, b: 1, a: 1}
-  flashTime: 0.2
+  flash: {fileID: 0}
 --- !u!136 &438490482
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -355,6 +352,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &438490487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438490480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7200763c22182e49872103163f1d494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials: []
+  materialColors: []
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashTime: 0.2
 --- !u!1001 &457836396
 PrefabInstance:
   m_ObjectHideFlags: 0

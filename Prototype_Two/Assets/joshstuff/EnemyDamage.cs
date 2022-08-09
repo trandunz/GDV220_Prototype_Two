@@ -6,26 +6,12 @@ public class EnemyDamage : MonoBehaviour
 {
     [SerializeField] int maxHealth = 2;
     [SerializeField] int currentHealth;
-    [SerializeField] Material[] materials;
-    [SerializeField] Color[] materialColors;
 
-    [SerializeField] Color flashColor = Color.white;
-
-    [SerializeField] float flashTime = 0.2f;
+    [SerializeField] Flash flash;
     private void Start()
     {
         currentHealth = maxHealth;
-        Renderer[] renderer = GetComponentsInChildren<Renderer>();
-        materials = new Material[renderer.Length];
-        for (int i = 0; i < materials.Length; i++)
-        {
-            materials[i] = renderer[i].material;
-        }
-        materialColors = new Color[materials.Length];
-        for (int i = 0; i < materials.Length; i++)
-        {
-            materialColors[i] = materials[i].color;
-        }
+        flash = GetComponent<Flash>();
     }
 
     void Die()
@@ -42,16 +28,9 @@ public class EnemyDamage : MonoBehaviour
 
     IEnumerator Flash()
     {
-        for (int i = 0; i < materials.Length; i++)
-        {
-            materials[i].color = flashColor;
-        }
+        flash.FlashStart();
 
-        yield return new WaitForSeconds(flashTime);
-        for (int i = 0; i < materials.Length; i++)
-        {
-            materials[i].color = materialColors[i];
-        }
+        yield return new WaitForSeconds(flash.flashTime);
         if (currentHealth <= 0)
         {
             Die();
