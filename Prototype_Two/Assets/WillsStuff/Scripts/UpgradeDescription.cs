@@ -21,7 +21,8 @@ public class UpgradeDescription : MonoBehaviour
 
     private void Update()
     {
-        Price = BasePrice * UpgradePanel.GetLevel();
+        Price = BasePrice  + BasePrice * UpgradePanel.GetLevel();
+        UpdatePriceText();
         if (GemManager.instance.GetGemCount() >= Price && UpgradePanel.GetLevel() < 5)
         {
             UpgradeButton.interactable = true;
