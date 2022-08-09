@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d296d73e440fb38449d7e154dd10c095
+guid: df6e42c73df07eb46b443923dcf47aa9
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Player
-    second: {fileID: 2100000, guid: f6e75ae6c8e7203409f0bf48408be398, type: 2}
+      name: M_Kina
+    second: {fileID: 2100000, guid: b71ee95c02403294ab2733ea56894d55, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

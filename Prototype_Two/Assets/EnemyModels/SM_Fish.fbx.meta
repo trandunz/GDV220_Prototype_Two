@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d296d73e440fb38449d7e154dd10c095
+guid: 6604b4f842685bf4396833571aabda86
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Player
-    second: {fileID: 2100000, guid: f6e75ae6c8e7203409f0bf48408be398, type: 2}
+      name: M_Fish
+    second: {fileID: 2100000, guid: 144ad8cc7d744874cbeb66cbf4b7f0f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_FishEye
+    second: {fileID: 2100000, guid: 22707902f0fbf884c978be231ddb77a3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d296d73e440fb38449d7e154dd10c095
+guid: 7cfe3c1f6ce8f9e4eb2799c180068731
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Player
-    second: {fileID: 2100000, guid: f6e75ae6c8e7203409f0bf48408be398, type: 2}
+      name: Eel
+    second: {fileID: 2100000, guid: 18f01c6e9c001e242b12a46c71f50591, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_EelFin
+    second: {fileID: 2100000, guid: 506244f2336d9844393ae0e0cac664e8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
