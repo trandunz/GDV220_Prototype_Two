@@ -17,6 +17,8 @@ public class SwimController : MonoBehaviour
 
     private float FixedDeltaTime;
 
+    OxygenTankValue oxygenTank;
+
     KeyCode Right = KeyCode.D;
     KeyCode Left = KeyCode.A;
     KeyCode Up = KeyCode.W;
@@ -44,6 +46,8 @@ public class SwimController : MonoBehaviour
     void Start()
     {
         FixedDeltaTime = Time.fixedDeltaTime;
+
+        oxygenTank = FindObjectOfType<OxygenTankValue>();
 
         MeshObject = GetComponentInChildren<MeshRenderer>().gameObject;
 
@@ -211,6 +215,7 @@ public class SwimController : MonoBehaviour
     IEnumerator FireDartRoutine()
     {
         IsFiring = true;
+        oxygenTank.ShootOxygenUse();
         var dart = Instantiate(WeaponDart, transform.position, Quaternion.identity);
         dart.GetComponent<Dart>().SetDirection(Vector3.down);
         yield return new WaitForSeconds(DartCooldown);
@@ -219,6 +224,7 @@ public class SwimController : MonoBehaviour
 
     IEnumerator BoostRoutine()
     {
+        oxygenTank.DashOxygenUse();
         float distance = Vector3.Distance(transform.position, Origin.position);
         float ikMaxDistance = Tether.CompleteLength;
         if (distance < ikMaxDistance)

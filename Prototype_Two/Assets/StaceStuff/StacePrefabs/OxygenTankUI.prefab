@@ -53,21 +53,21 @@ MonoBehaviour:
   fDrainSpeed3: 0.007352941
   fDrainSpeed4: 0.005952381
   fDrainSpeed5: 0.005
-  fDamageAmount: 0.25
+  fDamageAmount: 0.2
   iMaxDash: 0
-  fDashLoss0: 0.2
-  fDashLoss1: 0
-  fDashLoss2: 0
-  fDashLoss3: 0
-  fDashLoss4: 0
-  fDashLoss5: 0
+  fDashLoss0: 0.1
+  fDashLoss1: 0.05
+  fDashLoss2: 0.01
+  fDashLoss3: 0.005
+  fDashLoss4: 0.001
+  fDashLoss5: 0.0005
   iMaxShoot: 0
   fShootLoss0: 0.1
-  fShootLoss1: 0
-  fShootLoss2: 0
-  fShootLoss3: 0
-  fShootLoss4: 0
-  fShootLoss5: 0
+  fShootLoss1: 0.05
+  fShootLoss2: 0.01
+  fShootLoss3: 0.005
+  fShootLoss4: 0.001
+  fShootLoss5: 0.0005
 --- !u!1 &6276710519285553203
 GameObject:
   m_ObjectHideFlags: 0
