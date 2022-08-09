@@ -244,11 +244,6 @@ public class SwimController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag is "Oxygem")
-        {
-            Destroy(other.gameObject);
-            GemManager.instance.AddGems(1);
-        }
         if (other.gameObject.tag is "Enemy")
         {
             if (!IsInvulnrable)
