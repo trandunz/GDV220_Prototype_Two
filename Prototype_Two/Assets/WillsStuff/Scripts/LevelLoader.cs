@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
-    public static LevelLoader instance { get; private set; }
+    public static LevelLoader instance;
 
-    private void Start()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -35,7 +35,6 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene(3);
 
         yield return new WaitForSeconds(0.2f);
-
         Slider progressSlider = FindObjectOfType<Slider>();
         TMPro.TextMeshProUGUI progressText = FindObjectOfType<TMPro.TextMeshProUGUI>();
 
@@ -43,9 +42,15 @@ public class LevelLoader : MonoBehaviour
 
         while(!asyncOperation.isDone)
         {
+            if (progressSlider == null)
+                progressSlider = FindObjectOfType<Slider>();
+            if (progressText == null)
+                progressText = FindObjectOfType<TMPro.TextMeshProUGUI>();
             float progress = Mathf.Clamp01(asyncOperation.progress / 0.9f);
-            progressSlider.value = progress;
-            progressText.text = (progress * 100).ToString() + "%";
+            if (progressSlider != null)
+                progressSlider.value = progress;
+            if (progressText != null)
+                progressText.text = (progress * 100).ToString() + "%";
 
             yield return null;
         }
