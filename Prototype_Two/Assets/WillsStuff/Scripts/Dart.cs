@@ -24,9 +24,14 @@ public class Dart : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != "Dart"
-            && other.gameObject.tag != "Player")
+            && other.gameObject.tag != "Player"
+            && other.gameObject.tag != "Enemy")
         {
             Destroy(gameObject);
+        }
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
         }
     }
 }
