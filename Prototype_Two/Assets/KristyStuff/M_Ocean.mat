@@ -93,7 +93,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Depth_Distance: 1
+    - _Depth_Distance: 0.9
     - _Depth_Strength: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
@@ -107,12 +107,12 @@ Material:
     - _Normal_Strength: 1
     - _Normal_Tiling: 1
     - _OcclusionStrength: 1
-    - _Pan_Speed: 0.1
+    - _Pan_Speed: 0.02
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Refract_Strength: 1.66
+    - _Refract_Strength: 1.44
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
