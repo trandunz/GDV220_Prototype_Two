@@ -10,6 +10,7 @@ public class SwimController : MonoBehaviour
     [SerializeField] float BoostForce = 30.0f;
     [SerializeField] float BoostCooldown = 1.0f;
     [SerializeField] float RotationSpeed = 1000.0f;
+    float TimeCount = 0.0f;
 
     [SerializeField] bool PlayerOne = false;
 
@@ -196,7 +197,16 @@ public class SwimController : MonoBehaviour
             var dir = GetInput().normalized;
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             var q = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-            MeshObject.transform.rotation = Quaternion.RotateTowards(MeshObject.transform.rotation, q, RotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, q, RotationSpeed * Time.deltaTime);
+
+            //var dir = GetInput().normalized;
+            //var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            //Debug.Log(angle);
+            //angle -= 90.0f;
+            //Quaternion q = Quaternion.Euler(00.0f, 0.0f, angle);
+            //
+            //transform.rotation = Quaternion.Lerp(transform.rotation, q, TimeCount);// Quaternion.RotateTowards(MeshObject.transform.rotation, q, RotationSpeed * Time.deltaTime);
+            //TimeCount += Time.deltaTime;
         }
     }
 
