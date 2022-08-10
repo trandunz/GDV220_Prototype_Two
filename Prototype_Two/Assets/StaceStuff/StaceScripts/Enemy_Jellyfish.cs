@@ -40,4 +40,5 @@ public class Enemy_Jellyfish : MonoBehaviour
             transform.Translate(0.0f, OxygenTank.GetComponentInParent<CameraMovement>().fCameraSpeed * Time.deltaTime, 0.0f); 
         }
     }
+
 }

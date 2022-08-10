@@ -12,4 +12,9 @@ public class Oxygem : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Update()
+    {
+        transform.Rotate(new Vector3(0.0f, 40.0f * Time.deltaTime, 0.0f), Space.Self);
+    }
 }
