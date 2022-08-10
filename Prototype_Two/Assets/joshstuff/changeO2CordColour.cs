@@ -20,7 +20,7 @@ public class changeO2CordColour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (players[0].DistanceFromOrigin + players[1].DistanceFromOrigin >= (players[0].Tether.CompleteLength + players[1].Tether.CompleteLength) * 0.8)
+        if (players[0].DistanceFromOrigin + players[1].DistanceFromOrigin >= (players[0].Tether.CompleteLength + players[1].Tether.CompleteLength) * 0.95)
         {
             float percentage = (players[0].Tether.CompleteLength + players[1].Tether.CompleteLength - players[0].DistanceFromOrigin + players[1].DistanceFromOrigin);
             percentage /= ((players[0].DistanceFromOrigin + players[1].DistanceFromOrigin + players[0].Tether.CompleteLength + players[1].Tether.CompleteLength) / 1);
