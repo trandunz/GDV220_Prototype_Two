@@ -13,10 +13,6 @@ public class OptionsMenu : MonoBehaviour
 
     private void Start()
     {
-        KeyBindings.SetActive(false);
-    }
-    private void Awake()
-    {
         Resolution tenEighty = new Resolution();
         tenEighty.height = 1080;
         tenEighty.width = 1920;
@@ -84,6 +80,8 @@ public class OptionsMenu : MonoBehaviour
         UpdateResolution();
         UpdateVolume();
         UpdateStereoPan();
+
+        KeyBindings.SetActive(false);
     }
 
     public void UpdateResolution()

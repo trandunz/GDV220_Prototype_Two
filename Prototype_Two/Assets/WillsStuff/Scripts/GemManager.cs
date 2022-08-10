@@ -7,7 +7,7 @@ public class GemManager : MonoBehaviour
     public static GemManager instance { get; private set; }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
