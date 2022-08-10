@@ -17,6 +17,8 @@ public class SwimController : MonoBehaviour
 
     private float FixedDeltaTime;
 
+    bool CanMove = true;
+
     OxygenTankValue oxygenTank;
 
     KeyCode Right = KeyCode.D;
@@ -215,7 +217,7 @@ public class SwimController : MonoBehaviour
     
     void Boost()
     {
-        if (Input.GetKeyDown(Dash))
+        if (Input.GetKeyDown(Dash) && CanMove)
         {
            if (!IsBoosting)
            {
@@ -297,6 +299,12 @@ public class SwimController : MonoBehaviour
         }
     }
 
+    public void Die()
+    {
+        animator.SetBool("Dead", true);
+        CanMove = false;
+    }
+
     IEnumerator StartInvulnrability()
     {
         IsInvulnrable = true;
@@ -340,19 +348,19 @@ public class SwimController : MonoBehaviour
     Vector3 GetInput()
     {
         Vector3 input = Vector3.zero;
-        if (Input.GetKey(Up))
+        if (Input.GetKey(Up) && CanMove)
         {
             input.y++;
         }
-        if (Input.GetKey(Left))
+        if (Input.GetKey(Left) && CanMove)
         {
             input.x--; ;
         }
-        if (Input.GetKey(Down))
+        if (Input.GetKey(Down) && CanMove)
         {
             input.y--;
         }
-        if (Input.GetKey(Right))
+        if (Input.GetKey(Right) && CanMove)
         {
             input.x++;
         }

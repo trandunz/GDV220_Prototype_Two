@@ -233,6 +233,11 @@ public class OxygenTankValue : MonoBehaviour
         {
             Destroy(Instantiate(audioDrown), 5.0f);
             bHasPlayedDrownSound = true;
+
+            foreach(var player in FindObjectsOfType<SwimController>())
+            {
+                player.Die();
+            }
         }
     }
 }
