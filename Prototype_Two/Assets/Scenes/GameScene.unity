@@ -933,11 +933,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7e7b270e1424b4ab2c4a4a0fcbf0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 11
+  length: 25
   rightPlayer: {fileID: 864154136}
   leftPlayer: {fileID: 1126040779}
   Sphere: {fileID: 2627937360697459381, guid: adec3724453a2dd4ab78a1f01c4d3d54, type: 3}
-  MinChainLength: 9
+  MinChainLength: 15
+  sphereSize: 0.3
   moveleft: 0
   moveright: 0
 --- !u!1 &338082264
@@ -968,8 +969,8 @@ Transform:
   m_GameObject: {fileID: 338082264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 864154132}
   m_Father: {fileID: 890117855}
@@ -3756,8 +3757,8 @@ Transform:
   m_GameObject: {fileID: 1658297604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1126040775}
   m_Father: {fileID: 661292911}

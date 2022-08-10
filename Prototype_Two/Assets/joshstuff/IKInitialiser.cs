@@ -9,7 +9,8 @@ public class IKInitialiser : MonoBehaviour
     public FastIKFabric leftPlayer;
     public GameObject Sphere;
 
-    public int MinChainLength = 9;
+    public int MinChainLength = 15;
+    public float sphereSize = 0.3f;
 
     public bool moveleft = false;
     public bool moveright = false;
@@ -17,10 +18,10 @@ public class IKInitialiser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < length + (1 * PlayerPrefs.GetInt("TetherUpgrade Level")); i++)
+        for (int i = 0; i < length + (4 * PlayerPrefs.GetInt("TetherUpgrade Level")); i++)
         {
-            rightPlayer.AttachNewSphere(Instantiate(Sphere), 0.5f);
-            leftPlayer.AttachNewSphere(Instantiate(Sphere), -0.5f);
+            rightPlayer.AttachNewSphere(Instantiate(Sphere), sphereSize);
+            leftPlayer.AttachNewSphere(Instantiate(Sphere), -sphereSize);
         }
     }
 
@@ -30,7 +31,7 @@ public class IKInitialiser : MonoBehaviour
         if (rightPlayer.Bones.Length > MinChainLength)
         {
             rightPlayer.RemomveSphere(0.5f);
-            leftPlayer.AttachNewSphere(Instantiate(Sphere), -0.5f);
+            leftPlayer.AttachNewSphere(Instantiate(Sphere), -sphereSize);
         }
         moveleft = false;
     }
@@ -41,7 +42,7 @@ public class IKInitialiser : MonoBehaviour
         if (leftPlayer.Bones.Length > MinChainLength)
         {
             leftPlayer.RemomveSphere(-0.5f);
-            rightPlayer.AttachNewSphere(Instantiate(Sphere), 0.5f);
+            rightPlayer.AttachNewSphere(Instantiate(Sphere), sphereSize);
         }
         moveright = false;
     }
