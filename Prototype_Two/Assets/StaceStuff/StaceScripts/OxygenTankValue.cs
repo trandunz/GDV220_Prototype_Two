@@ -193,4 +193,10 @@ public class OxygenTankValue : MonoBehaviour
             transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
         }
     }
+
+    public void AddOxygen(float _amount)
+    {
+        transform.localScale += new Vector3(0.0f, _amount, 0.0f);
+        Vector3.ClampMagnitude(transform.localScale, 1);
+    }
 }

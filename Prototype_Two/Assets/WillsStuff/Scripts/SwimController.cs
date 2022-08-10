@@ -53,6 +53,9 @@ public class SwimController : MonoBehaviour
     public GameObject audioDead;
     public GameObject audioOxygem;
 
+    // screen shake
+    private Shake shake;
+
     void Start()
     {
         FixedDeltaTime = Time.fixedDeltaTime;
@@ -77,6 +80,9 @@ public class SwimController : MonoBehaviour
 
         if (PlayerOne)
             MeshObject.GetComponent<Renderer>().material = YellowMaterial;
+
+        // screen shake
+        shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
     }
 
     void Update()
@@ -257,6 +263,11 @@ public class SwimController : MonoBehaviour
             Destroy(other.gameObject);
             GemManager.instance.AddGems(1);
         }
+        if (other.gameObject.tag is "Bubble")
+        {
+            oxygenTank.AddOxygen(0.2f);
+            Destroy(other.gameObject);
+        }
         if (other.gameObject.tag is "Enemy")
         {
             if (!IsInvulnrable)
@@ -265,6 +276,7 @@ public class SwimController : MonoBehaviour
                 oxygenTank.DamageOxygenUse();
                 Debug.Log("Player Got Hit!");
                 StartCoroutine(StartInvulnrability());
+                shake.CamShake();
             }
         }
     }
