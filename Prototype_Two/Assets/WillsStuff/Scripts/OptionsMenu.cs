@@ -79,17 +79,11 @@ public class OptionsMenu : MonoBehaviour
         {
             StereoPanSlider.value = PlayerPrefs.GetFloat("StereoPan");
         }
+        PlayerPrefs.Save();
 
         UpdateResolution();
         UpdateVolume();
         UpdateStereoPan();
-    }
-
-    private void OnEnable()
-    {
-        ResolutionsDropdown.value = PlayerPrefs.GetInt("Resolution");
-        MasterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
-        StereoPanSlider.value = PlayerPrefs.GetFloat("StereoPan");
     }
 
     public void UpdateResolution()
@@ -97,6 +91,7 @@ public class OptionsMenu : MonoBehaviour
         Resolution newResolution = AvailableResolutions[ResolutionsDropdown.value];
         Screen.SetResolution(newResolution.width, newResolution.height, Screen.fullScreen, newResolution.refreshRate);
         PlayerPrefs.SetInt("Resolution", ResolutionsDropdown.value);
+        PlayerPrefs.Save();
     }
 
     public void ToggleFullscreen()
@@ -108,6 +103,7 @@ public class OptionsMenu : MonoBehaviour
     {
         AudioListener.volume = MasterVolumeSlider.value;
         PlayerPrefs.SetFloat("MasterVolume", AudioListener.volume);
+        PlayerPrefs.Save();
     }
     public void UpdateStereoPan()
     {
@@ -116,5 +112,6 @@ public class OptionsMenu : MonoBehaviour
             audioSource.panStereo = StereoPanSlider.value;
         }
         PlayerPrefs.SetFloat("StereoPan", StereoPanSlider.value);
+        PlayerPrefs.Save();
     }
 }
