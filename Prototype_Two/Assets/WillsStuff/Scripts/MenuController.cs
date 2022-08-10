@@ -32,7 +32,7 @@ public class MenuController : MonoBehaviour
 
     public void SwitchToBoathub()
     {
-        Title.text = "BOATHUB";
+        Title.text = "BOAT HUB";
         HoverLeftOption(UpgradesIcon);
         HoverLeftOption(SettingsIcon);
         HoverLeftOption(HelpIcon);
