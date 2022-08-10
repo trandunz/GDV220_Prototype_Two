@@ -13,6 +13,8 @@ public class SwimController : MonoBehaviour
 
     [SerializeField] bool PlayerOne = false;
 
+    [SerializeField] GameObject MeshObject;
+
     private float FixedDeltaTime;
 
     OxygenTankValue oxygenTank;
@@ -23,7 +25,8 @@ public class SwimController : MonoBehaviour
     KeyCode Down = KeyCode.S;
     KeyCode Dash = KeyCode.LeftControl;
 
-    GameObject MeshObject;
+    Animator animator;
+    SkinnedMeshRenderer Mesh;
     SwimController otherPlayer = null;
     IKInitialiser cord;
 
@@ -61,11 +64,13 @@ public class SwimController : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
+
         FixedDeltaTime = Time.fixedDeltaTime;
 
         oxygenTank = FindObjectOfType<OxygenTankValue>();
 
-        MeshObject = GetComponentInChildren<MeshRenderer>().gameObject;
+        Mesh = GetComponentInChildren<SkinnedMeshRenderer>();
 
         if (transform.position.x > Tether.transform.position.x)
         {
@@ -82,7 +87,7 @@ public class SwimController : MonoBehaviour
         }
 
         if (PlayerOne)
-            MeshObject.GetComponent<Renderer>().material = YellowMaterial;
+            Mesh.material = YellowMaterial;
 
         // screen shake
         shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
@@ -110,6 +115,7 @@ public class SwimController : MonoBehaviour
         }
         RotateToVelocity();
         Boost();
+        HandleAnimations();
     }
 
     void FixedUpdate()
@@ -188,7 +194,7 @@ public class SwimController : MonoBehaviour
             var dir = GetInput().normalized;
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             var q = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-            MeshObject.transform.rotation = Quaternion.RotateTowards(MeshObject.transform.rotation, MeshObject.transform.rotation * q, RotationSpeed * Time.deltaTime);
+            MeshObject.transform.rotation = Quaternion.RotateTowards(MeshObject.transform.rotation, q, RotationSpeed * Time.deltaTime);
         }
     }
 
@@ -266,6 +272,11 @@ public class SwimController : MonoBehaviour
         }
     }
 
+    void HandleAnimations()
+    {
+        animator.SetBool("IsMoving", GetInput().magnitude > 0);
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag is "Enemy")
@@ -292,26 +303,26 @@ public class SwimController : MonoBehaviour
         IsComingOutOfInvulnrable = false;
         float FlashSpeed = 0.25f;
         float FlashTimer = FlashSpeed;
-        Color originalColor = MeshObject.GetComponent<Renderer>().material.color;
+        Color originalColor = Mesh.material.color;
         while (IsInvulnrable)
         {
             FlashTimer -= Time.deltaTime;
             if (FlashTimer <= 0)
             {
                 FlashTimer = FlashSpeed;
-                if (MeshObject.GetComponent<Renderer>().material.color == originalColor)
+                if (Mesh.material.color == originalColor)
                 {
-                    MeshObject.GetComponent<Renderer>().material.color = Color.red;
+                    Mesh.material.color = Color.red;
                 }
                 else
                 {
-                    MeshObject.GetComponent<Renderer>().material.color = originalColor;
+                    Mesh.material.color = originalColor;
                 }
             }
 
             yield return new WaitForEndOfFrame();
         }
-        MeshObject.GetComponent<Renderer>().material.color = originalColor;
+        Mesh.material.color = originalColor;
     }
 
     IEnumerator RemoveInvulnrability()
@@ -346,6 +357,7 @@ public class SwimController : MonoBehaviour
             input.x++;
         }
         input.Normalize();
+
         return input;
     }
 }
