@@ -13,13 +13,9 @@ public class SelectUpgradePanel : MonoBehaviour
     [SerializeField] Sprite FullTick;
     [SerializeField] Image[] IconsAndTicks;
 
-    private void Awake()
-    {
-        description.SetUpgradePanel(this);
-    }
-
     private void Start()
     {
+        description.SetUpgradePanel(this);
         UpdateLevel();
         HasFinishedInit = true;
     }

@@ -10,7 +10,7 @@ public class UpgradesPanel : MonoBehaviour
     [SerializeField] SelectUpgradePanel DashUpgradePanel;
     [SerializeField] SelectUpgradePanel TetherUpgradePanel;
 
-    private void Awake()
+    private void Start()
     {
         SetAllGray(OxygenUpgradePanel);
         OxygenUpgradePanel.SetVisible();
