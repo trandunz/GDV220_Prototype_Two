@@ -7,7 +7,7 @@ public class GemManager : MonoBehaviour
     public static GemManager instance { get; private set; }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
@@ -39,11 +39,13 @@ public class GemManager : MonoBehaviour
     public void ResetGemCount()
     {
         PlayerPrefs.SetInt("Gems", 0);
+        PlayerPrefs.Save();
     }
 
     public void AddGems(int _amount)
     {
         PlayerPrefs.SetInt("Gems", PlayerPrefs.GetInt("Gems") + _amount);
+        PlayerPrefs.Save();
     }
 
     public void RemoveGems(int _amount)
@@ -52,5 +54,6 @@ public class GemManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Gems", PlayerPrefs.GetInt("Gems") - 1);
         }
+        PlayerPrefs.Save();
     }
 }
