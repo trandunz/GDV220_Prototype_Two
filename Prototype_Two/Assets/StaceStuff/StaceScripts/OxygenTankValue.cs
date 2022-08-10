@@ -43,9 +43,15 @@ public class OxygenTankValue : MonoBehaviour
     public float fFlashMinScale = 0.2f;
     private float fFlashTimer = 0.0f;
 
+    [Header("Audio")]
+    public GameObject audioDrown;
+    private bool bHasPlayedDrownSound;
+
     // Start is called before the first frame update
     void Start()
     {
+        bHasPlayedDrownSound = false;
+
         // Get the upgrade levels
         iMaxOxygen = PlayerPrefs.GetInt("MaxOxygen Level"); // Get max oxygen upgrade level
         iMaxDash = PlayerPrefs.GetInt("DashUpgrade Level"); // Get dash upgrade level (efficiency)
@@ -138,6 +144,7 @@ public class OxygenTankValue : MonoBehaviour
         // If oxygen is 0 (or less), then start fade to black script
         if (transform.localScale.y <= 0.0f)
         {
+            Drown();
             scaleAmountDrain = new Vector3(0.0f, 0.0f, 0.0f);
             fadeToBlack.GetComponent<FadeToBlack>().bFading = true;
         }
@@ -218,5 +225,14 @@ public class OxygenTankValue : MonoBehaviour
     {
         transform.localScale += new Vector3(0.0f, _amount, 0.0f);
         Vector3.ClampMagnitude(transform.localScale, 1);
+    }
+
+    private void Drown()
+    {
+        if (!bHasPlayedDrownSound)
+        {
+            Destroy(Instantiate(audioDrown), 5.0f);
+            bHasPlayedDrownSound = true;
+        }
     }
 }

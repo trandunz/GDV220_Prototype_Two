@@ -664,7 +664,7 @@ PrefabInstance:
     - target: {fileID: 2385173917491173613, guid: 2f81744647c391e499625c82a01ffc0d, type: 3}
       propertyPath: Select
       value: 
-      objectReference: {fileID: 6701920778808261907, guid: 4ac4b5c8b7f39ea42a52f000d12ffa9c, type: 3}
+      objectReference: {fileID: 4920647071187770863, guid: 5a27e5ff269cb6f48b46d0efe057a6ae, type: 3}
     - target: {fileID: 2385173917491173613, guid: 2f81744647c391e499625c82a01ffc0d, type: 3}
       propertyPath: MouseOver
       value: 
@@ -753,6 +753,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8525341042997636127, guid: 2f81744647c391e499625c82a01ffc0d, type: 3}
+      propertyPath: audioSelect
+      value: 
+      objectReference: {fileID: 4920647071187770863, guid: 5a27e5ff269cb6f48b46d0efe057a6ae, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f81744647c391e499625c82a01ffc0d, type: 3}
 --- !u!224 &926451745 stripped
