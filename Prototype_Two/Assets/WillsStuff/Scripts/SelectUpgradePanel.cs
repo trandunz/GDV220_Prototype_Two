@@ -97,7 +97,7 @@ public class SelectUpgradePanel : MonoBehaviour
         {
             HoverLeftOption(IconsAndTicks[i]);
         }
-        description.gameObject.SetActive(false);
+        description.SetChildrenActive(false);
     }
 
     public void  SetVisible()
@@ -106,7 +106,7 @@ public class SelectUpgradePanel : MonoBehaviour
         {
             HoverOverOption(IconsAndTicks[i]); 
         }
-        description.gameObject.SetActive(true);
+        description.SetChildrenActive(true);
     }
 
     void HoverLeftOption(Image _image)
