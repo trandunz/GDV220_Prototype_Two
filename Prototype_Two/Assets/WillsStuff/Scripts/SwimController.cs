@@ -263,6 +263,11 @@ public class SwimController : MonoBehaviour
             Destroy(other.gameObject);
             GemManager.instance.AddGems(1);
         }
+        if (other.gameObject.tag is "Bubble")
+        {
+            oxygenTank.AddOxygen(0.2f);
+            Destroy(other.gameObject);
+        }
         if (other.gameObject.tag is "Enemy")
         {
             if (!IsInvulnrable)

@@ -54,3 +54,9 @@ MonoBehaviour:
   OxygemSpawnRate: 3
   SeaUrchinPrefab: {fileID: 748262410246921173, guid: 2472b2eebb5330e479fb7fefafd77828, type: 3}
   SeaUrchinSpawnRate: 7
+  EelPrefab: {fileID: 5759047587418432666, guid: 8e47d5d9ab17c3347af73f42711b9b26, type: 3}
+  EelSpawnRate: 8
+  SchoolOfFishPrefab: {fileID: 8423193014118947376, guid: 57c584d6f5637f44aa35c83ccad7f2df, type: 3}
+  SchoolOfFishSpawnRate: 14
+  BubblePrefab: {fileID: 1497980764572778776, guid: c30d4e53fcf921f46a085043b683585b, type: 3}
+  BubbleSpawnRate: 14
