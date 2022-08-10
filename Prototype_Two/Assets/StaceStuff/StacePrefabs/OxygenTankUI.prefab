@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8692736635721397233}
   - component: {fileID: 1314215809}
+  - component: {fileID: 3272613131019747192}
   m_Layer: 0
   m_Name: OxygenTankUI
   m_TagString: Untagged
@@ -61,13 +62,22 @@ MonoBehaviour:
   fDashLoss3: 0.005
   fDashLoss4: 0.001
   fDashLoss5: 0.0005
-  iMaxShoot: 0
-  fShootLoss0: 0.1
-  fShootLoss1: 0.05
-  fShootLoss2: 0.01
-  fShootLoss3: 0.005
-  fShootLoss4: 0.001
-  fShootLoss5: 0.0005
+--- !u!114 &3272613131019747192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2288084673205576712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7200763c22182e49872103163f1d494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials: []
+  materialColors: []
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashTime: 0.5
 --- !u!1 &6276710519285553203
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +171,7 @@ BoxCollider:
   m_GameObject: {fileID: 6276710519285553203}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

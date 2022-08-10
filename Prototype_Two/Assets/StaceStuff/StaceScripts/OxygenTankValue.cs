@@ -29,15 +29,19 @@ public class OxygenTankValue : MonoBehaviour
     public float fDashLoss5 = 0.0f;
     private Vector3 dashAmountDrain;
 
-/*    // Shoot efficiency
-    [SerializeField] private int iMaxShoot;
-    public float fShootLoss0 = 0.0f;
-    public float fShootLoss1 = 0.0f;
-    public float fShootLoss2 = 0.0f;
-    public float fShootLoss3 = 0.0f;
-    public float fShootLoss4 = 0.0f;
-    public float fShootLoss5 = 0.0f;
-    private Vector3 shootAmountDrain;*/
+    /*    // Shoot efficiency
+        [SerializeField] private int iMaxShoot;
+        public float fShootLoss0 = 0.0f;
+        public float fShootLoss1 = 0.0f;
+        public float fShootLoss2 = 0.0f;
+        public float fShootLoss3 = 0.0f;
+        public float fShootLoss4 = 0.0f;
+        public float fShootLoss5 = 0.0f;
+        private Vector3 shootAmountDrain;*/
+
+    // Oxygen metre flash
+    public float fFlashMinScale = 0.2f;
+    private float fFlashTimer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -153,6 +157,22 @@ public class OxygenTankValue : MonoBehaviour
         {
             ShootOxygenUse();
         }*/
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            gameObject.GetComponent<Flash>().FlashStart();
+        }
+
+        if (transform.localScale.y <= fFlashMinScale)
+        {
+            fFlashTimer = fFlashTimer + 1 * Time.deltaTime;
+            if (fFlashTimer >= 1)
+            {
+                Debug.Log("Test");
+                gameObject.GetComponent<Flash>().FlashStart();
+                fFlashTimer = 0;
+            }
+        }
     }
 
     // Losing oxygen when damaged
