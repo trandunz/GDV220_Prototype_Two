@@ -192,7 +192,7 @@ public class SwimController : MonoBehaviour
             var dir = GetInput().normalized;
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             var q = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-            MeshObject.transform.rotation = Quaternion.RotateTowards(MeshObject.transform.rotation, q, RotationSpeed * Time.deltaTime);
+            MeshObject.transform.rotation = Quaternion.RotateTowards(MeshObject.transform.rotation, MeshObject.transform.rotation * q, RotationSpeed * Time.deltaTime);
         }
     }
 
