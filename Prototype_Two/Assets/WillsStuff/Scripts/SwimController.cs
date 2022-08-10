@@ -44,6 +44,8 @@ public class SwimController : MonoBehaviour
     Vector3 Acceleration = Vector3.zero;
     Vector3 Velocity = Vector3.zero;
 
+    [SerializeField] Material YellowMaterial;
+
     [Header("Audio")]
     public GameObject audioDash;
     public GameObject audioShoot;
@@ -72,6 +74,9 @@ public class SwimController : MonoBehaviour
                 otherPlayer = player;
             }
         }
+
+        if (PlayerOne)
+            MeshObject.GetComponent<Renderer>().material = YellowMaterial;
     }
 
     void Update()
