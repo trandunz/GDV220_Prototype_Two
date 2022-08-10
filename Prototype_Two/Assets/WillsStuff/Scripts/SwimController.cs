@@ -184,18 +184,11 @@ public class SwimController : MonoBehaviour
     {
         if (GetInput().magnitude > 0)
         {
-            var dir = Velocity.normalized;
+            var dir = GetInput().normalized;
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            var q = Quaternion.AngleAxis(angle - 90.0f, Vector3.forward);
+            var q = Quaternion.AngleAxis(angle - 90, Vector3.forward);
             MeshObject.transform.rotation = Quaternion.RotateTowards(MeshObject.transform.rotation, q, RotationSpeed * Time.deltaTime);
         }
-        /*else
-        {
-            var dir = Vector3.up;
-            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            var q = Quaternion.AngleAxis(angle - 90.0f, Vector3.forward);
-            MeshObject.transform.rotation = Quaternion.RotateTowards(MeshObject.transform.rotation, q, (RotationSpeed * 0.9f) * Time.deltaTime);
-        }*/
     }
 
     void ApplyForce(Vector3 _force)
