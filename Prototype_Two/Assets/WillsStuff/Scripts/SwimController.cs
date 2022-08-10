@@ -48,6 +48,7 @@ public class SwimController : MonoBehaviour
     public GameObject audioHurt;
     public GameObject audioDead;
     public GameObject audioOxygem;
+    public GameObject audioBubble;
 
     // screen shake
     private Shake shake;
@@ -248,6 +249,7 @@ public class SwimController : MonoBehaviour
         {
             oxygenTank.AddOxygen(0.2f);
             Destroy(other.gameObject);
+            Destroy(Instantiate(audioBubble), 3.0f);
         }
         if (other.gameObject.tag is "Enemy")
         {
