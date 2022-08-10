@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SwimController : MonoBehaviour
 {
-    [SerializeField] FastIKFabric Tether;
+    public FastIKFabric Tether;
     [SerializeField] float SwimSpeed = 10.0f;
     [SerializeField] float DragForce = 2.0f;
     [SerializeField] float BoostForce = 30.0f;
@@ -32,7 +32,7 @@ public class SwimController : MonoBehaviour
     bool IsInvulnrable = false;
     bool IsComingOutOfInvulnrable = false;
 
-    float DistanceFromOrigin = 0.0f;
+    public float DistanceFromOrigin = 0.0f;
 
     public Transform Origin;
     public Transform finalConnection;
