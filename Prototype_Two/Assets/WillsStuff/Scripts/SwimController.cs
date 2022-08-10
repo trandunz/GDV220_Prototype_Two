@@ -9,9 +9,7 @@ public class SwimController : MonoBehaviour
     [SerializeField] float DragForce = 2.0f;
     [SerializeField] float BoostForce = 30.0f;
     [SerializeField] float BoostCooldown = 1.0f;
-    [SerializeField] float DartCooldown = 1.0f;
     [SerializeField] float RotationSpeed = 1000.0f;
-    [SerializeField] GameObject WeaponDart;
 
     [SerializeField] bool PlayerOne = false;
 
@@ -23,7 +21,6 @@ public class SwimController : MonoBehaviour
     KeyCode Left = KeyCode.A;
     KeyCode Up = KeyCode.W;
     KeyCode Down = KeyCode.S;
-    KeyCode Fire = KeyCode.LeftShift;
     KeyCode Dash = KeyCode.LeftControl;
 
     GameObject MeshObject;
@@ -31,7 +28,6 @@ public class SwimController : MonoBehaviour
     IKInitialiser cord;
 
     bool IsBoosting = false;
-    bool IsFiring = false;
     bool IsOnLeftSize = false;
     bool IsInvulnrable = false;
     bool IsComingOutOfInvulnrable = false;
@@ -93,7 +89,6 @@ public class SwimController : MonoBehaviour
             Down = (KeyCode)PlayerPrefs.GetInt("P1Down");
             Left = (KeyCode)PlayerPrefs.GetInt("P1Left");
             Right = (KeyCode)PlayerPrefs.GetInt("P1Right");
-            Fire = (KeyCode)PlayerPrefs.GetInt("P1OxyShot");
             Dash = (KeyCode)PlayerPrefs.GetInt("P1OxyBurst");
         }
         else
@@ -102,10 +97,8 @@ public class SwimController : MonoBehaviour
             Down = (KeyCode)PlayerPrefs.GetInt("P2Down");
             Left = (KeyCode)PlayerPrefs.GetInt("P2Left");
             Right = (KeyCode)PlayerPrefs.GetInt("P2Right");
-            Fire = (KeyCode)PlayerPrefs.GetInt("P2OxyShot");
             Dash = (KeyCode)PlayerPrefs.GetInt("P2OxyBurst");
         }
-        FireDart();
         RotateToVelocity();
         Boost();
     }
@@ -179,18 +172,6 @@ public class SwimController : MonoBehaviour
         }
     }
 
-    void FireDart()
-    {
-        if (Input.GetKeyDown(Fire))
-        {
-           if (!IsFiring)
-           {
-                Destroy(Instantiate(audioShoot), 2.0f);
-               StartCoroutine(FireDartRoutine());
-           }
-        }
-    } 
-
     void RotateToVelocity()
     {
         if (GetInput().magnitude > 0)
@@ -227,16 +208,6 @@ public class SwimController : MonoBehaviour
                 StartCoroutine(BoostRoutine());
            }
         }
-    }
-
-    IEnumerator FireDartRoutine()
-    {
-        IsFiring = true;
-        oxygenTank.ShootOxygenUse();
-        var dart = Instantiate(WeaponDart, transform.position, Quaternion.identity);
-        dart.GetComponent<Dart>().SetDirection(Vector3.down);
-        yield return new WaitForSeconds(DartCooldown);
-        IsFiring = false;
     }
 
     IEnumerator BoostRoutine()

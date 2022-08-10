@@ -5,7 +5,6 @@ using UnityEngine;
 public class UpgradesPanel : MonoBehaviour
 {
     [SerializeField] SelectUpgradePanel OxygenUpgradePanel;
-    [SerializeField] SelectUpgradePanel ShotUpgradePanel;
     [SerializeField] SelectUpgradePanel DashUpgradePanel;
     [SerializeField] SelectUpgradePanel TetherUpgradePanel;
 
@@ -19,13 +18,9 @@ public class UpgradesPanel : MonoBehaviour
     {
         if (_toAvoid != OxygenUpgradePanel)
             OxygenUpgradePanel.SetDull();
-        if (_toAvoid != ShotUpgradePanel)
-            ShotUpgradePanel.SetDull();
         if (_toAvoid != DashUpgradePanel)
             DashUpgradePanel.SetDull();
         if (_toAvoid != TetherUpgradePanel)
             TetherUpgradePanel.SetDull();
     }
-
-
 }

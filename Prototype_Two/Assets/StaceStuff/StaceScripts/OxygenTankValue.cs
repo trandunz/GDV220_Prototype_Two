@@ -29,7 +29,7 @@ public class OxygenTankValue : MonoBehaviour
     public float fDashLoss5 = 0.0f;
     private Vector3 dashAmountDrain;
 
-    // Shoot efficiency
+/*    // Shoot efficiency
     [SerializeField] private int iMaxShoot;
     public float fShootLoss0 = 0.0f;
     public float fShootLoss1 = 0.0f;
@@ -37,7 +37,7 @@ public class OxygenTankValue : MonoBehaviour
     public float fShootLoss3 = 0.0f;
     public float fShootLoss4 = 0.0f;
     public float fShootLoss5 = 0.0f;
-    private Vector3 shootAmountDrain;
+    private Vector3 shootAmountDrain;*/
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,7 @@ public class OxygenTankValue : MonoBehaviour
         // Get the upgrade levels
         iMaxOxygen = PlayerPrefs.GetInt("MaxOxygen Level"); // Get max oxygen upgrade level
         iMaxDash = PlayerPrefs.GetInt("DashUpgrade Level"); // Get dash upgrade level (efficiency)
-        iMaxShoot = PlayerPrefs.GetInt("ShotUpgrade Level"); // Get shoot upgrade level (efficiency)
+       /* iMaxShoot = PlayerPrefs.GetInt("ShotUpgrade Level"); // Get shoot upgrade level (efficiency)*/
 
         // Change oxygen drain amount based on upgrade
         if (iMaxOxygen == 0)
@@ -100,7 +100,7 @@ public class OxygenTankValue : MonoBehaviour
         }
 
         // Change shoot drain amount based on upgrade
-        if (iMaxShoot == 0)
+        /*if (iMaxShoot == 0)
         {
             shootAmountDrain = new Vector3(0.0f, fShootLoss0, 0.0f);
         }
@@ -123,7 +123,7 @@ public class OxygenTankValue : MonoBehaviour
         else if (iMaxShoot == 5)
         {
             shootAmountDrain = new Vector3(0.0f, fShootLoss5, 0.0f);
-        }
+        }*/
     }
 
     // Update is called once per frame
@@ -149,10 +149,10 @@ public class OxygenTankValue : MonoBehaviour
             DashOxygenUse();
         }
         // Testing - forces shoot oxygen use
-        if (Input.GetKeyDown(KeyCode.X))
+        /*if (Input.GetKeyDown(KeyCode.X))
         {
             ShootOxygenUse();
-        }
+        }*/
     }
 
     // Losing oxygen when damaged
@@ -182,7 +182,7 @@ public class OxygenTankValue : MonoBehaviour
     }
 
     // Losing oxygen when shooting
-    public void ShootOxygenUse()
+    /*public void ShootOxygenUse()
     {
         if (transform.localScale.y > shootAmountDrain.y)
         {
@@ -192,7 +192,7 @@ public class OxygenTankValue : MonoBehaviour
         {
             transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
         }
-    }
+    }*/
 
     public void AddOxygen(float _amount)
     {
