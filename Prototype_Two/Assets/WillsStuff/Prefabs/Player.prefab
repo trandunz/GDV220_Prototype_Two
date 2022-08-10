@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 936388251297128937}
   - component: {fileID: 936388251297128940}
-  - component: {fileID: 7693494596251177913}
-  - component: {fileID: 6941412596260559554}
+  - component: {fileID: 834267731762064985}
+  - component: {fileID: 6272516041399846777}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -68,7 +68,7 @@ MonoBehaviour:
   Bubbles: {fileID: 0}
   BubblesPosition: {fileID: 3400717522564201547}
   BubblesRotation: {x: 0, y: 0, z: 0, w: 0}
---- !u!54 &7693494596251177913
+--- !u!54 &834267731762064985
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,7 +84,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 48
   m_CollisionDetection: 2
---- !u!65 &6941412596260559554
+--- !u!65 &6272516041399846777
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
