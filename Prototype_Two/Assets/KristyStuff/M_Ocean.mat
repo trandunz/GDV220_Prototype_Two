@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Displacement:
-        m_Texture: {fileID: 2800000, guid: 14bb4372b3b05e040979689c2663f5c2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 78b2577a82dcfad44b894815be7a0648, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -57,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 5357d5da0136cae4fa71eadd2bdeceba, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5c4f8b35438cb534bb0a02570ec930fa, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -93,7 +93,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Depth_Distance: 1.07
+    - _Depth_Distance: 1
     - _Depth_Strength: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
@@ -122,11 +122,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Bottom_Colour: {r: 0.115877524, g: 0.39976305, b: 0.7924528, a: 0.22745098}
+    - _Bottom_Colour: {r: 0.019935932, g: 0.26433322, b: 0.6037736, a: 0.22745098}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _Top_Colour: {r: 0.5424528, g: 0.9010731, b: 1, a: 0.5176471}
+    - _Top_Colour: {r: 0.41037738, g: 0.87401235, b: 1, a: 0.7294118}
   m_BuildTextureStacks: []
 --- !u!114 &6013271276190608532
 MonoBehaviour:

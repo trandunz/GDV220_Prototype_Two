@@ -40,5 +40,6 @@ public class offsetMaterial : MonoBehaviour
         }
 
         material.SetTextureOffset("_MainTex", new Vector2(xOffset, yOffset));
+        GetComponent<Renderer>().material = material;
     }
 }
