@@ -34,11 +34,16 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject SchoolOfFishPrefab;
     [SerializeField] float SchoolOfFishSpawnRate = 14.0f;
 
+    [Header("Bubble")]
+    [SerializeField] GameObject BubblePrefab;
+    [SerializeField] float BubbleSpawnRate = 14.0f;
+
     public SpawnableObject SeaUrchin;
     public SpawnableObject JellyFishSwarm;
     public SpawnableObject Oxygem;
     public SpawnableObject Eel;
     public SpawnableObject SchoolOfFish;
+    public SpawnableObject OxygenBubble;
 
     public struct SpawnableObject{
         public GameObject Object;
@@ -74,6 +79,10 @@ public class SpawnManager : MonoBehaviour
         SchoolOfFish.Object = SchoolOfFishPrefab;
         SchoolOfFish.DepthCounter = 0.0f;
         SchoolOfFish.SpawnRate = SchoolOfFishSpawnRate;
+
+        OxygenBubble.Object = BubblePrefab;
+        OxygenBubble.DepthCounter = 0.0f;
+        OxygenBubble.SpawnRate = BubbleSpawnRate;
     }
     private void Update()
     {
@@ -113,6 +122,11 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnSchoolOfFish(cameraPosition);
         }
+
+        if ((-Depth) >= OxygenBubble.DepthCounter)
+        {
+            SpawnBubble(cameraPosition);
+        }
     }
 
     void SpawnJellyFishSwarm(Vector3 camPos)
@@ -123,6 +137,14 @@ public class SpawnManager : MonoBehaviour
         JellyFishSwarm.DepthCounter = -Depth + JellyFishSwarm.SpawnRate;
     }
     
+    void SpawnBubble(Vector3 camPos)
+    {
+        OxygenBubble.Offset = Random.Range(-6.5f, 6.5f);
+        OxygenBubble.SpawnPoint = new Vector3(camPos.x + OxygenBubble.Offset, camPos.y, camPos.z);
+        Instantiate(OxygenBubble.Object, OxygenBubble.SpawnPoint, Quaternion.identity);
+        OxygenBubble.DepthCounter = -Depth + OxygenBubble.SpawnRate;
+    }
+
     void SpawnOxygem(Vector3 camPos)
     {
         Oxygem.Offset = Random.Range(-6.5f, 6.5f);

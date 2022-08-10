@@ -10,6 +10,7 @@ TagManager:
   - Oxygem
   - Bullet
   - ScreenShake
+  - Bubble
   layers:
   - Default
   - TransparentFX
