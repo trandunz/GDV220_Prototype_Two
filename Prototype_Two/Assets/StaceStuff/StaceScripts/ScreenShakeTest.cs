@@ -19,7 +19,6 @@ public class ScreenShakeTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             shake.CamShake();
-            Debug.Log("Test Shaker button");
         }
     }
 }
