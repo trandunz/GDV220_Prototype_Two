@@ -4186,6 +4186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1890885368}
+  - component: {fileID: 1890885369}
   m_Layer: 0
   m_Name: O2
   m_TagString: Untagged
@@ -4214,6 +4215,22 @@ Transform:
   m_Father: {fileID: 337692179}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1890885369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890885367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 203f5779b527b0e41ba82ead421b18f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 7f4ab67c89cda6b429e8c8dfb3f0ea39, type: 2}
+  materialDefualtColor: {r: 0.13606003, g: 0.509434, b: 0, a: 1}
+  fullTension: {r: 0.8117647, g: 0, b: 0.17829311, a: 0}
+  players: []
 --- !u!1 &1896454586
 GameObject:
   m_ObjectHideFlags: 0
