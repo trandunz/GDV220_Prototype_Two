@@ -62,6 +62,7 @@ MonoBehaviour:
   fDashLoss3: 0.005
   fDashLoss4: 0.001
   fDashLoss5: 0.0005
+  fFlashMinScale: 0.2
 --- !u!114 &3272613131019747192
 MonoBehaviour:
   m_ObjectHideFlags: 0

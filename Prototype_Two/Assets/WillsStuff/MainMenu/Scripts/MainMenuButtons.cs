@@ -6,9 +6,11 @@ using UnityEngine.UI;
 
 public class MainMenuButtons : MonoBehaviour
 {
+    public GameObject audioSelect;
 
     public void StartGame()
     {
+        Destroy(Instantiate(audioSelect), 2.0f);
         LevelLoader.instance.LoadLevel(1);
     }
 

@@ -50,6 +50,7 @@ public class SwimController : MonoBehaviour
     public GameObject audioOxygem;
     public GameObject audioBubble;
 
+    [Header("Particles")]
     // screen shake
     private Shake shake;
 

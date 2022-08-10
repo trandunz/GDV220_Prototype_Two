@@ -20,6 +20,8 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] TMPro.TextMeshProUGUI OxygemCountText;
 
+    public GameObject audioSelect;
+
     List<int> Prices;
 
     private void OnEnable()
@@ -80,6 +82,7 @@ public class MenuController : MonoBehaviour
         Boathub.SetActive(true);
 
         HoverOverOption(BoathubIcon);
+        Destroy(Instantiate(audioSelect), 2.0f);
     }
     public void SwitchToUpgrades()
     {
@@ -91,6 +94,7 @@ public class MenuController : MonoBehaviour
         Upgrades.SetActive(true);
 
         HoverOverOption(UpgradesIcon);
+        Destroy(Instantiate(audioSelect), 2.0f);
     }
     public void SwitchToSettings()
     {
@@ -102,6 +106,7 @@ public class MenuController : MonoBehaviour
         Settings.SetActive(true);
 
         HoverOverOption(SettingsIcon);
+        Destroy(Instantiate(audioSelect), 2.0f);
     }
     public void SwitchToHelp()
     {
@@ -113,6 +118,7 @@ public class MenuController : MonoBehaviour
         Help.SetActive(true);
 
         HoverOverOption(HelpIcon);
+        Destroy(Instantiate(audioSelect), 2.0f);
     }
 
     public void DisableAllMenus()
