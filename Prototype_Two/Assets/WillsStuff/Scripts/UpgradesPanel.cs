@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class UpgradesPanel : MonoBehaviour
 {
-    [SerializeField] GameObject DescriptionPanel;
     [SerializeField] SelectUpgradePanel OxygenUpgradePanel;
     [SerializeField] SelectUpgradePanel ShotUpgradePanel;
     [SerializeField] SelectUpgradePanel DashUpgradePanel;
     [SerializeField] SelectUpgradePanel TetherUpgradePanel;
 
-    private void Start()
+    void OnEnable()
     {
         SetAllGray(OxygenUpgradePanel);
         OxygenUpgradePanel.SetVisible();

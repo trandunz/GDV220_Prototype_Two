@@ -93,18 +93,18 @@ public class SelectUpgradePanel : MonoBehaviour
 
     public void SetDull()
     {
-        foreach (var icon in IconsAndTicks)
+        for (int i = 1; i < IconsAndTicks.Length; i++)
         {
-            HoverLeftOption(icon);
+            HoverLeftOption(IconsAndTicks[i]);
         }
         description.gameObject.SetActive(false);
     }
 
     public void  SetVisible()
     {
-        foreach (var icon in IconsAndTicks)
+        for(int i = 1; i < IconsAndTicks.Length; i++)
         {
-            HoverOverOption(icon);
+            HoverOverOption(IconsAndTicks[i]); 
         }
         description.gameObject.SetActive(true);
     }
