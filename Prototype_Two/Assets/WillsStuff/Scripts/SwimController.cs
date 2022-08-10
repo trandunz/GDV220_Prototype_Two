@@ -52,6 +52,11 @@ public class SwimController : MonoBehaviour
     // screen shake
     private Shake shake;
 
+    // bubbles
+    public GameObject Bubbles;
+    public Transform BubblesPosition;
+    public Quaternion BubblesRotation;
+
     void Start()
     {
         FixedDeltaTime = Time.fixedDeltaTime;
@@ -79,6 +84,8 @@ public class SwimController : MonoBehaviour
 
         // screen shake
         shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
+
+        BubblesRotation = BubblesPosition.rotation;
     }
 
     void Update()
@@ -206,7 +213,10 @@ public class SwimController : MonoBehaviour
            {
                 Destroy(Instantiate(audioDash), 2.0f);
                 StartCoroutine(BoostRoutine());
-           }
+                
+                Destroy(Instantiate(Bubbles, BubblesPosition.position, BubblesRotation, gameObject.transform),5.0f);
+
+            }
         }
     }
 
@@ -243,6 +253,7 @@ public class SwimController : MonoBehaviour
         {
             if (!IsInvulnrable)
             {
+                Destroy(Instantiate(Bubbles, BubblesPosition.position, BubblesRotation, gameObject.transform), 5.0f);
                 Destroy(Instantiate(audioHurt), 2.0f);
                 oxygenTank.DamageOxygenUse();
                 Debug.Log("Player Got Hit!");
