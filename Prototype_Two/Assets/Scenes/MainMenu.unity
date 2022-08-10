@@ -605,5 +605,13 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1789329188996573634, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
+      propertyPath: m_text
+      value: Double Diver
+      objectReference: {fileID: 0}
+    - target: {fileID: 1789329188996573634, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
