@@ -65,6 +65,9 @@ MonoBehaviour:
   audioHurt: {fileID: 5935291059762974861, guid: 345c2c90990cfb24b8d0a51e75a53bd5, type: 3}
   audioDead: {fileID: 6756518608097298787, guid: b1db010598726224995768cfc04b8880, type: 3}
   audioOxygem: {fileID: 6701920778808261907, guid: 4ac4b5c8b7f39ea42a52f000d12ffa9c, type: 3}
+  Bubbles: {fileID: 0}
+  BubblesPosition: {fileID: 0}
+  BubblesRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &7693494596251177913
 Rigidbody:
   m_ObjectHideFlags: 0
