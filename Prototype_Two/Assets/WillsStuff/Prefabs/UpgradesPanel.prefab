@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -171,7 +171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OxygenUpgradePanel: {fileID: 8762701742875036692}
-  ShotUpgradePanel: {fileID: 0}
   DashUpgradePanel: {fileID: 3715199538263797346}
   TetherUpgradePanel: {fileID: 9054660037213808777}
 --- !u!1 &2243571275906068164
@@ -685,6 +684,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4249382078698021383, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8784498177110824884, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_Name
       value: OxygenDescription
@@ -826,6 +829,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4249382078698021383, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8784498177110824884, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_Name
       value: DashDescription
@@ -957,6 +964,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3858542788204607871, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4249382078698021383, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8784498177110824884, guid: b0f2e84474f26b04fbfa3ada12cfc69b, type: 3}

@@ -9,6 +9,8 @@ public class MenuController : MonoBehaviour
     [SerializeField] Image UpgradesIcon;
     [SerializeField] Image SettingsIcon;
     [SerializeField] Image HelpIcon;
+    public bool IsUpgradeAvailable = false;
+    [SerializeField] Image UpgradeNotification;
 
     [SerializeField] TMPro.TextMeshProUGUI Title;
     [SerializeField] GameObject Boathub;
@@ -18,16 +20,54 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] TMPro.TextMeshProUGUI OxygemCountText;
 
+    List<int> Prices;
+
+    private void OnEnable()
+    {
+        Prices = GetComponentInChildren<UpgradesPanel>().GetAllPrices();
+    }
     private void Start()
     {
         BoathubIcon.color = Color.white;
         SwitchToBoathub();
-        
     }
 
     public void Update()
     {
         OxygemCountText.text = "X " + GemManager.instance.GetGemCount().ToString();
+
+        IsUpgradeAvailable = false;
+        foreach (var price in Prices)
+        {
+            if (GemManager.instance.GetGemCount() >= price)
+            {
+                IsUpgradeAvailable = true;
+            }
+        }
+
+        if (IsUpgradeAvailable)
+        {
+            if (UpgradeNotification.color.a <= 0.0f)
+            {
+               /* Color startColor = UpgradeNotification.color;
+                startColor.a = 0.1f;
+                UpgradeNotification.color = startColor;*/
+
+                Color newColor = UpgradeNotification.color;
+                newColor.a = 1.0f;
+                StartCoroutine(LerpColor(UpgradeNotification, newColor, 1));
+            }
+            else if (UpgradeNotification.color.a >= 1.0f)
+            {
+                /*Color startColor = UpgradeNotification.color;
+                startColor.a = 0.9f;
+                UpgradeNotification.color = startColor;*/
+
+                Color newColor = UpgradeNotification.color;
+                newColor.a = 0.0f;
+                StartCoroutine(LerpColor(UpgradeNotification, newColor, 1));
+            }
+        }
     }
 
     public void SwitchToBoathub()

@@ -10,14 +10,26 @@ public class UpgradeDescription : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI Description;
     [SerializeField] TMPro.TextMeshProUGUI PriceText;
     [SerializeField] Button UpgradeButton;
-    int Price;
+    public int Price;
     [SerializeField] int BasePrice;
     SelectUpgradePanel UpgradePanel;
+    bool canUpgrade = true;
+    MenuController menuController;
 
     private void Start()
     {
+        menuController = FindObjectOfType<MenuController>();
         UpdatePriceText();
     }
+
+    public void SetChildrenActive(bool _active)
+    {
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(_active);
+        }
+    }
+
 
     private void Update()
     {
@@ -26,16 +38,20 @@ public class UpgradeDescription : MonoBehaviour
         if (GemManager.instance.GetGemCount() >= Price && UpgradePanel.GetLevel() < 5)
         {
             UpgradeButton.interactable = true;
+            canUpgrade = true;
         }
         else
         {
             UpgradeButton.interactable = false;
+            canUpgrade = false;
         }
+        if (canUpgrade)
+            menuController.IsUpgradeAvailable = true;
     }
 
     public void Upgrade()
     {
-        if (GemManager.instance.GetGemCount() >= Price)
+        if (canUpgrade)
         {
             GemManager.instance.RemoveGems(Price);
             UpgradePanel.Upgrade();
