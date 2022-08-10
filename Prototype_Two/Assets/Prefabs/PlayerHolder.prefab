@@ -51,6 +51,9 @@ MonoBehaviour:
   rightPlayer: {fileID: 7335252888986974228}
   leftPlayer: {fileID: 7335252890396458316}
   Sphere: {fileID: 2627937360697459381, guid: adec3724453a2dd4ab78a1f01c4d3d54, type: 3}
+  MinChainLength: 9
+  moveleft: 0
+  moveright: 0
 --- !u!1 &892069218539369148
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChainLength: 19
+  deletethis: {fileID: 0}
   Target: {fileID: 7335252889575137418}
   Pole: {fileID: 194556782919199666}
   Iterations: 10
@@ -581,6 +585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChainLength: 0
+  deletethis: {fileID: 0}
   Target: {fileID: 7335252889789009963}
   Pole: {fileID: 6875930320078696990}
   Iterations: 10
@@ -1145,7 +1150,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

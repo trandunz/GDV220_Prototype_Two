@@ -556,12 +556,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Main_Camera: {fileID: 1179280389}
   Depth: 0
-  Enemy: {fileID: 8112687895619393160, guid: c96e1e33993d0ca438ba0f4c6e7c8a49, type: 3}
-  EnemyDepthCounter: 0
-  Oxygem: {fileID: 8112687895619393160, guid: 9cefaa22459f721498d0603a9dce12ff, type: 3}
-  OxygemDepthCounter: 0
-  Obstacle: {fileID: 8112687895619393160, guid: df9e263c6e4adcf46b3225e574b26749, type: 3}
-  ObstacleDepthCounter: 0
+  ZOffset: 0
+  YOffset: 0
+  JellyFishSwarmPrefab: {fileID: 0}
+  JellyFishSwarmSpawnRate: 8
+  OxygemPrefab: {fileID: 0}
+  OxygemSpawnRate: 3
+  SeaUrchinPrefab: {fileID: 0}
+  SeaUrchinSpawnRate: 7
+  EelPrefab: {fileID: 0}
+  EelSpawnRate: 8
+  SchoolOfFishPrefab: {fileID: 0}
+  SchoolOfFishSpawnRate: 14
 --- !u!4 &2079243648
 Transform:
   m_ObjectHideFlags: 0

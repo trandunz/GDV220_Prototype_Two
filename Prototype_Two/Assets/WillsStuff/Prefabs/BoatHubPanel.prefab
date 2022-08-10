@@ -276,6 +276,8 @@ MonoBehaviour:
   start: {fileID: 3930021966187144305}
   RecordFull: {fileID: 29914544201842891}
   RecordEmpty: {fileID: 7767186884128248771}
+  MouseOver: {fileID: 0}
+  Select: {fileID: 0}
 --- !u!1 &2743377840200824333
 GameObject:
   m_ObjectHideFlags: 0
