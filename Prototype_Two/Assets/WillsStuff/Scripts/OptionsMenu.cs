@@ -107,7 +107,7 @@ public class OptionsMenu : MonoBehaviour
     {
         foreach(AudioSource audioSource in FindObjectsOfType<AudioSource>())
         {
-            audioSource.panStereo = StereoPanSlider.value;
+            audioSource.panStereo = (StereoPanSlider.value * 2) - 1.0f;
         }
         PlayerPrefs.SetFloat("StereoPan", StereoPanSlider.value);
         PlayerPrefs.Save();
