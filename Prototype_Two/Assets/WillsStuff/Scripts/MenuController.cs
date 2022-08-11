@@ -23,27 +23,42 @@ public class MenuController : MonoBehaviour
     public GameObject audioSelect;
 
     List<int> Prices;
+    List<int> Levels;
 
     private void OnEnable()
     {
-        Prices = GetComponentInChildren<UpgradesPanel>().GetAllPrices();
+        
     }
     private void Start()
     {
+        UpdateLevelsAndPrices();
         BoathubIcon.color = Color.white;
         SwitchToBoathub();
+    }
+
+    public void UpdateLevelsAndPrices()
+    {
+        Prices = GetComponentInChildren<UpgradesPanel>().GetAllPrices();
+        Levels = GetComponentInChildren<UpgradesPanel>().GetAllLevels();
     }
 
     public void Update()
     {
         OxygemCountText.text = "X " + GemManager.instance.GetGemCount().ToString();
 
-        IsUpgradeAvailable = false;
+        IsUpgradeAvailable = true;
         foreach (var price in Prices)
         {
-            if (GemManager.instance.GetGemCount() >= price)
+            if (GemManager.instance.GetGemCount() < price)
             {
-                IsUpgradeAvailable = true;
+                IsUpgradeAvailable = false;
+            }
+        }
+        foreach(var level in Levels)
+        {
+            if (level >= 5)
+            {
+                IsUpgradeAvailable = false;
             }
         }
 

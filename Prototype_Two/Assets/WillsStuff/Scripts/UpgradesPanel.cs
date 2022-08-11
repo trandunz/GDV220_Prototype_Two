@@ -10,7 +10,6 @@ public class UpgradesPanel : MonoBehaviour
 
     void OnEnable()
     {
-        
         SetAllGray(OxygenUpgradePanel);
         OxygenUpgradePanel.SetVisible();
     }
@@ -23,6 +22,16 @@ public class UpgradesPanel : MonoBehaviour
             Prices.Add(description.Price);
         }
         return Prices;
+    }
+
+    public List<int> GetAllLevels()
+    {
+        List<int> levels = new List<int>();
+        foreach (var description in GetComponentsInChildren<UpgradeDescription>())
+        {
+            levels.Add(description.UpgradePanel.GetLevel());
+        }
+        return levels;
     }
 
     public void SetAllGray(SelectUpgradePanel _toAvoid)
