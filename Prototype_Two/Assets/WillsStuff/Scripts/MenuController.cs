@@ -46,19 +46,19 @@ public class MenuController : MonoBehaviour
     {
         OxygemCountText.text = "X " + GemManager.instance.GetGemCount().ToString();
 
-        IsUpgradeAvailable = true;
+        IsUpgradeAvailable = false;
         foreach (var price in Prices)
         {
-            if (GemManager.instance.GetGemCount() < price)
+            if (GemManager.instance.GetGemCount() >= price)
             {
-                IsUpgradeAvailable = false;
+                IsUpgradeAvailable = true;
             }
         }
         foreach(var level in Levels)
         {
-            if (level >= 5)
+            if (level < 5)
             {
-                IsUpgradeAvailable = false;
+                IsUpgradeAvailable = true;
             }
         }
 

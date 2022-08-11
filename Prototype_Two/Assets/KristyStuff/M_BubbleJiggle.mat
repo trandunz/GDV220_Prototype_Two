@@ -50,7 +50,7 @@ Material:
     - _Fresnel_Power: 2.16
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WobbleAmount: 0.036
+    - _WobbleAmount: 0.03
     - _WobbleDistance: 0.3
     - _WobbleFrequency: 5
     - _WobbleSpeed: 5
