@@ -70,6 +70,12 @@ public class MenuController : MonoBehaviour
                 StartCoroutine(LerpColor(UpgradeNotification, newColor, 1));
             }
         }
+        else
+        {
+            Color newColor = UpgradeNotification.color;
+            newColor.a = 0.0f;
+            UpgradeNotification.color = newColor;
+        }
     }
 
     public void SwitchToBoathub()
