@@ -12,12 +12,13 @@ public class UpgradeDescription : MonoBehaviour
     [SerializeField] Button UpgradeButton;
     public int Price;
     [SerializeField] int BasePrice;
-    SelectUpgradePanel UpgradePanel;
+    public SelectUpgradePanel UpgradePanel;
     bool canUpgrade = true;
     MenuController menuController;
 
-    private void Start()
+    private void OnEnable()
     {
+        Price = BasePrice + BasePrice * UpgradePanel.GetLevel();
         menuController = FindObjectOfType<MenuController>();
         UpdatePriceText();
     }
@@ -45,12 +46,11 @@ public class UpgradeDescription : MonoBehaviour
             UpgradeButton.interactable = false;
             canUpgrade = false;
         }
-        if (canUpgrade)
-            menuController.IsUpgradeAvailable = true;
     }
 
     public void Upgrade()
     {
+        menuController.UpdateLevelsAndPrices();
         if (canUpgrade)
         {
             GemManager.instance.RemoveGems(Price);
