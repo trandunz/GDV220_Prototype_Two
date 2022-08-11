@@ -47,6 +47,7 @@ public class SwimController : MonoBehaviour
     Vector3 Velocity = Vector3.zero;
 
     [SerializeField] Material YellowMaterial;
+    [SerializeField] Material RedMaterial;
 
     [Header("Audio")]
     public GameObject audioDash;
@@ -90,7 +91,13 @@ public class SwimController : MonoBehaviour
         }
 
         if (PlayerOne)
+        {
             Mesh.material = YellowMaterial;
+        }
+        else
+        {
+            Mesh.material = RedMaterial;
+        }
 
         // screen shake
         shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
