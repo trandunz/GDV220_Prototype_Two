@@ -50,13 +50,13 @@ public class UpgradeDescription : MonoBehaviour
 
     public void Upgrade()
     {
-        menuController.UpdateLevelsAndPrices();
         if (canUpgrade)
         {
             GemManager.instance.RemoveGems(Price);
             UpgradePanel.Upgrade();
             UpdatePriceText();
         }
+        menuController.UpdateLevelsAndPrices();
     }
     public void SetUpgradePanel(SelectUpgradePanel _panel)
     {
