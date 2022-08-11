@@ -16,7 +16,7 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < 190.0f)
+        if (transform.position.y > -200.0f)
             transform.Translate(0, -fCameraSpeed * Time.deltaTime, 0);
     }
 }
