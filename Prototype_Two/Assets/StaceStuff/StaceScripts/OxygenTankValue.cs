@@ -150,25 +150,25 @@ public class OxygenTankValue : MonoBehaviour
         }
 
         // Testing - forces damage
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            DamageOxygenUse();
-        }
-        // Testing - forces dash
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            DashOxygenUse();
-        }
+        //if (Input.GetKeyDown(KeyCode.V))
+        //{
+        //    DamageOxygenUse();
+        //}
+        //// Testing - forces dash
+        //if (Input.GetKeyDown(KeyCode.C))
+        //{
+        //    DashOxygenUse();
+        //}
         // Testing - forces shoot oxygen use
         /*if (Input.GetKeyDown(KeyCode.X))
         {
             ShootOxygenUse();
         }*/
 
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            gameObject.GetComponent<Flash>().FlashStart();
-        }
+        //if (Input.GetKeyDown(KeyCode.J))
+        //{
+        //    gameObject.GetComponent<Flash>().FlashStart();
+        //}
 
         if (transform.localScale.y <= fFlashMinScale)
         {
