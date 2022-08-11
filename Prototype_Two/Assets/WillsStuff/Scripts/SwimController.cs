@@ -321,26 +321,28 @@ public class SwimController : MonoBehaviour
         IsComingOutOfInvulnrable = false;
         float FlashSpeed = 0.25f;
         float FlashTimer = FlashSpeed;
-        Color originalColor = Mesh.material.color;
+        Material originalMaterial = Mesh.material;
+        Material redMat = Mesh.material;
+        redMat.color = Color.red;
         while (IsInvulnrable)
         {
             FlashTimer -= Time.deltaTime;
             if (FlashTimer <= 0)
             {
                 FlashTimer = FlashSpeed;
-                if (Mesh.material.color == originalColor)
+                if (Mesh.material == originalMaterial)
                 {
-                    Mesh.material.color = Color.red;
+                    Mesh.material = redMat;
                 }
                 else
                 {
-                    Mesh.material.color = originalColor;
+                    Mesh.material = originalMaterial;
                 }
             }
 
             yield return new WaitForEndOfFrame();
         }
-        Mesh.material.color = originalColor;
+        Mesh.material = originalMaterial;
     }
 
     IEnumerator RemoveInvulnrability()
