@@ -1607,7 +1607,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.21186365, g: 0.22408266, b: 0.6509434, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 0.82
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4305,6 +4305,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2cc7e746855b9cc43aefcdbb20be3981, type: 3}
   m_PrefabInstance: {fileID: 1995838154}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2038016578
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 970218827563692683, guid: 08b009f5906948440baff32a43efc3fd, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 970218827563692683, guid: 08b009f5906948440baff32a43efc3fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970218827563692683, guid: 08b009f5906948440baff32a43efc3fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 970218827563692683, guid: 08b009f5906948440baff32a43efc3fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 970218827563692683, guid: 08b009f5906948440baff32a43efc3fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9848078
+      objectReference: {fileID: 0}
+    - target: {fileID: 970218827563692683, guid: 08b009f5906948440baff32a43efc3fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.17364825
+      objectReference: {fileID: 0}
+    - target: {fileID: 970218827563692683, guid: 08b009f5906948440baff32a43efc3fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970218827563692683, guid: 08b009f5906948440baff32a43efc3fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970218827563692683, guid: 08b009f5906948440baff32a43efc3fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 970218827563692683, guid: 08b009f5906948440baff32a43efc3fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970218827563692683, guid: 08b009f5906948440baff32a43efc3fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579473012712173958, guid: 08b009f5906948440baff32a43efc3fd, type: 3}
+      propertyPath: m_Name
+      value: SeaFloor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 08b009f5906948440baff32a43efc3fd, type: 3}
 --- !u!1 &2053788225
 GameObject:
   m_ObjectHideFlags: 0
