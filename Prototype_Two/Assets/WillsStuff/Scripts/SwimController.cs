@@ -289,6 +289,10 @@ public class SwimController : MonoBehaviour
                 shake.CamShake();
             }
         }
+        if (other.gameObject.tag is "Chest")
+        {
+            other.GetComponentInParent<Animator>().SetBool("Open", true);
+        }
     }
 
     void HandleAnimations()
@@ -303,6 +307,7 @@ public class SwimController : MonoBehaviour
             IsInvulnrable = true;
             IsComingOutOfInvulnrable = false;
         }
+        
     }
 
     private void OnTriggerExit(Collider other)
