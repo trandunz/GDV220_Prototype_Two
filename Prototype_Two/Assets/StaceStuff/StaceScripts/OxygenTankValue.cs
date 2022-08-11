@@ -191,7 +191,7 @@ public class OxygenTankValue : MonoBehaviour
         }
         else
         {
-            transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+            transform.localScale = new Vector3(transform.localScale.x, 0.0f, transform.localScale.z);
         }
     }
 
@@ -204,7 +204,7 @@ public class OxygenTankValue : MonoBehaviour
         }
         else
         {
-            transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+            transform.localScale = new Vector3(transform.localScale.x, 0.0f, transform.localScale.z);
         }
     }
 
@@ -223,8 +223,16 @@ public class OxygenTankValue : MonoBehaviour
 
     public void AddOxygen(float _amount)
     {
-        transform.localScale += new Vector3(0.0f, _amount, 0.0f);
-        Vector3.ClampMagnitude(transform.localScale, 1);
+        if (transform.localScale.y < 1.0f - _amount)
+        {
+            transform.localScale += new Vector3(0.0f, _amount, 0.0f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(transform.localScale.x, 1.0f, transform.localScale.z); ;
+        }
+        Debug.Log(transform.localScale.y);
+        //Vector3.ClampMagnitude(transform.localScale, 1); // didnt seem to be working
     }
 
     private void Drown()
