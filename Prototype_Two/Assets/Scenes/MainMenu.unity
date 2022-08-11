@@ -808,6 +808,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 72
       objectReference: {fileID: 0}
+    - target: {fileID: 4278053039545119606, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7563018427027116997, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
       propertyPath: audioSelect
       value: 
