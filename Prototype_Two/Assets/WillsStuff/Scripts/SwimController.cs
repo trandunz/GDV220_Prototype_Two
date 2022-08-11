@@ -291,7 +291,7 @@ public class SwimController : MonoBehaviour
         }
         if (other.gameObject.tag is "Chest")
         {
-            other.GetComponentInParent<Animator>().SetBool("Open", true);
+            other.GetComponentInParent<SeaFloor>().OpenChest();
         }
     }
 
