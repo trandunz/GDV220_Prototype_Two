@@ -6,24 +6,17 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] Image BoathubIcon;
-    [SerializeField] Image UpgradesIcon;
     [SerializeField] Image SettingsIcon;
-    [SerializeField] Image HelpIcon;
-    public bool IsUpgradeAvailable = false;
-    [SerializeField] Image UpgradeNotification;
-
     [SerializeField] TMPro.TextMeshProUGUI Title;
     [SerializeField] GameObject Boathub;
-    [SerializeField] GameObject Upgrades;
     [SerializeField] GameObject Settings;
-    [SerializeField] GameObject Help;
 
     [SerializeField] TMPro.TextMeshProUGUI OxygemCountText;
 
     public GameObject audioSelect;
 
-    List<int> Prices;
-    List<int> Levels;
+    bool OnBoathub = true;
+    bool OnSettings = false;
 
     private void OnEnable()
     {
@@ -31,126 +24,54 @@ public class MenuController : MonoBehaviour
     }
     private void Start()
     {
-        UpdateLevelsAndPrices();
         BoathubIcon.color = Color.white;
         SwitchToBoathub();
     }
 
-    public void UpdateLevelsAndPrices()
-    {
-        Prices = GetComponentInChildren<UpgradesPanel>().GetAllPrices();
-        Levels = GetComponentInChildren<UpgradesPanel>().GetAllLevels();
-    }
-
     public void Update()
     {
-        OxygemCountText.text = "X " + GemManager.instance.GetGemCount().ToString();
-
-        IsUpgradeAvailable = false;
-        bool priceIsValid = false;
-        bool levelIsValid = false;
-        foreach (var price in Prices)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) && OnSettings)
         {
-            if (GemManager.instance.GetGemCount() >= price)
-            {
-                priceIsValid = true;
-            }
+            SwitchToBoathub();
         }
-        foreach(var level in Levels)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) && OnBoathub)
         {
-            if (level < 5)
-            {
-                levelIsValid = true;
-            }
+            SwitchToSettings();
         }
-        IsUpgradeAvailable = (priceIsValid == true && levelIsValid == true);
 
-        if (IsUpgradeAvailable)
-        {
-            if (UpgradeNotification.color.a <= 0.0f)
-            {
-               /* Color startColor = UpgradeNotification.color;
-                startColor.a = 0.1f;
-                UpgradeNotification.color = startColor;*/
-
-                Color newColor = UpgradeNotification.color;
-                newColor.a = 1.0f;
-                StartCoroutine(LerpColor(UpgradeNotification, newColor, 1));
-            }
-            else if (UpgradeNotification.color.a >= 1.0f)
-            {
-                /*Color startColor = UpgradeNotification.color;
-                startColor.a = 0.9f;
-                UpgradeNotification.color = startColor;*/
-
-                Color newColor = UpgradeNotification.color;
-                newColor.a = 0.0f;
-                StartCoroutine(LerpColor(UpgradeNotification, newColor, 1));
-            }
-        }
-        else
-        {
-            Color newColor = UpgradeNotification.color;
-            newColor.a = 0.0f;
-            UpgradeNotification.color = newColor;
-        }
+        OxygemCountText.text = "Highscore : " + PlayerPrefs.GetInt("DeepestDepth").ToString();
     }
 
     public void SwitchToBoathub()
     {
+        OnBoathub = true;
+        OnSettings = false;
         Title.text = "BOAT HUB";
-        HoverLeftOption(UpgradesIcon);
         HoverLeftOption(SettingsIcon);
-        HoverLeftOption(HelpIcon);
         DisableAllMenus();
         Boathub.SetActive(true);
 
         HoverOverOption(BoathubIcon);
         Destroy(Instantiate(audioSelect), 2.0f);
     }
-    public void SwitchToUpgrades()
-    {
-        Title.text = "UPGRADES";
-        HoverLeftOption(BoathubIcon);
-        HoverLeftOption(SettingsIcon);
-        HoverLeftOption(HelpIcon);
-        DisableAllMenus();
-        Upgrades.SetActive(true);
-
-        HoverOverOption(UpgradesIcon);
-        Destroy(Instantiate(audioSelect), 2.0f);
-    }
     public void SwitchToSettings()
     {
+        OnBoathub = false;
+        OnSettings = true;
+
         Title.text = "SETTINGS";
         HoverLeftOption(BoathubIcon);
-        HoverLeftOption(UpgradesIcon);
-        HoverLeftOption(HelpIcon);
         DisableAllMenus();
         Settings.SetActive(true);
 
         HoverOverOption(SettingsIcon);
         Destroy(Instantiate(audioSelect), 2.0f);
     }
-    public void SwitchToHelp()
-    {
-        Title.text = "MANUAL";
-        HoverLeftOption(BoathubIcon);
-        HoverLeftOption(UpgradesIcon);
-        HoverLeftOption(SettingsIcon);
-        DisableAllMenus();
-        Help.SetActive(true);
-
-        HoverOverOption(HelpIcon);
-        Destroy(Instantiate(audioSelect), 2.0f);
-    }
 
     public void DisableAllMenus()
     {
         Boathub.SetActive(false);
-        Upgrades.SetActive(false);
         Settings.SetActive(false);
-        Help.SetActive(false);
     }
 
     void HoverOverOption(Image _image)

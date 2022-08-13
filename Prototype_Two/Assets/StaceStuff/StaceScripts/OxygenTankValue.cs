@@ -53,8 +53,8 @@ public class OxygenTankValue : MonoBehaviour
         bHasPlayedDrownSound = false;
 
         // Get the upgrade levels
-        iMaxOxygen = PlayerPrefs.GetInt("MaxOxygen Level"); // Get max oxygen upgrade level
-        iMaxDash = PlayerPrefs.GetInt("DashUpgrade Level"); // Get dash upgrade level (efficiency)
+        iMaxOxygen = 3; // Get max oxygen upgrade level
+        iMaxDash = 3; // Get dash upgrade level (efficiency)
        /* iMaxShoot = PlayerPrefs.GetInt("ShotUpgrade Level"); // Get shoot upgrade level (efficiency)*/
 
         // Change oxygen drain amount based on upgrade

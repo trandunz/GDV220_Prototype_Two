@@ -10,11 +10,14 @@ public class SwimController : MonoBehaviour
     [SerializeField] float BoostForce = 30.0f;
     [SerializeField] float BoostCooldown = 1.0f;
     [SerializeField] float RotationSpeed = 1000.0f;
+    [SerializeField] GameObject PointsPopup;
     float TimeCount = 0.0f;
 
     [SerializeField] bool PlayerOne = false;
 
     [SerializeField] GameObject MeshObject;
+
+    DepthPanel ScoreScript;
 
     private float FixedDeltaTime;
 
@@ -103,25 +106,27 @@ public class SwimController : MonoBehaviour
         shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
 
         BubblesRotation = BubblesPosition.rotation;
+
+        ScoreScript = FindObjectOfType<DepthPanel>();
     }
 
     void Update()
     {
         if (PlayerOne)
         {
-            Up = (KeyCode)PlayerPrefs.GetInt("P1Up");
-            Down = (KeyCode)PlayerPrefs.GetInt("P1Down");
-            Left = (KeyCode)PlayerPrefs.GetInt("P1Left");
-            Right = (KeyCode)PlayerPrefs.GetInt("P1Right");
-            Dash = (KeyCode)PlayerPrefs.GetInt("P1OxyBurst");
+            Up = (KeyCode.W);
+            Down = (KeyCode.S);
+            Left = (KeyCode.A);
+            Right = (KeyCode.D);
+            Dash = (KeyCode.T);
         }
         else
         {
-            Up = (KeyCode)PlayerPrefs.GetInt("P2Up");
-            Down = (KeyCode)PlayerPrefs.GetInt("P2Down");
-            Left = (KeyCode)PlayerPrefs.GetInt("P2Left");
-            Right = (KeyCode)PlayerPrefs.GetInt("P2Right");
-            Dash = (KeyCode)PlayerPrefs.GetInt("P2OxyBurst");
+            Up = (KeyCode.UpArrow);
+            Down = (KeyCode.DownArrow);
+            Left = (KeyCode.LeftArrow);
+            Right = (KeyCode.RightArrow);
+            Dash = (KeyCode.V);
         }
         RotateToVelocity();
         Boost();
@@ -267,9 +272,11 @@ public class SwimController : MonoBehaviour
     {
         if (other.gameObject.tag is "Oxygem")
         {
+            Instantiate(PointsPopup, other.transform.position + (Vector3.back * 9.0f), Quaternion.identity);
             Destroy(Instantiate(audioOxygem), 2.0f);
             Destroy(other.gameObject);
-            GemManager.instance.AddGems(1);
+            ScoreScript.AddScore(10);
+            
         }
         if (other.gameObject.tag is "Bubble")
         {
@@ -289,10 +296,6 @@ public class SwimController : MonoBehaviour
                 shake.CamShake();
             }
         }
-        if (other.gameObject.tag is "Chest")
-        {
-            other.GetComponentInParent<SeaFloor>().OpenChest();
-        }
     }
 
     void HandleAnimations()
@@ -307,7 +310,6 @@ public class SwimController : MonoBehaviour
             IsInvulnrable = true;
             IsComingOutOfInvulnrable = false;
         }
-        
     }
 
     private void OnTriggerExit(Collider other)

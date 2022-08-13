@@ -8,29 +8,29 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] TMPro.TMP_Dropdown ResolutionsDropdown;
     [SerializeField] Slider MasterVolumeSlider;
     [SerializeField] Slider StereoPanSlider;
-    [SerializeField] GameObject KeyBindings;
     List<UnityEngine.Resolution> AvailableResolutions = new List<UnityEngine.Resolution>();
 
     private void Start()
     {
+
+        Resolution forteenFourty = new Resolution();
+        forteenFourty.height = 1080;
+        forteenFourty.width = 1440;
+        forteenFourty.refreshRate = Screen.currentResolution.refreshRate;
+
+        Resolution sevenTwenty = new Resolution();
+        sevenTwenty.height = 1200;
+        sevenTwenty.width = 1600;
+        sevenTwenty.refreshRate = Screen.currentResolution.refreshRate;
+
         Resolution tenEighty = new Resolution();
-        tenEighty.height = 1080;
+        tenEighty.height = 1440;
         tenEighty.width = 1920;
         tenEighty.refreshRate = Screen.currentResolution.refreshRate;
 
-        Resolution sevenTwenty = new Resolution();
-        sevenTwenty.height = 720;
-        sevenTwenty.width = 1280;
-        sevenTwenty.refreshRate = Screen.currentResolution.refreshRate;
-
-        Resolution forteenFourty = new Resolution();
-        forteenFourty.height = 1440;
-        forteenFourty.width = 2560;
-        forteenFourty.refreshRate = Screen.currentResolution.refreshRate;
-
+        AvailableResolutions.Add(forteenFourty);
         AvailableResolutions.Add(sevenTwenty);
         AvailableResolutions.Add(tenEighty);
-        AvailableResolutions.Add(forteenFourty);
 
         ResolutionsDropdown.ClearOptions();
         int nativeResolutionIndex = 0;
@@ -80,8 +80,6 @@ public class OptionsMenu : MonoBehaviour
         UpdateResolution();
         UpdateVolume();
         UpdateStereoPan();
-
-        KeyBindings.SetActive(false);
     }
 
     public void UpdateResolution()

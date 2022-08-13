@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class DepthPanel : MonoBehaviour
 {
-    [SerializeField] TMPro.TextMeshProUGUI DepthText;
+    [SerializeField] TMPro.TextMeshProUGUI ScoreText;
+    int score = 0;
 
     private void Update()
     {
         int depth = Mathf.Abs((int)Camera.main.transform.position.y);
-        DepthText.text = depth.ToString() + "m";
+        depth += score;
+        ScoreText.text = depth.ToString();
 
         if (depth > PlayerPrefs.GetInt("DeepestDepth"))
         {
             PlayerPrefs.SetInt("DeepestDepth", depth);
         }
+    }
+    public void AddScore(int _amount)
+    {
+        score += _amount ;
     }
 }

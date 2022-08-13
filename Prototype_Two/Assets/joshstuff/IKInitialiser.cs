@@ -18,7 +18,7 @@ public class IKInitialiser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < length + (4 * PlayerPrefs.GetInt("TetherUpgrade Level")); i++)
+        for (int i = 0; i < length + (4 * 3); i++)
         {
             rightPlayer.AttachNewSphere(Instantiate(Sphere), sphereSize);
             leftPlayer.AttachNewSphere(Instantiate(Sphere), -sphereSize);

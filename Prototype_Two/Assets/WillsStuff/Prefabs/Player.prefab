@@ -53,6 +53,7 @@ MonoBehaviour:
   BoostForce: 500
   BoostCooldown: 1
   RotationSpeed: 200
+  PointsPopup: {fileID: 9005969564778985826, guid: 3369bc9a823ecbf4b94ac13cd60debc1, type: 3}
   PlayerOne: 0
   MeshObject: {fileID: 5837146483059227840}
   DistanceFromOrigin: 0
@@ -96,8 +97,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5124588, y: 1.8707972, z: 4.0368567}
-  m_Center: {x: -0.002641201, y: 0.31645703, z: 0.0045876503}
+  m_Size: {x: 1.0715842, y: 1.6503599, z: 4.0368567}
+  m_Center: {x: 0.0023688078, y: 0.42667568, z: 0.0045876503}
 --- !u!1 &4043869586897828835
 GameObject:
   m_ObjectHideFlags: 0

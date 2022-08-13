@@ -56,7 +56,6 @@ public class UpgradeDescription : MonoBehaviour
             UpgradePanel.Upgrade();
             UpdatePriceText();
         }
-        menuController.UpdateLevelsAndPrices();
     }
     public void SetUpgradePanel(SelectUpgradePanel _panel)
     {

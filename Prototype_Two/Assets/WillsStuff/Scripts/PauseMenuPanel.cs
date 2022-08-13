@@ -8,29 +8,65 @@ public class PauseMenuPanel : MonoBehaviour
 {
     [SerializeField] Button Boathub;
     [SerializeField] Button Resume;
-    [SerializeField] Button Settings;
 
     [SerializeField] GameObject TopPanel;
     [SerializeField] GameObject BotPanel;
     [SerializeField] GameObject MainPanel;
-    [SerializeField] GameObject OptionsWrapper;
 
     bool IsOpen = false;
+    bool OnGoHome = true;
+    bool OnGoBack = false;
 
     private void Start()
     {
         HoverLeftOption(Boathub.image);
         HoverLeftOption(Resume.image);
-        HoverLeftOption(Settings.image);
         UpdateChildActive();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown((KeyCode)PlayerPrefs.GetInt("PauseBind")) && !IsOpen)
+        if ((Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Z)) && !IsOpen)
         {
             TogglePauseMenu();
+
+            IsOpen = true;
         }
+        else if (IsOpen)
+        {
+            if (OnGoHome)
+            {
+                OnGoBack = false;
+                PointerOverBoathub();
+                PointerLeftResume();
+                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    OnGoBack = true;
+                    OnGoHome = false;
+                }
+                else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Z))
+                {
+                    GotoBoathouse();
+                }
+            }
+            if (OnGoBack)
+            {
+                OnGoHome = false;
+                PointerOverResume();
+                PointerLeftBoathub();
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    OnGoHome = true;
+                    OnGoBack = false;
+                }
+                else if(Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Z))
+                {
+                    OnResume();
+                }
+            }
+        }
+
+        
     }
 
     void TogglePauseMenu()
@@ -54,7 +90,6 @@ public class PauseMenuPanel : MonoBehaviour
             TopPanel.SetActive(true);
             BotPanel.SetActive(true);
             MainPanel.SetActive(true);
-            OptionsWrapper.SetActive(false);
             Color panelColor = GetComponent<Image>().color;
             panelColor.a = 0.5f;
             GetComponent<Image>().color = panelColor;
@@ -68,7 +103,6 @@ public class PauseMenuPanel : MonoBehaviour
             panelColor.a = 0;
             GetComponent<Image>().color = panelColor;
             MainPanel.SetActive(false);
-            OptionsWrapper.SetActive(false);
         }
     }
 
@@ -103,15 +137,6 @@ public class PauseMenuPanel : MonoBehaviour
     {
         HoverLeftOption(Resume.image);
     }
-    public void PointerOverSettings()
-    {
-        HoverOverOption(Settings.image);
-    }
-
-    public void PointerLeftSettings()
-    {
-        HoverLeftOption(Settings.image);
-    }
 
     void HoverOverOption(Image _image)
     {
@@ -133,7 +158,6 @@ public class PauseMenuPanel : MonoBehaviour
     {
         ForceResetButton(Boathub.image);
         ForceResetButton(Resume.image);
-        ForceResetButton(Settings.image);
     }
 
     public void ForceResetButton(Image _image)

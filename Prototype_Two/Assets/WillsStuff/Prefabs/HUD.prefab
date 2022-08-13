@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5007427294459601401}
   - component: {fileID: 3472903328981207558}
   m_Layer: 5
-  m_Name: DepthPanel
+  m_Name: ScorePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bffcdd6650ebf304e8049bdae6a336d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DepthText: {fileID: 4770417161929907271}
+  ScoreText: {fileID: 4770417161929907271}
 --- !u!1 &6565033957460436975
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 6108189616998576610}
   - component: {fileID: 4770417161929907271}
   m_Layer: 5
-  m_Name: DepthText
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10000m
+  m_text: 10000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e625fac5effc48f478479606152630d9, type: 2}
   m_sharedMaterial: {fileID: -2994741778233519495, guid: e625fac5effc48f478479606152630d9, type: 2}
