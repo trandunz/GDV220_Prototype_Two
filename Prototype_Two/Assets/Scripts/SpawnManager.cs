@@ -36,7 +36,7 @@ public class SpawnManager : MonoBehaviour
 
     [Header("Bubble")]
     [SerializeField] GameObject BubblePrefab;
-    [SerializeField] float BubbleSpawnRate = 14.0f;
+    [SerializeField] float BubbleSpawnRate = 10.0f;
 
     public SpawnableObject SeaUrchin;
     public SpawnableObject JellyFishSwarm;

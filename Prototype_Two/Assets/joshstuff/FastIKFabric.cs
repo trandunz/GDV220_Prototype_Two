@@ -191,6 +191,7 @@ public class FastIKFabric : MonoBehaviour
 
             Bones[i].position = Positions[i];
         }
+        ClampScale();
     }
 
     private void OnDrawGizmos()
@@ -205,5 +206,11 @@ public class FastIKFabric : MonoBehaviour
             Handles.DrawWireCube(Vector3.up * 0.5f, Vector3.one);
             current = current.parent;
         }*/
+    }
+
+    private void ClampScale()
+    {
+        Vector3 scale = new Vector3(0.3f, 0.3f, 0.3f);
+        Bones[0].localScale = scale;
     }
 }

@@ -53,7 +53,7 @@ public class OxygenTankValue : MonoBehaviour
         bHasPlayedDrownSound = false;
 
         // Get the upgrade levels
-        iMaxOxygen = 3; // Get max oxygen upgrade level
+        iMaxOxygen = 1; // Get max oxygen upgrade level
         iMaxDash = 3; // Get dash upgrade level (efficiency)
        /* iMaxShoot = PlayerPrefs.GetInt("ShotUpgrade Level"); // Get shoot upgrade level (efficiency)*/
 
@@ -84,30 +84,30 @@ public class OxygenTankValue : MonoBehaviour
         }
 
         // Change dash drain amount based on upgrade
-        if (iMaxDash == 0)
-        {
-            dashAmountDrain = new Vector3(0.0f, fDashLoss0, 0.0f);
-        }
-        else if (iMaxDash == 1)
-        {
-            dashAmountDrain = new Vector3(0.0f, fDashLoss1, 0.0f);
-        }
-        else if (iMaxDash == 2)
-        {
-            dashAmountDrain = new Vector3(0.0f, fDashLoss2, 0.0f);
-        }
-        else if (iMaxDash == 3)
-        {
-            dashAmountDrain = new Vector3(0.0f, fDashLoss3, 0.0f);
-        }
-        else if (iMaxDash == 4)
-        {
-            dashAmountDrain = new Vector3(0.0f, fDashLoss4, 0.0f);
-        }
-        else if (iMaxDash == 5)
-        {
-            dashAmountDrain = new Vector3(0.0f, fDashLoss5, 0.0f);
-        }
+        //if (iMaxDash == 0)
+        //{
+        //    dashAmountDrain = new Vector3(0.0f, fDashLoss0, 0.0f);
+        //}
+        //else if (iMaxDash == 1)
+        //{
+        //    dashAmountDrain = new Vector3(0.0f, fDashLoss1, 0.0f);
+        //}
+        //else if (iMaxDash == 2)
+        //{
+        //    dashAmountDrain = new Vector3(0.0f, fDashLoss2, 0.0f);
+        //}
+        //else if (iMaxDash == 3)
+        //{
+        //    dashAmountDrain = new Vector3(0.0f, fDashLoss3, 0.0f);
+        //}
+        //else if (iMaxDash == 4)
+        //{
+        //    dashAmountDrain = new Vector3(0.0f, fDashLoss4, 0.0f);
+        //}
+        //else if (iMaxDash == 5)
+        //{
+        //    dashAmountDrain = new Vector3(0.0f, fDashLoss5, 0.0f);
+        //}
 
         // Change shoot drain amount based on upgrade
         /*if (iMaxShoot == 0)
