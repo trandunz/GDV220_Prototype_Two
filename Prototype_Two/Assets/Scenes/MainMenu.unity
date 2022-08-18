@@ -808,6 +808,30 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 72
       objectReference: {fileID: 0}
+    - target: {fileID: 2755025030682127210, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755025030682127210, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755025030682127210, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935748673420627920, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935748673420627920, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935748673420627920, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4278053039545119606, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
       propertyPath: m_Enabled
       value: 0

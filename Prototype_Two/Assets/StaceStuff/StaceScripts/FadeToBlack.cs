@@ -64,7 +64,7 @@ public class FadeToBlack : MonoBehaviour
                 if (fTimer >= fPostFadeTimer)
                 {
                     // Change scene
-                    LevelLoader.instance.LoadLevel(1);
+                    LevelLoader.instance.LoadLevel(0);
                 }
             }
         }

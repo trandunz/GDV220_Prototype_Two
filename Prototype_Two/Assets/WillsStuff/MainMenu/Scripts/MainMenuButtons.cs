@@ -7,17 +7,40 @@ using UnityEngine.UI;
 public class MainMenuButtons : MonoBehaviour
 {
     public GameObject audioSelect;
+
+    [SerializeField] TMPro.TextMeshProUGUI InsertCoin;
+
     Color originalColor;
+
+    bool InsertCoinSelected = true;
+
+    private void Start()
+    {
+        InsertCoinSelected = true;
+
+    }
+
+    private void Update()
+    {
+        if (InsertCoinSelected)
+        {
+            HoverOverOption(InsertCoin);
+
+            if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Z))
+            {
+                StartGame();
+            }
+        }
+        else
+        {
+            HoverLeftOption(InsertCoin);
+        }
+    }
 
     public void StartGame()
     {
         Destroy(Instantiate(audioSelect), 2.0f);
         LevelLoader.instance.LoadLevel(1);
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 
     public void ToggleMenu(GameObject _menu)
