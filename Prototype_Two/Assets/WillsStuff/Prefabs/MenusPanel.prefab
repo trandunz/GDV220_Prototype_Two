@@ -876,6 +876,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1961146787628514921}
     m_Modifications:
+    - target: {fileID: 327023071338753889, guid: 908d417e43a8acf4cab75a5f4ee8485e, type: 3}
+      propertyPath: m_text
+      value: 'High Score
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299449310166960714, guid: 908d417e43a8acf4cab75a5f4ee8485e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -383
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299449310166960714, guid: 908d417e43a8acf4cab75a5f4ee8485e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 62
+      objectReference: {fileID: 0}
     - target: {fileID: 2361689993609563456, guid: 908d417e43a8acf4cab75a5f4ee8485e, type: 3}
       propertyPath: m_Name
       value: BoatHubPanel
@@ -967,6 +981,14 @@ PrefabInstance:
     - target: {fileID: 6414355581712099528, guid: 908d417e43a8acf4cab75a5f4ee8485e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853188655679623904, guid: 908d417e43a8acf4cab75a5f4ee8485e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 317
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853188655679623904, guid: 908d417e43a8acf4cab75a5f4ee8485e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -132
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 908d417e43a8acf4cab75a5f4ee8485e, type: 3}
