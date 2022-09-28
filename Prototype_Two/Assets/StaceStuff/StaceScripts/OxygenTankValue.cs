@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OxygenTankValue : MonoBehaviour
 {
+    [SerializeField] private int iOxygemCount;
+
     public GameObject fadeToBlack; // Gameobject holding fade to black script
 
     // How much each level of oxygen upgrade decreases oxygen
@@ -15,7 +17,7 @@ public class OxygenTankValue : MonoBehaviour
     public float fDrainSpeed4 = 0.0f;
     public float fDrainSpeed5 = 0.0f;
     private Vector3 scaleAmountDrain;
-    
+
     // Damage (from enemies/kina etc)
     public float fDamageAmount = 0.5f;
 
@@ -107,13 +109,21 @@ public class OxygenTankValue : MonoBehaviour
     // Losing oxygen when damaged
     public void DamageOxygenUse()
     {
-        if (transform.localScale.y > fDamageAmount)
+        // First check if has gems
+        if (iOxygemCount == 0)
         {
-            transform.localScale -= new Vector3(0.0f, fDamageAmount, 0.0f);
+            if (transform.localScale.y > fDamageAmount)
+            {
+                transform.localScale -= new Vector3(0.0f, fDamageAmount, 0.0f);
+            }
+            else
+            {
+                transform.localScale = new Vector3(transform.localScale.x, 0.0f, transform.localScale.z);
+            }
         }
         else
         {
-            transform.localScale = new Vector3(transform.localScale.x, 0.0f, transform.localScale.z);
+            iOxygemCount = 0;
         }
     }
 
@@ -156,4 +166,17 @@ public class OxygenTankValue : MonoBehaviour
             }
         }
     }
+
+    public void AddOxygem()
+    {
+        iOxygemCount++;
+        
+        if (iOxygemCount == 10)
+        {
+            AddOxygen(0.8f);
+            iOxygemCount = 0;
+        }
+    }
 }
+
+
