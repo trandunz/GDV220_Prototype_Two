@@ -27,6 +27,8 @@ public class SwimController : MonoBehaviour
     bool IsInvulnrable = false;
     bool IsComingOutOfInvulnrable = false;
 
+    [Header("GUI Settings")]
+    BubbleBuffPanel BubbleBuffUI;
     DepthPanel ScoreScript;
 
     SwimController otherPlayer = null;
@@ -42,6 +44,7 @@ public class SwimController : MonoBehaviour
     [SerializeField] float MagnetRange = 30.0f;
     [SerializeField] float MagnetStrength = 30.0f;
     [SerializeField] float BubbleBuffUseTime = 10.0f;
+    [SerializeField] GameObject ShieldBubble = null;
     GameObject m_ActivePowerup = null;
     BubbleBuff.BUFFTYPE m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.UNASSIGNED;
     bool IsUsingBubbleBuff = false;
@@ -75,6 +78,8 @@ public class SwimController : MonoBehaviour
 
     void Start()
     {
+        BubbleBuffUI = FindObjectOfType<BubbleBuffPanel>();
+
         animator = GetComponentInChildren<Animator>();
 
         m_RigidBody = GetComponent<Rigidbody>();
@@ -226,24 +231,46 @@ public class SwimController : MonoBehaviour
         IsUsingBubbleBuff = true;
 
         float bubbleBuffUseTimer = BubbleBuffUseTime;
-        while (bubbleBuffUseTimer > 0)
+        while (bubbleBuffUseTimer > 0 && IsUsingBubbleBuff)
         {
             switch (m_CurrentBubbleBuff)
             {
                 case BubbleBuff.BUFFTYPE.RANDOM:
                     {
                         m_CurrentBubbleBuff = (BubbleBuff.BUFFTYPE)Random.Range(2, 6);
+                        if (PlayerOne)
+                            BubbleBuffUI.P1UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.RANDOM);
+                        else
+                            BubbleBuffUI.P2UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.RANDOM);
                         break;
                     }
                 case BubbleBuff.BUFFTYPE.FLARE:
                     {
                         //Instantiate(Flare);
+
                         bubbleBuffUseTimer = 0.0f;
+
+                        if (PlayerOne)
+                            BubbleBuffUI.P1UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.FLARE);
+                        else
+                            BubbleBuffUI.P2UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.FLARE);
 
                         break;
                     }
                 case BubbleBuff.BUFFTYPE.GEMCHEST:
                     {
+                        for(int i = 0; i < 10; i++)
+                        {
+                            oxygenTank.AddOxygem();
+                        }
+
+                        bubbleBuffUseTimer = 0.0f;
+
+                        if (PlayerOne)
+                            BubbleBuffUI.P1UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.GEMCHEST);
+                        else
+                            BubbleBuffUI.P2UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.GEMCHEST);
+
                         break;
                     }
                 case BubbleBuff.BUFFTYPE.MAGNET:
@@ -252,25 +279,40 @@ public class SwimController : MonoBehaviour
                         {
                             if (Vector3.Distance(oxygem.transform.position, transform.position) <= MagnetRange)
                             {
-                                oxygem.transform.position += (oxygem.transform.position - transform.position).normalized * Time.deltaTime * MagnetStrength;
+                                oxygem.transform.position += (transform.position - oxygem.transform.position) * Time.deltaTime * MagnetStrength;
                             }
                         }
+
+                        if (PlayerOne)
+                            BubbleBuffUI.P1UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.MAGNET);
+                        else
+                            BubbleBuffUI.P2UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.MAGNET);
                         break;
                     }
                 case BubbleBuff.BUFFTYPE.SHIELD:
                     {
                         if (m_ActivePowerup == null)
                         {
-                            //m_ActivePowerup = Instantiate(Shield);
+                            m_ActivePowerup = Instantiate(ShieldBubble, transform);
                         }
                         else
                         {
                             m_ActivePowerup.transform.position = transform.position;
                         }
+                        if (PlayerOne)
+                            BubbleBuffUI.P1UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.SHIELD);
+                        else
+                            BubbleBuffUI.P2UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.SHIELD);
+
                         break;
                     }
                 default:
                     {
+                        if (PlayerOne)
+                            BubbleBuffUI.P1UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.UNASSIGNED);
+                        else
+                            BubbleBuffUI.P2UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.UNASSIGNED);
+
                         break;
                     }
             }
@@ -385,6 +427,13 @@ public class SwimController : MonoBehaviour
         }
 
         IsComingOutOfInvulnrable = false;
+    }
+
+    public void BubbleShieldHit()
+    {
+        IsInvulnrable = true;
+        IsComingOutOfInvulnrable = false;
+        IsUsingBubbleBuff = false;
     }
 
     public void LeaveEnemy()
