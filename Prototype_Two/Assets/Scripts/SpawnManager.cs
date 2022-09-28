@@ -125,7 +125,7 @@ public class SpawnManager : MonoBehaviour
 
         if ((-Depth) >= OxygenBubble.DepthCounter)
         {
-            SpawnBubble(cameraPosition);
+            //SpawnBubble(cameraPosition);
         }
     }
 
