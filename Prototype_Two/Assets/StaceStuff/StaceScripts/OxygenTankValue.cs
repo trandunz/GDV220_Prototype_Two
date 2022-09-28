@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class OxygenTankValue : MonoBehaviour
 {
+    [Header("Oxygem Counter")]
     [SerializeField] private int iOxygemCount;
+    [SerializeField] public GameObject[] litOxygem;
 
     public GameObject fadeToBlack; // Gameobject holding fade to black script
 
@@ -124,6 +126,7 @@ public class OxygenTankValue : MonoBehaviour
         else
         {
             iOxygemCount = 0;
+            LightGems();
         }
     }
 
@@ -175,6 +178,22 @@ public class OxygenTankValue : MonoBehaviour
         {
             AddOxygen(0.8f);
             iOxygemCount = 0;
+        }
+        LightGems();
+    }
+
+    private void LightGems()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            if (i < iOxygemCount)
+            {
+                litOxygem[i].SetActive(true);
+            }
+            else
+            {
+                litOxygem[i].SetActive(false);
+            }
         }
     }
 }

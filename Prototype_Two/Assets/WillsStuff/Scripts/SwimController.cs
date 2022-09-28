@@ -262,10 +262,9 @@ public class SwimController : MonoBehaviour
 
     public void PickupOxygem(Collider other)
     {
-        Instantiate(PointsPopup, other.transform.position + (Vector3.back * 9.0f), Quaternion.identity);
         Destroy(Instantiate(audioOxygem), 2.0f);
         Destroy(other.gameObject);
-        ScoreScript.AddScore(10);
+        oxygenTank.AddOxygem();
     }
 
     public void PickupBubble(Collider other)
