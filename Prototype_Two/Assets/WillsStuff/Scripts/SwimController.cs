@@ -4,51 +4,47 @@ using UnityEngine;
 
 public class SwimController : MonoBehaviour
 {
-    public FastIKFabric Tether;
-    [SerializeField] float SwimSpeed = 10.0f;
-    [SerializeField] float DragForce = 2.0f;
-    [SerializeField] float BoostForce = 30.0f;
-    [SerializeField] float BoostCooldown = 1.0f;
-    [SerializeField] float RotationSpeed = 1000.0f;
-    [SerializeField] GameObject PointsPopup;
-    float TimeCount = 0.0f;
-
-    [SerializeField] bool PlayerOne = false;
-
-    [SerializeField] GameObject MeshObject;
-
-    DepthPanel ScoreScript;
-
-    private float FixedDeltaTime;
-
-    bool CanMove = true;
-
-    OxygenTankValue oxygenTank;
-
     KeyCode Right = KeyCode.D;
     KeyCode Left = KeyCode.A;
     KeyCode Up = KeyCode.W;
     KeyCode Down = KeyCode.S;
     KeyCode Dash = KeyCode.LeftControl;
 
-    Animator animator;
-    SkinnedMeshRenderer Mesh;
-    SwimController otherPlayer = null;
-    IKInitialiser cord;
+    [Header("Swim Settings")]
+    [SerializeField] float SwimSpeed = 10.0f;
+    [SerializeField] float DragForce = 2.0f;
+    [SerializeField] float BoostForce = 30.0f;
+    [SerializeField] float BoostCooldown = 1.0f;
+    [SerializeField] float RotationSpeed = 1000.0f;
+    [SerializeField] GameObject PointsPopup;
 
+    [Header("Player Settings")]
+    [SerializeField] bool PlayerOne = false;
+    [SerializeField] GameObject MeshObject;
+    bool CanMove = true;
     bool IsBoosting = false;
     bool IsOnLeftSize = false;
     bool IsInvulnrable = false;
     bool IsComingOutOfInvulnrable = false;
 
-    public float DistanceFromOrigin = 0.0f;
+    DepthPanel ScoreScript;
 
+    SwimController otherPlayer = null;
+
+    OxygenTankValue oxygenTank;
+
+    Animator animator;
+    SkinnedMeshRenderer Mesh;
+
+    Rigidbody m_RigidBody;
+
+    IKInitialiser cord;
+    public FastIKFabric Tether;
+    public float DistanceFromOrigin = 0.0f;
     public Transform Origin;
     public Transform finalConnection;
 
-    Vector3 Acceleration = Vector3.zero;
-    Vector3 Velocity = Vector3.zero;
-
+    [Header("Materials")]
     [SerializeField] Material YellowMaterial;
     [SerializeField] Material RedMaterial;
 
@@ -73,7 +69,7 @@ public class SwimController : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
 
-        FixedDeltaTime = Time.fixedDeltaTime;
+        m_RigidBody = GetComponent<Rigidbody>();
 
         oxygenTank = FindObjectOfType<OxygenTankValue>();
 
@@ -135,15 +131,9 @@ public class SwimController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Time.fixedDeltaTime = FixedDeltaTime * Time.timeScale;
-        
         Drag();
         RestrictMovement();
         Movement();
-
-        Velocity += Acceleration * Time.fixedDeltaTime;
-        transform.position += Velocity * Time.fixedDeltaTime;
-        Acceleration = Vector3.zero;
     }
 
     void RestrictMovement()
@@ -210,26 +200,17 @@ public class SwimController : MonoBehaviour
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             var q = Quaternion.AngleAxis(angle - 90, Vector3.forward);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, q, RotationSpeed * Time.deltaTime);
-
-            //var dir = GetInput().normalized;
-            //var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            //Debug.Log(angle);
-            //angle -= 90.0f;
-            //Quaternion q = Quaternion.Euler(00.0f, 0.0f, angle);
-            //
-            //transform.rotation = Quaternion.Lerp(transform.rotation, q, TimeCount);// Quaternion.RotateTowards(MeshObject.transform.rotation, q, RotationSpeed * Time.deltaTime);
-            //TimeCount += Time.deltaTime;
         }
     }
 
     void ApplyForce(Vector3 _force)
     {
-        Acceleration += _force * Time.fixedDeltaTime;
+        m_RigidBody.AddForce(_force * Time.fixedDeltaTime, ForceMode.Acceleration);
     }
 
     void Drag()
     {
-        ApplyForce(-Velocity * DragForce);
+        ApplyForce(-m_RigidBody.velocity * DragForce);
     }
     
     void Movement()
@@ -268,65 +249,56 @@ public class SwimController : MonoBehaviour
         yield return null;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag is "Oxygem")
-        {
-            Instantiate(PointsPopup, other.transform.position + (Vector3.back * 9.0f), Quaternion.identity);
-            Destroy(Instantiate(audioOxygem), 2.0f);
-            Destroy(other.gameObject);
-            ScoreScript.AddScore(10);
-            
-        }
-        if (other.gameObject.tag is "Bubble")
-        {
-            oxygenTank.AddOxygen(0.2f);
-            Destroy(other.gameObject);
-            Destroy(Instantiate(audioBubble), 3.0f);
-        }
-        if (other.gameObject.tag is "Enemy")
-        {
-            if (!IsInvulnrable)
-            {
-                Destroy(Instantiate(Bubbles, BubblesPosition.position, BubblesRotation, gameObject.transform), 5.0f);
-                Destroy(Instantiate(audioHurt), 2.0f);
-                oxygenTank.DamageOxygenUse();
-                Debug.Log("Player Got Hit!");
-                StartCoroutine(StartInvulnrability());
-                shake.CamShake();
-            }
-        }
-    }
-
     void HandleAnimations()
     {
         animator.SetBool("IsMoving", GetInput().magnitude > 0);
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag is "Enemy")
-        {
-            IsInvulnrable = true;
-            IsComingOutOfInvulnrable = false;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag is "Enemy")
-        {
-            if (IsInvulnrable && !IsComingOutOfInvulnrable)
-            {
-                StartCoroutine(RemoveInvulnrability());
-            }
-        }
     }
 
     public void Die()
     {
         animator.SetBool("Dead", true);
         CanMove = false;
+    }
+
+    public void PickupOxygem(Collider other)
+    {
+        Instantiate(PointsPopup, other.transform.position + (Vector3.back * 9.0f), Quaternion.identity);
+        Destroy(Instantiate(audioOxygem), 2.0f);
+        Destroy(other.gameObject);
+        ScoreScript.AddScore(10);
+    }
+
+    public void PickupBubble(Collider other)
+    {
+        oxygenTank.AddOxygen(0.2f);
+        Destroy(other.gameObject);
+        Destroy(Instantiate(audioBubble), 3.0f);
+    }
+
+    public void HitEnemy()
+    {
+        if (!IsInvulnrable)
+        {
+            Debug.Log("Player Got Hit!");
+
+            IsInvulnrable = true;
+
+            Destroy(Instantiate(Bubbles, BubblesPosition.position, BubblesRotation, gameObject.transform), 5.0f);
+            Destroy(Instantiate(audioHurt), 2.0f);
+            oxygenTank.DamageOxygenUse();
+            StartCoroutine(StartInvulnrability());
+            shake.CamShake();
+        }
+
+        IsComingOutOfInvulnrable = false;
+    }
+
+    public void LeaveEnemy()
+    {
+        if (IsInvulnrable && !IsComingOutOfInvulnrable)
+        {
+            StartCoroutine(RemoveInvulnrability());
+        }
     }
 
     IEnumerator StartInvulnrability()

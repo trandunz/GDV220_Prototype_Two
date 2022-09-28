@@ -41,4 +41,20 @@ public class Enemy_Jellyfish : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag is "Player")
+        {
+            other.GetComponent<SwimController>().HitEnemy();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag is "Player")
+        {
+            other.GetComponent<SwimController>().LeaveEnemy();
+        }
+    }
+
 }

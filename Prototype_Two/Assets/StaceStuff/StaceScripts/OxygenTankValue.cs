@@ -29,16 +29,6 @@ public class OxygenTankValue : MonoBehaviour
     public float fDashLoss5 = 0.0f;
     private Vector3 dashAmountDrain;
 
-    /*    // Shoot efficiency
-        [SerializeField] private int iMaxShoot;
-        public float fShootLoss0 = 0.0f;
-        public float fShootLoss1 = 0.0f;
-        public float fShootLoss2 = 0.0f;
-        public float fShootLoss3 = 0.0f;
-        public float fShootLoss4 = 0.0f;
-        public float fShootLoss5 = 0.0f;
-        private Vector3 shootAmountDrain;*/
-
     // Oxygen metre flash
     public float fFlashMinScale = 0.2f;
     private float fFlashTimer = 0.0f;
@@ -82,58 +72,6 @@ public class OxygenTankValue : MonoBehaviour
         {
             scaleAmountDrain = new Vector3(0.0f, fDrainSpeed5, 0.0f);
         }
-
-        // Change dash drain amount based on upgrade
-        //if (iMaxDash == 0)
-        //{
-        //    dashAmountDrain = new Vector3(0.0f, fDashLoss0, 0.0f);
-        //}
-        //else if (iMaxDash == 1)
-        //{
-        //    dashAmountDrain = new Vector3(0.0f, fDashLoss1, 0.0f);
-        //}
-        //else if (iMaxDash == 2)
-        //{
-        //    dashAmountDrain = new Vector3(0.0f, fDashLoss2, 0.0f);
-        //}
-        //else if (iMaxDash == 3)
-        //{
-        //    dashAmountDrain = new Vector3(0.0f, fDashLoss3, 0.0f);
-        //}
-        //else if (iMaxDash == 4)
-        //{
-        //    dashAmountDrain = new Vector3(0.0f, fDashLoss4, 0.0f);
-        //}
-        //else if (iMaxDash == 5)
-        //{
-        //    dashAmountDrain = new Vector3(0.0f, fDashLoss5, 0.0f);
-        //}
-
-        // Change shoot drain amount based on upgrade
-        /*if (iMaxShoot == 0)
-        {
-            shootAmountDrain = new Vector3(0.0f, fShootLoss0, 0.0f);
-        }
-        else if (iMaxShoot == 1)
-        {
-            shootAmountDrain = new Vector3(0.0f, fShootLoss1, 0.0f);
-        }
-        else if (iMaxShoot == 2)
-        {
-            shootAmountDrain = new Vector3(0.0f, fShootLoss2, 0.0f);
-        }
-        else if (iMaxShoot == 3)
-        {
-            shootAmountDrain = new Vector3(0.0f, fShootLoss3, 0.0f);
-        }
-        else if (iMaxShoot == 4)
-        {
-            shootAmountDrain = new Vector3(0.0f, fShootLoss4, 0.0f);
-        }
-        else if (iMaxShoot == 5)
-        {
-            shootAmountDrain = new Vector3(0.0f, fShootLoss5, 0.0f);
-        }*/
     }
 
     // Update is called once per frame
@@ -148,22 +86,6 @@ public class OxygenTankValue : MonoBehaviour
             scaleAmountDrain = new Vector3(0.0f, 0.0f, 0.0f);
             fadeToBlack.GetComponent<FadeToBlack>().bFading = true;
         }
-
-        // Testing - forces damage
-        //if (Input.GetKeyDown(KeyCode.V))
-        //{
-        //    DamageOxygenUse();
-        //}
-        //// Testing - forces dash
-        //if (Input.GetKeyDown(KeyCode.C))
-        //{
-        //    DashOxygenUse();
-        //}
-        // Testing - forces shoot oxygen use
-        /*if (Input.GetKeyDown(KeyCode.X))
-        {
-            ShootOxygenUse();
-        }*/
 
         //if (Input.GetKeyDown(KeyCode.J))
         //{
@@ -208,19 +130,6 @@ public class OxygenTankValue : MonoBehaviour
         }
     }
 
-    // Losing oxygen when shooting
-    /*public void ShootOxygenUse()
-    {
-        if (transform.localScale.y > shootAmountDrain.y)
-        {
-            transform.localScale -= shootAmountDrain;
-        }
-        else
-        {
-            transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
-        }
-    }*/
-
     public void AddOxygen(float _amount)
     {
         if (transform.localScale.y < 1.0f - _amount)
@@ -232,7 +141,6 @@ public class OxygenTankValue : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, 1.0f, transform.localScale.z); ;
         }
         Debug.Log(transform.localScale.y);
-        //Vector3.ClampMagnitude(transform.localScale, 1); // didnt seem to be working
     }
 
     private void Drown()

@@ -29,4 +29,20 @@ public class EelMoving : MonoBehaviour
             transform.Translate(fMoveSpeed * Time.deltaTime, 0.0f, 0.0f);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag is "Player")
+        {
+            other.GetComponent<SwimController>().HitEnemy();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag is "Player")
+        {
+            other.GetComponent<SwimController>().LeaveEnemy();
+        }
+    }
 }
