@@ -12,6 +12,8 @@ TagManager:
   - ScreenShake
   - Bubble
   - Chest
+  - AnglerFishGem
+  - AnglerFish
   layers:
   - Default
   - TransparentFX
