@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SwimController : MonoBehaviour
 {
+    public float fBubbleAirAmount = 0.1f;
     public FastIKFabric Tether;
     [SerializeField] float SwimSpeed = 10.0f;
     [SerializeField] float DragForce = 2.0f;
@@ -272,15 +273,15 @@ public class SwimController : MonoBehaviour
     {
         if (other.gameObject.tag is "Oxygem")
         {
-            Instantiate(PointsPopup, other.transform.position + (Vector3.back * 9.0f), Quaternion.identity);
+            //Instantiate(PointsPopup, other.transform.position + (Vector3.back * 9.0f), Quaternion.identity);
             Destroy(Instantiate(audioOxygem), 2.0f);
             Destroy(other.gameObject);
-            ScoreScript.AddScore(10);
-            
+            //ScoreScript.AddScore(10);
+            oxygenTank.AddOxygem();
         }
         if (other.gameObject.tag is "Bubble")
         {
-            oxygenTank.AddOxygen(0.2f);
+            oxygenTank.AddOxygen(fBubbleAirAmount);
             Destroy(other.gameObject);
             Destroy(Instantiate(audioBubble), 3.0f);
         }
