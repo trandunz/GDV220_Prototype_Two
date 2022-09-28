@@ -38,6 +38,14 @@ public class SwimController : MonoBehaviour
 
     Rigidbody m_RigidBody;
 
+    [Header("Bubble Buff Settings")]
+    [SerializeField] float MagnetRange = 30.0f;
+    [SerializeField] float MagnetStrength = 30.0f;
+    [SerializeField] float BubbleBuffUseTime = 10.0f;
+    GameObject m_ActivePowerup = null;
+    BubbleBuff.BUFFTYPE m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.UNASSIGNED;
+    bool IsUsingBubbleBuff = false;
+
     IKInitialiser cord;
     public FastIKFabric Tether;
     public float DistanceFromOrigin = 0.0f;
@@ -124,8 +132,21 @@ public class SwimController : MonoBehaviour
             Right = (KeyCode.RightArrow);
             Dash = (KeyCode.V);
         }
+
         RotateToVelocity();
-        Boost();
+
+        if (Input.GetKeyDown(Dash))
+        {
+            if (m_CurrentBubbleBuff != BubbleBuff.BUFFTYPE.UNASSIGNED)
+            {
+                UseBubbleBuff();
+            }
+            else
+            {
+                Boost();
+            }
+        }
+        
         HandleAnimations();
     }
 
@@ -192,6 +213,79 @@ public class SwimController : MonoBehaviour
         }
     }
 
+    void UseBubbleBuff()
+    {
+        if (!IsUsingBubbleBuff)
+        {
+            StartCoroutine(BubbleBuffRoutine());
+        }
+    }
+
+    IEnumerator BubbleBuffRoutine()
+    {
+        IsUsingBubbleBuff = true;
+
+        float bubbleBuffUseTimer = BubbleBuffUseTime;
+        while (bubbleBuffUseTimer > 0)
+        {
+            switch (m_CurrentBubbleBuff)
+            {
+                case BubbleBuff.BUFFTYPE.RANDOM:
+                    {
+                        m_CurrentBubbleBuff = (BubbleBuff.BUFFTYPE)Random.Range(2, 6);
+                        break;
+                    }
+                case BubbleBuff.BUFFTYPE.FLARE:
+                    {
+                        //Instantiate(Flare);
+                        bubbleBuffUseTimer = 0.0f;
+
+                        break;
+                    }
+                case BubbleBuff.BUFFTYPE.GEMCHEST:
+                    {
+                        break;
+                    }
+                case BubbleBuff.BUFFTYPE.MAGNET:
+                    {
+                        foreach(Oxygem oxygem in FindObjectsOfType<Oxygem>())
+                        {
+                            if (Vector3.Distance(oxygem.transform.position, transform.position) <= MagnetRange)
+                            {
+                                oxygem.transform.position += (oxygem.transform.position - transform.position).normalized * Time.deltaTime * MagnetStrength;
+                            }
+                        }
+                        break;
+                    }
+                case BubbleBuff.BUFFTYPE.SHIELD:
+                    {
+                        if (m_ActivePowerup == null)
+                        {
+                            //m_ActivePowerup = Instantiate(Shield);
+                        }
+                        else
+                        {
+                            m_ActivePowerup.transform.position = transform.position;
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            bubbleBuffUseTimer -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (m_ActivePowerup)
+            Destroy(m_ActivePowerup);
+
+        m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.UNASSIGNED;
+        IsUsingBubbleBuff = false;
+    }
+
     void RotateToVelocity()
     {
         if (GetInput().magnitude > 0)
@@ -220,7 +314,7 @@ public class SwimController : MonoBehaviour
     
     void Boost()
     {
-        if (Input.GetKeyDown(Dash) && CanMove)
+        if (CanMove)
         {
            if (!IsBoosting)
            {
@@ -299,6 +393,11 @@ public class SwimController : MonoBehaviour
         {
             StartCoroutine(RemoveInvulnrability());
         }
+    }
+    
+    public void PickupBubbleBuff(BubbleBuff.BUFFTYPE _bubbleBuff)
+    {
+        m_CurrentBubbleBuff = _bubbleBuff;
     }
 
     IEnumerator StartInvulnrability()
