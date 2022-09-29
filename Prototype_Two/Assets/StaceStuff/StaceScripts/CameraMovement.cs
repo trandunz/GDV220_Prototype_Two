@@ -7,19 +7,23 @@ public class CameraMovement : MonoBehaviour
     public float fCameraSpeed = 1.0f;
 
     // Screen lighting
-    public float fDarknessStartingDepth = -50.0f;
-    public bool bGettingDarker = false;
+    [Header("DarknessOverTime")]
+    private GameObject manager;
+    private float darknessStartingDepth;
+    public bool gettingDarker = false;
 
-    public int iLightingLevel = 100;
-    public float fTimer = 0.0f;
-    public float fMaxTimer = 10.0f;
-
-
+    public int lightingLevel = 100;
+    public float timer = 0.0f;
+    private float maxTimer;
 
     // Start is called before the first frame update
     void Start()
     {
-        fTimer = fMaxTimer;
+        timer = maxTimer;
+
+        manager = GameObject.FindGameObjectWithTag("GameManager");
+        darknessStartingDepth = manager.GetComponent<GameManager>().darknessStartingDepth;
+        maxTimer = manager.GetComponent<GameManager>().darknessChangeSpeed;
     }
 
     // Update is called once per frame
@@ -28,23 +32,23 @@ public class CameraMovement : MonoBehaviour
         transform.Translate(0, -fCameraSpeed * Time.deltaTime, 0);
 
         // Starting darkness
-        if (transform.position.y <= fDarknessStartingDepth)
+        if (transform.position.y <= darknessStartingDepth)
         {
-            bGettingDarker = true;
+            gettingDarker = true;
         }
 
         // Getting darker
-        if (bGettingDarker == true)
+        if (gettingDarker == true)
         {
-            fTimer = fTimer - 1.0f * Time.deltaTime; // Decrease timer by 1 second
+            timer = timer - 1.0f * Time.deltaTime; // Decrease timer by 1 second
 
-            if (fTimer <= 1.0f)
+            if (timer <= 1.0f)
             {
-                if (iLightingLevel > 0)
+                if (lightingLevel > 0)
                 {
-                    iLightingLevel -= 1;
-                    RenderSettings.ambientLight = new Color(iLightingLevel / 255.0f, iLightingLevel / 255.0f, iLightingLevel / 255.0f);
-                    fTimer = fMaxTimer;
+                    lightingLevel -= 1;
+                    RenderSettings.ambientLight = new Color(lightingLevel / 255.0f, lightingLevel / 255.0f, lightingLevel / 255.0f);
+                    timer = maxTimer;
                 }
             }
         }
