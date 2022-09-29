@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class BubbleBuffUI : MonoBehaviour
 {
     TMPro.TextMeshProUGUI m_TempText;
+    [SerializeField]Image m_TimerImage;
 
     private void Start()
     {
-        m_TempText = GetComponent<TMPro.TextMeshProUGUI>();
+        m_TempText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
     }
 
     public void SetAvailableBuff(BubbleBuff.BUFFTYPE _buffType)
@@ -43,9 +44,14 @@ public class BubbleBuffUI : MonoBehaviour
                 }
             default:
                 {
-                    m_TempText.text = "";
+                    m_TempText.text = "Dash";
                     break;
                 }
         }
+    }
+
+    public void SetTimerImageFill(float _fillAmount)
+    {
+        m_TimerImage.fillAmount = _fillAmount;
     }
 }

@@ -20,8 +20,24 @@ public class BubbleBuffChest : MonoBehaviour
     {
         if (other.tag is "Player" && !IsUsed)
         {
-            m_BubbleBuffScript.GiveToPlayer();
-            IsUsed = true;
+            SwimController player = other.GetComponent<SwimController>();
+            if (!player.IsUsingBubbleBuff)
+            {
+                m_BubbleBuffScript.GiveToPlayer(player);
+                IsUsed = true;
+            }
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag is "Player" && !IsUsed)
+        {
+            SwimController player = other.GetComponent<SwimController>();
+            if (!player.IsUsingBubbleBuff)
+            {
+                m_BubbleBuffScript.GiveToPlayer(player);
+                IsUsed = true;
+            }
         }
     }
 }

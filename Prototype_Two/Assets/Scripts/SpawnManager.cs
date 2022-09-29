@@ -38,12 +38,17 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject BubblePrefab;
     [SerializeField] float BubbleSpawnRate = 10.0f;
 
+    [Header("Bubble Buff")]
+    [SerializeField] GameObject BubleBuffChestPrefab;
+    [SerializeField] float BubbleBuffSpawnRate = 7.0f;
+
     public SpawnableObject SeaUrchin;
     public SpawnableObject JellyFishSwarm;
     public SpawnableObject Oxygem;
     public SpawnableObject Eel;
     public SpawnableObject SchoolOfFish;
     public SpawnableObject OxygenBubble;
+    public SpawnableObject BubbleBuffChest;
 
     public struct SpawnableObject{
         public GameObject Object;
@@ -83,6 +88,10 @@ public class SpawnManager : MonoBehaviour
         OxygenBubble.Object = BubblePrefab;
         OxygenBubble.DepthCounter = 0.0f;
         OxygenBubble.SpawnRate = BubbleSpawnRate;
+
+        BubbleBuffChest.Object = BubleBuffChestPrefab;
+        BubbleBuffChest.DepthCounter = 0.0f;
+        BubbleBuffChest.SpawnRate = BubbleBuffSpawnRate;
     }
     private void Update()
     {
@@ -110,7 +119,7 @@ public class SpawnManager : MonoBehaviour
             int random = Random.Range(-4, 4);
             if (random <= 0)
             {
-                SpawnSeaUrchin(cameraPosition);
+                SpawnBubbleBuff(cameraPosition);
             }
             else
             {
@@ -143,6 +152,31 @@ public class SpawnManager : MonoBehaviour
         OxygenBubble.SpawnPoint = new Vector3(camPos.x + OxygenBubble.Offset, camPos.y, camPos.z);
         Instantiate(OxygenBubble.Object, OxygenBubble.SpawnPoint, Quaternion.identity);
         OxygenBubble.DepthCounter = -Depth + OxygenBubble.SpawnRate;
+    }
+
+    void SpawnBubbleBuff(Vector3 camPos)
+    {
+        // Spawn Left or Right
+        int random = Random.Range(-3, 4);
+        if (random <= 0)
+        {
+            Quaternion rotation = Quaternion.Euler(0, 180, 0);
+            BubbleBuffChest.Offset = -6.0f;
+            BubbleBuffChest.SpawnPoint = new Vector3(camPos.x + BubbleBuffChest.Offset, camPos.y, camPos.z);
+            Instantiate(BubbleBuffChest.Object, BubbleBuffChest.SpawnPoint, rotation);
+        }
+        else
+        {
+            Quaternion rotation = Quaternion.Euler(0, 180, 0);
+            BubbleBuffChest.Offset = 6.0f;
+            BubbleBuffChest.SpawnPoint = new Vector3(camPos.x + BubbleBuffChest.Offset, camPos.y, camPos.z);
+            Instantiate(BubbleBuffChest.Object, BubbleBuffChest.SpawnPoint, rotation);
+        }
+
+        // Setting SeaUrchin and Eel depth counter because they are together
+        BubbleBuffChest.DepthCounter = -Depth + BubbleBuffChest.SpawnRate;
+        SeaUrchin.DepthCounter = -Depth + BubbleBuffChest.SpawnRate;
+        Eel.DepthCounter = -Depth + Eel.SpawnRate;
     }
 
     void SpawnOxygem(Vector3 camPos)
