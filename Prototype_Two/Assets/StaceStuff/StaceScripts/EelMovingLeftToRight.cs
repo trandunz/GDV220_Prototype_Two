@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EelMoving : MonoBehaviour
+public class EelMovingLeftToRight : MonoBehaviour
 {
     GameObject OxygenTank;
     public float fMoveSpeed = 2.0f;
     public float fDist = 5.0f;
 
     bool bMoving = false;
+
+    public float timeToMove = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,10 @@ public class EelMoving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OxygenTank.transform.position.y - transform.position.y <= fDist)
+        timeToMove -= 1 * Time.deltaTime;
+
+        //if (OxygenTank.transform.position.y - transform.position.y <= fDist)
+        if (timeToMove <= 0) 
         {
             bMoving = true;
         }
