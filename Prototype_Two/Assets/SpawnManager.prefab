@@ -60,3 +60,7 @@ MonoBehaviour:
   SchoolOfFishSpawnRate: 14
   BubblePrefab: {fileID: 1497980764572778776, guid: c30d4e53fcf921f46a085043b683585b, type: 3}
   BubbleSpawnRate: 14
+  BubleBuffChestPrefab: {fileID: 6449785510719610356, guid: 2746da5418c57fc408c57685f6f77b05, type: 3}
+  BubbleBuffSpawnRate: 7
+  SeaMinePrefab: {fileID: 5030809331485757466, guid: b856b9f9604dc3c41a7772a0ad9eb255, type: 3}
+  SeaMineSpawnRate: 14

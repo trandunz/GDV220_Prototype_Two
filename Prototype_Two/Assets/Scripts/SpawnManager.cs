@@ -42,6 +42,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject BubleBuffChestPrefab;
     [SerializeField] float BubbleBuffSpawnRate = 7.0f;
 
+    [Header("Sea Mine")]
+    [SerializeField] GameObject SeaMinePrefab;
+    [SerializeField] float SeaMineSpawnRate = 14.0f;
+
     public SpawnableObject SeaUrchin;
     public SpawnableObject JellyFishSwarm;
     public SpawnableObject Oxygem;
@@ -49,6 +53,7 @@ public class SpawnManager : MonoBehaviour
     public SpawnableObject SchoolOfFish;
     public SpawnableObject OxygenBubble;
     public SpawnableObject BubbleBuffChest;
+    public SpawnableObject SeaMine;
 
     public struct SpawnableObject{
         public GameObject Object;
@@ -92,6 +97,10 @@ public class SpawnManager : MonoBehaviour
         BubbleBuffChest.Object = BubleBuffChestPrefab;
         BubbleBuffChest.DepthCounter = 0.0f;
         BubbleBuffChest.SpawnRate = BubbleBuffSpawnRate;
+
+        SeaMine.Object = SeaMinePrefab;
+        SeaMine.DepthCounter = 0.0f;
+        SeaMine.SpawnRate = SeaMineSpawnRate;
     }
     private void Update()
     {
@@ -136,6 +145,11 @@ public class SpawnManager : MonoBehaviour
         {
             //SpawnBubble(cameraPosition);
         }
+
+        if ((-Depth) >= SeaMine.DepthCounter)
+        {
+            SpawnSeaMine(cameraPosition);
+        }
     }
 
     void SpawnJellyFishSwarm(Vector3 camPos)
@@ -144,6 +158,14 @@ public class SpawnManager : MonoBehaviour
         JellyFishSwarm.SpawnPoint = new Vector3(camPos.x + JellyFishSwarm.Offset, camPos.y, camPos.z);
         Instantiate(JellyFishSwarm.Object, JellyFishSwarm.SpawnPoint, Quaternion.identity);
         JellyFishSwarm.DepthCounter = -Depth + JellyFishSwarm.SpawnRate;
+    }
+
+    void SpawnSeaMine(Vector3 camPos)
+    {
+        SeaMine.Offset = Random.Range(-6.5f, 6.5f);
+        SeaMine.SpawnPoint = new Vector3(camPos.x + SeaMine.Offset, camPos.y, camPos.z);
+        Instantiate(SeaMine.Object, SeaMine.SpawnPoint, Quaternion.identity);
+        SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
     }
     
     void SpawnBubble(Vector3 camPos)
