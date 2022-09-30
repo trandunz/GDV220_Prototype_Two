@@ -13,8 +13,11 @@ public class ShieldBubble : MonoBehaviour
     {
         if (other.tag is "Enemy")
         {
-            m_Player.BubbleShieldHit();
-            Destroy(gameObject);
+            if (!other.GetComponent<Enemy_Jellyfish>())
+            {
+                m_Player.BubbleShieldHit();
+                Destroy(gameObject);
+            }
         }
     }
 }

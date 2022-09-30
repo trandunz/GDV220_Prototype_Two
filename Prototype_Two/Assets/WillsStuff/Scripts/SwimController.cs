@@ -76,6 +76,10 @@ public class SwimController : MonoBehaviour
     public Transform BubblesPosition;
     public Quaternion BubblesRotation;
 
+    [Header("Paralyze Settings")]
+    [SerializeField] float m_ParalyzeDuration;
+    float m_ParalyzeTimer;
+
     void Start()
     {
         BubbleBuffUI = FindObjectOfType<BubbleBuffPanel>();
@@ -229,6 +233,36 @@ public class SwimController : MonoBehaviour
         {
             StartCoroutine(BubbleBuffRoutine());
         }
+    }
+
+    public void Paralyze()
+    {
+        if (m_ParalyzeTimer <= 0)
+        {
+            StartCoroutine(ParalyzeRoutine());
+        }
+        else
+        {
+            m_ParalyzeTimer = m_ParalyzeDuration;
+        }
+    }
+
+    IEnumerator ParalyzeRoutine()
+    {
+        CanMove = false;
+        m_ParalyzeTimer = m_ParalyzeDuration;
+        while (m_ParalyzeTimer > 0)
+        {
+            m_ParalyzeTimer -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (m_ActivePowerup)
+        {
+            BubbleShieldHit();
+            Destroy(m_ActivePowerup);
+        }
+        CanMove = true;
     }
 
     IEnumerator BubbleBuffRoutine()

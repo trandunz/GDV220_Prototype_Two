@@ -45,16 +45,7 @@ public class Enemy_Jellyfish : MonoBehaviour
     {
         if (other.tag is "Player")
         {
-            other.GetComponent<SwimController>().HitEnemy();
+            other.GetComponent<SwimController>().Paralyze();
         }
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag is "Player")
-        {
-            other.GetComponent<SwimController>().LeaveEnemy();
-        }
-    }
-
 }
