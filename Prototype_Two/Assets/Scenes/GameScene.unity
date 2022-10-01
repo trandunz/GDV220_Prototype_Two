@@ -9619,6 +9619,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5759047587418432666, guid: 8e47d5d9ab17c3347af73f42711b9b26, type: 3}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: ClamPrefab
+      value: 
+      objectReference: {fileID: 7410660425148885176, guid: 7dbe2252ea24f1c42a454a3cf5bf5ab4, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: Main_Camera
       value: 
       objectReference: {fileID: 963194225}

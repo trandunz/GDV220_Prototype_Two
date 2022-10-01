@@ -370,7 +370,7 @@ public class SwimController : MonoBehaviour
     {
         m_RigidBody.AddForce(_impulse * Time.fixedDeltaTime, ForceMode.Impulse);
     }
-    void ApplyForce(Vector3 _force)
+    public void ApplyForce(Vector3 _force)
     {
         m_RigidBody.AddForce(_force * Time.fixedDeltaTime, ForceMode.Acceleration);
     }
