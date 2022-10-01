@@ -259,7 +259,7 @@ public class SwimController : MonoBehaviour
 
         if (m_ActivePowerup)
         {
-            BubbleShieldHit();
+            IsUsingBubbleBuff = false;
             Destroy(m_ActivePowerup);
         }
         CanMove = true;
