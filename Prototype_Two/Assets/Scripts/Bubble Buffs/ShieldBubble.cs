@@ -7,14 +7,17 @@ public class ShieldBubble : MonoBehaviour
     SwimController m_Player;
     private void Start()
     {
-        m_Player = FindObjectOfType<SwimController>();
+        m_Player = GetComponentInParent<SwimController>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag is "Enemy")
         {
-            m_Player.BubbleShieldHit();
-            Destroy(gameObject);
+            if (!other.GetComponent<Enemy_Jellyfish>())
+            {
+                m_Player.BubbleShieldHit();
+                Destroy(gameObject);
+            }
         }
     }
 }

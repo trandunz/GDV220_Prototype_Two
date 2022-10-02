@@ -47,7 +47,7 @@ public class SwimController : MonoBehaviour
     [SerializeField] GameObject ShieldBubble = null;
     GameObject m_ActivePowerup = null;
     BubbleBuff.BUFFTYPE m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.UNASSIGNED;
-    bool IsUsingBubbleBuff = false;
+    public bool IsUsingBubbleBuff = false;
 
     IKInitialiser cord;
     public FastIKFabric Tether;
@@ -75,6 +75,10 @@ public class SwimController : MonoBehaviour
     public GameObject Bubbles;
     public Transform BubblesPosition;
     public Quaternion BubblesRotation;
+
+    [Header("Paralyze Settings")]
+    [SerializeField] float m_ParalyzeDuration;
+    float m_ParalyzeTimer;
 
     void Start()
     {
@@ -153,6 +157,11 @@ public class SwimController : MonoBehaviour
         }
         
         HandleAnimations();
+
+        if (!IsUsingBubbleBuff)
+        {
+            SetAvailableBuffUI();
+        }
     }
 
     void FixedUpdate()
@@ -226,71 +235,95 @@ public class SwimController : MonoBehaviour
         }
     }
 
+    public void Paralyze()
+    {
+        if (m_ParalyzeTimer <= 0)
+        {
+            StartCoroutine(ParalyzeRoutine());
+        }
+        else
+        {
+            m_ParalyzeTimer = m_ParalyzeDuration;
+        }
+    }
+
+    IEnumerator ParalyzeRoutine()
+    {
+        CanMove = false;
+        m_ParalyzeTimer = m_ParalyzeDuration;
+        while (m_ParalyzeTimer > 0)
+        {
+            m_ParalyzeTimer -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (m_ActivePowerup)
+        {
+            IsUsingBubbleBuff = false;
+            Destroy(m_ActivePowerup);
+        }
+        CanMove = true;
+    }
+
     IEnumerator BubbleBuffRoutine()
     {
         IsUsingBubbleBuff = true;
+        bool usedOxyChest = false;
+        bool usedFlare = false;
 
         float bubbleBuffUseTimer = BubbleBuffUseTime;
         while (bubbleBuffUseTimer > 0 && IsUsingBubbleBuff)
         {
+            SetAvailableBuffUI();
+
             switch (m_CurrentBubbleBuff)
             {
                 case BubbleBuff.BUFFTYPE.RANDOM:
                     {
                         m_CurrentBubbleBuff = (BubbleBuff.BUFFTYPE)Random.Range(2, 6);
-                        if (PlayerOne)
-                            BubbleBuffUI.P1UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.RANDOM);
-                        else
-                            BubbleBuffUI.P2UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.RANDOM);
+
                         break;
                     }
                 case BubbleBuff.BUFFTYPE.FLARE:
                     {
-                        //Instantiate(Flare);
-
-                        bubbleBuffUseTimer = 0.0f;
-
-                        if (PlayerOne)
-                            BubbleBuffUI.P1UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.FLARE);
-                        else
-                            BubbleBuffUI.P2UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.FLARE);
+                        SetBuffCooldownWidget(bubbleBuffUseTimer / BubbleBuffUseTime);
+                        if (!usedFlare)
+                        {
+                            usedFlare = true;
+                            //Instantiate(Flare);
+                        }
 
                         break;
                     }
                 case BubbleBuff.BUFFTYPE.GEMCHEST:
                     {
-                        for(int i = 0; i < 10; i++)
+                        SetBuffCooldownWidget(bubbleBuffUseTimer / BubbleBuffUseTime);
+                        if (!usedOxyChest)
                         {
-                            oxygenTank.AddOxygem();
+                            usedOxyChest = true;
+                            for (int i = 0; i < 10; i++)
+                            {
+                                oxygenTank.AddOxygem();
+                            }
                         }
-
-                        bubbleBuffUseTimer = 0.0f;
-
-                        if (PlayerOne)
-                            BubbleBuffUI.P1UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.GEMCHEST);
-                        else
-                            BubbleBuffUI.P2UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.GEMCHEST);
 
                         break;
                     }
                 case BubbleBuff.BUFFTYPE.MAGNET:
                     {
-                        foreach(Oxygem oxygem in FindObjectsOfType<Oxygem>())
+                        SetBuffCooldownWidget(bubbleBuffUseTimer / BubbleBuffUseTime);
+                        foreach (Oxygem oxygem in FindObjectsOfType<Oxygem>())
                         {
                             if (Vector3.Distance(oxygem.transform.position, transform.position) <= MagnetRange)
                             {
                                 oxygem.transform.position += (transform.position - oxygem.transform.position) * Time.deltaTime * MagnetStrength;
                             }
                         }
-
-                        if (PlayerOne)
-                            BubbleBuffUI.P1UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.MAGNET);
-                        else
-                            BubbleBuffUI.P2UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.MAGNET);
                         break;
                     }
                 case BubbleBuff.BUFFTYPE.SHIELD:
                     {
+                        SetBuffCooldownWidget(bubbleBuffUseTimer / BubbleBuffUseTime);
                         if (m_ActivePowerup == null)
                         {
                             m_ActivePowerup = Instantiate(ShieldBubble, transform);
@@ -299,19 +332,12 @@ public class SwimController : MonoBehaviour
                         {
                             m_ActivePowerup.transform.position = transform.position;
                         }
-                        if (PlayerOne)
-                            BubbleBuffUI.P1UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.SHIELD);
-                        else
-                            BubbleBuffUI.P2UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.SHIELD);
 
                         break;
                     }
                 default:
                     {
-                        if (PlayerOne)
-                            BubbleBuffUI.P1UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.UNASSIGNED);
-                        else
-                            BubbleBuffUI.P2UI.SetAvailableBuff(BubbleBuff.BUFFTYPE.UNASSIGNED);
+                        SetBuffCooldownWidget(1.0f);
 
                         break;
                     }
@@ -325,6 +351,7 @@ public class SwimController : MonoBehaviour
             Destroy(m_ActivePowerup);
 
         m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.UNASSIGNED;
+        SetBuffCooldownWidget(1.0f);
         IsUsingBubbleBuff = false;
     }
 
@@ -339,7 +366,11 @@ public class SwimController : MonoBehaviour
         }
     }
 
-    void ApplyForce(Vector3 _force)
+    public void ApplyImpulse(Vector3 _impulse)
+    {
+        m_RigidBody.AddForce(_impulse * Time.fixedDeltaTime, ForceMode.Impulse);
+    }
+    public void ApplyForce(Vector3 _force)
     {
         m_RigidBody.AddForce(_force * Time.fixedDeltaTime, ForceMode.Acceleration);
     }
@@ -446,6 +477,22 @@ public class SwimController : MonoBehaviour
     public void PickupBubbleBuff(BubbleBuff.BUFFTYPE _bubbleBuff)
     {
         m_CurrentBubbleBuff = _bubbleBuff;
+    }
+
+    void SetAvailableBuffUI()
+    {
+        if (PlayerOne)
+            BubbleBuffUI.P1UI.SetAvailableBuff(m_CurrentBubbleBuff);
+        else
+            BubbleBuffUI.P2UI.SetAvailableBuff(m_CurrentBubbleBuff);
+    }
+
+    void SetBuffCooldownWidget(float _fillAmount)
+    {
+        if (PlayerOne)
+            BubbleBuffUI.P1UI.SetTimerImageFill(_fillAmount);
+        else
+            BubbleBuffUI.P2UI.SetTimerImageFill(_fillAmount);
     }
 
     IEnumerator StartInvulnrability()

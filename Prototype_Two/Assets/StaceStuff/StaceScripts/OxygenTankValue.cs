@@ -12,7 +12,6 @@ public class OxygenTankValue : MonoBehaviour
 
     // How much each level of oxygen upgrade decreases oxygen
     [SerializeField] private int iMaxOxygen;
-    [SerializeField] private float fBubbleSpawnLevel = 0.1f;
     public float fDrainSpeed0 = 0.0f;
     public float fDrainSpeed1 = 0.0f;
     public float fDrainSpeed2 = 0.0f;
@@ -23,6 +22,8 @@ public class OxygenTankValue : MonoBehaviour
 
     // Damage (from enemies/kina etc)
     public float fDamageAmount = 0.5f;
+    float m_DamageTime = 0.2f;
+    float m_DamageTimer = 0.0f;
 
     // Dash efficiency
     [SerializeField] private int iMaxDash;
@@ -108,32 +109,36 @@ public class OxygenTankValue : MonoBehaviour
             }
         }
 
-        if (transform.localScale.y <= iMaxOxygen * fBubbleSpawnLevel)
+        if (m_DamageTimer > 0.0f)
         {
-            GameObject spawnManager = FindObjectOfType<SpawnManager>().gameObject;
-            spawnManager.GetComponent<SpawnManager>().SpawnBubble();
+            m_DamageTimer -= Time.deltaTime;
         }
     }
 
     // Losing oxygen when damaged
     public void DamageOxygenUse()
     {
-        // First check if has gems
-        if (iOxygemCount == 0)
+        if (m_DamageTimer <= 0.0f)
         {
-            if (transform.localScale.y > fDamageAmount)
+            m_DamageTimer = m_DamageTime;
+
+            // First check if has gems
+            if (iOxygemCount == 0)
             {
-                transform.localScale -= new Vector3(0.0f, fDamageAmount, 0.0f);
+                if (transform.localScale.y > fDamageAmount)
+                {
+                    transform.localScale -= new Vector3(0.0f, fDamageAmount, 0.0f);
+                }
+                else
+                {
+                    transform.localScale = new Vector3(transform.localScale.x, 0.0f, transform.localScale.z);
+                }
             }
             else
             {
-                transform.localScale = new Vector3(transform.localScale.x, 0.0f, transform.localScale.z);
+                iOxygemCount = 0;
+                LightGems();
             }
-        }
-        else
-        {
-            iOxygemCount = 0;
-            LightGems();
         }
     }
 

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [Header("Object Lifetime")]
-    [SerializeField] float ObjectLifeTime = 20.0f;
-
     [Header("Main Cam for depth")]
     [SerializeField] GameObject Main_Camera;
    
@@ -39,11 +36,19 @@ public class SpawnManager : MonoBehaviour
 
     [Header("Bubble")]
     [SerializeField] GameObject BubblePrefab;
-    [SerializeField] float BubbleSpawnRate = 20.0f;
+    [SerializeField] float BubbleSpawnRate = 10.0f;
 
-    [Header("Coral")]
-    [SerializeField] GameObject[] CoralPrefabs;
-    [SerializeField] float CoralSpawnRate = 2.0f;
+    [Header("Bubble Buff")]
+    [SerializeField] GameObject BubleBuffChestPrefab;
+    [SerializeField] float BubbleBuffSpawnRate = 7.0f;
+
+    [Header("Sea Mine")]
+    [SerializeField] GameObject SeaMinePrefab;
+    [SerializeField] float SeaMineSpawnRate = 14.0f;
+
+    [Header("Clam")]
+    [SerializeField] GameObject ClamPrefab;
+    [SerializeField] float ClamSpawnRate = 7.0f;
 
     public SpawnableObject SeaUrchin;
     public SpawnableObject JellyFishSwarm;
@@ -51,7 +56,9 @@ public class SpawnManager : MonoBehaviour
     public SpawnableObject Eel;
     public SpawnableObject SchoolOfFish;
     public SpawnableObject OxygenBubble;
-    public SpawnableObject Coral;
+    public SpawnableObject BubbleBuffChest;
+    public SpawnableObject SeaMine;
+    public SpawnableObject Clam;
 
     public struct SpawnableObject{
         public GameObject Object;
@@ -88,16 +95,21 @@ public class SpawnManager : MonoBehaviour
         SchoolOfFish.DepthCounter = 0.0f;
         SchoolOfFish.SpawnRate = SchoolOfFishSpawnRate;
 
-        // Initialize Oxygen Bubble
         OxygenBubble.Object = BubblePrefab;
         OxygenBubble.DepthCounter = 0.0f;
         OxygenBubble.SpawnRate = BubbleSpawnRate;
 
-        // Initialize Coral
-        Coral.Object = CoralPrefabs[0];
-        Coral.DepthCounter = 0.0f;
-        Coral.SpawnRate = CoralSpawnRate;
+        BubbleBuffChest.Object = BubleBuffChestPrefab;
+        BubbleBuffChest.DepthCounter = 0.0f;
+        BubbleBuffChest.SpawnRate = BubbleBuffSpawnRate;
 
+        SeaMine.Object = SeaMinePrefab;
+        SeaMine.DepthCounter = 0.0f;
+        SeaMine.SpawnRate = SeaMineSpawnRate;
+
+        Clam.Object = ClamPrefab;
+        Clam.DepthCounter = 0.0f;
+        Clam.SpawnRate = ClamSpawnRate;
     }
     private void Update()
     {
@@ -122,10 +134,14 @@ public class SpawnManager : MonoBehaviour
         // Spawn either SeaUrchin or Eel
         if ((-Depth) >= SeaUrchin.DepthCounter)
         {
-            int random = Random.Range(-4, 4);
+            int random = Random.Range(0, 3);
             if (random <= 0)
             {
-                SpawnSeaUrchin(cameraPosition);
+                SpawnBubbleBuff(cameraPosition);
+            }
+            else if (random <= 1)
+            {
+                SpawnClam(cameraPosition);
             }
             else
             {
@@ -143,9 +159,9 @@ public class SpawnManager : MonoBehaviour
             //SpawnBubble(cameraPosition);
         }
 
-        if ((-Depth) >= Coral.DepthCounter)
+        if ((-Depth) >= SeaMine.DepthCounter)
         {
-            SpawnCoral(cameraPosition);
+            SpawnSeaMine(cameraPosition);
         }
     }
 
@@ -153,39 +169,82 @@ public class SpawnManager : MonoBehaviour
     {
         JellyFishSwarm.Offset = Random.Range(-5.0f, 5.0f);
         JellyFishSwarm.SpawnPoint = new Vector3(camPos.x + JellyFishSwarm.Offset, camPos.y, camPos.z);
-        Destroy(Instantiate(JellyFishSwarm.Object, JellyFishSwarm.SpawnPoint, Quaternion.identity), ObjectLifeTime);
+        Instantiate(JellyFishSwarm.Object, JellyFishSwarm.SpawnPoint, Quaternion.identity);
         JellyFishSwarm.DepthCounter = -Depth + JellyFishSwarm.SpawnRate;
+    }
+
+    void SpawnSeaMine(Vector3 camPos)
+    {
+        SeaMine.Offset = Random.Range(-6.5f, 6.5f);
+        SeaMine.SpawnPoint = new Vector3(camPos.x + SeaMine.Offset, camPos.y, camPos.z);
+        Instantiate(SeaMine.Object, SeaMine.SpawnPoint, Quaternion.identity);
+        SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
     }
     
     void SpawnBubble(Vector3 camPos)
     {
         OxygenBubble.Offset = Random.Range(-6.5f, 6.5f);
         OxygenBubble.SpawnPoint = new Vector3(camPos.x + OxygenBubble.Offset, camPos.y, camPos.z);
-        Destroy(Instantiate(OxygenBubble.Object, OxygenBubble.SpawnPoint, Quaternion.identity), ObjectLifeTime);
+        Instantiate(OxygenBubble.Object, OxygenBubble.SpawnPoint, Quaternion.identity);
         OxygenBubble.DepthCounter = -Depth + OxygenBubble.SpawnRate;
     }
 
-    public void SpawnBubble()
+    void SpawnClam(Vector3 camPos)
     {
-        if ((-Depth) >= OxygenBubble.DepthCounter)
+        // Spawn Left or Right
+        int random = Random.Range(-3, 4);
+        if (random <= 0)
         {
-            Vector3 camPos = Main_Camera.transform.position;
-            camPos.y += YOffset;
-            camPos.z += ZOffset;
-
-            OxygenBubble.Offset = Random.Range(-6.5f, 6.5f);
-            OxygenBubble.SpawnPoint = new Vector3(camPos.x + OxygenBubble.Offset, camPos.y, camPos.z);
-            Destroy(Instantiate(OxygenBubble.Object, OxygenBubble.SpawnPoint, Quaternion.identity), ObjectLifeTime);
-            OxygenBubble.DepthCounter = -Depth + OxygenBubble.SpawnRate;        
+            Quaternion rotation = Quaternion.Euler(-25, -90, -20);
+            Clam.Offset = -6.0f;
+            Clam.SpawnPoint = new Vector3(camPos.x + Clam.Offset, camPos.y, camPos.z);
+            Instantiate(Clam.Object, Clam.SpawnPoint, rotation);
+        }
+        else
+        {
+            Quaternion rotation = Quaternion.Euler(-25, 90, 20);
+            Clam.Offset = 6.0f;
+            Clam.SpawnPoint = new Vector3(camPos.x + Clam.Offset, camPos.y, camPos.z);
+            Instantiate(Clam.Object, Clam.SpawnPoint, rotation);
         }
 
+        // Setting SeaUrchin and Eel depth counter because they are together
+        BubbleBuffChest.DepthCounter = -Depth + BubbleBuffChest.SpawnRate;
+        SeaUrchin.DepthCounter = -Depth + BubbleBuffChest.SpawnRate;
+        Eel.DepthCounter = -Depth + Eel.SpawnRate;
+        Clam.DepthCounter = -Depth + Clam.SpawnRate;
+    }
+
+    void SpawnBubbleBuff(Vector3 camPos)
+    {
+        // Spawn Left or Right
+        int random = Random.Range(-3, 4);
+        if (random <= 0)
+        {
+            Quaternion rotation = Quaternion.Euler(0, 180, 0);
+            BubbleBuffChest.Offset = -6.0f;
+            BubbleBuffChest.SpawnPoint = new Vector3(camPos.x + BubbleBuffChest.Offset, camPos.y, camPos.z);
+            Instantiate(BubbleBuffChest.Object, BubbleBuffChest.SpawnPoint, rotation);
+        }
+        else
+        {
+            Quaternion rotation = Quaternion.Euler(0, 180, 0);
+            BubbleBuffChest.Offset = 6.0f;
+            BubbleBuffChest.SpawnPoint = new Vector3(camPos.x + BubbleBuffChest.Offset, camPos.y, camPos.z);
+            Instantiate(BubbleBuffChest.Object, BubbleBuffChest.SpawnPoint, rotation);
+        }
+
+        // Setting SeaUrchin and Eel depth counter because they are together
+        BubbleBuffChest.DepthCounter = -Depth + BubbleBuffChest.SpawnRate;
+        SeaUrchin.DepthCounter = -Depth + BubbleBuffChest.SpawnRate;
+        Eel.DepthCounter = -Depth + Eel.SpawnRate;
     }
 
     void SpawnOxygem(Vector3 camPos)
     {
         Oxygem.Offset = Random.Range(-6.5f, 6.5f);
         Oxygem.SpawnPoint = new Vector3(camPos.x + Oxygem.Offset, camPos.y, camPos.z);
-        Destroy(Instantiate(Oxygem.Object, Oxygem.SpawnPoint, Quaternion.identity), ObjectLifeTime);
+        Instantiate(Oxygem.Object, Oxygem.SpawnPoint, Quaternion.identity);
         Oxygem.DepthCounter = -Depth + Oxygem.SpawnRate;
     }
 
@@ -197,14 +256,14 @@ public class SpawnManager : MonoBehaviour
         {
             SeaUrchin.Offset = -8.0f;
             SeaUrchin.SpawnPoint = new Vector3(camPos.x + SeaUrchin.Offset, camPos.y, camPos.z);
-            Destroy(Instantiate(SeaUrchin.Object, SeaUrchin.SpawnPoint, Quaternion.identity), ObjectLifeTime);
+            Instantiate(SeaUrchin.Object, SeaUrchin.SpawnPoint, Quaternion.identity);
         }
         else
         {
             SeaUrchin.Offset = 8.0f;
             SeaUrchin.SpawnPoint = new Vector3(camPos.x + SeaUrchin.Offset, camPos.y, camPos.z);
             Quaternion rotation = new Quaternion(0.0f, 180.0f, 0.0f, 1.0f);
-            Destroy(Instantiate(SeaUrchin.Object, SeaUrchin.SpawnPoint, (rotation)), ObjectLifeTime);
+            Instantiate(SeaUrchin.Object, SeaUrchin.SpawnPoint, (rotation));
         }
 
         // Setting SeaUrchin and Eel depth counter because they are together
@@ -216,7 +275,7 @@ public class SpawnManager : MonoBehaviour
     {
         Eel.Offset = -8.5f;
         Eel.SpawnPoint = new Vector3(camPos.x + Eel.Offset, camPos.y, camPos.z);
-        Destroy(Instantiate(Eel.Object, Eel.SpawnPoint, Quaternion.identity), ObjectLifeTime);
+        Instantiate(Eel.Object, Eel.SpawnPoint, Quaternion.identity);
 
         // Setting SeaUrchin and Eel depth counter because they are together
         SeaUrchin.DepthCounter = -Depth + Eel.SpawnRate;
@@ -227,58 +286,7 @@ public class SpawnManager : MonoBehaviour
     {
         SchoolOfFish.Offset = 0;  //Random.Range(-6.5f, 6.5f);
         SchoolOfFish.SpawnPoint = new Vector3(camPos.x + SchoolOfFish.Offset, camPos.y, camPos.z + 10.0f);
-        Destroy(Instantiate(SchoolOfFish.Object, SchoolOfFish.SpawnPoint, Quaternion.identity), ObjectLifeTime);
+        Instantiate(SchoolOfFish.Object, SchoolOfFish.SpawnPoint, Quaternion.identity);
         SchoolOfFish.DepthCounter = -Depth + SchoolOfFish.SpawnRate;
-    }
-
-    void SpawnCoral(Vector3 camPos)
-    {
-        // create variables
-        Quaternion rot = Quaternion.identity;
-        float x, y, z;
-
-        // Left side
-        int coralIndex = Random.Range(0, CoralPrefabs.Length - 1);
-        Coral.Object = CoralPrefabs[coralIndex];
-        if (coralIndex >= 5)
-        {
-            x = 0.0f;
-            y = 0.0f;
-            z = 0.0f;
-        }
-        else
-        {
-            y = 60.0f;
-            z = -90.0f;
-            float randomX = Random.Range(0.0f, 360.0f);
-            x = randomX;
-        }
-        rot.eulerAngles = new Vector3(x, y, z);
-        Coral.Offset = -8.0f;
-        Coral.SpawnPoint = new Vector3(camPos.x + Coral.Offset, camPos.y, camPos.z);
-        Destroy(Instantiate(Coral.Object, Coral.SpawnPoint, rot), ObjectLifeTime);
-        Coral.DepthCounter = -Depth + Coral.SpawnRate;
-
-        // Right side
-        coralIndex = Random.Range(0, CoralPrefabs.Length - 1);
-        Coral.Object = CoralPrefabs[coralIndex];
-        if (coralIndex >= 5)
-        {
-            x = 0.0f;
-            y = 0.0f;
-            z = 0.0f;
-        }
-        else
-        {
-            y = -60.0f;
-            z = 90.0f;
-            float randomX = Random.Range(0.0f, 360.0f);
-            x = randomX;
-        }
-        rot.eulerAngles = new Vector3(x, y, z);
-        Coral.Offset = 8.0f;
-        Coral.SpawnPoint = new Vector3(camPos.x + Coral.Offset, camPos.y, camPos.z);
-        Destroy(Instantiate(Coral.Object, Coral.SpawnPoint, rot), ObjectLifeTime);
-        Coral.DepthCounter = -Depth + Coral.SpawnRate;  
     }
 }

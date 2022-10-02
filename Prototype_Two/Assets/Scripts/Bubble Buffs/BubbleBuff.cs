@@ -16,20 +16,15 @@ public class BubbleBuff : MonoBehaviour
     };
 
     [SerializeField] BUFFTYPE m_BuffType = BUFFTYPE.RANDOM;
-    SwimController m_Player;
 
-    private void Start()
-    {
-        m_Player = FindObjectOfType<SwimController>();
-    }
     public BUFFTYPE GetBuffType()
     {
         return m_BuffType;
     }
 
-    public void GiveToPlayer()
+    public void GiveToPlayer(SwimController _player)
     {
-        m_Player.PickupBubbleBuff(m_BuffType);
+        _player.PickupBubbleBuff(m_BuffType);
         Destroy(gameObject);
     }
 }
