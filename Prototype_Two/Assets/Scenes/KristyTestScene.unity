@@ -532,6 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fMoveSpeed: 2
   fDist: 5
+  timeToMove: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,6 +1284,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fCameraSpeed: 1
+  gettingDarker: 0
+  lightingLevel: 100
+  timer: 0
+  backgroundObject: {fileID: 0}
+  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  colorG: 0
+  colorB: 0
+  timerBackground: 0
+  maxTimerBackground: 0
 --- !u!114 &1302438701
 MonoBehaviour:
   m_ObjectHideFlags: 0
