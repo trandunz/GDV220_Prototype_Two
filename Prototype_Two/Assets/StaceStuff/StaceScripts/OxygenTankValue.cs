@@ -12,6 +12,7 @@ public class OxygenTankValue : MonoBehaviour
 
     // How much each level of oxygen upgrade decreases oxygen
     [SerializeField] private int iMaxOxygen;
+    [SerializeField] private float fBubbleSpawnPercent = 0.1f;
     public float fDrainSpeed0 = 0.0f;
     public float fDrainSpeed1 = 0.0f;
     public float fDrainSpeed2 = 0.0f;
@@ -42,6 +43,8 @@ public class OxygenTankValue : MonoBehaviour
     [Header("Audio")]
     public GameObject audioDrown;
     private bool bHasPlayedDrownSound;
+
+    SpawnManager spawnManager;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +81,8 @@ public class OxygenTankValue : MonoBehaviour
         {
             scaleAmountDrain = new Vector3(0.0f, fDrainSpeed5, 0.0f);
         }
+
+        spawnManager = FindObjectOfType<SpawnManager>();
     }
 
     // Update is called once per frame
@@ -107,6 +112,11 @@ public class OxygenTankValue : MonoBehaviour
                 gameObject.GetComponent<Flash>().FlashStart();
                 fFlashTimer = 0;
             }
+        }
+
+        if (transform.localScale.y <= fBubbleSpawnPercent)
+        {
+            spawnManager.GetComponent<SpawnManager>().SpawnBubble();
         }
 
         if (m_DamageTimer > 0.0f)
