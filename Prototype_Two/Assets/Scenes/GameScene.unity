@@ -2113,6 +2113,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fCameraSpeed: 1
+  fDarknessStartingDepth: -50
+  bGettingDarker: 0
+  iLightingLevel: 100
+  fTimer: 0
+  fMaxTimer: 10
 --- !u!114 &337692182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9481,8 +9486,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2951123183173000976, guid: 68c43300fc88ab04b80dca0ba63aef8c, type: 3}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: ObjectLifeTime
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: BubbleSpawnRate
-      value: 14
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: SchoolOfFishPrefab
@@ -9493,9 +9502,45 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: CoralPrefabs.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: JellyFishSwarmSpawnRate
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: CoralPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 896144359810074006, guid: b9bff3ca7d577fd4ea002be72bf7e396, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: CoralPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3171147664966372614, guid: 396faba6b2bfae646ac44a580586eb41, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: CoralPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 7406687474893227948, guid: a9c7fac45be40cc429a4a25781956d6b, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: CoralPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 4897282013891129516, guid: 2fa0234f201068a4289886c171d1df32, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: CoralPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 8763892082618176838, guid: e8c9cae9e6001384d873139dcd355e07, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: CoralPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 4779023094446836228, guid: 5fa90d76819bce748a2836cf37adbfc4, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: CoralPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 2671826968212151604, guid: 6a44c717951081841a41fdd28e5d2188, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: CoralPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 8397732901060762069, guid: c397d8dfbae4d8e4182b9a9548f48381, type: 3}
     - target: {fileID: 977181442799689499, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: m_Name
       value: SpawnManager

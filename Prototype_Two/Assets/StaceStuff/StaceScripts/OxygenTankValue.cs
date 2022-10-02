@@ -12,6 +12,7 @@ public class OxygenTankValue : MonoBehaviour
 
     // How much each level of oxygen upgrade decreases oxygen
     [SerializeField] private int iMaxOxygen;
+    [SerializeField] private float fBubbleSpawnLevel = 0.1f;
     public float fDrainSpeed0 = 0.0f;
     public float fDrainSpeed1 = 0.0f;
     public float fDrainSpeed2 = 0.0f;
@@ -105,6 +106,12 @@ public class OxygenTankValue : MonoBehaviour
                 gameObject.GetComponent<Flash>().FlashStart();
                 fFlashTimer = 0;
             }
+        }
+
+        if (transform.localScale.y <= iMaxOxygen * fBubbleSpawnLevel)
+        {
+            GameObject spawnManager = FindObjectOfType<SpawnManager>().gameObject;
+            spawnManager.GetComponent<SpawnManager>().SpawnBubble();
         }
     }
 
