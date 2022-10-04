@@ -50,17 +50,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SwimSpeed: 200
+  SlowSpeed: 80
   DragForce: 50
   BoostForce: 500
   BoostCooldown: 1
   RotationSpeed: 200
   PointsPopup: {fileID: 9005969564778985826, guid: 3369bc9a823ecbf4b94ac13cd60debc1, type: 3}
+  SlowTime: 1
   PlayerOne: 0
   MeshObject: {fileID: 5837146483059227840}
   MagnetRange: 5
   MagnetStrength: 1
   BubbleBuffUseTime: 10
   ShieldBubble: {fileID: 7015115042838383625, guid: 6ab2202c6d84bd048a98a72245181dae, type: 3}
+  GlowStick: {fileID: 8918949195624486441, guid: 836990670210faf44911861fd6bdfcc8, type: 3}
   IsUsingBubbleBuff: 0
   Tether: {fileID: 0}
   DistanceFromOrigin: 0

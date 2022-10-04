@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6402895496386788032}
   m_Layer: 0
-  m_Name: MusicAndAmbience
+  m_Name: music_MusicAndAmbience
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,11 +12,15 @@ public class SwimController : MonoBehaviour
 
     [Header("Swim Settings")]
     [SerializeField] float SwimSpeed = 10.0f;
+    [SerializeField] float SlowSpeed = 10.0f;
     [SerializeField] float DragForce = 2.0f;
     [SerializeField] float BoostForce = 30.0f;
     [SerializeField] float BoostCooldown = 1.0f;
     [SerializeField] float RotationSpeed = 1000.0f;
     [SerializeField] GameObject PointsPopup;
+    float MoveSpeed = 0.0f;
+    float SlowTimer = 0.0f;
+    [SerializeField] float SlowTime = 0.2f;
 
     [Header("Player Settings")]
     [SerializeField] bool PlayerOne = false;
@@ -45,6 +49,7 @@ public class SwimController : MonoBehaviour
     [SerializeField] float MagnetStrength = 30.0f;
     [SerializeField] float BubbleBuffUseTime = 10.0f;
     [SerializeField] GameObject ShieldBubble = null;
+    [SerializeField] GameObject GlowStick = null;
     GameObject m_ActivePowerup = null;
     BubbleBuff.BUFFTYPE m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.UNASSIGNED;
     public bool IsUsingBubbleBuff = false;
@@ -82,6 +87,8 @@ public class SwimController : MonoBehaviour
 
     void Start()
     {
+        MoveSpeed = SwimSpeed;
+
         BubbleBuffUI = FindObjectOfType<BubbleBuffPanel>();
 
         animator = GetComponentInChildren<Animator>();
@@ -121,10 +128,19 @@ public class SwimController : MonoBehaviour
         BubblesRotation = BubblesPosition.rotation;
 
         ScoreScript = FindObjectOfType<DepthPanel>();
+
+
     }
 
     void Update()
     {
+        if (SlowTimer > 0)
+            SlowTimer -= Time.deltaTime;
+        else
+        {
+            MoveSpeed = SwimSpeed;
+        }
+
         if (PlayerOne)
         {
             Up = (KeyCode.W);
@@ -182,7 +198,7 @@ public class SwimController : MonoBehaviour
         {
             if (GetInput().magnitude == 0)
             {
-                ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 3.0f);
+                ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * MoveSpeed * 3.0f);
             }
             else
             {
@@ -192,7 +208,7 @@ public class SwimController : MonoBehaviour
                     {
                         if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength + 1.0f)
                         {
-                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 3.0f);
+                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * MoveSpeed * 3.0f);
                         }
                         else
                         {
@@ -202,7 +218,7 @@ public class SwimController : MonoBehaviour
                     }
                     else
                     {
-                        ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 3.0f);
+                        ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * MoveSpeed * 3.0f);
                     }
                 }
                 else
@@ -211,7 +227,7 @@ public class SwimController : MonoBehaviour
                     {
                         if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength + 1.0f)
                         {
-                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 3.0f);
+                            ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * MoveSpeed * 3.0f);
                         }
                         else
                         {
@@ -220,11 +236,17 @@ public class SwimController : MonoBehaviour
                     }
                     else
                     {
-                        ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * SwimSpeed * 3.0f);
+                        ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * MoveSpeed * 3.0f);
                     }
                 }
             }
         }
+    }
+
+    public void Slow()
+    {
+        MoveSpeed = SlowSpeed;
+        SlowTimer = SlowTime;
     }
 
     void UseBubbleBuff()
@@ -290,7 +312,7 @@ public class SwimController : MonoBehaviour
                         if (!usedFlare)
                         {
                             usedFlare = true;
-                            //Instantiate(Flare);
+                            Instantiate(GlowStick, transform.position, Quaternion.identity);
                         }
 
                         break;
@@ -382,7 +404,7 @@ public class SwimController : MonoBehaviour
     
     void Movement()
     {
-        ApplyForce(GetInput() * SwimSpeed);
+        ApplyForce(GetInput() * MoveSpeed);
     }
     
     void Boost()

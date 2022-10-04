@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 676377012212615747}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6.13}
+  m_LocalPosition: {x: 0, y: 0, z: -5.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,8 +47,8 @@ Light:
   m_Color: {r: 0, g: 1, b: 0.2901961, a: 1}
   m_Intensity: 100
   m_Range: 15
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 20
+  m_SpotAngle: 80
+  m_InnerSpotAngle: 50
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -133,7 +133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7373031350385747153
 Transform:
   m_ObjectHideFlags: 0
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 142773350993367095}
   - component: {fileID: 8408760784560400341}
   m_Layer: 0
-  m_Name: Glowstick-Green
+  m_Name: Glowstick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,6 +244,7 @@ Transform:
   m_Children:
   - {fileID: 7373031350385747153}
   - {fileID: 7043314190550327142}
+  - {fileID: 2306286000052290390}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -260,3 +261,81 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FlareYSpeed: 1.3
+  greenMat: {fileID: 2100000, guid: 3150646faf69d1b49b4d2249d42b46c4, type: 2}
+  magentaMat: {fileID: 2100000, guid: 6cc32b50fbcbda846aea7f67889c0555, type: 2}
+  orangeMat: {fileID: 2100000, guid: bd0c726c8778f1c4980ba6de39f8ab23, type: 2}
+  redMat: {fileID: 2100000, guid: 94d904a0268e0234c89e4e53fc86e08f, type: 2}
+  flareObjectMeshRenderer1: {fileID: 5763860577485096586}
+  flareObjectMeshRenderer2: {fileID: 1015466420476215563}
+--- !u!1001 &2849419123915465917
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 142773350993367095}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+      propertyPath: m_Name
+      value: SM_Glow_Stick
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+--- !u!23 &1015466420476215563 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6224956768473242186, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+  m_PrefabInstance: {fileID: 2849419123915465917}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2306286000052290390 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+  m_PrefabInstance: {fileID: 2849419123915465917}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5763860577485096586 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1696041557401066953, guid: 09175c5fddf21c3448be932d11281d41, type: 3}
+  m_PrefabInstance: {fileID: 2849419123915465917}
+  m_PrefabAsset: {fileID: 0}
