@@ -8,6 +8,7 @@ public class OxygenTankValue : MonoBehaviour
     [SerializeField] private int iOxygemCount;
     [SerializeField] public GameObject[] litOxygem;
     [SerializeField] public GameObject explodedOxygem;
+    private GameObject[] spawnedExplodedGems;
 
     public GameObject fadeToBlack; // Gameobject holding fade to black script
 
@@ -223,7 +224,26 @@ public class OxygenTankValue : MonoBehaviour
 
     private void ExplodeGems(int gemsCount)
     {
+        for (int i = 0; i<gemsCount; ++i)
+        {
+            // Get a random point to "explode" towards
+            float angle = Random.Range(1.0f, 1000.0f) * Mathf.PI * 2;
+            float x = Mathf.Cos(angle) * 100.0f;
+            float y = Mathf.Sin(angle) * 100.0f;
+
+            x += transform.position.x;
+            y += transform.position.y;
+            Vector3 explodeTarget = new Vector3(x, y, transform.position.z);
+
+            GameObject gem = Instantiate(explodedOxygem, this.transform.position, Quaternion.identity);
+            gem.GetComponent<Oxygem>().ExplodeAwayFromTank(explodeTarget);
+        }
         
+    }
+
+    public void GodMode()
+    {
+        AddOxygen(1.0f - transform.localScale.y);
     }
 }
 
