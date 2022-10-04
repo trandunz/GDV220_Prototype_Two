@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: M_Enemy
     second: {fileID: 2100000, guid: 67c6ffa0b3571294d837b40b6d0b14fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Pearl
+    second: {fileID: 2100000, guid: 37b3f27e4c5baa849859a56bd6f413a0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
