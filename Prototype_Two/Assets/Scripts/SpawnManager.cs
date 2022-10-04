@@ -57,6 +57,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject[] CoralPrefabs;
     [SerializeField] float CoralSpawnRate = 2.0f;
 
+    [Header("Squid")]
+    [SerializeField] GameObject SquidPrefab;
+    [SerializeField] float SquidSpawnRate = 14.0f;
+
     public SpawnableObject SeaUrchin;
     public SpawnableObject JellyFishSwarm;
     public SpawnableObject Oxygem;
@@ -67,6 +71,7 @@ public class SpawnManager : MonoBehaviour
     public SpawnableObject SeaMine;
     public SpawnableObject Clam;
     public SpawnableObject Coral;
+    public SpawnableObject Squid;
 
     public struct SpawnableObject{
         public GameObject Object;
@@ -123,6 +128,10 @@ public class SpawnManager : MonoBehaviour
         Coral.Object = CoralPrefabs[0];
         Coral.DepthCounter = 0.0f;
         Coral.SpawnRate = CoralSpawnRate;
+
+        Squid.Object = SquidPrefab;
+        Squid.DepthCounter = 0.0f;
+        Squid.SpawnRate = SquidSpawnRate;
     }
     private void Update()
     {
@@ -174,7 +183,11 @@ public class SpawnManager : MonoBehaviour
 
         if ((-Depth) >= SeaMine.DepthCounter)
         {
-            SpawnSeaMine(cameraPosition);
+            int random = Random.Range(0, 2);
+            if (random == 0)
+                SpawnSeaMine(cameraPosition);
+            else
+                SpawnSquid(cameraPosition);
         }
 
         if ((-Depth) >= Coral.DepthCounter)
@@ -196,6 +209,15 @@ public class SpawnManager : MonoBehaviour
         SeaMine.Offset = Random.Range(-6.5f, 6.5f);
         SeaMine.SpawnPoint = new Vector3(camPos.x + SeaMine.Offset, camPos.y, camPos.z);
         Destroy(Instantiate(SeaMine.Object, SeaMine.SpawnPoint, Quaternion.identity), ObjectLifeTime);
+        SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
+    }
+    
+    void SpawnSquid(Vector3 camPos)
+    {
+        Squid.Offset = Random.Range(-6.5f, 6.5f);
+        Squid.SpawnPoint = new Vector3(camPos.x + Squid.Offset, camPos.y, camPos.z);
+        Destroy(Instantiate(Squid.Object, Squid.SpawnPoint, Quaternion.identity), ObjectLifeTime);
+        SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
         SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
     }
     
