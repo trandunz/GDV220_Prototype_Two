@@ -15,6 +15,7 @@ TagManager:
   - AnglerFishGem
   - AnglerFish
   - GameManager
+  - ForegroundObject
   layers:
   - Default
   - TransparentFX
