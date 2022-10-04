@@ -25,6 +25,9 @@ public class CameraMovement : MonoBehaviour
     public float timerBackground;
     public float maxTimerBackground = 0.0f;
 
+    // Foreground Objects
+    public GameObject[] foregroundObjects;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +42,9 @@ public class CameraMovement : MonoBehaviour
         colorG = backgroundObject.GetComponent<MeshRenderer>().material.color.g;
         colorB = backgroundObject.GetComponent<MeshRenderer>().material.color.b;
         timerBackground = maxTimerBackground;
+
+        // Foreground Objects
+        foregroundObjects = GameObject.FindGameObjectsWithTag("ForegroundObject");
     }
 
     // Update is called once per frame
@@ -64,6 +70,23 @@ public class CameraMovement : MonoBehaviour
                     lightingLevel -= 1;
                     RenderSettings.ambientLight = new Color(lightingLevel / 255.0f, lightingLevel / 255.0f, lightingLevel / 255.0f);
                     timer = maxTimer;
+
+                    // Foreground Objects - make more transparent over time when game gets darker
+                    foreach (GameObject foregroundObject in foregroundObjects)
+                    {
+                        float alphaValue = foregroundObject.GetComponent<SpriteRenderer>().color.a;
+
+                        if (alphaValue > 0)
+                            alphaValue = alphaValue - 3.0f / 255;
+                        else
+                            alphaValue = 0;
+
+                        foregroundObject.GetComponent<SpriteRenderer>().color = new Color(
+                            foregroundObject.GetComponent<SpriteRenderer>().color.r,
+                            foregroundObject.GetComponent<SpriteRenderer>().color.g,
+                            foregroundObject.GetComponent<SpriteRenderer>().color.b,
+                            alphaValue);
+                    }
                 }
             }
         }
