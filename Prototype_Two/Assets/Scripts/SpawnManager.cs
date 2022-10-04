@@ -61,6 +61,12 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject SquidPrefab;
     [SerializeField] float SquidSpawnRate = 14.0f;
 
+    [Header("Angler")]
+    [SerializeField] GameObject AnglerPrefab;
+    [SerializeField] float AnglerSpawnRate = 14.0f;
+
+    CameraMovement CameraMovement;
+
     public SpawnableObject SeaUrchin;
     public SpawnableObject JellyFishSwarm;
     public SpawnableObject Oxygem;
@@ -72,6 +78,7 @@ public class SpawnManager : MonoBehaviour
     public SpawnableObject Clam;
     public SpawnableObject Coral;
     public SpawnableObject Squid;
+    public SpawnableObject Angler;
 
     public struct SpawnableObject{
         public GameObject Object;
@@ -83,6 +90,8 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
+        CameraMovement = FindObjectOfType<CameraMovement>();
+
         // Initialize SeaUrchin
         SeaUrchin.Object = SeaUrchinPrefab;
         SeaUrchin.DepthCounter = 0.0f;
@@ -132,6 +141,10 @@ public class SpawnManager : MonoBehaviour
         Squid.Object = SquidPrefab;
         Squid.DepthCounter = 0.0f;
         Squid.SpawnRate = SquidSpawnRate;
+
+        Angler.Object = AnglerPrefab;
+        Angler.DepthCounter = 0.0f;
+        Angler.SpawnRate = AnglerSpawnRate;
     }
     private void Update()
     {
@@ -183,17 +196,29 @@ public class SpawnManager : MonoBehaviour
 
         if ((-Depth) >= SeaMine.DepthCounter)
         {
-            int random = Random.Range(0, 2);
+            int random = Random.Range(0, 3);
             if (random == 0)
                 SpawnSeaMine(cameraPosition);
-            else
+            else if (random == 1)
                 SpawnSquid(cameraPosition);
+            else if (CameraMovement.lightingLevel <= 1)
+                SpawnAngler(cameraPosition);
         }
 
         if ((-Depth) >= Coral.DepthCounter)
         {
             SpawnCoral(cameraPosition);
         }
+    }
+
+    void SpawnAngler(Vector3 camPos)
+    {
+        SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
+        Squid.DepthCounter = -Depth + Squid.SpawnRate;
+        Angler.DepthCounter = -Depth + Angler.SpawnRate;
+        Angler.Offset = Random.Range(-5.5f, 5.5f);
+        Angler.SpawnPoint = new Vector3(camPos.x + SeaMine.Offset, camPos.y, camPos.z);
+        Destroy(Instantiate(Angler.Object, Angler.SpawnPoint, Quaternion.identity), ObjectLifeTime);
     }
 
     void SpawnJellyFishSwarm(Vector3 camPos)
@@ -218,7 +243,7 @@ public class SpawnManager : MonoBehaviour
         Squid.SpawnPoint = new Vector3(camPos.x + Squid.Offset, camPos.y, camPos.z);
         Destroy(Instantiate(Squid.Object, Squid.SpawnPoint, Quaternion.identity), ObjectLifeTime);
         SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
-        SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
+        Squid.DepthCounter = -Depth + Squid.SpawnRate;
     }
     
     void SpawnBubble(Vector3 camPos)

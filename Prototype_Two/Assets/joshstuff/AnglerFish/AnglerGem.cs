@@ -17,9 +17,9 @@ public class AnglerGem : MonoBehaviour
             fish.Attack();
         }
 
-        if (other.gameObject.CompareTag("AnglerFish"))
-        {
-            transform.SetParent(fish.transform);
-        }
+        //if (other.gameObject.CompareTag("AnglerFish"))
+        //{
+        //    transform.SetParent(fish.transform);
+        //}
     }
 }
