@@ -21,6 +21,7 @@ public class SwimController : MonoBehaviour
     float MoveSpeed = 0.0f;
     float SlowTimer = 0.0f;
     [SerializeField] float SlowTime = 0.2f;
+    [SerializeField] float LeeWay = 0.2f;
 
     [Header("Player Settings")]
     [SerializeField] bool PlayerOne = false;
@@ -129,18 +130,6 @@ public class SwimController : MonoBehaviour
 
         ScoreScript = FindObjectOfType<DepthPanel>();
 
-
-    }
-
-    void Update()
-    {
-        if (SlowTimer > 0)
-            SlowTimer -= Time.deltaTime;
-        else
-        {
-            MoveSpeed = SwimSpeed;
-        }
-
         if (PlayerOne)
         {
             Up = (KeyCode.W);
@@ -156,6 +145,16 @@ public class SwimController : MonoBehaviour
             Left = (KeyCode.LeftArrow);
             Right = (KeyCode.RightArrow);
             Dash = (KeyCode.V);
+        }
+    }
+
+    void Update()
+    {
+        if (SlowTimer > 0)
+            SlowTimer -= Time.deltaTime;
+        else
+        {
+            MoveSpeed = SwimSpeed;
         }
 
         RotateToVelocity();
@@ -193,6 +192,15 @@ public class SwimController : MonoBehaviour
         float tetherLength = Tether.CompleteLength;
         float totalTetherLength = otherPlayer.Tether.CompleteLength + tetherLength;
         int minTetherLength = cord.MinChainLength;
+
+        if (DistanceFromOrigin > tetherLength + LeeWay)
+        {
+            CanMove = false;
+        }
+        else
+        {
+            CanMove = true;
+        }
 
         if (DistanceFromOrigin >= tetherLength)
         {
@@ -404,7 +412,10 @@ public class SwimController : MonoBehaviour
     
     void Movement()
     {
-        ApplyForce(GetInput() * MoveSpeed);
+        if (CanMove)
+        {
+            ApplyForce(GetInput() * MoveSpeed);
+        }
     }
     
     void Boost()
