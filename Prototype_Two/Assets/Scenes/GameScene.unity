@@ -2463,12 +2463,12 @@ MonoBehaviour:
   gettingDarker: 0
   lightingLevel: 100
   timer: 0
-  backgroundObject: {fileID: 0}
+  backgroundObject: {fileID: 1067995727}
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}
   colorG: 0
   colorB: 0
   timerBackground: 0
-  maxTimerBackground: 0
+  maxTimerBackground: 2
 --- !u!114 &337692182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5058,7 +5058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   darknessStartingDepth: -25
-  darknessChangeSpeed: 2
+  darknessChangeSpeed: 1
   depthPlayerLightsOn: -50
   sceneCentreObject: {fileID: 337692178}
   Player1: {fileID: 1468342190}
