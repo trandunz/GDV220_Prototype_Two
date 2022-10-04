@@ -7,6 +7,7 @@ public class OxygenTankValue : MonoBehaviour
     [Header("Oxygem Counter")]
     [SerializeField] private int iOxygemCount;
     [SerializeField] public GameObject[] litOxygem;
+    [SerializeField] public GameObject explodedOxygem;
 
     public GameObject fadeToBlack; // Gameobject holding fade to black script
 
@@ -146,6 +147,7 @@ public class OxygenTankValue : MonoBehaviour
             }
             else
             {
+                ExplodeGems(iOxygemCount);
                 iOxygemCount = 0;
                 LightGems();
             }
@@ -217,6 +219,11 @@ public class OxygenTankValue : MonoBehaviour
                 litOxygem[i].SetActive(false);
             }
         }
+    }
+
+    private void ExplodeGems(int gemsCount)
+    {
+        
     }
 }
 
