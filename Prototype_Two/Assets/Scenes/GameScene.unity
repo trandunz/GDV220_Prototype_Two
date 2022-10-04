@@ -9633,6 +9633,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194225}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: SquidPrefab
+      value: 
+      objectReference: {fileID: 8748871406393301692, guid: 15d1eb1569f35bb4b8fa074b3679321d, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: EelSpawnRate
       value: 12
       objectReference: {fileID: 0}
