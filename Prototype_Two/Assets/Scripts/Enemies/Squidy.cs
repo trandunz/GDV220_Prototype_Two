@@ -13,7 +13,6 @@ public class Squidy : MonoBehaviour
     [SerializeField] float m_AlertRadius = 5.0f;
     [SerializeField] float m_TurnSpeed = 10.0f;
     float m_SwimTimer = 0.0f;
-    float m_SprintTimer = 0.0f;
     Vector3 m_ToPlayerVector;
     Rigidbody rigidBody;
     SwimController[] Players;
@@ -30,25 +29,25 @@ public class Squidy : MonoBehaviour
     {
         if (m_SwimTimer > 0)
             m_SwimTimer -= Time.deltaTime;
-        if (m_SprintTimer > 0)
-            m_SprintTimer -= Time.deltaTime;
-
-        RotateTowardsVelocity();
 
         if (!PlayerInRange)
         {
+            Swim();
+
             if (Vector3.Distance(GetClosestPlayer().transform.position, transform.position) <= m_AlertRadius)
             {
+                m_SwimTimer = 0.0f;
+                rigidBody.velocity = Vector3.zero;
                 PlayerInRange = true;
                 m_ToPlayerVector = (transform.position - GetClosestPlayer().transform.position).normalized;
-            }
-
-            Swim();
+            } 
         }
         if (PlayerInRange)
         {
             DashAtPlayer();
         }
+
+        RotateTowardsVelocity();
     }
     void Swim()
     {
@@ -62,11 +61,11 @@ public class Squidy : MonoBehaviour
 
     void DashAtPlayer()
     {
-        if (m_SprintTimer <= 0)
+        if (m_SwimTimer <= 0)
         {
             m_InkParticles.Play();
 
-            m_SprintTimer = m_SprintDelay;
+            m_SwimTimer = m_SprintDelay;
 
             rigidBody.AddForce(m_ToPlayerVector * m_SprintPower* Time.fixedDeltaTime, ForceMode.Impulse);
         }
@@ -74,13 +73,10 @@ public class Squidy : MonoBehaviour
 
     void RotateTowardsVelocity()
     {
-        if (rigidBody.velocity.magnitude != 0)
-        {
-            var dir = rigidBody.velocity;
-            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            var q = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-            transform.rotation = q;
-        }
+        var dir = rigidBody.velocity;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        var q = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        transform.rotation = q;
     }
 
     SwimController GetClosestPlayer()

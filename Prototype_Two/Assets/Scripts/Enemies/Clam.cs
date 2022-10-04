@@ -41,7 +41,7 @@ public class Clam : MonoBehaviour
             if (distanceToPlayer < m_SuctionRange)
             {
                 angleToPlayer = Vector3.Angle(-transform.forward, playerPos - transform.position);
-                Debug.Log(angleToPlayer);
+                //Debug.Log(angleToPlayer);
                 if (angleToPlayer < m_SuctionAngle)
                 {
                     player.ApplyForce((transform.position - playerPos).normalized * m_SuctionStrength);

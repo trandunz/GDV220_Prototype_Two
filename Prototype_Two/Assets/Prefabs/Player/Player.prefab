@@ -50,11 +50,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SwimSpeed: 200
+  SlowSpeed: 80
   DragForce: 50
   BoostForce: 500
   BoostCooldown: 1
   RotationSpeed: 200
   PointsPopup: {fileID: 9005969564778985826, guid: 3369bc9a823ecbf4b94ac13cd60debc1, type: 3}
+  SlowTime: 1
   PlayerOne: 0
   MeshObject: {fileID: 5837146483059227840}
   MagnetRange: 5
