@@ -4,29 +4,44 @@ using UnityEngine;
 
 public class Ink : MonoBehaviour
 {
-    public ParticleSystem part;
-    public List<ParticleCollisionEvent> collisionEvents;
-
-    void Start()
+    ParticleSystem m_ParticleSystem;
+    SwimController[] m_Players;
+    private void Start()
     {
-        part = GetComponent<ParticleSystem>();
-        collisionEvents = new List<ParticleCollisionEvent>();
+        m_ParticleSystem = GetComponent<ParticleSystem>();
+        m_Players = FindObjectsOfType<SwimController>();
+        m_ParticleSystem.trigger.SetCollider(0, m_Players[0].GetComponent<BoxCollider>());
+        m_ParticleSystem.trigger.SetCollider(1, m_Players[1].GetComponent<BoxCollider>());
     }
-
-    void OnParticleCollision(GameObject other)
+    void OnParticleTrigger()
     {
-        int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
+        List<ParticleSystem.Particle> stay = new List<ParticleSystem.Particle>();
+        m_ParticleSystem.GetTriggerParticles(ParticleSystemTriggerEventType.Inside, stay);
 
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-        int i = 0;
+        List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
+        m_ParticleSystem.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
 
-        while (i < numCollisionEvents)
+        foreach (var particle in stay)
         {
-            if (rb)
+            foreach (var player in m_Players)
             {
-                Debug.Log("Player Inked!");
+                BoxCollider collider = player.GetComponent<BoxCollider>();
+                if (collider.bounds.Contains(particle.position))
+                {
+                    player.Slow();
+                }
             }
-            i++;
+        }
+        foreach (var particle in enter)
+        {
+            foreach (var player in m_Players)
+            {
+                BoxCollider collider = player.GetComponent<BoxCollider>();
+                if (collider.bounds.Contains(particle.position))
+                {
+                    player.Slow();
+                }
+            }
         }
     }
 }
