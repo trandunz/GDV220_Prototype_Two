@@ -49,6 +49,7 @@ public class SwimController : MonoBehaviour
     [SerializeField] float MagnetStrength = 30.0f;
     [SerializeField] float BubbleBuffUseTime = 10.0f;
     [SerializeField] GameObject ShieldBubble = null;
+    [SerializeField] GameObject GlowStick = null;
     GameObject m_ActivePowerup = null;
     BubbleBuff.BUFFTYPE m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.UNASSIGNED;
     public bool IsUsingBubbleBuff = false;
@@ -311,7 +312,7 @@ public class SwimController : MonoBehaviour
                         if (!usedFlare)
                         {
                             usedFlare = true;
-                            //Instantiate(Flare);
+                            Instantiate(GlowStick, transform.position, Quaternion.identity);
                         }
 
                         break;
