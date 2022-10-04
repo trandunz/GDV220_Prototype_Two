@@ -13,7 +13,8 @@ public class Flare : MonoBehaviour
     public Material orangeMat;
     public Material redMat;
 
-    public MeshRenderer flareObjectMeshRenderer;
+    public MeshRenderer flareObjectMeshRenderer1;
+    public MeshRenderer flareObjectMeshRenderer2;
 
     // Start is called before the first frame update
     void Start()
@@ -21,21 +22,25 @@ public class Flare : MonoBehaviour
         int iRandomNum = Random.Range(1, 5);
         if (iRandomNum == 1)
         {
-            flareObjectMeshRenderer.material = greenMat;
+            flareObjectMeshRenderer1.material = greenMat;
+            flareObjectMeshRenderer2.material = greenMat;
         }
         else if (iRandomNum == 2)
         {
-            flareObjectMeshRenderer.material = magentaMat;
+            flareObjectMeshRenderer1.material = magentaMat;
+            flareObjectMeshRenderer2.material = greenMat;
         }
         else if (iRandomNum == 3)
         {
-            flareObjectMeshRenderer.material = orangeMat;
+            flareObjectMeshRenderer1.material = orangeMat;
+            flareObjectMeshRenderer2.material = greenMat;
         }
         else
         {
-            flareObjectMeshRenderer.material = redMat;
+            flareObjectMeshRenderer1.material = redMat;
+            flareObjectMeshRenderer2.material = greenMat;
         }
-        transform.GetComponentInChildren<Light>().color = flareObjectMeshRenderer.material.color;
+        transform.GetComponentInChildren<Light>().color = flareObjectMeshRenderer1.material.color;
     }
 
     // Update is called once per frame
