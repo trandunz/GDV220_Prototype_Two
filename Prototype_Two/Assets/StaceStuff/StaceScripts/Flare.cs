@@ -28,17 +28,17 @@ public class Flare : MonoBehaviour
         else if (iRandomNum == 2)
         {
             flareObjectMeshRenderer1.material = magentaMat;
-            flareObjectMeshRenderer2.material = greenMat;
+            flareObjectMeshRenderer2.material = magentaMat;
         }
         else if (iRandomNum == 3)
         {
             flareObjectMeshRenderer1.material = orangeMat;
-            flareObjectMeshRenderer2.material = greenMat;
+            flareObjectMeshRenderer2.material = orangeMat;
         }
         else
         {
             flareObjectMeshRenderer1.material = redMat;
-            flareObjectMeshRenderer2.material = greenMat;
+            flareObjectMeshRenderer2.material = redMat;
         }
         transform.GetComponentInChildren<Light>().color = flareObjectMeshRenderer1.material.color;
     }
