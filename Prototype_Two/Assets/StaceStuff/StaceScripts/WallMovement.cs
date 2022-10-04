@@ -2,62 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Refactored by Benjamin Bartlett 5-10-22
+/// </summary>
 public class WallMovement : MonoBehaviour
 {
     float fHeight = 20.0f;
 
-    public GameObject Wall1;
-    public GameObject Wall2;
-    public GameObject Wall3;
-    public GameObject Wall4;
+    public GameObject[] FrontWalls;
+    public GameObject[] MidWalls;
+    public GameObject[] BackWalls;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    public float MidSpeed = 1.0f;
+    public float BackSpeed = 1.5f;
 
     // Update is called once per frame
     void Update()
     {
-        // Wall 1 teleporting
-        if (transform.position.y <= (Wall1.transform.position.y - (fHeight/2)))
+        if (transform.position.y <= -15.0f)
         {
-            //float fCurrentPositionY = Wall1.transform.position.y; // Get current position
-
-            //float fNewPositionY = fCurrentPositionY - (fHeight * 2); // Calculate new position based on wall height
-
-            Wall1.transform.Translate(0.0f, -fHeight, 0.0f); // Move wall to new position
+            ParalaxWalls(MidWalls, MidSpeed);
+            ParalaxWalls(BackWalls, BackSpeed);
         }
+        RepositionWalls(FrontWalls);
+        RepositionWalls(MidWalls);
+        RepositionWalls(BackWalls);
 
-        // Wall 2 teleporting
-        if (transform.position.y <= (Wall2.transform.position.y - (fHeight/2)))
+    }
+
+    void RepositionWalls(GameObject[] walls)
+    {
+        foreach (GameObject wall in walls)
         {
-            //float fCurrentPositionY = Wall2.transform.position.y;
-
-            //float fNewPositionY = fCurrentPositionY - (fWallHeight) * 2;
-
-            Wall2.transform.Translate(0.0f, -fHeight, 0.0f);
+            if (transform.position.y <= (wall.transform.position.y - (fHeight / 2)))
+            {
+                wall.transform.Translate(0.0f, -fHeight, 0.0f); // Move wall to new position
+            }
         }
+    }
 
-        // Wall 3 teleporting
-        if (transform.position.y <= (Wall3.transform.position.y - (fHeight / 2)))
+    void ParalaxWalls(GameObject[] walls, float speed)
+    {
+        foreach (GameObject wall in walls)
         {
-            //float fCurrentPositionY = Wall2.transform.position.y;
-
-            //float fNewPositionY = fCurrentPositionY - (fWallHeight) * 2;
-
-            Wall3.transform.Translate(0.0f, -fHeight, 0.0f);
-        }
-
-        // Wall 2 teleporting
-        if (transform.position.y <= (Wall4.transform.position.y - (fHeight / 2)))
-        {
-            //float fCurrentPositionY = Wall2.transform.position.y;
-
-            //float fNewPositionY = fCurrentPositionY - (fWallHeight) * 2;
-
-            Wall4.transform.Translate(0.0f, -fHeight, 0.0f);
+            float moveUp = wall.transform.position.y + (speed * Time.deltaTime);
+            float z = wall.transform.position.z;
+            wall.transform.position = new Vector3(0.0f, moveUp, z);
         }
     }
 }
