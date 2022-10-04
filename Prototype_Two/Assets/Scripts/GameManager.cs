@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Godmode")]
+    public bool godMode;
+
     [Header("DarknessOverTime")]
     public float darknessStartingDepth = -50.0f; // Minimum depth before scene starts going dark
     public float darknessChangeSpeed = 2.0f; // Amount of time before a change in scene color towards black
@@ -14,11 +17,12 @@ public class GameManager : MonoBehaviour
     public GameObject sceneCentreObject;
     public GameObject Player1;
     public GameObject Player2;
+    public GameObject oxygenTankUI;
 
     // Start is called before the first frame update
     void Start()
     {
-      
+
     }
 
     // Update is called once per frame
@@ -32,6 +36,11 @@ public class GameManager : MonoBehaviour
 
             player1Light.gameObject.SetActive(true);
             player2Light.gameObject.SetActive(true);
+        }
+
+        if (godMode)
+        {
+            oxygenTankUI.GetComponent<OxygenTankValue>().GodMode();
         }
     }
 }
