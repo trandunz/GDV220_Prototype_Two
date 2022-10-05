@@ -9,10 +9,10 @@ public class SpawnManager : MonoBehaviour
 
     [Header("Main Cam for depth")]
     [SerializeField] GameObject Main_Camera;
-   
+
     [Header("Current Depth")]
     [SerializeField] float Depth;
-   
+
     [Header("Axis offsets")]
     [SerializeField] float ZOffset;
     [SerializeField] float YOffset;
@@ -65,6 +65,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject AnglerPrefab;
     [SerializeField] float AnglerSpawnRate = 14.0f;
 
+    [Header("Giant Squid")]
+    [SerializeField] GameObject GiantSquidPrefab;
+    [SerializeField] float GiantSquidSpawnRate = 14.0f;
+
     CameraMovement CameraMovement;
 
     public SpawnableObject SeaUrchin;
@@ -79,14 +83,16 @@ public class SpawnManager : MonoBehaviour
     public SpawnableObject Coral;
     public SpawnableObject Squid;
     public SpawnableObject Angler;
+    public SpawnableObject GiantSquid;
 
-    public struct SpawnableObject{
+    public struct SpawnableObject
+    {
         public GameObject Object;
         public float DepthCounter;
         public float SpawnRate;
         public Vector3 SpawnPoint;
         public float Offset;
-        };
+    };
 
     private void Start()
     {
@@ -138,13 +144,20 @@ public class SpawnManager : MonoBehaviour
         Coral.DepthCounter = 0.0f;
         Coral.SpawnRate = CoralSpawnRate;
 
+        // Initialize Squid
         Squid.Object = SquidPrefab;
         Squid.DepthCounter = 0.0f;
         Squid.SpawnRate = SquidSpawnRate;
 
+        // Initialize Angler
         Angler.Object = AnglerPrefab;
         Angler.DepthCounter = 0.0f;
         Angler.SpawnRate = AnglerSpawnRate;
+
+        // Initialize Giant Squid
+        GiantSquid.Object = GiantSquidPrefab;
+        GiantSquid.DepthCounter = 5.0f;
+        GiantSquid.SpawnRate = GiantSquidSpawnRate;
     }
     private void Update()
     {
@@ -211,6 +224,37 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnCoral(cameraPosition);
         }
+
+        if ((-Depth) >= GiantSquid.DepthCounter)
+        {
+            SpawnGiantSquid(cameraPosition);
+        }
+    }
+
+    void SpawnGiantSquid(Vector3 camPos)
+    {
+        bool spawnLeft = false;
+        float rotationZ = Random.Range(-30.0f, 30.0f); ;
+        Vector3 spawnPos;
+
+        Quaternion rotation = Quaternion.Euler(0, 0, rotationZ);
+
+        if (rotationZ > 0.0f && rotationZ < 180)
+            spawnLeft = false;
+        else
+            spawnLeft = true;
+
+        if (spawnLeft)
+            spawnPos.x = Random.Range(-5.5f, 0.0f);
+        else
+            spawnPos.x = Random.Range(0.0f, 5.5f);
+        spawnPos.z = 6;
+        spawnPos.y = camPos.y - 5;
+
+        GiantSquid.SpawnPoint = spawnPos;
+        GiantSquid.DepthCounter = -Depth + GiantSquid.SpawnRate;
+
+        Destroy(Instantiate(GiantSquid.Object, GiantSquid.SpawnPoint, rotation), 60);
     }
 
     void SpawnAngler(Vector3 camPos)
@@ -245,7 +289,7 @@ public class SpawnManager : MonoBehaviour
         Destroy(Instantiate(SeaMine.Object, SeaMine.SpawnPoint, Quaternion.identity), ObjectLifeTime);
         SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
     }
-    
+
     void SpawnSquid(Vector3 camPos)
     {
         Squid.Offset = Random.Range(-6.5f, 6.5f);
@@ -254,7 +298,7 @@ public class SpawnManager : MonoBehaviour
         SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
         Squid.DepthCounter = -Depth + Squid.SpawnRate;
     }
-    
+
     void SpawnBubble(Vector3 camPos)
     {
         OxygenBubble.Offset = Random.Range(-6.5f, 6.5f);
