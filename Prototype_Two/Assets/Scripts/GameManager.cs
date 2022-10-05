@@ -42,5 +42,15 @@ public class GameManager : MonoBehaviour
         {
             oxygenTankUI.GetComponent<OxygenTankValue>().GodMode();
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                oxygenTankUI.GetComponent<OxygenTankValue>().AddOxygem();
+            }
+
+            oxygenTankUI.GetComponent<OxygenTankValue>().DamageOxygenUse();
+        }
     }
 }
