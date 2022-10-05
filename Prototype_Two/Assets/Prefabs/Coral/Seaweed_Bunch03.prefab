@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3264544357188213624, guid: 414ecada66f7e7342bbb659d2d1fa20c, type: 3}
+  - {fileID: 2100000, guid: b4fcb98cf9e5aaa41ac5c3f491ef5803, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3264544357188213624, guid: 414ecada66f7e7342bbb659d2d1fa20c, type: 3}
+  - {fileID: 2100000, guid: b4fcb98cf9e5aaa41ac5c3f491ef5803, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -227,7 +227,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3264544357188213624, guid: 414ecada66f7e7342bbb659d2d1fa20c, type: 3}
+  - {fileID: 2100000, guid: b4fcb98cf9e5aaa41ac5c3f491ef5803, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -310,7 +310,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3264544357188213624, guid: 414ecada66f7e7342bbb659d2d1fa20c, type: 3}
+  - {fileID: 2100000, guid: b4fcb98cf9e5aaa41ac5c3f491ef5803, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -393,7 +393,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3264544357188213624, guid: 414ecada66f7e7342bbb659d2d1fa20c, type: 3}
+  - {fileID: 2100000, guid: b4fcb98cf9e5aaa41ac5c3f491ef5803, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -424,9 +424,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8274319530556182524}
+  - component: {fileID: 4134208952961404642}
   m_Layer: 0
   m_Name: Seaweed_Bunch03
-  m_TagString: Untagged
+  m_TagString: SeaWeed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -438,9 +439,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8763892082618176838}
-  m_LocalRotation: {x: -0.3535534, y: 0.3535534, z: -0.61237246, w: 0.61237246}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.379058, y: -153.02599, z: -4}
+  m_LocalScale: {x: 0.30308676, y: 0.30308676, z: 0.30308676}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8846158158407177364}
@@ -451,3 +452,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 60, z: -90}
+--- !u!114 &4134208952961404642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8763892082618176838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e969fca0e1ee5f048b629091aee22751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SeaWeeds:
+  - {fileID: 5536420326383918349}
+  - {fileID: 3613377139595248904}
+  - {fileID: 4930152599620497867}
+  - {fileID: 3440912324784575734}
+  - {fileID: 2487768289376348507}
+  Frequencies: []
+  Amplitudes: []
+  OriginalPos: []
