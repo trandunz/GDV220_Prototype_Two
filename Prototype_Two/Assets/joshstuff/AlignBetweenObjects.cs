@@ -5,7 +5,7 @@ using UnityEngine;
 public class AlignBetweenObjects : MonoBehaviour
 {
     [SerializeField] GameObject object1;
-    [SerializeField] GameObject object2;
+    [SerializeField] GameObject point;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,13 @@ public class AlignBetweenObjects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(object1.transform);
+        if (object1 != null)
+        {
+            transform.LookAt(object1.transform);
+        }
+        else
+        {
+            transform.LookAt(object1.transform);
+        }
     }
 }
