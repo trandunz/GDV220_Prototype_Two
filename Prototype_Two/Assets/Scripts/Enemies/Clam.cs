@@ -5,6 +5,7 @@ using UnityEngine;
 public class Clam : MonoBehaviour
 {
     [SerializeField] ParticleSystem m_SuctionParticle;
+    [SerializeField] ParticleSystem m_LinesParticle;
 
     [Header("Suction Settings")]
     [SerializeField] float m_SuctionStrength = 100.0f;

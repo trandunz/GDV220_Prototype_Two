@@ -176,7 +176,11 @@ public class SpawnManager : MonoBehaviour
         }
         if ((-Depth) >= Oxygem.DepthCounter)
         {
-            SpawnOxygem(cameraPosition);
+            int randomNum = Random.Range(0, 6);
+            if (randomNum > 0)
+                SpawnOxygem(cameraPosition);
+            else if (CameraMovement.lightingLevel <= 1)
+                SpawnAngler(cameraPosition);
         }
 
         // Spawn either SeaUrchin or Eel
@@ -216,8 +220,6 @@ public class SpawnManager : MonoBehaviour
                 SpawnSeaMine(cameraPosition);
             else if (random == 1)
                 SpawnSquid(cameraPosition);
-            else if (CameraMovement.lightingLevel <= 1)
-                SpawnAngler(cameraPosition);
         }
 
         if ((-Depth) >= Coral.DepthCounter)
@@ -262,6 +264,7 @@ public class SpawnManager : MonoBehaviour
         SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
         Squid.DepthCounter = -Depth + Squid.SpawnRate;
         Angler.DepthCounter = -Depth + Angler.SpawnRate;
+        Oxygem.DepthCounter = -Depth + Oxygem.SpawnRate;
         Angler.Offset = Random.Range(-5.5f, 5.5f);
 
         Quaternion rotation;
