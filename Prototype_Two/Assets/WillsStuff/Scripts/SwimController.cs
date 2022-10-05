@@ -21,7 +21,6 @@ public class SwimController : MonoBehaviour
     float MoveSpeed = 0.0f;
     float SlowTimer = 0.0f;
     [SerializeField] float SlowTime = 0.2f;
-    [SerializeField] float LeeWay = 0.2f;
 
     [Header("Player Settings")]
     [SerializeField] bool PlayerOne = false;
@@ -193,16 +192,7 @@ public class SwimController : MonoBehaviour
         float totalTetherLength = otherPlayer.Tether.CompleteLength + tetherLength;
         int minTetherLength = cord.MinChainLength;
 
-        if (DistanceFromOrigin > tetherLength + LeeWay)
-        {
-            CanMove = false;
-        }
-        else
-        {
-            CanMove = true;
-        }
-
-        if (DistanceFromOrigin >= tetherLength)
+        if (DistanceFromOrigin >= tetherLength - DynamicJointLength.reduction)
         {
             if (GetInput().magnitude == 0)
             {
@@ -214,7 +204,7 @@ public class SwimController : MonoBehaviour
                 {
                     if (otherPlayer?.Tether.Bones.Length > minTetherLength)
                     {
-                        if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength + 1.0f)
+                        if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength - DynamicJointLength.reduction)
                         {
                             ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * MoveSpeed * 3.0f);
                         }
@@ -233,7 +223,7 @@ public class SwimController : MonoBehaviour
                 {
                     if (otherPlayer?.Tether.Bones.Length > minTetherLength)
                     {
-                        if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength + 1.0f)
+                        if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength - DynamicJointLength.reduction)
                         {
                             ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * MoveSpeed * 3.0f);
                         }
@@ -412,10 +402,7 @@ public class SwimController : MonoBehaviour
     
     void Movement()
     {
-        if (CanMove)
-        {
-            ApplyForce(GetInput() * MoveSpeed);
-        }
+        ApplyForce(GetInput() * MoveSpeed);
     }
     
     void Boost()
