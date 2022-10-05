@@ -39,4 +39,11 @@ public class AnglerFish : MonoBehaviour
             other.GetComponent<SwimController>().HitEnemy();
         }
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag is "Player")
+        {
+            other.GetComponent<SwimController>().StartInvulnrability();
+        }
+    }
 }

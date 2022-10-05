@@ -11,12 +11,11 @@ public class SeaUrchin : MonoBehaviour
             other.GetComponent<SwimController>().HitEnemy();
         }
     }
-
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag is "Player")
         {
-            other.GetComponent<SwimController>().LeaveEnemy();
+            other.GetComponent<SwimController>().StartInvulnrability();
         }
     }
 }
