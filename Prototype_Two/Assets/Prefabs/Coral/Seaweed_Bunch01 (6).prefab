@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4452355309906506615
+--- !u!1 &171447418141985334
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,136 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2801462505429702922}
-  - component: {fileID: 7223000746300108520}
-  - component: {fileID: 8136969847014950485}
+  - component: {fileID: 660562569092829324}
+  - component: {fileID: -6455085000613197040}
   m_Layer: 0
-  m_Name: Seaweed_Base12
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2801462505429702922
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4452355309906506615}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.15903889, y: 0, z: -0.018050343}
-  m_LocalScale: {x: 0.83, y: 0.83, z: 0.83}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5241473805835282966}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7223000746300108520
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4452355309906506615}
-  m_Mesh: {fileID: -271416530630659781, guid: ae1bc3c65915fea4fb1a1768245ca169, type: 3}
---- !u!23 &8136969847014950485
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4452355309906506615}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: b4ea7bbf543508b43987d4abf09001a2, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &4897282013891129516
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5241473805835282966}
-  - component: {fileID: 2361556955527089812}
-  m_Layer: 0
-  m_Name: Seaweed_Bunch02
+  m_Name: Seaweed_Bunch01 (6)
   m_TagString: SeaWeed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5241473805835282966
+--- !u!4 &660562569092829324
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4897282013891129516}
+  m_GameObject: {fileID: 171447418141985334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.318627, y: -162.83398, z: -4}
-  m_LocalScale: {x: 0.49828094, y: 0.49828094, z: 0.49828094}
+  m_LocalPosition: {x: -8.33744, y: -159.9343, z: -4}
+  m_LocalScale: {x: 0.32136092, y: 0.32136092, z: 0.32136092}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2801462505429702922}
-  - {fileID: 458107214781020238}
-  - {fileID: 4796521305822834329}
+  - {fileID: 1589405242818105151}
+  - {fileID: 3374495598934030888}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2361556955527089812
+--- !u!114 &-6455085000613197040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4897282013891129516}
+  m_GameObject: {fileID: 171447418141985334}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e969fca0e1ee5f048b629091aee22751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SeaWeeds:
-  - {fileID: 4452355309906506615}
-  - {fileID: 5782938585053926687}
-  - {fileID: 5014502149274375353}
+  - {fileID: 4881459682468127563}
+  - {fileID: 4128310301042260513}
   Frequencies: []
   Amplitudes: []
   OriginalPos: []
---- !u!1 &5014502149274375353
+--- !u!1 &4128310301042260513
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,46 +60,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4796521305822834329}
-  - component: {fileID: 7953329654817555154}
-  - component: {fileID: 5090321229809660320}
+  - component: {fileID: 3374495598934030888}
+  - component: {fileID: 7405461701729581476}
+  - component: {fileID: 2172776903515091221}
   m_Layer: 0
-  m_Name: Seaweed_Base15
+  m_Name: Seaweed_Base14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4796521305822834329
+--- !u!4 &3374495598934030888
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5014502149274375353}
+  m_GameObject: {fileID: 4128310301042260513}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.036817808, y: 0, z: 0.04165952}
+  m_LocalPosition: {x: -0.14396206, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5241473805835282966}
-  m_RootOrder: 2
+  m_Father: {fileID: 660562569092829324}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7953329654817555154
+--- !u!33 &7405461701729581476
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5014502149274375353}
-  m_Mesh: {fileID: -4686794785575241341, guid: ae1bc3c65915fea4fb1a1768245ca169, type: 3}
---- !u!23 &5090321229809660320
+  m_GameObject: {fileID: 4128310301042260513}
+  m_Mesh: {fileID: 8857670510910926975, guid: c7fe6c231cb87a94f867f136fcc7b014, type: 3}
+--- !u!23 &2172776903515091221
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5014502149274375353}
+  m_GameObject: {fileID: 4128310301042260513}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -198,7 +113,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b4ea7bbf543508b43987d4abf09001a2, type: 2}
+  - {fileID: 2100000, guid: b4fcb98cf9e5aaa41ac5c3f491ef5803, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -220,7 +135,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &5782938585053926687
+--- !u!1 &4881459682468127563
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,46 +143,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 458107214781020238}
-  - component: {fileID: 5665428078538704561}
-  - component: {fileID: 1244511056838675522}
+  - component: {fileID: 1589405242818105151}
+  - component: {fileID: 4346316280326648274}
+  - component: {fileID: 2271098220461222343}
   m_Layer: 0
-  m_Name: Seaweed_Base13
+  m_Name: Seaweed_Base11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &458107214781020238
+--- !u!4 &1589405242818105151
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5782938585053926687}
+  m_GameObject: {fileID: 4881459682468127563}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.15985732, y: 0, z: 0.014832372}
+  m_LocalPosition: {x: 0.10629514, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5241473805835282966}
-  m_RootOrder: 1
+  m_Father: {fileID: 660562569092829324}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5665428078538704561
+--- !u!33 &4346316280326648274
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5782938585053926687}
-  m_Mesh: {fileID: 168071370840664458, guid: ae1bc3c65915fea4fb1a1768245ca169, type: 3}
---- !u!23 &1244511056838675522
+  m_GameObject: {fileID: 4881459682468127563}
+  m_Mesh: {fileID: 2193583851045564713, guid: c7fe6c231cb87a94f867f136fcc7b014, type: 3}
+--- !u!23 &2271098220461222343
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5782938585053926687}
+  m_GameObject: {fileID: 4881459682468127563}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -281,7 +196,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b4ea7bbf543508b43987d4abf09001a2, type: 2}
+  - {fileID: 2100000, guid: b4fcb98cf9e5aaa41ac5c3f491ef5803, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

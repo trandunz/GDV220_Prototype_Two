@@ -16,6 +16,9 @@ TagManager:
   - AnglerFish
   - GameManager
   - ForegroundObject
+  - SeaWeed
+  - Coral
+  - StarFish
   layers:
   - Default
   - TransparentFX
