@@ -25,11 +25,12 @@ public class SwimController : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField] bool PlayerOne = false;
     [SerializeField] GameObject MeshObject;
+    [SerializeField] float m_InvulnrabilityTime = 0.4f;
     bool CanMove = true;
     bool IsBoosting = false;
     bool IsOnLeftSize = false;
     bool IsInvulnrable = false;
-    bool IsComingOutOfInvulnrable = false;
+    float m_InvulnrabilityTimer;
 
     [Header("GUI Settings")]
     BubbleBuffPanel BubbleBuffUI;
@@ -155,6 +156,11 @@ public class SwimController : MonoBehaviour
         {
             MoveSpeed = SwimSpeed;
         }
+
+        if (m_InvulnrabilityTimer > 0)
+            m_InvulnrabilityTimer -= Time.deltaTime;
+        if (IsInvulnrable && m_InvulnrabilityTimer <= 0)
+            RemoveInvulnrability();
 
         RotateToVelocity();
 
@@ -467,31 +473,19 @@ public class SwimController : MonoBehaviour
         {
             Debug.Log("Player Got Hit!");
 
-            IsInvulnrable = true;
-
             Destroy(Instantiate(Bubbles, BubblesPosition.position, BubblesRotation, gameObject.transform), 5.0f);
             Destroy(Instantiate(audioHurt), 2.0f);
             oxygenTank.DamageOxygenUse();
-            StartCoroutine(StartInvulnrability());
+            StartInvulnrability();
             shake.CamShake();
         }
-
-        IsComingOutOfInvulnrable = false;
     }
+
 
     public void BubbleShieldHit()
     {
-        IsInvulnrable = true;
-        IsComingOutOfInvulnrable = false;
+        StartInvulnrability();
         IsUsingBubbleBuff = false;
-    }
-
-    public void LeaveEnemy()
-    {
-        if (IsInvulnrable && !IsComingOutOfInvulnrable)
-        {
-            StartCoroutine(RemoveInvulnrability());
-        }
     }
     
     public void PickupBubbleBuff(BubbleBuff.BUFFTYPE _bubbleBuff)
@@ -515,46 +509,17 @@ public class SwimController : MonoBehaviour
             BubbleBuffUI.P2UI.SetTimerImageFill(_fillAmount);
     }
 
-    IEnumerator StartInvulnrability()
+    public void StartInvulnrability()
     {
         IsInvulnrable = true;
-        IsComingOutOfInvulnrable = false;
-        float FlashSpeed = 0.25f;
-        float FlashTimer = FlashSpeed;
-        Material originalMaterial = Mesh.material;
-        Material redMat = Mesh.material;
-        redMat.color = Color.red;
-        while (IsInvulnrable)
-        {
-            FlashTimer -= Time.deltaTime;
-            if (FlashTimer <= 0)
-            {
-                FlashTimer = FlashSpeed;
-                if (Mesh.material == originalMaterial)
-                {
-                    Mesh.material = redMat;
-                }
-                else
-                {
-                    Mesh.material = originalMaterial;
-                }
-            }
-
-            yield return new WaitForEndOfFrame();
-        }
-        Mesh.material = originalMaterial;
+        m_InvulnrabilityTimer = m_InvulnrabilityTime;
     }
 
-    IEnumerator RemoveInvulnrability()
+    void RemoveInvulnrability()
     {
-        IsComingOutOfInvulnrable = true;
-        yield return new WaitForSeconds(0.4f);
-        if (IsComingOutOfInvulnrable == true)
-        {
-            IsInvulnrable = false;
-            Debug.Log("Player Ready for more.");
-            IsComingOutOfInvulnrable = false;
-        }  
+        IsInvulnrable = false;
+
+        Debug.Log("Player Ready for more.");
     }
 
     Vector3 GetInput()
