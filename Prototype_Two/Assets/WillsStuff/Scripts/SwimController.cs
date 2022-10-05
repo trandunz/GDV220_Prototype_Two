@@ -75,7 +75,7 @@ public class SwimController : MonoBehaviour
 
     [Header("Particles")]
     // screen shake
-    private Shake shake;
+    private ScreenShake shake;
 
     // bubbles
     public GameObject Bubbles;
@@ -124,7 +124,7 @@ public class SwimController : MonoBehaviour
         }
 
         // screen shake
-        shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
+        shake = GameObject.FindObjectOfType<ScreenShake>();
 
         BubblesRotation = BubblesPosition.rotation;
 
@@ -477,7 +477,7 @@ public class SwimController : MonoBehaviour
             Destroy(Instantiate(audioHurt), 2.0f);
             oxygenTank.DamageOxygenUse();
             StartInvulnrability();
-            shake.CamShake();
+            shake.StartShake(0.75f);
         }
     }
 

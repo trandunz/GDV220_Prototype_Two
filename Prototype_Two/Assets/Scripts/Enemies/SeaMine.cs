@@ -11,17 +11,21 @@ public class SeaMine : MonoBehaviour
     [SerializeField] float m_HorizontalBobSpeed = 5.0f;
     [SerializeField] float m_HorizontalBobAmp = 1.0f;
 
-    [Header ("Explosion Settings")]
+    [Header("Explosion Settings")]
+    [SerializeField] float m_ScreenShakeAmount = 5.0f;
+    [SerializeField] float m_ScreenShakeTime = 2.0f;
     [SerializeField] float m_ExplosionForce = 10.0f;
     [SerializeField] float m_ExplosionRadius = 2.0f;
     [SerializeField] float m_ExplodeTime = 0.3f;
     bool m_Activated = false;
 
+    ScreenShake shake;
     Vector3 m_StartPos;
     Quaternion m_StartRotation;
 
     private void Start()
     {
+        shake = FindObjectOfType<ScreenShake>();
         transform.rotation = Quaternion.Euler((float)Random.Range(0, 90), (float)Random.Range(0, 90), (float)Random.Range(0, 90));
         m_StartRotation = transform.rotation;
         m_StartPos = transform.position;
@@ -56,6 +60,8 @@ public class SeaMine : MonoBehaviour
                 player.HitEnemy();
             }
         }
+
+        shake.StartShake(m_ScreenShakeAmount, m_ScreenShakeTime);
 
         Destroy(gameObject);
     }

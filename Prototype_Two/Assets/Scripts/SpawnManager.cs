@@ -196,15 +196,15 @@ public class SpawnManager : MonoBehaviour
 
         if ((-Depth) >= SeaMine.DepthCounter)
         {
-            SpawnAngler(cameraPosition);
+            //SpawnAngler(cameraPosition);
 
-            //int random = Random.Range(0, 3);
-            //if (random == 0)
-            //    SpawnSeaMine(cameraPosition);
-            //else if (random == 1)
-            //    SpawnSquid(cameraPosition);
-            //else if (CameraMovement.lightingLevel <= 1)
-            //    SpawnAngler(cameraPosition);
+            int random = Random.Range(0, 3);
+            if (random == 0)
+                SpawnSeaMine(cameraPosition);
+            else if (random == 1)
+                SpawnSquid(cameraPosition);
+            else if (CameraMovement.lightingLevel <= 1)
+                SpawnAngler(cameraPosition);
         }
 
         if ((-Depth) >= Coral.DepthCounter)
