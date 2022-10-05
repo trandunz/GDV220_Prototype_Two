@@ -289,7 +289,7 @@ public class SpawnManager : MonoBehaviour
     {
         SeaMine.Offset = Random.Range(-6.5f, 6.5f);
         SeaMine.SpawnPoint = new Vector3(camPos.x + SeaMine.Offset, camPos.y, camPos.z);
-        Destroy(Instantiate(SeaMine.Object, SeaMine.SpawnPoint, Quaternion.identity), ObjectLifeTime);
+        Destroy(Instantiate(SeaMine.Object, SeaMine.SpawnPoint, Quaternion.identity), ObjectLifeTime * 2);
         SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
     }
 
