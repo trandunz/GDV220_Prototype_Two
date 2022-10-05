@@ -9,27 +9,27 @@ public class DynamicJointLength : MonoBehaviour
 
     [SerializeField] ConfigurableJoint player1Joint;
     [SerializeField] ConfigurableJoint player2Joint;
-    [SerializeField] float reduction = 0.5f;
+    public static float reduction = 0.2f;
     // Start is called before the first frame update
     void Start()
     {
         SoftJointLimit limit1 = new SoftJointLimit();
-        limit1.limit = player1.CompleteLength;
+        limit1.limit = player1.CompleteLength - reduction;
         player1Joint.linearLimit = limit1;
 
         SoftJointLimit limit2 = new SoftJointLimit();
-        limit2.limit = player2.CompleteLength;
+        limit2.limit = player2.CompleteLength - reduction;
         player2Joint.linearLimit = limit2;
     }
 
     private void FixedUpdate()
     {
         SoftJointLimit limit1 = new SoftJointLimit();
-        limit1.limit = player1.CompleteLength;
+        limit1.limit = player1.CompleteLength - reduction;
         player1Joint.linearLimit = limit1;
 
         SoftJointLimit limit2 = new SoftJointLimit();
-        limit2.limit = player2.CompleteLength;
+        limit2.limit = player2.CompleteLength - reduction;
         player2Joint.linearLimit = limit2;
     }
 }
