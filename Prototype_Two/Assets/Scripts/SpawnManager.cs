@@ -186,7 +186,7 @@ public class SpawnManager : MonoBehaviour
         // Spawn either SeaUrchin or Eel
         if ((-Depth) >= SeaUrchin.DepthCounter)
         {
-            int random = Random.Range(0, 3);
+            /*int random = Random.Range(0, 3);
             if (random <= 0)
             {
                 SpawnBubbleBuff(cameraPosition);
@@ -198,7 +198,8 @@ public class SpawnManager : MonoBehaviour
             else
             {
                 SpawnEel(cameraPosition);
-            }
+            }*/
+            SpawnEel(cameraPosition);
         }
 
         if ((-Depth) >= SchoolOfFish.DepthCounter)
@@ -410,12 +411,36 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnEel(Vector3 camPos)
     {
-        Eel.Offset = -8.5f;
+        int randomnum = Random.Range(0, 2);
+        Quaternion rot = Quaternion.Euler(new Vector3(0, 0, 0));
+        if (randomnum == 1)
+        {
+            Eel.Offset = 9.0f;
+            rot = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
+        else
+        {
+            rot = Quaternion.Euler(new Vector3(0, 180, 0));
+            Eel.Offset = -9.0f;
+        }
+       
         Eel.SpawnPoint = new Vector3(camPos.x + Eel.Offset, camPos.y, camPos.z);
-        Destroy(Instantiate(Eel.Object, Eel.SpawnPoint, Quaternion.identity), ObjectLifeTime);
+        var eel = Instantiate(Eel.Object, Eel.SpawnPoint, rot);
+
+        if (randomnum == 1)
+        {
+            eel.GetComponent<Eel>().SetDirection(false);
+        }
+        else
+        {
+            eel.GetComponent<Eel>().SetDirection(true);
+        }
+
+        eel.GetComponent<Eel>().Peek();
+        Destroy(eel, ObjectLifeTime);
 
         // Setting SeaUrchin and Eel depth counter because they are together
-        SeaUrchin.DepthCounter = -Depth + Eel.SpawnRate;
+        SeaUrchin.DepthCounter = -Depth + SeaUrchin.SpawnRate;
         Eel.DepthCounter = -Depth + Eel.SpawnRate;
     }
 
