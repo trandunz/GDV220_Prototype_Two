@@ -55,7 +55,8 @@ public class SpawnManager : MonoBehaviour
 
     [Header("Coral")]
     [SerializeField] GameObject[] CoralPrefabs;
-    [SerializeField] float CoralSpawnRate = 2.0f;
+    [SerializeField] float CoralSpawnRate = 3.0f;
+    private GameObject CachedLastCoralSpawned;
 
     [Header("Squid")]
     [SerializeField] GameObject SquidPrefab;
@@ -207,6 +208,12 @@ public class SpawnManager : MonoBehaviour
 
         if ((-Depth) >= Coral.DepthCounter)
         {
+            // Leftside
+            Coral.Offset = -8.0f;
+            SpawnCoral(cameraPosition);
+
+            // Rightside
+            Coral.Offset = 8.0f;
             SpawnCoral(cameraPosition);
         }
     }
@@ -376,49 +383,109 @@ public class SpawnManager : MonoBehaviour
         // create variables
         Quaternion rot = Quaternion.identity;
         float x, y, z;
+        int coralIndex;
 
-        // Left side
-        int coralIndex = Random.Range(0, CoralPrefabs.Length - 1);
+        // First make sure its not spawning the same thing 
+        // twice in a row
+        coralIndex = Random.Range(0, CoralPrefabs.Length - 1);
         Coral.Object = CoralPrefabs[coralIndex];
-        if (coralIndex >= 5)
+
+        // Get rid of duplicate spawns
+       // if (Coral.Object != CachedLastCoralSpawned)
+       // {
+       //     coralIndex = ((CoralPrefabs.Length - 1) - coralIndex);
+       //     Coral.Object = CoralPrefabs[coralIndex];
+       // }
+       //   CachedLastCoralSpawned = Coral.Object;
+
+        // rotation
+        if (coralIndex >= 5) // Starfish
         {
             x = 0.0f;
             y = 0.0f;
             z = Random.Range(0.0f, 360.0f);
         }
-        else
+        else // Not starfish (sea weed, coral, etc)
         {
-            y = 60.0f;
-            z = -90.0f;
+            if (Coral.Offset < 0.0f)
+            {
+                y = 60.0f;
+                z = -90.0f;
+            }
+            else
+            {
+                y = -60.0f;
+                z = 90.0f;
+            }
             float randomX = Random.Range(0.0f, 360.0f);
             x = randomX;
         }
         rot.eulerAngles = new Vector3(x, y, z);
-        Coral.Offset = -8.0f;
-        Coral.SpawnPoint = new Vector3(camPos.x + Coral.Offset, camPos.y, -4.0f);
-        Destroy(Instantiate(Coral.Object, Coral.SpawnPoint, rot), ObjectLifeTime);
+
+        // position
+        x = Random.Range(-0.5f, 0.5f);
+        y = Random.Range(0.0f, 2.0f);
+        Coral.SpawnPoint = new Vector3(camPos.x + Coral.Offset + x, camPos.y + y, -4.0f);
+
+        // scale
+        x = Random.Range(0.3f, 0.5f);
+
+        Transform transform = Coral.Object.transform;
+        //= new Transform()//(Coral.SpawnPoint, rot.eulerAngles, Coral.SpawnPoint);
+        transform.position = Coral.SpawnPoint;
+        transform.rotation = rot;
+        transform.localScale = new Vector3(x, x, x);
+        Destroy(Instantiate(Coral.Object, transform), ObjectLifeTime);// Coral.SpawnPoint, rot), ObjectLifeTime);
         Coral.DepthCounter = -Depth + Coral.SpawnRate;
 
-        // Right side
-        coralIndex = Random.Range(0, CoralPrefabs.Length - 1);
-        Coral.Object = CoralPrefabs[coralIndex];
-        if (coralIndex >= 5)
-        {
-            x = 0.0f;
-            y = 0.0f;
-            z = Random.Range(0.0f, 360.0f); ;
-        }
-        else
-        {
-            y = -60.0f;
-            z = 90.0f;
-            float randomX = Random.Range(0.0f, 360.0f);
-            x = randomX;
-        }
-        rot.eulerAngles = new Vector3(x, y, z);
-        Coral.Offset = 8.0f;
-        Coral.SpawnPoint = new Vector3(camPos.x + Coral.Offset, camPos.y, -4.0f);
-        Destroy(Instantiate(Coral.Object, Coral.SpawnPoint, rot), ObjectLifeTime);
-        Coral.DepthCounter = -Depth + Coral.SpawnRate;
+
+
+        //// create variables
+        //Quaternion rot = Quaternion.identity;
+        //float x, y, z;
+
+        //// Left side
+        //int coralIndex = Random.Range(0, CoralPrefabs.Length - 1);
+        //Coral.Object = CoralPrefabs[coralIndex];
+        //if (coralIndex >= 5)
+        //{
+        //    x = 0.0f;
+        //    y = 0.0f;
+        //    z = Random.Range(0.0f, 360.0f);
+        //}
+        //else
+        //{
+        //    y = 60.0f;
+        //    z = -90.0f;
+        //    float randomX = Random.Range(0.0f, 360.0f);
+        //    x = randomX;
+        //}
+        //rot.eulerAngles = new Vector3(x, y, z);
+        //Coral.Offset = -8.0f;
+        //Coral.SpawnPoint = new Vector3(camPos.x + Coral.Offset, camPos.y, -4.0f);
+        //Destroy(Instantiate(Coral.Object, Coral.SpawnPoint, rot), ObjectLifeTime);
+        //Coral.DepthCounter = -Depth + Coral.SpawnRate;
+
+        //// Right side
+        //coralIndex = Random.Range(0, CoralPrefabs.Length - 1);
+        //Coral.Object = CoralPrefabs[coralIndex];
+        //if (coralIndex >= 5)
+        //{
+        //    x = 0.0f;
+        //    y = 0.0f;
+        //    z = Random.Range(0.0f, 360.0f); ;
+        //}
+        //else
+        //{
+        //    y = -60.0f;
+        //    z = 90.0f;
+        //    float randomX = Random.Range(0.0f, 360.0f);
+        //    x = randomX;
+        //}
+        //rot.eulerAngles = new Vector3(x, y, z);
+        //Coral.Offset = 8.0f;
+        //Coral.SpawnPoint = new Vector3(camPos.x + Coral.Offset, camPos.y, -4.0f);
+        //Destroy(Instantiate(Coral.Object, Coral.SpawnPoint, rot), ObjectLifeTime);
+        //Coral.DepthCounter = -Depth + Coral.SpawnRate;
     }
 }

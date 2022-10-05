@@ -2473,6 +2473,7 @@ MonoBehaviour:
   colorB: 0
   timerBackground: 0
   maxTimerBackground: 2
+  foregroundObjects: []
 --- !u!114 &337692182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12946,6 +12947,10 @@ PrefabInstance:
       propertyPath: OxygemPrefab
       value: 
       objectReference: {fileID: 2951123183173000976, guid: 68c43300fc88ab04b80dca0ba63aef8c, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: CoralSpawnRate
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: BubbleSpawnRate
       value: 14
