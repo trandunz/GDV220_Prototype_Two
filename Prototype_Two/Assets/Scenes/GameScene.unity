@@ -5067,8 +5067,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godMode: 1
-  darknessStartingDepth: -25
-  darknessChangeSpeed: 1
+  darknessStartingDepth: -1
+  darknessChangeSpeed: 0.1
   depthPlayerLightsOn: -50
   sceneCentreObject: {fileID: 337692178}
   Player1: {fileID: 1468342190}
@@ -12981,7 +12981,7 @@ PrefabInstance:
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: EelPrefab
       value: 
-      objectReference: {fileID: 5759047587418432666, guid: 8e47d5d9ab17c3347af73f42711b9b26, type: 3}
+      objectReference: {fileID: 5759047587418432666, guid: 68dd20d90f2a3c4499a2b810bafddfba, type: 3}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: ClamPrefab
       value: 
@@ -13006,6 +13006,10 @@ PrefabInstance:
       propertyPath: OxygemPrefab
       value: 
       objectReference: {fileID: 2951123183173000976, guid: 68c43300fc88ab04b80dca0ba63aef8c, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: SeaMinePrefab
+      value: 
+      objectReference: {fileID: 8655089736217919247, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: BubbleSpawnRate
       value: 14
