@@ -42,8 +42,7 @@ public class SeaWeedWobble : MonoBehaviour
         float x = Mathf.Sin(freq * Time.time) / amp + originalPos; 
         float y = Mathf.Sin(freq * Time.time) / (100.0f + amp) + originalPos; //seaweed.transform.localScale.y;
         float z = seaweed.transform.localScale.z;
-        Debug.Log(x);
-
+        
         seaweed.transform.localScale = new Vector3(x, y, z);
     }
 }

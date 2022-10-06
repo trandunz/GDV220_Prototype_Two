@@ -14,20 +14,26 @@ public class SwimController : MonoBehaviour
     [SerializeField] float SwimSpeed = 10.0f;
     [SerializeField] float SlowSpeed = 10.0f;
     [SerializeField] float DragForce = 2.0f;
-    [SerializeField] float BoostForce = 30.0f;
-    [SerializeField] float BoostCooldown = 1.0f;
     [SerializeField] float RotationSpeed = 1000.0f;
     [SerializeField] GameObject PointsPopup;
     float MoveSpeed = 0.0f;
     float SlowTimer = 0.0f;
     [SerializeField] float SlowTime = 0.2f;
 
+    [Header("Dash Settings")]
+    [SerializeField] float BoostForce = 30.0f;
+    [SerializeField] float BoostCooldown = 1.0f;
+    [SerializeField] float DashingTime;
+    [SerializeField] float PostDashBoost;
+    bool IsBoosting = false;
+    bool canDash = true;
+    float RemainingBoostTime;
+
     [Header("Player Settings")]
     [SerializeField] bool PlayerOne = false;
     [SerializeField] GameObject MeshObject;
     [SerializeField] float m_InvulnrabilityTime = 0.4f;
     bool CanMove = true;
-    bool IsBoosting = false;
     bool IsOnLeftSize = false;
     bool IsInvulnrable = false;
     float m_InvulnrabilityTimer;
@@ -174,6 +180,11 @@ public class SwimController : MonoBehaviour
             {
                 Boost();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.SHIELD;
         }
         
         HandleAnimations();
@@ -413,31 +424,53 @@ public class SwimController : MonoBehaviour
     
     void Boost()
     {
+   
         if (CanMove)
         {
            if (!IsBoosting)
-           {
+           {                
                 Destroy(Instantiate(audioDash), 2.0f);
                 StartCoroutine(BoostRoutine());
-                
-                Destroy(Instantiate(Bubbles, BubblesPosition.position, BubblesRotation, gameObject.transform),5.0f);
-
+                             
+                // Need to change this to a different thing as this is the same as getting hit
+                //Destroy(Instantiate(Bubbles, BubblesPosition.position, BubblesRotation, gameObject.transform),5.0f);
             }
         }
     }
 
     IEnumerator BoostRoutine()
-    {
+    { 
         oxygenTank.DashOxygenUse();
         float distance = Vector3.Distance(transform.position, Origin.position);
         float ikMaxDistance = Tether.CompleteLength;
-        if (distance < ikMaxDistance)
+        if (distance < ikMaxDistance && canDash)
         {
+            canDash = false;
             IsBoosting = true;
             Debug.Log("Boost! : " + (GetInput() * BoostForce).magnitude.ToString());
-            ApplyForce(GetInput() * BoostForce);
-            yield return new WaitForSeconds(BoostCooldown);
+            m_RigidBody.velocity = GetInput() * BoostForce; //ApplyForce(GetInput() * BoostForce); // Saved incase bens boost sucks
+
+            // Invulnerability for boost
+            IsInvulnrable = true;
+            m_InvulnrabilityTimer = DashingTime;
+
+            yield return new WaitForSeconds(DashingTime);
             IsBoosting = false;
+            m_RigidBody.velocity = new Vector3(); // Stops player
+            ApplyForce(GetInput() * MoveSpeed * PostDashBoost); // tries to match pre-boost speed
+
+            RemainingBoostTime = BoostCooldown;     
+            while (RemainingBoostTime >= 0.0f)
+            {
+                RemainingBoostTime -= Time.deltaTime;
+                SetBuffCooldownWidget(RemainingBoostTime / BoostCooldown);
+                Debug.Log(RemainingBoostTime);
+                yield return new WaitForEndOfFrame();
+            }
+
+            RemainingBoostTime = BoostCooldown;
+            SetBuffCooldownWidget(RemainingBoostTime / BoostCooldown);
+            canDash = true;
         }
         yield return null;
     }
@@ -531,7 +564,7 @@ public class SwimController : MonoBehaviour
         }
         if (Input.GetKey(Left) && CanMove)
         {
-            input.x--; ;
+            input.x--; 
         }
         if (Input.GetKey(Down) && CanMove)
         {

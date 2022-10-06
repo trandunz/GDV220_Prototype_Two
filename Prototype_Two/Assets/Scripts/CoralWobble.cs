@@ -42,7 +42,6 @@ public class CoralWobble : MonoBehaviour
         float x = Mathf.Sin(freq * Time.time) / amp + originalPos;
         float y = coral.transform.localScale.y;
         float z = Mathf.Sin(freq * Time.time) / (100.0f + amp) + originalPos; //coral.transform.localScale.z;
-        Debug.Log(x);
 
         coral.transform.localScale = new Vector3(x, y, z);
     }
