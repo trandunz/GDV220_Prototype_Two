@@ -178,7 +178,6 @@ public class OxygenTankValue : MonoBehaviour
         {
             transform.localScale = new Vector3(transform.localScale.x, 1.0f, transform.localScale.z); ;
         }
-        Debug.Log(transform.localScale.y);
     }
 
     private void Drown()

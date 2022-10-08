@@ -521,11 +521,14 @@ public class SpawnManager : MonoBehaviour
             x = Random.Range(0.4f, 0.6f);
         }
 
-        Transform transform = Coral.Object.transform;
-        transform.position = Coral.SpawnPoint;
-        transform.rotation = rot;
-        transform.localScale = new Vector3(x, x, x);
-        Destroy(Instantiate(Coral.Object, transform), ObjectLifeTime);
+        //Transform transform = Coral.Object.transform;
+        //transform.position = Coral.SpawnPoint;
+        //transform.rotation = rot;
+        //transform.localScale = new Vector3(x, x, x);
+        Coral.Object.transform.position = Coral.SpawnPoint;
+        Coral.Object.transform.rotation = rot;
+        Coral.Object.transform.localScale = new Vector3(x, x, x);
+        Destroy(Instantiate(Coral.Object), ObjectLifeTime);
         Coral.DepthCounter = -Depth + Coral.SpawnRate;
     }
 }

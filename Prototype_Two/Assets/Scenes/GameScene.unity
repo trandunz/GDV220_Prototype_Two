@@ -1604,7 +1604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8692736635721397233, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8692736635721397233, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5067,7 +5067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godMode: 1
-  darknessStartingDepth: -1
+  darknessStartingDepth: -1000
   darknessChangeSpeed: 0.1
   depthPlayerLightsOn: -50
   sceneCentreObject: {fileID: 337692178}
@@ -6606,7 +6606,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3ef59cc976bad3548846f329aaad41c1, type: 2}
     - target: {fileID: 936388251297128937, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 936388251297128937, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalScale.x
@@ -6690,12 +6690,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: BoostForce
-      value: 5000
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: DashingTime
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: audioBubble
       value: 
       objectReference: {fileID: 5853650569833435349, guid: 24da9784a928631429810f3b98e505ac, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: BoostCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: PostDashBoost
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3221341236529356751, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -11309,7 +11321,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 39afed881cec67c4db40c9ae836a5b5b, type: 2}
     - target: {fileID: 936388251297128937, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 936388251297128937, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11405,16 +11417,28 @@ PrefabInstance:
       objectReference: {fileID: 5935291059762974861, guid: 345c2c90990cfb24b8d0a51e75a53bd5, type: 3}
     - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: BoostForce
-      value: 5000
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: audioShoot
       value: 
       objectReference: {fileID: 122478365868764272, guid: 21211f532a82f23469f600299dfa6c6f, type: 3}
     - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: DashingTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: audioBubble
       value: 
       objectReference: {fileID: 5853650569833435349, guid: 24da9784a928631429810f3b98e505ac, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: BoostCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: PostDashBoost
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3221341236529356751, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -12923,7 +12947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3983445362405681533, guid: a90c22e3c35250f4fa75b9343b5e44e4, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3983445362405681533, guid: a90c22e3c35250f4fa75b9343b5e44e4, type: 3}
       propertyPath: m_LocalPosition.x
