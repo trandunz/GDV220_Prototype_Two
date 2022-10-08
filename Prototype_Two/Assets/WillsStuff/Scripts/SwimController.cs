@@ -92,6 +92,16 @@ public class SwimController : MonoBehaviour
     [SerializeField] float m_ParalyzeDuration;
     float m_ParalyzeTimer;
 
+    // Bens Spring
+    [Header("Spring")]
+    public GameObject SpringPrefab;
+    public GameObject ParticlePrefab;
+    public GameObject[] SpringConstraints;
+    public GameObject[] SpringParticles;
+    [SerializeField] int NumSpringParticles;
+    public GameObject Player1Cord; // to get cord position
+    public GameObject Player2Cord; // to get cord position
+
     void Start()
     {
         MoveSpeed = SwimSpeed;
@@ -152,6 +162,26 @@ public class SwimController : MonoBehaviour
             Right = (KeyCode.RightArrow);
             Dash = (KeyCode.V);
         }
+
+        SpringParticles = new GameObject[NumSpringParticles];
+        SpringConstraints = new GameObject[NumSpringParticles - 1];
+
+        int i = 0;
+        foreach (GameObject particle in SpringParticles)
+        {
+            SpringParticles[i] = Instantiate(ParticlePrefab);
+            i++;
+        }
+        i = 0;
+        foreach (GameObject spring in SpringConstraints)
+        {
+            SpringConstraints[i] = Instantiate(SpringPrefab);
+            SpringConstraints[i].GetComponent<Spring>().m_particle1 = SpringParticles[i].GetComponent<Particle>();
+            SpringConstraints[i].GetComponent<Spring>().m_particle2 = SpringParticles[i + 1].GetComponent<Particle>();
+            i++;
+        }
+
+
     }
 
     void Update()
@@ -200,6 +230,7 @@ public class SwimController : MonoBehaviour
         Drag();
         RestrictMovement();
         Movement();
+        UpdateSpring();
     }
 
     void RestrictMovement()
@@ -429,7 +460,6 @@ public class SwimController : MonoBehaviour
         {
            if (!IsBoosting)
            {                
-                Destroy(Instantiate(audioDash), 2.0f);
                 StartCoroutine(BoostRoutine());
                              
                 // Need to change this to a different thing as this is the same as getting hit
@@ -445,6 +475,9 @@ public class SwimController : MonoBehaviour
         float ikMaxDistance = Tether.CompleteLength;
         if (distance < ikMaxDistance && canDash)
         {
+            // audio
+            Destroy(Instantiate(audioDash), 2.0f);
+
             canDash = false;
             IsBoosting = true;
             Debug.Log("Boost! : " + (GetInput() * BoostForce).magnitude.ToString());
@@ -464,7 +497,6 @@ public class SwimController : MonoBehaviour
             {
                 RemainingBoostTime -= Time.deltaTime;
                 SetBuffCooldownWidget(RemainingBoostTime / BoostCooldown);
-                Debug.Log(RemainingBoostTime);
                 yield return new WaitForEndOfFrame();
             }
 
@@ -577,5 +609,24 @@ public class SwimController : MonoBehaviour
         input.Normalize();
 
         return input;
+    }
+
+    private void UpdateSpring()
+    {
+        SpringParticles[0].transform.position = gameObject.transform.position;
+        if (PlayerOne)
+        {
+            SpringParticles[SpringParticles.Length - 1].transform.position = Player1Cord.GetComponentInChildren<FastIKFabric>().GetSpringPoint();
+        }
+        else
+        {
+            SpringParticles[SpringParticles.Length - 1].transform.position = Player2Cord.GetComponentInChildren<FastIKFabric>().GetSpringPoint();
+        }
+
+        foreach (GameObject spring in SpringConstraints)
+        {
+            spring.GetComponent<Spring>().UpdateSpring();
+        }
+
     }
 }
