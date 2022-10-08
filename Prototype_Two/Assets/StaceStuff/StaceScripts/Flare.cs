@@ -5,7 +5,7 @@ using UnityEngine;
 public class Flare : MonoBehaviour
 {
     public float FlareYSpeed = 1.0f;
-
+    public float FlareLifetime = 60.0f;
 
     // Materials
     public Material greenMat;
@@ -47,5 +47,14 @@ public class Flare : MonoBehaviour
     void Update()
     {
         transform.Translate(0, -FlareYSpeed * Time.deltaTime, 0);
+
+
+        // Lifetime - destroy afterwards
+        FlareLifetime -= 1 * Time.deltaTime;
+
+        if (FlareLifetime <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
