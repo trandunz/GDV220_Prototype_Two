@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScrollBackground : MonoBehaviour
 {
-    public float fCameraSpeed;
+    private float fCameraSpeed;
 
     public GameObject gameCentreObject;
 

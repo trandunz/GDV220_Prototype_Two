@@ -2472,11 +2472,7 @@ MonoBehaviour:
   lightingLevel: 100
   timer: 0
   backgroundObject: {fileID: 1067995727}
-  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-  colorG: 0
-  colorB: 0
   timerBackground: 0
-  maxTimerBackground: 2
   foregroundObjects: []
 --- !u!114 &337692182
 MonoBehaviour:
@@ -5067,9 +5063,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godMode: 1
-  darknessStartingDepth: -1000
-  darknessChangeSpeed: 0.1
-  depthPlayerLightsOn: -50
+  darknessStartingDepth: -100
+  darknessChangeSpeed: 2
+  depthPlayerLightsOn: -200
+  colorChangeStartDepth: -50
+  colorChangeSpeed: 1
   sceneCentreObject: {fileID: 337692178}
   Player1: {fileID: 1468342190}
   Player2: {fileID: 1021871636}
@@ -7267,7 +7265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030dc7e2f205ab249af72bcb6a3caa76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fCameraSpeed: 0
   gameCentreObject: {fileID: 337692178}
   fScrollingStartPosY: -20
   bScrolling: 0
