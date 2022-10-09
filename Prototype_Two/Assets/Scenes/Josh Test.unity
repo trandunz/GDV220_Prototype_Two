@@ -534,7 +534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &431055895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,11 +572,7 @@ MonoBehaviour:
   lightingLevel: 100
   timer: 0
   backgroundObject: {fileID: 0}
-  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-  colorG: 0
-  colorB: 0
   timerBackground: 0
-  maxTimerBackground: 0
   foregroundObjects: []
 --- !u!114 &431055897
 MonoBehaviour:
@@ -668,7 +664,7 @@ ConfigurableJoint:
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 1
   m_YMotion: 1
-  m_ZMotion: 1
+  m_ZMotion: 0
   m_AngularXMotion: 2
   m_AngularYMotion: 2
   m_AngularZMotion: 2
@@ -764,7 +760,7 @@ ConfigurableJoint:
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 1
   m_YMotion: 1
-  m_ZMotion: 1
+  m_ZMotion: 0
   m_AngularXMotion: 2
   m_AngularYMotion: 2
   m_AngularZMotion: 2
@@ -1769,7 +1765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1316082363
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2469,6 +2465,10 @@ PrefabInstance:
     - target: {fileID: 8655089736217919247, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
       propertyPath: m_Name
       value: MineChain
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655089736217919247, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
