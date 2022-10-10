@@ -19,9 +19,5 @@ public class AlignBetweenObjects : MonoBehaviour
         {
             transform.LookAt(object1.transform);
         }
-        else
-        {
-            transform.LookAt(object1.transform);
-        }
     }
 }

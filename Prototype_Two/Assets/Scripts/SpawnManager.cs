@@ -187,7 +187,7 @@ public class SpawnManager : MonoBehaviour
         // Spawn either SeaUrchin or Eel
         if ((-Depth) >= SeaUrchin.DepthCounter)
         {
-            /*int random = Random.Range(0, 3);
+            int random = Random.Range(0, 3);
             if (random <= 0)
             {
                 SpawnBubbleBuff(cameraPosition);
@@ -199,8 +199,7 @@ public class SpawnManager : MonoBehaviour
             else
             {
                 SpawnEel(cameraPosition);
-            }*/
-            SpawnEel(cameraPosition);
+            }
         }
 
         if ((-Depth) >= SchoolOfFish.DepthCounter)

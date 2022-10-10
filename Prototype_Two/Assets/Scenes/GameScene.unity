@@ -13304,7 +13304,7 @@ PrefabInstance:
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: SeaMinePrefab
       value: 
-      objectReference: {fileID: 8655089736217919247, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      objectReference: {fileID: 5030809331485757466, guid: b856b9f9604dc3c41a7772a0ad9eb255, type: 3}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: BubbleSpawnRate
       value: 14
