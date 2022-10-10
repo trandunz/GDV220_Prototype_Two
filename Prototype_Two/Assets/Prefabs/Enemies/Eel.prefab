@@ -63,6 +63,7 @@ MonoBehaviour:
   PeekDistance: 2.5
   PeekTime: 1
   PeakDelay: 3
+  BackgroundEelPrefab: {fileID: 919132149155446097, guid: 339c059f16b227641af9c0b7a99c493c, type: 3}
 --- !u!1001 &7016933373117029744
 PrefabInstance:
   m_ObjectHideFlags: 0
