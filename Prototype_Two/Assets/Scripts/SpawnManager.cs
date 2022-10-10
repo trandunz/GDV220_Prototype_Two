@@ -214,13 +214,11 @@ public class SpawnManager : MonoBehaviour
 
         if ((-Depth) >= SeaMine.DepthCounter)
         {
-            //SpawnAngler(cameraPosition);
-
             int random = Random.Range(0, 3);
             if (random == 0)
                 SpawnSeaMine(cameraPosition);
             else if (random == 1)
-                SpawnSquid(cameraPosition);
+                StartCoroutine(SquidSpawnRoutine(cameraPosition));
         }
 
         if ((-Depth) >= Coral.DepthCounter)
@@ -233,14 +231,21 @@ public class SpawnManager : MonoBehaviour
             Coral.Offset = 8.0f;
             SpawnCoral(cameraPosition);
         }
-
-        if ((-Depth) >= GiantSquid.DepthCounter)
-        {
-            SpawnGiantSquid(cameraPosition);
-        }
     }
 
-    void SpawnGiantSquid(Vector3 camPos)
+    IEnumerator SquidSpawnRoutine(Vector3 camPos)
+    {
+        SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
+        Squid.DepthCounter = -Depth + Squid.SpawnRate;
+        SpawnGiantSquid(camPos);
+        yield return new WaitForSeconds(8.0f);
+        Vector3 cameraPosition = Main_Camera.transform.position;
+        cameraPosition.y += YOffset;
+        cameraPosition.z += ZOffset;
+        SpawnSquid(cameraPosition);
+    }
+
+    public void SpawnGiantSquid(Vector3 camPos)
     {
         bool spawnLeft = false;
         float rotationZ = Random.Range(-30.0f, 30.0f); ;

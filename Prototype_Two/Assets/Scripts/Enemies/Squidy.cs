@@ -17,9 +17,11 @@ public class Squidy : MonoBehaviour
     Rigidbody rigidBody;
     SwimController[] Players;
     bool PlayerInRange = false;
+    SpawnManager spawnManager;
     
     private void Start()
     {
+
         rigidBody = GetComponent<Rigidbody>();
         Players = FindObjectsOfType<SwimController>();
 
