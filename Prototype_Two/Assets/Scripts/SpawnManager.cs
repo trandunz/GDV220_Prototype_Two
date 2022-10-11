@@ -187,19 +187,23 @@ public class SpawnManager : MonoBehaviour
         // Spawn either SeaUrchin or Eel
         if ((-Depth) >= SeaUrchin.DepthCounter)
         {
-            int random = Random.Range(0, 3);
-            if (random <= 0)
+            int random = Random.Range(0, 11);
+            if (random <= 4)
             {
                 SpawnBubbleBuff(cameraPosition);
             }
-            else if (random <= 1)
+            else if (random == 5)
             {
                 SpawnClam(cameraPosition);
             }
-            else
+            else if (random <= 8)
             {
                 SpawnEel(cameraPosition);
             }
+            else if (random <= 9)
+                SpawnSeaMine(cameraPosition);
+            else if (random <= 10)
+                StartCoroutine(SquidSpawnRoutine(cameraPosition));
         }
 
         if ((-Depth) >= SchoolOfFish.DepthCounter)
@@ -212,14 +216,11 @@ public class SpawnManager : MonoBehaviour
             //SpawnBubble(cameraPosition);
         }
 
-        if ((-Depth) >= SeaMine.DepthCounter)
-        {
-            int random = Random.Range(0, 3);
-            if (random == 0)
-                SpawnSeaMine(cameraPosition);
-            else if (random == 1)
-                StartCoroutine(SquidSpawnRoutine(cameraPosition));
-        }
+        //if ((-Depth) >= SeaMine.DepthCounter)
+        //{
+        //    int random = Random.Range(0, 3);
+        //    
+        //}
 
         if ((-Depth) >= Coral.DepthCounter)
         {
@@ -235,14 +236,16 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SquidSpawnRoutine(Vector3 camPos)
     {
+        SeaUrchin.DepthCounter = -Depth + SeaUrchin.SpawnRate;
         SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
-        Squid.DepthCounter = -Depth + Squid.SpawnRate;
+        Squid.DepthCounter = -Depth + SeaMine.SpawnRate;
         SpawnGiantSquid(camPos);
         yield return new WaitForSeconds(8.0f);
         Vector3 cameraPosition = Main_Camera.transform.position;
         cameraPosition.y += YOffset;
         cameraPosition.z += ZOffset;
         SpawnSquid(cameraPosition);
+
     }
 
     public void SpawnGiantSquid(Vector3 camPos)
@@ -303,6 +306,7 @@ public class SpawnManager : MonoBehaviour
         SeaMine.SpawnPoint = new Vector3(camPos.x + SeaMine.Offset, camPos.y, camPos.z);
         Destroy(Instantiate(SeaMine.Object, SeaMine.SpawnPoint, Quaternion.identity), ObjectLifeTime * 2);
         SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
+        SeaUrchin.DepthCounter = -Depth + SeaUrchin.SpawnRate;
     }
 
     void SpawnSquid(Vector3 camPos)
@@ -312,6 +316,7 @@ public class SpawnManager : MonoBehaviour
         Destroy(Instantiate(Squid.Object, Squid.SpawnPoint, Quaternion.identity), ObjectLifeTime);
         SeaMine.DepthCounter = -Depth + SeaMine.SpawnRate;
         Squid.DepthCounter = -Depth + Squid.SpawnRate;
+        SeaUrchin.DepthCounter = -Depth + SeaUrchin.SpawnRate;
     }
 
     void SpawnBubble(Vector3 camPos)
@@ -359,7 +364,7 @@ public class SpawnManager : MonoBehaviour
 
         // Setting SeaUrchin and Eel depth counter because they are together
         BubbleBuffChest.DepthCounter = -Depth + BubbleBuffChest.SpawnRate;
-        SeaUrchin.DepthCounter = -Depth + BubbleBuffChest.SpawnRate;
+        SeaUrchin.DepthCounter = -Depth + SeaUrchin.SpawnRate;
         Eel.DepthCounter = -Depth + Eel.SpawnRate;
         Clam.DepthCounter = -Depth + Clam.SpawnRate;
     }
@@ -385,7 +390,7 @@ public class SpawnManager : MonoBehaviour
 
         // Setting SeaUrchin and Eel depth counter because they are together
         BubbleBuffChest.DepthCounter = -Depth + BubbleBuffChest.SpawnRate;
-        SeaUrchin.DepthCounter = -Depth + BubbleBuffChest.SpawnRate;
+        SeaUrchin.DepthCounter = -Depth + SeaUrchin.SpawnRate;
         Eel.DepthCounter = -Depth + Eel.SpawnRate;
     }
 
