@@ -6,7 +6,17 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Eel_Swim
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eel
+    second: {fileID: 2100000, guid: 18f01c6e9c001e242b12a46c71f50591, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_EelFin
+    second: {fileID: 2100000, guid: 506244f2336d9844393ae0e0cac664e8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

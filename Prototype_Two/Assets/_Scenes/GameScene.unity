@@ -14764,6 +14764,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2951123183173000976, guid: 68c43300fc88ab04b80dca0ba63aef8c, type: 3}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: ClamSpawnRate
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: SeaMinePrefab
       value: 
       objectReference: {fileID: 5030809331485757466, guid: b856b9f9604dc3c41a7772a0ad9eb255, type: 3}
