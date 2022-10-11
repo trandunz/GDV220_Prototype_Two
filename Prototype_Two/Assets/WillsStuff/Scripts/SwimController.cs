@@ -510,7 +510,11 @@ public class SwimController : MonoBehaviour
 
     public void HitEnemy()
     {
-        if (!IsInvulnrable)
+        if (ShieldBubble != null)
+        {
+            BubbleShieldHit();
+        }
+        else if (!IsInvulnrable)
         {
             Debug.Log("Player Got Hit!");
 
