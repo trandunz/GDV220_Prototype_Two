@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df74c1d207e9ffc4fa368981cb719030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_strength: 10
+  m_strength: 1
   m_resting_distance: 0
   m_particle1: {fileID: 0}
   m_particle2: {fileID: 0}

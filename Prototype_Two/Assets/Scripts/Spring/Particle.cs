@@ -24,7 +24,7 @@ public class Particle : MonoBehaviour
     private void Update()
     {
         m_velocity = m_velocity + m_acceleration;
-       // m_velocity = Limit(m_velocity);
+        m_velocity = Limit(m_velocity);
         Vector3 pos = gameObject.transform.position;
         pos += m_velocity * m_speed * Time.deltaTime;
         pos.z = -1.0f;
