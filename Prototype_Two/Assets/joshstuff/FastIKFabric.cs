@@ -212,5 +212,20 @@ public class FastIKFabric : MonoBehaviour
     {
         Vector3 scale = new Vector3(0.3f, 0.3f, 0.3f);
         Bones[0].localScale = scale;
+
+        foreach(Transform bone in Bones)
+        {
+            if (bone.localScale.x > 10.0f ||
+                bone.localScale.y > 10.0f ||
+                bone.localScale.z > 10.0f)
+            {
+                bone.localScale = scale;
+            }
+        }
+    }
+
+    public Vector3 GetSpringPoint()
+    {
+        return Bones[Bones.Length - 1].position;
     }
 }

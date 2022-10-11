@@ -92,6 +92,12 @@ public class SwimController : MonoBehaviour
     [SerializeField] float m_ParalyzeDuration;
     float m_ParalyzeTimer;
 
+    [Header("Line Renderer")]
+    public LineRenderer StretchyLine;
+    public GameObject Player1Cord; // to get cord position
+    public GameObject Player2Cord; // to get cord position
+
+
     void Start()
     {
         MoveSpeed = SwimSpeed;
@@ -200,6 +206,7 @@ public class SwimController : MonoBehaviour
         Drag();
         RestrictMovement();
         Movement();
+        UpdateStretchyLine();
     }
 
     void RestrictMovement()
@@ -429,7 +436,6 @@ public class SwimController : MonoBehaviour
         {
            if (!IsBoosting)
            {                
-                Destroy(Instantiate(audioDash), 2.0f);
                 StartCoroutine(BoostRoutine());
                              
                 // Need to change this to a different thing as this is the same as getting hit
@@ -445,6 +451,9 @@ public class SwimController : MonoBehaviour
         float ikMaxDistance = Tether.CompleteLength;
         if (distance < ikMaxDistance && canDash)
         {
+            // audio
+            Destroy(Instantiate(audioDash), 2.0f);
+
             canDash = false;
             IsBoosting = true;
             Debug.Log("Boost! : " + (GetInput() * BoostForce).magnitude.ToString());
@@ -464,7 +473,6 @@ public class SwimController : MonoBehaviour
             {
                 RemainingBoostTime -= Time.deltaTime;
                 SetBuffCooldownWidget(RemainingBoostTime / BoostCooldown);
-                Debug.Log(RemainingBoostTime);
                 yield return new WaitForEndOfFrame();
             }
 
@@ -577,5 +585,18 @@ public class SwimController : MonoBehaviour
         input.Normalize();
 
         return input;
+    }
+
+    private void UpdateStretchyLine()
+    {
+        StretchyLine.SetPosition(0, gameObject.transform.position);
+        if (PlayerOne)
+        {
+            StretchyLine.SetPosition(1, Player1Cord.GetComponentInChildren<FastIKFabric>().GetSpringPoint());
+        }
+        else
+        {
+            StretchyLine.SetPosition(1, Player2Cord.GetComponentInChildren<FastIKFabric>().GetSpringPoint());
+        }
     }
 }
