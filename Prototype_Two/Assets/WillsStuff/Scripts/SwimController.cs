@@ -226,7 +226,7 @@ public class SwimController : MonoBehaviour
             {
                 if (otherPlayer?.Tether.Bones.Length > minTetherLength)
                 {
-                    if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength - DynamicJointLength.reduction)
+                    if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength - DynamicJointLength.reduction && !IsInvulnrable)
                     {
                         ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * MoveSpeed * 3.0f);
                     }
@@ -245,7 +245,7 @@ public class SwimController : MonoBehaviour
             {
                 if (otherPlayer?.Tether.Bones.Length > minTetherLength)
                 {
-                    if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength - DynamicJointLength.reduction)
+                    if (DistanceFromOrigin + otherPlayer?.DistanceFromOrigin >= totalTetherLength - DynamicJointLength.reduction && !IsInvulnrable)
                     {
                         ApplyForce(new Vector3(Origin.position.x - transform.position.x, Origin.position.y - transform.position.y, 0).normalized * MoveSpeed * 3.0f);
                     }
