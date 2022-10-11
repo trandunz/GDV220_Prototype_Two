@@ -52,11 +52,13 @@ MonoBehaviour:
   SwimSpeed: 200
   SlowSpeed: 80
   DragForce: 50
-  BoostForce: 500
-  BoostCooldown: 1
   RotationSpeed: 200
   PointsPopup: {fileID: 9005969564778985826, guid: 3369bc9a823ecbf4b94ac13cd60debc1, type: 3}
   SlowTime: 1
+  BoostForce: 500
+  BoostCooldown: 1
+  DashingTime: 0
+  PostDashBoost: 0
   PlayerOne: 0
   MeshObject: {fileID: 5837146483059227840}
   m_InvulnrabilityTime: 0.4
@@ -82,6 +84,9 @@ MonoBehaviour:
   BubblesPosition: {fileID: 3400717522564201547}
   BubblesRotation: {x: 0, y: 0, z: 0, w: 0}
   m_ParalyzeDuration: 2
+  StretchyLine: {fileID: 0}
+  Player1Cord: {fileID: 0}
+  Player2Cord: {fileID: 0}
 --- !u!54 &834267731762064985
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -187,10 +192,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 40
-  m_Range: 15
+  m_Intensity: 60
+  m_Range: 20
   m_SpotAngle: 30
-  m_InnerSpotAngle: 10
+  m_InnerSpotAngle: 20
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
