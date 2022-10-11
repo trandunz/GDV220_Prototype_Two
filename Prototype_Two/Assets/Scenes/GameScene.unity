@@ -1553,7 +1553,7 @@ PrefabInstance:
     - target: {fileID: 1314215809, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
       propertyPath: explodedOxygem
       value: 
-      objectReference: {fileID: 919132149155446097, guid: 4df75c07d6b5ea547a1dba345cc54bc3, type: 3}
+      objectReference: {fileID: 2951123183173000976, guid: 225ead67133fc8649b179310a2f7156e, type: 3}
     - target: {fileID: 1314215809, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
       propertyPath: litOxygem.Array.size
       value: 10
