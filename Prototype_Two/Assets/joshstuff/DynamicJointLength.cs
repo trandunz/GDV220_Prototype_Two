@@ -10,6 +10,7 @@ public class DynamicJointLength : MonoBehaviour
     [SerializeField] ConfigurableJoint player1Joint;
     [SerializeField] ConfigurableJoint player2Joint;
     public static float reduction = 0.0f;
+    bool pressable = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +32,16 @@ public class DynamicJointLength : MonoBehaviour
         SoftJointLimit limit2 = new SoftJointLimit();
         limit2.limit = player2.CompleteLength;
         player2Joint.linearLimit = limit2;
+
+        if (Input.GetKeyDown(KeyCode.Backslash) && pressable)
+        {
+            gameObject.SetActive(!gameObject.activeSelf);
+            pressable = false;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Backslash) && !pressable)
+        {
+            pressable = true;
+        }
     }
 }
