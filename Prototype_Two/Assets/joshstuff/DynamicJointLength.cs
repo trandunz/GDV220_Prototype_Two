@@ -14,22 +14,22 @@ public class DynamicJointLength : MonoBehaviour
     void Start()
     {
         SoftJointLimit limit1 = new SoftJointLimit();
-        limit1.limit = player1.CompleteLength - reduction;
+        limit1.limit = player1.CompleteLength;
         player1Joint.linearLimit = limit1;
 
         SoftJointLimit limit2 = new SoftJointLimit();
-        limit2.limit = player2.CompleteLength - reduction;
+        limit2.limit = player2.CompleteLength;
         player2Joint.linearLimit = limit2;
     }
 
     private void FixedUpdate()
     {
         SoftJointLimit limit1 = new SoftJointLimit();
-        limit1.limit = player1.CompleteLength - reduction;
+        limit1.limit = player1.CompleteLength;
         player1Joint.linearLimit = limit1;
 
         SoftJointLimit limit2 = new SoftJointLimit();
-        limit2.limit = player2.CompleteLength - reduction;
+        limit2.limit = player2.CompleteLength;
         player2Joint.linearLimit = limit2;
     }
 }

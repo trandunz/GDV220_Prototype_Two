@@ -226,9 +226,9 @@ public class OxygenTankValue : MonoBehaviour
         for (int i = 0; i<gemsCount; ++i)
         {
             // Get a random point to "explode" towards
-            float angle = Random.Range(1.0f, 1000.0f) * Mathf.PI * 2;
-            float x = Mathf.Cos(angle) * 100.0f;
-            float y = Mathf.Sin(angle) * 100.0f;
+            float angle = Random.Range(0.0f, 359);
+            float x = Mathf.Cos(Mathf.Deg2Rad * angle) * 20.0f;
+            float y = Mathf.Sin(Mathf.Deg2Rad * angle) * 20.0f;
 
             x += transform.position.x;
             y += transform.position.y;
