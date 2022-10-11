@@ -217,9 +217,12 @@ public class FastIKFabric : MonoBehaviour
         {
             if (bone.localScale.x > 10.0f ||
                 bone.localScale.y > 10.0f ||
-                bone.localScale.z > 10.0f)
-            {
-                bone.localScale = scale;
+                bone.localScale.z > 10.0f ||
+                bone.localScale.x < -10.0f ||
+                bone.localScale.y < -10.0f ||
+                bone.localScale.z < -10.0f)
+            { 
+                    bone.localScale = scale;  
             }
         }
     }
