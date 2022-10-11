@@ -5,9 +5,10 @@ using UnityEngine;
 public class Enemy_Jellyfish : MonoBehaviour
 {
     GameObject OxygenTank;
+    Animator animator;
     public float fTimer = 0.0f;
     public float fMinRange = 0.0f;
-    public float fMaxRange = 0.5f;
+    public float fMaxRange = 0.2f;
 
     bool bMoving = true;
 
@@ -15,15 +16,19 @@ public class Enemy_Jellyfish : MonoBehaviour
     void Start()
     {
         fTimer = Random.Range(fMinRange, fMaxRange);
-
+        animator = GetComponentInChildren<Animator>();
         OxygenTank = GameObject.FindGameObjectWithTag("SceneCentre");
     }
 
     // Update is called once per frame
     void Update()
     {
-        fTimer = fTimer + 1.0f * Time.deltaTime; // Increase timer by 1 second
+        fTimer += Time.deltaTime; // Increase timer by 1 second
         
+        if (fTimer > 0.4f)
+        {
+            animator.SetTrigger("Swim");
+        }
         if (fTimer >= 1.0f)
         {
             fTimer = Random.Range(fMinRange, fMaxRange);

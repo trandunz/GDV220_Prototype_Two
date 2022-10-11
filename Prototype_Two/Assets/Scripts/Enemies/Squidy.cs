@@ -18,12 +18,13 @@ public class Squidy : MonoBehaviour
     SwimController[] Players;
     bool PlayerInRange = false;
     SpawnManager spawnManager;
+    Animator animator;
     
     private void Start()
     {
-
         rigidBody = GetComponent<Rigidbody>();
         Players = FindObjectsOfType<SwimController>();
+        animator = GetComponentInChildren<Animator>();
 
         m_ToPlayerVector = (GetClosestPlayer().transform.position - transform.position).normalized;
     }
@@ -55,6 +56,8 @@ public class Squidy : MonoBehaviour
     {
         if (m_SwimTimer <= 0)
         {
+            animator.speed = 1.0f;
+
             m_SwimTimer = m_SwimDelay;
 
             rigidBody.AddForce(m_ToPlayerVector * m_SwimPower * Time.fixedDeltaTime, ForceMode.Impulse);
@@ -65,6 +68,8 @@ public class Squidy : MonoBehaviour
     {
         if (m_SwimTimer <= 0)
         {
+            animator.speed = 2.5f;
+
             m_InkParticles.Play();
 
             m_SwimTimer = m_SprintDelay;
