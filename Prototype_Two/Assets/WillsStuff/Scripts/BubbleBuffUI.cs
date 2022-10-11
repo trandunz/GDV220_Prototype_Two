@@ -5,13 +5,9 @@ using UnityEngine.UI;
 
 public class BubbleBuffUI : MonoBehaviour
 {
-    TMPro.TextMeshProUGUI m_TempText;
     [SerializeField]Image m_TimerImage;
-
-    private void Start()
-    {
-        m_TempText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
-    }
+    [SerializeField] Image m_BuffImage;
+    [SerializeField] Sprite[] m_BuffSprites;
 
     public void SetAvailableBuff(BubbleBuff.BUFFTYPE _buffType)
     {
@@ -19,32 +15,33 @@ public class BubbleBuffUI : MonoBehaviour
         {
             case BubbleBuff.BUFFTYPE.RANDOM:
                 {
-                    m_TempText.text = "Random";
+
+                    m_BuffImage.sprite = m_BuffSprites[0];
                     break;
                 }
             case BubbleBuff.BUFFTYPE.FLARE:
                 {
-                    m_TempText.text = "Flare";
+                    m_BuffImage.sprite = m_BuffSprites[1];
                     break;
                 }
             case BubbleBuff.BUFFTYPE.GEMCHEST:
                 {
-                    m_TempText.text = "GemChest";
+                    m_BuffImage.sprite = m_BuffSprites[2];
                     break;
                 }
             case BubbleBuff.BUFFTYPE.MAGNET:
                 {
-                    m_TempText.text = "Marget";
+                    m_BuffImage.sprite = m_BuffSprites[3];
                     break;
                 }
             case BubbleBuff.BUFFTYPE.SHIELD:
                 {
-                    m_TempText.text = "Shield";
+                    m_BuffImage.sprite = m_BuffSprites[4];
                     break;
                 }
             default:
                 {
-                    m_TempText.text = "Dash";
+                    m_BuffImage.sprite = m_BuffSprites[5];
                     break;
                 }
         }

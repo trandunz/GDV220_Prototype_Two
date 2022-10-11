@@ -41,6 +41,5 @@ public class Oxygem : MonoBehaviour
     {
         float step = explodeSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
-
     }
 }

@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
                                              // over a total time of 100 seconds
     public float depthPlayerLightsOn = -100.0f; // At what depth the player spotlights should turn on
 
+    // Background object and its changing of color over time
+    [Header("Background Object")]
+    public float colorChangeStartDepth = -20.0f;
+    public float colorChangeSpeed = 2.0f;
+
     [Header("GameObjects")]
     public GameObject sceneCentreObject;
     public GameObject Player1;

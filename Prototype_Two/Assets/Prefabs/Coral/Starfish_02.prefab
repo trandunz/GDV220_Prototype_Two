@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4473411472813702369}
   m_Layer: 0
   m_Name: Starfish_02
-  m_TagString: Untagged
+  m_TagString: StarFish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,9 +25,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2671826968212151604}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0.6253503, w: 0.7803442}
+  m_LocalPosition: {x: -8.37096, y: -24.31541, z: -4}
+  m_LocalScale: {x: 0.38512367, y: 0.38512367, z: 0.38512367}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

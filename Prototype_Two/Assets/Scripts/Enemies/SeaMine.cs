@@ -26,14 +26,14 @@ public class SeaMine : MonoBehaviour
     private void Start()
     {
         shake = FindObjectOfType<ScreenShake>();
-        transform.rotation = Quaternion.Euler((float)Random.Range(0, 90), (float)Random.Range(0, 90), (float)Random.Range(0, 90));
+        transform.rotation = Quaternion.Euler((float)Random.Range(0, 2), (float)Random.Range(0, 2),2);
         m_StartRotation = transform.rotation;
         m_StartPos = transform.position;
     }
     private void Update()
     {
         transform.position = m_StartPos + new Vector3(Mathf.Cos(m_HorizontalBobSpeed * Time.time) * m_HorizontalBobAmp, Mathf.Sin(m_VerticalBobSpeed * Time.time) * m_VerticalBobAmp, 0.0f);
-        transform.rotation = m_StartRotation * Quaternion.Euler(Mathf.Sin(Time.time * m_RockSpeed) * 2.0f, transform.rotation.y, Mathf.Cos(Time.time * m_RockSpeed) * 5.0f);
+        transform.rotation = m_StartRotation * Quaternion.Euler(Mathf.Sin(Time.time * m_RockSpeed) * 2.0f, transform.rotation.y, 0);
     }
 
     private void OnTriggerEnter(Collider other)

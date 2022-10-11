@@ -19,11 +19,12 @@ public class CameraMovement : MonoBehaviour
     // Background image - changing to darker blue over time
     [Header("BackgroundColorChangeOverTime")]
     public GameObject backgroundObject;
-    public Color backgroundColor;
-    public float colorG;
-    public float colorB;
+    private Color backgroundColor;
+    private float colorG;
+    private float colorB;
+    private float backgroundStartDepth;
     public float timerBackground;
-    public float maxTimerBackground = 0.0f;
+    private float maxTimerBackground;
 
     // Foreground Objects
     public GameObject[] foregroundObjects;
@@ -41,6 +42,8 @@ public class CameraMovement : MonoBehaviour
         // Background image 
         colorG = backgroundObject.GetComponent<MeshRenderer>().material.color.g;
         colorB = backgroundObject.GetComponent<MeshRenderer>().material.color.b;
+        backgroundStartDepth = manager.GetComponent<GameManager>().colorChangeStartDepth;
+        maxTimerBackground = manager.GetComponent<GameManager>().colorChangeSpeed;
         timerBackground = maxTimerBackground;
 
         // Foreground Objects
@@ -91,21 +94,24 @@ public class CameraMovement : MonoBehaviour
             }
         }
 
-        // Background image - make darker over time
-        timerBackground = timerBackground - 1.0f * Time.deltaTime; // Decrease timer by 1 second
-        if (timerBackground <= 0.0f)
+        if (transform.position.y <= backgroundStartDepth)
         {
-            // Change color of background mat
-            if (colorG >= 53.0f / 255.0f)
+            // Background image - make darker over time
+            timerBackground = timerBackground - 1.0f * Time.deltaTime; // Decrease timer by 1 second
+            if (timerBackground <= 0.0f)
             {
-                colorG -= 1.0f / 255.0f;
+                // Change color of background mat
+                if (colorG >= 53.0f / 255.0f)
+                {
+                    colorG -= 1.0f / 255.0f;
+                }
+                if (colorB >= 94.0f / 255.0f)
+                {
+                    colorB -= 1.0f / 255.0f;
+                }
+                backgroundObject.GetComponent<MeshRenderer>().material.color = new Color(0, colorG, colorB);
+                timerBackground = maxTimerBackground; // reset timer
             }
-            if (colorB >= 94.0f / 255.0f)
-            {
-                colorB -= 1.0f / 255.0f;
-            }
-            backgroundObject.GetComponent<MeshRenderer>().material.color = new Color(0, colorG, colorB);
-            timerBackground = maxTimerBackground; // reset timer
         }
     }
 }

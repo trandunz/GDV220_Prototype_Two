@@ -572,11 +572,7 @@ MonoBehaviour:
   lightingLevel: 100
   timer: 0
   backgroundObject: {fileID: 0}
-  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-  colorG: 0
-  colorB: 0
   timerBackground: 0
-  maxTimerBackground: 0
   foregroundObjects: []
 --- !u!114 &431055897
 MonoBehaviour:
@@ -663,12 +659,12 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -1.513, y: 0.5, z: 2.113}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 1
   m_YMotion: 1
-  m_ZMotion: 1
+  m_ZMotion: 0
   m_AngularXMotion: 2
   m_AngularYMotion: 2
   m_AngularZMotion: 2
@@ -759,12 +755,12 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 1.613, y: 0.5, z: 2.113}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 1
   m_YMotion: 1
-  m_ZMotion: 1
+  m_ZMotion: 0
   m_AngularXMotion: 2
   m_AngularYMotion: 2
   m_AngularZMotion: 2
@@ -2415,6 +2411,67 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1001 &2089532272
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8655089736217919244, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655089736217919244, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655089736217919244, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655089736217919244, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655089736217919244, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655089736217919244, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655089736217919244, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655089736217919244, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655089736217919244, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655089736217919244, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655089736217919244, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655089736217919247, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_Name
+      value: MineChain
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655089736217919247, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ddf1efd8c2d51ed4aa635b6ce7c16773, type: 3}
 --- !u!1 &2099772195
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,6 +2580,10 @@ PrefabInstance:
     - target: {fileID: 1355289221261129712, guid: e1e62c294e1902d4eb2b6c0a056a6086, type: 3}
       propertyPath: m_Name
       value: bigSquid
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355289221261129712, guid: e1e62c294e1902d4eb2b6c0a056a6086, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1838916640954068298, guid: e1e62c294e1902d4eb2b6c0a056a6086, type: 3}
       propertyPath: m_RootOrder
