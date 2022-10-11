@@ -167,7 +167,7 @@ MonoBehaviour:
   - {fileID: 9176190817386432200, guid: 4e0d95adda040f64496f6090ed9ebeeb, type: 3}
   - {fileID: 1522396419807386023, guid: 0eb33fbba48dff3429d3a31cee9e65f7, type: 3}
   - {fileID: 1522396419807386023, guid: 305439054f2b68948ae81a28a03b95e6, type: 3}
-  - {fileID: 1522396419807386023, guid: 388d5bd9a5d15be4088293c602f5c8f2, type: 3}
+  - {fileID: 4059359212099657393, guid: 1b24f632d9927c3478ba44cf38ed3bdc, type: 3}
   m_BubbleBuffObject: {fileID: 9176190817386432200, guid: 4e0d95adda040f64496f6090ed9ebeeb, type: 3}
   m_BubbleBuffBubble: {fileID: 7683003244447756518}
 --- !u!65 &7399526005602279385
