@@ -1,12 +1,22 @@
 fileFormatVersion: 2
-guid: 7edd6c813cbe1fb45b7b82a4315a7916
+guid: 9a43b854b5a7b8343b5df8b9608666c0
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
     second: Eel_Swim
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eel
+    second: {fileID: 2100000, guid: d4ecfb1e8da513c46b7219fad94f41ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_EelFin
+    second: {fileID: 2100000, guid: d4ecfb1e8da513c46b7219fad94f41ea, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

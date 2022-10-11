@@ -1,12 +1,17 @@
 fileFormatVersion: 2
-guid: 7edd6c813cbe1fb45b7b82a4315a7916
+guid: 98401a62364406d499269a3a5f282af1
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Eel_Swim
-  externalObjects: {}
+    second: Squid_AttackSwim
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Enemy
+    second: {fileID: 2100000, guid: d4ecfb1e8da513c46b7219fad94f41ea, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -36,11 +41,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Eel_Swim
+      name: Squid_AttackSwim
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 36
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -67,7 +72,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 50
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -120,8 +125,8 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 50
-    rootMotionBoneName: Eel_head
+    globalScale: 100
+    rootMotionBoneName: Squid_Head
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

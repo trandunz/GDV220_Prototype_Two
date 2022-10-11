@@ -20,7 +20,7 @@ public class Eel : MonoBehaviour
     {
         BackgroundEel = Instantiate(BackgroundEelPrefab, transform);
         BackgroundEel.transform.rotation = Quaternion.Euler(BackgroundEel.transform.rotation.eulerAngles.x, BackgroundEel.transform.rotation.eulerAngles.y + 180, BackgroundEel.transform.rotation.eulerAngles.z);
-        BackgroundEel.transform.position = new Vector3(BackgroundEel.transform.position.x, BackgroundEel.transform.position.y, 6.0f); 
+        BackgroundEel.transform.position = new Vector3(BackgroundEel.transform.position.x, BackgroundEel.transform.position.y, 7.0f); 
         BackgroundEel.transform.position = BackgroundEel.transform.position - transform.right * 10.0f;
         BackgroundEel.transform.localScale = new Vector3(0.7f, 0.7f, 0.3f);
         BackgroundEel.transform.position = BackgroundEel.transform.position + Vector3.up * 2.0f;
