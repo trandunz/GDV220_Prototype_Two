@@ -5629,11 +5629,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godMode: 0
-  darknessStartingDepth: -100
-  darknessChangeSpeed: 2
-  depthPlayerLightsOn: -200
-  colorChangeStartDepth: -50
-  colorChangeSpeed: 1
+  darknessStartingDepth: -30
+  darknessChangeSpeed: 0.5
+  depthPlayerLightsOn: -40
+  colorChangeStartDepth: -10
+  colorChangeSpeed: 0.5
   sceneCentreObject: {fileID: 337692178}
   Player1: {fileID: 1468342190}
   Player2: {fileID: 1021871636}
@@ -8073,7 +8073,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067995727}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -30, z: 6.69}
+  m_LocalPosition: {x: 0, y: -30, z: 10}
   m_LocalScale: {x: 50, y: 60, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
