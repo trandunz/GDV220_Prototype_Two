@@ -507,7 +507,7 @@ public class SwimController : MonoBehaviour
 
     public void HitEnemy()
     {
-        if (ShieldBubble != null)
+        if (m_ActivePowerup != null)
         {
             BubbleShieldHit();
         }
