@@ -26,7 +26,7 @@ public class PauseMenuPanel : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Z)) && !IsOpen)
+        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace)) && !IsOpen)
         {
             TogglePauseMenu();
 
@@ -44,7 +44,7 @@ public class PauseMenuPanel : MonoBehaviour
                     OnGoBack = true;
                     OnGoHome = false;
                 }
-                else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Z))
+                else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace))
                 {
                     GotoBoathouse();
                 }
@@ -59,7 +59,7 @@ public class PauseMenuPanel : MonoBehaviour
                     OnGoHome = true;
                     OnGoBack = false;
                 }
-                else if(Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Z))
+                else if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace))
                 {
                     OnResume();
                 }

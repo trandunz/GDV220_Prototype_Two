@@ -26,7 +26,7 @@ public class MainMenuButtons : MonoBehaviour
         {
             HoverOverOption(InsertCoin);
 
-            if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace))
             {
                 StartGame();
             }

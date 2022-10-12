@@ -22,13 +22,20 @@ public class BoathubPanel : MonoBehaviour
         if (HoverStart)
         {
             HoverOverOption(start.image);
-            if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace))
             {
                 OnStartClick();
             }
         }
         else
             HoverLeftOption(start.image);
+
+        // Quit game from boat hub
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Quit Application");
+            Application.Quit();
+        }
     }
 
 

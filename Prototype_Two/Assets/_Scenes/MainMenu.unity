@@ -1918,6 +1918,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 500534694241425693, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 130.93015
+      objectReference: {fileID: 0}
     - target: {fileID: 562702881639236679, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2054,6 +2058,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 72
       objectReference: {fileID: 0}
+    - target: {fileID: 2042114229977027424, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 371.53018
+      objectReference: {fileID: 0}
     - target: {fileID: 2755025030682127210, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2081,6 +2089,10 @@ PrefabInstance:
     - target: {fileID: 4278053039545119606, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631251823042833883, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 594
       objectReference: {fileID: 0}
     - target: {fileID: 7563018427027116997, guid: a451ffc3536b01c46bae2958c32322c5, type: 3}
       propertyPath: audioSelect

@@ -148,7 +148,7 @@ public class SwimController : MonoBehaviour
             Down = (KeyCode.S);
             Left = (KeyCode.A);
             Right = (KeyCode.D);
-            Dash = (KeyCode.T);
+            Dash = (KeyCode.V);
         }
         else
         {
@@ -156,7 +156,7 @@ public class SwimController : MonoBehaviour
             Down = (KeyCode.DownArrow);
             Left = (KeyCode.LeftArrow);
             Right = (KeyCode.RightArrow);
-            Dash = (KeyCode.V);
+            Dash = (KeyCode.Keypad1);
         }
     }
 
@@ -188,10 +188,6 @@ public class SwimController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.SHIELD;
-        }
         
         HandleAnimations();
 
