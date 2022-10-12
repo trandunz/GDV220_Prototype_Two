@@ -12,6 +12,8 @@ public class EnterHighScore : MonoBehaviour
     [SerializeField] float counterDelayBetweenInput = 0.0f;
     int currentTextMesh = 0;
     char[] chars;
+    public bool isOn = false;
+    public HighscoreEntry hse;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +32,7 @@ public class EnterHighScore : MonoBehaviour
         {
             counterDelayBetweenInput -= Time.deltaTime;
         }
-        if (counterDelayBetweenInput <= 0)
+        if (counterDelayBetweenInput <= 0 && isOn)
         {
             // down
             if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
@@ -78,6 +80,21 @@ public class EnterHighScore : MonoBehaviour
                 {
                     currentTextMesh = 0;
                 }
+
+                counterDelayBetweenInput = delayBetweenInput;
+            }
+
+            // enter
+            if (Input.GetKey(KeyCode.Return))
+            {
+                string str = "";
+                for (int i = 0; i < characters.Length; i++)
+                {
+                    str += characters[i].ToString();
+                }
+
+                PlayerPrefs.SetString("Initials", str);
+                hse.Continue();
 
                 counterDelayBetweenInput = delayBetweenInput;
             }
