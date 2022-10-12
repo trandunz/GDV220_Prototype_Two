@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880073899535196159}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalPosition: {x: 0, y: -4.9999995, z: 0}
+  m_LocalScale: {x: 0.24999996, y: 0.24999996, z: 0.24999997}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5030809331485757467}
@@ -238,6 +238,11 @@ MonoBehaviour:
   m_ExplosionForce: 1000
   m_ExplosionRadius: 10
   m_ExplodeTime: 0.3
+  objectsToKeep:
+  - {fileID: 7853179368869317920}
+  - {fileID: 7611306406447478684}
+  - {fileID: 880073899535196159}
+  head: {fileID: 8810907359712039381, guid: 59a932b80ddb52644965c9499a832fc8, type: 3}
 --- !u!1 &7611306406447478684
 GameObject:
   m_ObjectHideFlags: 0

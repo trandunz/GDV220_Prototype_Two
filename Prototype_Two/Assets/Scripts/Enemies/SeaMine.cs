@@ -22,6 +22,8 @@ public class SeaMine : MonoBehaviour
     ScreenShake shake;
     Vector3 m_StartPos;
     Quaternion m_StartRotation;
+    [SerializeField] GameObject[] objectsToKeep;
+    [SerializeField] GameObject head;
 
     private void Start()
     {
@@ -63,6 +65,12 @@ public class SeaMine : MonoBehaviour
 
         shake.StartShake(m_ScreenShakeAmount, m_ScreenShakeTime);
 
+        GameObject newOwner = Instantiate(head, transform.position, Quaternion.identity);
+        Destroy(newOwner, 60);
+        for (int i = 0; i < objectsToKeep.Length; i++)
+        {
+            objectsToKeep[i].transform.SetParent(newOwner.transform);
+        }
         Destroy(gameObject);
     }
 }
