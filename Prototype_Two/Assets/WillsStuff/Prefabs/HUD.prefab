@@ -329,6 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2703588118642639973}
   - component: {fileID: 4864290543004862224}
+  - component: {fileID: 5865888268640032458}
   m_Layer: 5
   m_Name: P1BubbleBuff
   m_TagString: Untagged
@@ -381,6 +382,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 92f6fe029d600ab42aa933452f16c497, type: 3}
   - {fileID: 21300000, guid: 8aac9357879069a4eb608d86b55fa2b3, type: 3}
   - {fileID: 21300000, guid: bcfd49fad4acbd24f9b66dc0a00f70cf, type: 3}
+--- !u!114 &5865888268640032458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2888977003186036589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc8c666a8393b44b9200fdaaf78922f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GemPrefab: {fileID: 2951123183173000976, guid: 225ead67133fc8649b179310a2f7156e, type: 3}
+  m_LerpTime: 0.5
 --- !u!1 &3132955428287740828
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 928770984127906997}
   - component: {fileID: 3097730807545710374}
+  - component: {fileID: 3343001790071632644}
   m_Layer: 5
   m_Name: P2BubbleBuff
   m_TagString: Untagged
@@ -519,6 +535,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 92f6fe029d600ab42aa933452f16c497, type: 3}
   - {fileID: 21300000, guid: 8aac9357879069a4eb608d86b55fa2b3, type: 3}
   - {fileID: 21300000, guid: bcfd49fad4acbd24f9b66dc0a00f70cf, type: 3}
+--- !u!114 &3343001790071632644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856194367095777710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc8c666a8393b44b9200fdaaf78922f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GemPrefab: {fileID: 2951123183173000976, guid: 225ead67133fc8649b179310a2f7156e, type: 3}
+  m_LerpTime: 0.5
 --- !u!1 &4487324705391898935
 GameObject:
   m_ObjectHideFlags: 0

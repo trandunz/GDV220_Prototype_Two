@@ -5365,7 +5365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb5f8de8fd0a344e8d234f152e0c7bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  godMode: 1
+  godMode: 0
   darknessStartingDepth: -10
   darknessChangeSpeed: 0.5
   depthPlayerLightsOn: -40
