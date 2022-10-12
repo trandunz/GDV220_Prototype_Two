@@ -248,6 +248,8 @@ public class SpawnManager : MonoBehaviour
             Coral.Offset = 8.0f;
             SpawnCoral(cameraPosition);
         }
+
+        DebugSpawner(cameraPosition);
     }
 
     IEnumerator SquidSpawnRoutine(Vector3 camPos)
@@ -578,5 +580,12 @@ public class SpawnManager : MonoBehaviour
         Coral.Object.transform.localScale = new Vector3(x, x, x);
         Destroy(Instantiate(Coral.Object), ObjectLifeTime);
         Coral.DepthCounter = -Depth + Coral.SpawnRate;
+    }
+    void DebugSpawner(Vector3 camPos)
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SpawnAngler(camPos);
+        }
     }
 }

@@ -621,6 +621,7 @@ MonoBehaviour:
   moveSpeed: 20
   lifeTime: 5
   isMoving: 0
+  knockBackForce: 5000
 --- !u!4 &2151447312750378429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8a6fd7e7c2588b843b5e798a0dcba9b0, type: 3}
