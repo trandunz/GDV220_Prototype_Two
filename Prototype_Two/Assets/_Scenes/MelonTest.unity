@@ -2529,11 +2529,7 @@ MonoBehaviour:
   lightingLevel: 100
   timer: 0
   backgroundObject: {fileID: 1067995727}
-  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-  colorG: 0
-  colorB: 0
   timerBackground: 0
-  maxTimerBackground: 2
   foregroundObjects: []
 --- !u!114 &337692182
 MonoBehaviour:
@@ -5127,6 +5123,8 @@ MonoBehaviour:
   darknessStartingDepth: -25
   darknessChangeSpeed: 1
   depthPlayerLightsOn: -50
+  colorChangeStartDepth: -20
+  colorChangeSpeed: 2
   sceneCentreObject: {fileID: 337692178}
   Player1: {fileID: 1468342190}
   Player2: {fileID: 1021871636}
@@ -7177,7 +7175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030dc7e2f205ab249af72bcb6a3caa76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fCameraSpeed: 0
   gameCentreObject: {fileID: 337692178}
   fScrollingStartPosY: -20
   bScrolling: 0
@@ -10262,7 +10259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505455038}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1495078, y: -13.106186, z: -6.94}
+  m_LocalPosition: {x: -2.1495078, y: -13.106186, z: -9.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11362,7 +11359,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 3
-      minScalar: 1
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -11519,7 +11516,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -11572,7 +11569,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -11625,7 +11622,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotation:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -17234,7 +17231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 97bf76f65fd9a0d4c8aedf52b17cfd2e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.94
+      value: -9.43
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 97bf76f65fd9a0d4c8aedf52b17cfd2e, type: 3}
       propertyPath: m_LocalRotation.w
