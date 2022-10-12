@@ -63,8 +63,9 @@ public class BubbleBuffUI : MonoBehaviour
     {
         for(int i = 0; i < 10; i++)
         {
-            m_SuckGemScript.MakeGem(m_TimerImage.rectTransform.TransformPoint(m_TimerImage.rectTransform.rect.center));
-            yield return new WaitForSeconds(0.2f);
+            var screenToWorldPosition = Camera.main.ScreenToWorldPoint(m_TimerImage.transform.position);
+            m_SuckGemScript.MakeGem(screenToWorldPosition);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

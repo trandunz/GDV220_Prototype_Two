@@ -199,6 +199,11 @@ public class SwimController : MonoBehaviour
         {
             SetAvailableBuffUI();
         }
+
+        if (Input.GetKeyDown(KeyCode.Keypad9))
+        {
+            PickupBubbleBuff(BubbleBuff.BUFFTYPE.GEMCHEST);
+        }
     }
 
     void FixedUpdate()
@@ -346,18 +351,14 @@ public class SwimController : MonoBehaviour
                         if (!usedOxyChest)
                         {
                             usedOxyChest = true;
-                            for (int i = 0; i < 10; i++)
-                            {
-                                oxygenTank.AddOxygem();
-                            }
                             bubbleBuffUseTimer = 0.8f;
                             if (PlayerOne)
                             {
-                                StartCoroutine(m_BubbleBuffUIs[1].SpawnGemChestGemsRoutine());
+                                StartCoroutine(m_BubbleBuffUIs[0].SpawnGemChestGemsRoutine());
                             }
                             else
                             {
-                                StartCoroutine(m_BubbleBuffUIs[0].SpawnGemChestGemsRoutine());
+                                StartCoroutine(m_BubbleBuffUIs[1].SpawnGemChestGemsRoutine());
                             }
                         }
 

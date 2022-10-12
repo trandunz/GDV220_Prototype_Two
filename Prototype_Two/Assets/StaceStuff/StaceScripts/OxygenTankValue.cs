@@ -220,6 +220,10 @@ public class OxygenTankValue : MonoBehaviour
             }
         }
     }
+    public Transform GetNextOxygemSlot()
+    {
+        return litOxygem[iOxygemCount].transform;
+    }
 
     private void ExplodeGems(int gemsCount)
     {

@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GemPrefab: {fileID: 2951123183173000976, guid: 225ead67133fc8649b179310a2f7156e, type: 3}
-  m_LerpTime: 0.5
+  m_LerpTime: 4
 --- !u!1 &3132955428287740828
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GemPrefab: {fileID: 2951123183173000976, guid: 225ead67133fc8649b179310a2f7156e, type: 3}
-  m_LerpTime: 0.5
+  m_LerpTime: 4
 --- !u!1 &4487324705391898935
 GameObject:
   m_ObjectHideFlags: 0
