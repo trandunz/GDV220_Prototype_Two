@@ -440,7 +440,7 @@ public class SpawnManager : MonoBehaviour
             Eel.Offset = -9.0f;
         }
        
-        Eel.SpawnPoint = new Vector3(camPos.x + Eel.Offset, camPos.y, camPos.z);
+        Eel.SpawnPoint = new Vector3(camPos.x + Eel.Offset, camPos.y, camPos.z - 2.5f);
         var eel = Instantiate(Eel.Object, Eel.SpawnPoint, rot);
 
         if (randomnum == 1)
@@ -479,16 +479,8 @@ public class SpawnManager : MonoBehaviour
 
         // First make sure its not spawning the same thing 
         // twice in a row
-        coralIndex = Random.Range(0, CoralPrefabs.Length - 1);
+        coralIndex = Random.Range(0, CoralPrefabs.Length);
         Coral.Object = CoralPrefabs[coralIndex];
-
-        // Get rid of duplicate spawns
-        // if (Coral.Object != CachedLastCoralSpawned)
-        // {
-        //     coralIndex = ((CoralPrefabs.Length - 1) - coralIndex);
-        //     Coral.Object = CoralPrefabs[coralIndex];
-        // }
-        //   CachedLastCoralSpawned = Coral.Object;
 
         // rotation
         if (Coral.Object.CompareTag("SeaWeed"))
