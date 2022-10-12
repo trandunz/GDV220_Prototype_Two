@@ -25,6 +25,7 @@ public class BubbleBuffChest : MonoBehaviour
         m_Chest = GetComponentInChildren<Chest>();
         m_BubbleBuffObject = Instantiate(m_BubbleBuffObjects[Random.Range(0, m_BubbleBuffObjects.Length)], m_BubbleBuffBubble);
         m_BubbleBuffObject.transform.position = m_BubbleBuffBubble.transform.position;
+        m_BubbleBuffObject.transform.rotation = Quaternion.Euler(m_BubbleBuffObject.transform.rotation.eulerAngles.x, m_BubbleBuffObject.transform.eulerAngles.y + 180, m_BubbleBuffObject.transform.eulerAngles.z);
         m_BubbleBuffScript = m_BubbleBuffObject.GetComponentInChildren<BubbleBuff>();
     }
 
@@ -69,19 +70,24 @@ public class BubbleBuffChest : MonoBehaviour
 
     IEnumerator BubbleBuffFloatRoutine()
     {
-        while (m_BubbleBuffBubble.position.y < m_FloatHight && m_Chest.m_IsOpen)
+        if (m_BubbleBuffBubble)
         {
-            m_BubbleBuffBubble.position = m_BubbleBuffBubble.position + Vector3.up * m_FloatUpSpeed * Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+            while (m_BubbleBuffBubble.position.y < m_FloatHight && m_Chest.m_IsOpen)
+            {
+                m_BubbleBuffBubble.position = m_BubbleBuffBubble.position + Vector3.up * m_FloatUpSpeed * Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+            Vector3 startPos = m_BubbleBuffBubble.position;
+            float elapsedTime = 0.0f;
+            while (m_Chest.m_IsOpen)
+            {
+                m_BubbleBuffBubble.position = startPos + Vector3.up * Mathf.Sin(elapsedTime * m_BobSpeed) * m_BoBAmplitude;
+                elapsedTime += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
         }
-        Vector3 startPos = m_BubbleBuffBubble.position;
-        float elapsedTime = 0.0f;
-        while (m_Chest.m_IsOpen)
-        {
-            m_BubbleBuffBubble.position = startPos + Vector3.up * Mathf.Sin(elapsedTime * m_BobSpeed) * m_BoBAmplitude;
-            elapsedTime += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
+        else
+            yield return null;
     }
 
     void GetDistanceToClosestPlayer()
