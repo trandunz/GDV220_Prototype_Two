@@ -82,15 +82,15 @@ public class CameraMovement : MonoBehaviour
 
                     // Decrease color of the fog
                     if (previousColor.r > 0)
-                        previousColor.r = previousColor.r - (2.0f / 255.0f);
+                        previousColor.r = previousColor.r - (3.0f / 255.0f);
                     else
                         previousColor.r = 0;
                     if (previousColor.g > 0)
-                        previousColor.g -= 2.0f/255.0f;
+                        previousColor.g -= 3.0f/255.0f;
                     else
                         previousColor.r = 0;
                     if (previousColor.b > 0)
-                        previousColor.b -= 2.0f/255.0f;
+                        previousColor.b -= 3.0f/255.0f;
                     else
                         previousColor.r = 0;
 
