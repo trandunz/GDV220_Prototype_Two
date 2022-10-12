@@ -15,15 +15,21 @@ public class BubbleBuffChest : MonoBehaviour
     BubbleBuff m_BubbleBuffScript;
     Chest m_Chest;
     SwimController[] m_Players;
+    CameraMovement m_LightingLevel;
+
     float DistanceToClosestPlayer = float.MaxValue;
     bool IsUsed = false;
 
     private void Start()
     {
+        m_LightingLevel = FindObjectOfType<CameraMovement>();
         m_FloatHight = m_BubbleBuffBubble.position.y + m_FloatHight;       
         m_Players = FindObjectsOfType<SwimController>();
         m_Chest = GetComponentInChildren<Chest>();
-        m_BubbleBuffObject = Instantiate(m_BubbleBuffObjects[Random.Range(0, m_BubbleBuffObjects.Length)], m_BubbleBuffBubble);
+        if (m_LightingLevel.lightingLevel <= 50)
+            m_BubbleBuffObject = Instantiate(m_BubbleBuffObjects[Random.Range(0, m_BubbleBuffObjects.Length)], m_BubbleBuffBubble);
+        else
+            m_BubbleBuffObject = Instantiate(m_BubbleBuffObjects[Random.Range(0, m_BubbleBuffObjects.Length - 1)], m_BubbleBuffBubble);
         m_BubbleBuffObject.transform.position = m_BubbleBuffBubble.transform.position;
         m_BubbleBuffObject.transform.rotation = Quaternion.Euler(m_BubbleBuffObject.transform.rotation.eulerAngles.x, m_BubbleBuffObject.transform.eulerAngles.y + 180, m_BubbleBuffObject.transform.eulerAngles.z);
         m_BubbleBuffScript = m_BubbleBuffObject.GetComponentInChildren<BubbleBuff>();
