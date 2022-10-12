@@ -327,18 +327,19 @@ public class SwimController : MonoBehaviour
                     }
                 case BubbleBuff.BUFFTYPE.FLARE:
                     {
-                        SetBuffCooldownWidget(bubbleBuffUseTimer / BubbleBuffUseTime);
+                        SetBuffCooldownWidget(bubbleBuffUseTimer / 1.0f);
                         if (!usedFlare)
                         {
                             usedFlare = true;
                             Instantiate(GlowStick, transform.position, Quaternion.identity);
+                            bubbleBuffUseTimer = 1.0f;
                         }
 
                         break;
                     }
                 case BubbleBuff.BUFFTYPE.GEMCHEST:
                     {
-                        SetBuffCooldownWidget(bubbleBuffUseTimer / BubbleBuffUseTime);
+                        SetBuffCooldownWidget(bubbleBuffUseTimer / 1.0f);
                         if (!usedOxyChest)
                         {
                             usedOxyChest = true;
@@ -346,6 +347,7 @@ public class SwimController : MonoBehaviour
                             {
                                 oxygenTank.AddOxygem();
                             }
+                            bubbleBuffUseTimer = 1.0f;
                         }
 
                         break;

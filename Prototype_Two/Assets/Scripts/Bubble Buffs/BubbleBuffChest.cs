@@ -25,7 +25,7 @@ public class BubbleBuffChest : MonoBehaviour
         m_Chest = GetComponentInChildren<Chest>();
         m_BubbleBuffObject = Instantiate(m_BubbleBuffObjects[Random.Range(0, m_BubbleBuffObjects.Length)], m_BubbleBuffBubble);
         m_BubbleBuffObject.transform.position = m_BubbleBuffBubble.transform.position;
-        m_BubbleBuffScript = m_BubbleBuffObject.GetComponent<BubbleBuff>();
+        m_BubbleBuffScript = m_BubbleBuffObject.GetComponentInChildren<BubbleBuff>();
     }
 
     private void Update()
