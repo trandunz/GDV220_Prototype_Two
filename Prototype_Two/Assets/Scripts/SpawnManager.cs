@@ -70,6 +70,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject GiantSquidPrefab;
     [SerializeField] float GiantSquidSpawnRate = 14.0f;
 
+    [Header("Big Fish")]
+    [SerializeField] GameObject BigFishPrefab;
+    [SerializeField] float BigFishSpawnRate = 10.0f;
+
     CameraMovement CameraMovement;
 
     public SpawnableObject SeaUrchin;
@@ -85,6 +89,7 @@ public class SpawnManager : MonoBehaviour
     public SpawnableObject Squid;
     public SpawnableObject Angler;
     public SpawnableObject GiantSquid;
+    public SpawnableObject BigFish;
 
     public struct SpawnableObject
     {
@@ -159,6 +164,11 @@ public class SpawnManager : MonoBehaviour
         GiantSquid.Object = GiantSquidPrefab;
         GiantSquid.DepthCounter = 5.0f;
         GiantSquid.SpawnRate = GiantSquidSpawnRate;
+
+        // Initialize Big Fish
+        BigFish.Object = BigFishPrefab;
+        BigFish.DepthCounter = 5.0f;
+        BigFish.SpawnRate = BigFishSpawnRate;
     }
     private void Update()
     {
@@ -175,6 +185,12 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnJellyFishSwarm(cameraPosition);
         }
+
+        if ((-Depth) >= BigFish.DepthCounter)
+        {
+            SpawnBigFish(cameraPosition);
+        }
+
         if ((-Depth) >= Oxygem.DepthCounter)
         {
             int randomNum = Random.Range(0, 6);
@@ -246,6 +262,37 @@ public class SpawnManager : MonoBehaviour
         cameraPosition.z += ZOffset;
         SpawnSquid(cameraPosition);
 
+    }
+
+    public void SpawnBigFish(Vector3 camPos)
+    {
+        bool spawnLeft = false;
+        int rotationSide = Random.Range(1, 3); ;
+        Vector3 spawnPos;
+
+        Quaternion rotation;
+
+        if (rotationSide == 1)
+        {
+            rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
+            rotation = Quaternion.Euler(0, 180, 0);
+            spawnLeft = true;
+        }
+
+        if (spawnLeft)
+            spawnPos.x = -8.0f;
+        else
+            spawnPos.x = 8.0f;
+        spawnPos.z = 6;
+        spawnPos.y = Random.Range(camPos.y - 7, camPos.y + 10);
+
+        BigFish.SpawnPoint = spawnPos;
+        BigFish.DepthCounter = -Depth + BigFish.SpawnRate;
+
+        Destroy(Instantiate(BigFish.Object, BigFish.SpawnPoint, rotation), 60);
     }
 
     public void SpawnGiantSquid(Vector3 camPos)
