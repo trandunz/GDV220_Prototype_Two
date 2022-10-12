@@ -39,7 +39,7 @@ public class Enemy_Jellyfish : MonoBehaviour
             if (animationTime > 0.5 && animationTime < 1.0f)
             {
                 bMoving = false;
-                Debug.Log(animationTime);
+                
             }
         }
         else

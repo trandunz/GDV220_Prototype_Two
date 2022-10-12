@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour
     public float darknessChangeSpeed = 2.0f; // Amount of time before a change in scene color towards black
                                              // over a total time of 100 seconds
     public float depthPlayerLightsOn = -100.0f; // At what depth the player spotlights should turn on
+    public float playerLightIntensityIncrease = 1;
+    public float PlayerLightTimer = 2.0f;
+    private float LightTimer;
+    private Transform player1Light;
+    private Transform player2Light;
+    private float PlayerLightIntensity;
 
     // Background object and its changing of color over time
     [Header("Background Object")]
@@ -27,7 +33,15 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        LightTimer = PlayerLightTimer;
 
+        // Find player lights
+        player1Light = Player1.transform.Find("SpotLight");
+        player2Light = Player2.transform.Find("SpotLight");
+
+        PlayerLightIntensity = player1Light.GetComponent<Light>().intensity;
+        player1Light.GetComponent<Light>().intensity = 0;
+        player2Light.GetComponent<Light>().intensity = 0;
     }
 
     // Update is called once per frame
@@ -36,11 +50,24 @@ public class GameManager : MonoBehaviour
         // Turn player lights on at specified depth
         if (sceneCentreObject.transform.position.y <= depthPlayerLightsOn)
         {
-            Transform player1Light = Player1.transform.Find("SpotLight");
-            Transform player2Light = Player2.transform.Find("SpotLight");
+            LightTimer -= Time.deltaTime;
+            if (LightTimer <= 0)
+            {
+                LightTimer = PlayerLightTimer; // Reset timer
 
-            player1Light.gameObject.SetActive(true);
-            player2Light.gameObject.SetActive(true);
+                if (player1Light.GetComponent<Light>().intensity < PlayerLightIntensity)
+                {
+                    player1Light.GetComponent<Light>().intensity = player1Light.GetComponent<Light>().intensity + playerLightIntensityIncrease;
+                    player2Light.GetComponent<Light>().intensity = player1Light.GetComponent<Light>().intensity + playerLightIntensityIncrease;
+                }
+            }
+
+
+            //Transform player1Light = Player1.transform.Find("SpotLight");
+            //Transform player2Light = Player2.transform.Find("SpotLight");
+
+            //player1Light.gameObject.SetActive(true);
+            //player2Light.gameObject.SetActive(true);
         }
 
         if (godMode)

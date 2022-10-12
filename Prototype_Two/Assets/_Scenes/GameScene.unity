@@ -5632,6 +5632,8 @@ MonoBehaviour:
   darknessStartingDepth: -10
   darknessChangeSpeed: 0.5
   depthPlayerLightsOn: -40
+  playerLightIntensityIncrease: 2
+  PlayerLightTimer: 0.1
   colorChangeStartDepth: -10
   colorChangeSpeed: 0.5
   sceneCentreObject: {fileID: 337692178}
