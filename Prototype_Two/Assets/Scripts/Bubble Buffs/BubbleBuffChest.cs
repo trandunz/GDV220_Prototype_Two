@@ -47,7 +47,7 @@ public class BubbleBuffChest : MonoBehaviour
             {
                 m_BubbleBuffScript.GiveToPlayer(player);
                 m_Chest.CloseChest();
-                StartCoroutine(CloseChestRoutine());
+                Destroy(m_BubbleBuffBubble.gameObject);
                 IsUsed = true;
             }
         }
@@ -61,7 +61,7 @@ public class BubbleBuffChest : MonoBehaviour
             {
                 m_BubbleBuffScript.GiveToPlayer(player);
                 m_Chest.CloseChest();
-                StartCoroutine(CloseChestRoutine());
+                Destroy(m_BubbleBuffBubble.gameObject);
                 IsUsed = true;
             }
         }
@@ -80,15 +80,6 @@ public class BubbleBuffChest : MonoBehaviour
         {
             m_BubbleBuffBubble.position = startPos + Vector3.up * Mathf.Sin(elapsedTime * m_BobSpeed) * m_BoBAmplitude;
             elapsedTime += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-    }
-
-    IEnumerator CloseChestRoutine()
-    {
-        while (m_BubbleBuffBubble.localPosition.y > 0.7f)
-        {
-            m_BubbleBuffBubble.localPosition = m_BubbleBuffBubble.localPosition + Vector3.down * m_FloatUpSpeed * Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
     }

@@ -19,7 +19,11 @@ public class Clam : MonoBehaviour
         Players = FindObjectsOfType<SwimController>();
         var shape = m_SuctionParticle.shape;
         shape.angle = m_SuctionAngle;
-        shape.length = m_SuctionRange + 1;
+        shape.length = m_SuctionRange;
+
+        var LinesShape = m_LinesParticle.shape;
+        LinesShape.angle = m_SuctionAngle;
+        LinesShape.length = m_SuctionRange;
     }
 
     private void Update()
