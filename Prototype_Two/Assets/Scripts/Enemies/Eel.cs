@@ -9,6 +9,7 @@ public class Eel : MonoBehaviour
     [SerializeField] float PeekTime = 0.5f;
     [SerializeField] float PeakDelay = 1.0f;
     [SerializeField] GameObject BackgroundEelPrefab;
+    [SerializeField] float KnockBackForce;
 
     GameObject BackgroundEel;
     Vector3 StartPos;
@@ -83,9 +84,7 @@ public class Eel : MonoBehaviour
         if (BackgroundEel)
             BackgroundEel.transform.position += transform.right * fMoveSpeed * 0.5f * Time.deltaTime;
 
-        if (bMoving && m_MoveRight)
-            transform.Translate(new Vector3(-fMoveSpeed * Time.deltaTime, 0, 0));
-        else if (bMoving)
+        if (bMoving)
             transform.Translate(new Vector3(-fMoveSpeed * Time.deltaTime, 0, 0));
     }
 
@@ -93,6 +92,25 @@ public class Eel : MonoBehaviour
     {
         if (other.tag is "Player")
         {
+            Vector3 player_pos = other.GetComponent<Transform>().position;
+
+            Vector3 impulse = new Vector3(-fMoveSpeed, 0.0f, 0.0f);
+            if (m_MoveRight)
+            { 
+                impulse = new Vector3(fMoveSpeed, 0.0f, 0.0f);
+            }
+            impulse = impulse.normalized;
+            if (player_pos.y > transform.position.y)
+            {
+                impulse += new Vector3(0.0f, 1.0f, 0.0f);
+            }
+            else
+            {
+                impulse += new Vector3(0.0f, -1.0f, 0.0f);
+            }
+            impulse *= KnockBackForce;
+            other.GetComponent<SwimController>().ApplyImpulse(impulse);
+            
             other.GetComponent<SwimController>().HitEnemy();
         }
     }
