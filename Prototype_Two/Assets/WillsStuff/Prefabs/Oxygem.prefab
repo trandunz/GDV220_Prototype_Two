@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7072238977417265630}
   - component: {fileID: 5040315319089785430}
   - component: {fileID: 4056620616418625841}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Oxygem
   m_TagString: Oxygem
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isExplodedGem: 0
-  explodeSpeed: 10
+  lifeTime: 2
 --- !u!65 &4056620616418625841
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -115,6 +115,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4df75c07d6b5ea547a1dba345cc54bc3, type: 3}
       propertyPath: m_Name
       value: Oxygem
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4df75c07d6b5ea547a1dba345cc54bc3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4df75c07d6b5ea547a1dba345cc54bc3, type: 3}

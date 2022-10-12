@@ -331,7 +331,9 @@ public class SwimController : MonoBehaviour
                         if (!usedFlare)
                         {
                             usedFlare = true;
-                            Instantiate(GlowStick, transform.position, Quaternion.identity);
+                            Vector3 glowStickPos = transform.position;
+                            glowStickPos.z = -2.0f;
+                            Instantiate(GlowStick, glowStickPos, Quaternion.identity);
                         }
 
                         break;

@@ -48,8 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fTimer: 0
-  fMinRange: 0
-  fMaxRange: 0.1
+  fMinRange: 1
+  fMaxRange: 3
+  fMoveSpeed: 0.4
 --- !u!65 &8652102868179447920
 BoxCollider:
   m_ObjectHideFlags: 0
