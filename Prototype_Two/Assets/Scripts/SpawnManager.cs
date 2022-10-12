@@ -587,5 +587,21 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnAngler(camPos);
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SpawnSeaMine(camPos);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SpawnClam(camPos);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SpawnSquid(camPos);
+        }
+
+
     }
 }
