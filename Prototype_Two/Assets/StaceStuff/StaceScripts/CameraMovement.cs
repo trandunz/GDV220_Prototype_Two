@@ -29,6 +29,9 @@ public class CameraMovement : MonoBehaviour
     // Foreground Objects
     public GameObject[] foregroundObjects;
 
+    // Fog
+    private Color previousColor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +51,8 @@ public class CameraMovement : MonoBehaviour
 
         // Foreground Objects
         foregroundObjects = GameObject.FindGameObjectsWithTag("ForegroundObject");
+
+        previousColor = RenderSettings.fogColor;
     }
 
     // Update is called once per frame
@@ -70,9 +75,27 @@ public class CameraMovement : MonoBehaviour
             {
                 if (lightingLevel > 0)
                 {
+                    // Decrease light
                     lightingLevel -= 1;
                     RenderSettings.ambientLight = new Color(lightingLevel / 255.0f, lightingLevel / 255.0f, lightingLevel / 255.0f);
                     timer = maxTimer;
+
+                    // Decrease color of the fog
+                    if (previousColor.r > 0)
+                        previousColor.r = previousColor.r - (2.0f / 255.0f);
+                    else
+                        previousColor.r = 0;
+                    if (previousColor.g > 0)
+                        previousColor.g -= 2.0f/255.0f;
+                    else
+                        previousColor.r = 0;
+                    if (previousColor.b > 0)
+                        previousColor.b -= 2.0f/255.0f;
+                    else
+                        previousColor.r = 0;
+
+                    RenderSettings.fogColor = new Color(previousColor.r, previousColor.g, previousColor.b);
+
 
                     // Foreground Objects - make more transparent over time when game gets darker
                     foreach (GameObject foregroundObject in foregroundObjects)
@@ -92,6 +115,12 @@ public class CameraMovement : MonoBehaviour
                     }
                 }
             }
+        }
+
+        // Turn off fog if dark
+        if (lightingLevel <= 0)
+        {
+            RenderSettings.fog = false;
         }
 
         if (transform.position.y <= backgroundStartDepth)
