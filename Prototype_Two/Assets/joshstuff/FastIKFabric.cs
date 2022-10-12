@@ -215,14 +215,10 @@ public class FastIKFabric : MonoBehaviour
 
         foreach(Transform bone in Bones)
         {
-            if (bone.localScale.x > 10.0f ||
-                bone.localScale.y > 10.0f ||
-                bone.localScale.z > 10.0f ||
-                bone.localScale.x < -10.0f ||
-                bone.localScale.y < -10.0f ||
-                bone.localScale.z < -10.0f)
-            { 
-                    bone.localScale = scale;  
+            if (bone != Bones[0])
+            {
+                scale = Vector3.one;
+                bone.localScale = scale;
             }
         }
     }
