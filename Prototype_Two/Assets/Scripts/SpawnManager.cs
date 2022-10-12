@@ -440,7 +440,7 @@ public class SpawnManager : MonoBehaviour
             Eel.Offset = -9.0f;
         }
        
-        Eel.SpawnPoint = new Vector3(camPos.x + Eel.Offset, camPos.y, camPos.z - 2.5f);
+        Eel.SpawnPoint = new Vector3(camPos.x + Eel.Offset, camPos.y, camPos.z - 4.5f);
         var eel = Instantiate(Eel.Object, Eel.SpawnPoint, rot);
 
         if (randomnum == 1)
@@ -513,7 +513,7 @@ public class SpawnManager : MonoBehaviour
         // position
         x = Random.Range(-0.5f, 0.5f);
         y = Random.Range(0.0f, 1.5f);
-        Coral.SpawnPoint = new Vector3(camPos.x + Coral.Offset + x, camPos.y + y, -4.0f);
+        Coral.SpawnPoint = new Vector3(camPos.x + Coral.Offset + x, camPos.y + y, -8.5f);
 
         // scale
         x = Random.Range(0.3f, 0.5f);
