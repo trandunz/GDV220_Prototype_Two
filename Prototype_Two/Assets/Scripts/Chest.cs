@@ -5,25 +5,28 @@ using UnityEngine;
 public class Chest : MonoBehaviour
 {
     Animator m_Animator;
-    bool m_IsOpen = false;
+    public bool m_IsOpen = false;
+    public bool m_Locked = false;
     private void Start()
     {
         m_Animator = GetComponent<Animator>();
     }
     public void OpenChest()
     {
-        if (!m_IsOpen)
+        if (!m_IsOpen && !m_Locked)
         {
             m_IsOpen = true;
             m_Animator.SetBool("Open", true);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void CloseChest()
     {
-        if (other.tag is "Player")
+        if (m_IsOpen && !m_Locked)
         {
-            OpenChest();
+            m_Locked = true;
+            m_IsOpen = false;
+            m_Animator.SetBool("Open", false);
         }
     }
 }

@@ -170,6 +170,11 @@ MonoBehaviour:
   - {fileID: 4059359212099657393, guid: 1b24f632d9927c3478ba44cf38ed3bdc, type: 3}
   m_BubbleBuffObject: {fileID: 9176190817386432200, guid: 4e0d95adda040f64496f6090ed9ebeeb, type: 3}
   m_BubbleBuffBubble: {fileID: 7683003244447756518}
+  m_DistanceToOpen: 8
+  m_FloatHight: 0.5
+  m_FloatUpSpeed: 1
+  m_BobSpeed: 1.5
+  m_BoBAmplitude: 0.1
 --- !u!65 &7399526005602279385
 BoxCollider:
   m_ObjectHideFlags: 0
