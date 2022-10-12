@@ -38,8 +38,7 @@ public class Enemy_Jellyfish : MonoBehaviour
             float animationTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
             if (animationTime > 0.5 && animationTime < 1.0f)
             {
-                bMoving = false;
-                
+                bMoving = false;                
             }
         }
         else
@@ -49,8 +48,8 @@ public class Enemy_Jellyfish : MonoBehaviour
 
         if (bMoving)
         {
-            //transform.Translate(0.0f, 0.0f, 0.0f); // Stop movement (looks like moving)
-            transform.Translate(0.0f, OxygenTank.GetComponentInParent<CameraMovement>().fCameraSpeed * fMoveSpeed * Time.deltaTime, 0.0f);// slows movement (looks like moving)
+            // slows movement (looks like moving)
+            transform.Translate(0.0f, OxygenTank.GetComponentInParent<CameraMovement>().fCameraSpeed * fMoveSpeed * Time.deltaTime, 0.0f);
             
             // "lerps" without lerping
             fMoveSpeed -= Time.deltaTime;
