@@ -38,6 +38,8 @@ public class SwimController : MonoBehaviour
     bool IsInvulnrable = false;
     float m_InvulnrabilityTimer;
 
+    BubbleBuffUI[] m_BubbleBuffUIs;
+
     [Header("GUI Settings")]
     BubbleBuffPanel BubbleBuffUI;
     DepthPanel ScoreScript;
@@ -100,6 +102,8 @@ public class SwimController : MonoBehaviour
 
     void Start()
     {
+        m_BubbleBuffUIs = FindObjectsOfType<BubbleBuffUI>();
+
         MoveSpeed = SwimSpeed;
 
         BubbleBuffUI = FindObjectOfType<BubbleBuffPanel>();
@@ -351,6 +355,14 @@ public class SwimController : MonoBehaviour
                                 oxygenTank.AddOxygem();
                             }
                             bubbleBuffUseTimer = 0.8f;
+                            if (PlayerOne)
+                            {
+                                StartCoroutine(m_BubbleBuffUIs[1].SpawnGemChestGemsRoutine());
+                            }
+                            else
+                            {
+                                StartCoroutine(m_BubbleBuffUIs[0].SpawnGemChestGemsRoutine());
+                            }
                         }
 
                         break;

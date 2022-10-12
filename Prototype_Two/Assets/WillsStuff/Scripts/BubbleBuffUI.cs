@@ -8,9 +8,16 @@ public class BubbleBuffUI : MonoBehaviour
     [SerializeField]Image m_TimerImage;
     [SerializeField] Image m_BuffImage;
     [SerializeField] Sprite[] m_BuffSprites;
+    BubbleBuff.BUFFTYPE m_CurrentBuff;
+    SuckGemFromUI m_SuckGemScript;
 
+    private void Start()
+    {
+        m_SuckGemScript = GetComponent<SuckGemFromUI>();
+    }
     public void SetAvailableBuff(BubbleBuff.BUFFTYPE _buffType)
     {
+        m_CurrentBuff = _buffType;
         switch (_buffType)
         {
             case BubbleBuff.BUFFTYPE.RANDOM:
@@ -50,5 +57,14 @@ public class BubbleBuffUI : MonoBehaviour
     public void SetTimerImageFill(float _fillAmount)
     {
         m_TimerImage.fillAmount = _fillAmount;
+
+    }
+    public IEnumerator SpawnGemChestGemsRoutine()
+    {
+        for(int i = 0; i < 10; i++)
+        {
+            m_SuckGemScript.MakeGem(m_TimerImage.rectTransform.TransformPoint(m_TimerImage.rectTransform.rect.center));
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 }
