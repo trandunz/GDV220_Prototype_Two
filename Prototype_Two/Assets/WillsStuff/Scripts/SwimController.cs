@@ -101,6 +101,9 @@ public class SwimController : MonoBehaviour
 
     float bubbleBuffUseTimer;
 
+    [SerializeField] ParticleSystem m_ShockEffect;
+    [SerializeField] ParticleSystem m_ShockEffectBubble;
+
 
     void Start()
     {
@@ -206,6 +209,10 @@ public class SwimController : MonoBehaviour
         {
             PickupBubbleBuff(BubbleBuff.BUFFTYPE.GEMCHEST);
         }
+        if (Input.GetKeyDown(KeyCode.Keypad8))
+        {
+            PickupBubbleBuff(BubbleBuff.BUFFTYPE.SHIELD);
+        }
     }
 
     void FixedUpdate()
@@ -298,13 +305,25 @@ public class SwimController : MonoBehaviour
 
     IEnumerator ParalyzeRoutine()
     {
-        CanMove = false;
+        if (!IsUsingBubbleBuff)
+        {
+            CanMove = false;
+            m_ShockEffect.Play();
+        }
+        else
+        {
+            m_ShockEffectBubble.Play();
+        }
+            
         m_ParalyzeTimer = m_ParalyzeDuration;
+        
         while (m_ParalyzeTimer > 0)
         {
             m_ParalyzeTimer -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+        m_ShockEffect.Stop();
+        m_ShockEffectBubble.Stop();
 
         if (m_ActivePowerup)
         {
@@ -385,10 +404,11 @@ public class SwimController : MonoBehaviour
                         if (m_ActivePowerup == null)
                         {
                             m_ActivePowerup = Instantiate(ShieldBubble, transform);
+                            m_ActivePowerup.transform.position = m_ShockEffect.transform.position;
                         }
                         else
                         {
-                            m_ActivePowerup.transform.position = transform.position;
+                            m_ActivePowerup.transform.position = m_ShockEffect.transform.position;
                         }
 
                         break;
