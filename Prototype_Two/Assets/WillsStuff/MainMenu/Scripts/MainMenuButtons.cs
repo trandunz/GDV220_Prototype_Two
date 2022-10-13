@@ -13,6 +13,7 @@ public class MainMenuButtons : MonoBehaviour
     Color originalColor;
 
     bool InsertCoinSelected = true;
+    public bool pauseStart = false;
 
     private void Start()
     {
@@ -28,7 +29,10 @@ public class MainMenuButtons : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace))
             {
-                StartGame();
+                if (!pauseStart)
+                {
+                    StartGame();
+                }
             }
         }
         else

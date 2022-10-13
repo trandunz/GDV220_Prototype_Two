@@ -10,10 +10,12 @@ public class EnterHighScore : MonoBehaviour
     [SerializeField] int[] charactersCurrentPos;
     [SerializeField] float delayBetweenInput = 0.12f;
     [SerializeField] float counterDelayBetweenInput = 0.0f;
+    [SerializeField] GameObject underLine;
     int currentTextMesh = 0;
     char[] chars;
     public bool isOn = false;
     public HighscoreEntry hse;
+    public MainMenuButtons mmb;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,12 @@ public class EnterHighScore : MonoBehaviour
             charactersCurrentPos[i] = 0;
         string str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890?!@#$%^&*()-_+=[]{}:;,.<>/";
         chars = str.ToCharArray();
+        hse = FindObjectOfType<HighscoreEntry>();
+        mmb = FindObjectOfType<MainMenuButtons>();
+        mmb.pauseStart = true;
+        isOn = true;
+
+        underLine.transform.position = new Vector2(characters[currentTextMesh].transform.position.x, characters[currentTextMesh].transform.position.y - 18);
     }
 
     // Update is called once per frame
@@ -69,6 +77,8 @@ public class EnterHighScore : MonoBehaviour
                     currentTextMesh = characters.Length - 1;
                 }
 
+                underLine.transform.position = new Vector2(characters[currentTextMesh].transform.position.x, characters[currentTextMesh].transform.position.y - 18);
+
                 counterDelayBetweenInput = delayBetweenInput;
             }
 
@@ -81,20 +91,25 @@ public class EnterHighScore : MonoBehaviour
                     currentTextMesh = 0;
                 }
 
+                underLine.transform.position = new Vector2(characters[currentTextMesh].transform.position.x, characters[currentTextMesh].transform.position.y - 18);
+
                 counterDelayBetweenInput = delayBetweenInput;
             }
 
             // enter
-            if (Input.GetKey(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 string str = "";
                 for (int i = 0; i < characters.Length; i++)
                 {
-                    str += characters[i].ToString();
+                    str += characters[i].GetParsedText();
                 }
+                str += ": ";
 
                 PlayerPrefs.SetString("Initials", str);
                 hse.Continue();
+                mmb.pauseStart = false;
+                Destroy(gameObject);
 
                 counterDelayBetweenInput = delayBetweenInput;
             }

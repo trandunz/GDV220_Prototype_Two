@@ -7,13 +7,19 @@ public class HighscoreEntry : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI Score;
     [SerializeField] EnterHighScore Initials;
     [SerializeField] int score;
+    static public bool newHighscore = false;
 
     public void SetScore(int _score)
     {
-        Instantiate(Initials.gameObject);
-        Initials.hse = this;
-        Initials.isOn = true;
         score = _score;
+        if (newHighscore)
+        {
+            Instantiate(Initials.gameObject);
+        }
+        else
+        {
+            Continue();
+        }
     }
 
     public void Continue()

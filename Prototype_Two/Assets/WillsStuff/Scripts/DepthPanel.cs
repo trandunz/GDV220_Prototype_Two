@@ -16,6 +16,7 @@ public class DepthPanel : MonoBehaviour
         if (depth > PlayerPrefs.GetInt("DeepestDepth"))
         {
             PlayerPrefs.SetInt("DeepestDepth", depth);
+            HighscoreEntry.newHighscore = true;
         }
     }
     public void AddScore(int _amount)
