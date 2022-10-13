@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BubbleBuffUI : MonoBehaviour
 {
-    [SerializeField]Image m_TimerImage;
+    public Image m_TimerImage;
     [SerializeField] Image m_BuffImage;
     [SerializeField] Sprite[] m_BuffSprites;
     BubbleBuff.BUFFTYPE m_CurrentBuff;

@@ -430,6 +430,17 @@ public class SwimController : MonoBehaviour
         m_RigidBody.AddForce(_force * Time.fixedDeltaTime, ForceMode.Acceleration);
     }
 
+    public BubbleBuffUI GetUIWidget()
+    {
+        if (PlayerOne)
+        {
+            return m_BubbleBuffUIs[0];
+        }
+        else
+        {
+            return m_BubbleBuffUIs[1];
+        }
+    }
     void Drag()
     {
         ApplyForce(-m_RigidBody.velocity * DragForce);

@@ -15,6 +15,7 @@ public class BubbleBuffChest : MonoBehaviour
     BubbleBuff m_BubbleBuffScript;
     Chest m_Chest;
     SwimController[] m_Players;
+    SwimController m_PlayerWhoGrabbed;
     CameraMovement m_LightingLevel;
 
     float DistanceToClosestPlayer = float.MaxValue;
@@ -52,9 +53,9 @@ public class BubbleBuffChest : MonoBehaviour
             SwimController player = other.GetComponent<SwimController>();
             if (!player.IsUsingBubbleBuff)
             {
-                m_BubbleBuffScript.GiveToPlayer(player);
+                m_PlayerWhoGrabbed = player;
                 m_Chest.CloseChest();
-                Destroy(m_BubbleBuffBubble.gameObject);
+                StartCoroutine(LerpBuffToUI());
                 IsUsed = true;
             }
         }
@@ -66,12 +67,27 @@ public class BubbleBuffChest : MonoBehaviour
             SwimController player = other.GetComponent<SwimController>();
             if (!player.IsUsingBubbleBuff)
             {
-                m_BubbleBuffScript.GiveToPlayer(player);
+                m_PlayerWhoGrabbed = player;
                 m_Chest.CloseChest();
-                Destroy(m_BubbleBuffBubble.gameObject);
+                StartCoroutine(LerpBuffToUI());
                 IsUsed = true;
             }
         }
+    }
+
+    IEnumerator LerpBuffToUI()
+    {
+        float ratio = 0.0f;
+        Vector3 startPos = m_BubbleBuffObject.transform.position;
+        Vector3 UIpos = Camera.main.ScreenToWorldPoint(m_PlayerWhoGrabbed.GetUIWidget().m_TimerImage.transform.position);
+        while (ratio < 1.0f)
+        {
+            m_BubbleBuffObject.transform.position = Vector3.Lerp(startPos, UIpos, ratio);
+            ratio += Time.deltaTime * 4;
+            yield return new WaitForEndOfFrame();
+        }
+        m_BubbleBuffScript.GiveToPlayer(m_PlayerWhoGrabbed);
+        Destroy(m_BubbleBuffBubble.gameObject);
     }
 
     IEnumerator BubbleBuffFloatRoutine()
