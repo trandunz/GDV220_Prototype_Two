@@ -12,6 +12,7 @@ public class BubbleBuffChest : MonoBehaviour
     [SerializeField] float m_FloatUpSpeed = 3.0f;
     [SerializeField] float m_BobSpeed = 0.9f;
     [SerializeField] float m_BoBAmplitude = 0.3f;
+    [SerializeField] Light m_Light;
     BubbleBuff m_BubbleBuffScript;
     Chest m_Chest;
     SwimController[] m_Players;
@@ -77,6 +78,7 @@ public class BubbleBuffChest : MonoBehaviour
 
     IEnumerator LerpBuffToUI()
     {
+        m_Light.intensity = 0.0f;
         float ratio = 0.0f;
         Vector3 startPos = m_BubbleBuffObject.transform.position;
         Vector3 UIpos = Camera.main.ScreenToWorldPoint(m_PlayerWhoGrabbed.GetUIWidget().m_TimerImage.transform.position);
