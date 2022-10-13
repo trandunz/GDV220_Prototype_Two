@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1391284ab437461478cc0f9a89ceb0e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sinkSpeed: 0.5
+  sinkSpeed: 5
   ison: 1
