@@ -309,6 +309,7 @@ public class SwimController : MonoBehaviour
         {
             CanMove = false;
             m_ShockEffect.Play();
+            animator.SetBool("Stunned", true);
         }
         else
         {
@@ -324,6 +325,7 @@ public class SwimController : MonoBehaviour
         }
         m_ShockEffect.Stop();
         m_ShockEffectBubble.Stop();
+        animator.SetBool("Stunned", false);
 
         if (m_ActivePowerup)
         {
