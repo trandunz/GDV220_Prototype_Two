@@ -99,6 +99,8 @@ public class SwimController : MonoBehaviour
     public GameObject Player1Cord; // to get cord position
     public GameObject Player2Cord; // to get cord position
 
+    float bubbleBuffUseTimer;
+
 
     void Start()
     {
@@ -317,8 +319,9 @@ public class SwimController : MonoBehaviour
         IsUsingBubbleBuff = true;
         bool usedOxyChest = false;
         bool usedFlare = false;
+        bool usedDash = false;
 
-        float bubbleBuffUseTimer = BubbleBuffUseTime;
+        bubbleBuffUseTimer = BubbleBuffUseTime;
         while (bubbleBuffUseTimer > 0 && IsUsingBubbleBuff)
         {
             SetAvailableBuffUI();
@@ -392,7 +395,12 @@ public class SwimController : MonoBehaviour
                     }
                 default:
                     {
-                        SetBuffCooldownWidget(1.0f);
+                        if (!usedDash)
+                        {
+                            usedDash = true;
+                            SetBuffCooldownWidget(1.0f);
+                        }
+                        
 
                         break;
                     }
@@ -558,6 +566,7 @@ public class SwimController : MonoBehaviour
     public void PickupBubbleBuff(BubbleBuff.BUFFTYPE _bubbleBuff)
     {
         m_CurrentBubbleBuff = _bubbleBuff;
+        RemainingBoostTime = 0.0f;
     }
 
     void SetAvailableBuffUI()
