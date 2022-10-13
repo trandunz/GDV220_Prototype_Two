@@ -39,7 +39,7 @@ public class MenuController : MonoBehaviour
             SwitchToSettings();
         }
 
-        OxygemCountText.text = "Highscore : " + PlayerPrefs.GetInt("DeepestDepth").ToString();
+        OxygemCountText.text = "Highscore by " + PlayerPrefs.GetString("Initials") + PlayerPrefs.GetInt("DeepestDepth").ToString();
     }
 
     public void SwitchToBoathub()
