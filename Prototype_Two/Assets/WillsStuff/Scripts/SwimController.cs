@@ -526,9 +526,9 @@ public class SwimController : MonoBehaviour
 
     public void PickupOxygem(Collider other)
     {
-        Destroy(Instantiate(audioOxygem), 2.0f);
+        Destroy(Instantiate(audioOxygem), 3.0f);
+        FindObjectOfType<SuckGemFromUI>().MakeGem(other.transform.position);
         Destroy(other.gameObject);
-        oxygenTank.AddOxygem();
     }
 
     public void PickupBubble(Collider other)
