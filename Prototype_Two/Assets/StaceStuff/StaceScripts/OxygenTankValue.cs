@@ -137,14 +137,7 @@ public class OxygenTankValue : MonoBehaviour
             // First check if has gems
             if (iOxygemCount == 0)
             {
-                if (transform.localScale.y > fDamageAmount)
-                {
-                    transform.localScale -= new Vector3(0.0f, fDamageAmount, 0.0f);
-                }
-                else
-                {
-                    transform.localScale = new Vector3(transform.localScale.x, 0.0f, transform.localScale.z);
-                }
+                StartCoroutine(lerpBarScaleRoutine(-fDamageAmount));
             }
             else
             {
@@ -170,14 +163,30 @@ public class OxygenTankValue : MonoBehaviour
 
     public void AddOxygen(float _amount)
     {
-        if (transform.localScale.y < 1.0f - _amount)
+        StartCoroutine(lerpBarScaleRoutine(_amount));
+    }
+    IEnumerator lerpBarScaleRoutine(float _toAmount)
+    {
+        float ratio = 0.0f;
+        Vector3 startScale = transform.localScale;
+        while (ratio < 1)
         {
-            transform.localScale += new Vector3(0.0f, _amount, 0.0f);
+            transform.localScale = Vector3.Lerp(startScale, startScale + Vector3.up * _toAmount, ratio);
+            ratio += Time.deltaTime* 3.0f;
+            yield return new WaitForEndOfFrame();
         }
-        else
+
+        if (transform.localScale.y < 0)
         {
-            transform.localScale = new Vector3(transform.localScale.x, 1.0f, transform.localScale.z); ;
+            startScale.y = 0;
+            transform.localScale = startScale;
         }
+        else if (transform.localScale.y > 1)
+        {
+            startScale.y = 1.0f;
+            transform.localScale = startScale;
+        }
+            
     }
 
     private void Drown()
