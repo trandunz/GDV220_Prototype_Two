@@ -74,6 +74,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject BigFishPrefab;
     [SerializeField] float BigFishSpawnRate = 10.0f;
 
+    [Header("Electric Eel")]
+    [SerializeField] GameObject ElectricEelPrefab;
+    [SerializeField] float ElectricEelSpawnRate = 10.0f;
+
     CameraMovement CameraMovement;
 
     public SpawnableObject SeaUrchin;
@@ -90,6 +94,7 @@ public class SpawnManager : MonoBehaviour
     public SpawnableObject Angler;
     public SpawnableObject GiantSquid;
     public SpawnableObject BigFish;
+    public SpawnableObject ElectricEel;
 
     public struct SpawnableObject
     {
@@ -169,6 +174,10 @@ public class SpawnManager : MonoBehaviour
         BigFish.Object = BigFishPrefab;
         BigFish.DepthCounter = 5.0f;
         BigFish.SpawnRate = BigFishSpawnRate;
+
+        ElectricEel.Object = ElectricEelPrefab;
+        ElectricEel.DepthCounter = 0.0f;
+        ElectricEel.SpawnRate = ElectricEelSpawnRate;
     }
     private void Update()
     {
@@ -214,7 +223,10 @@ public class SpawnManager : MonoBehaviour
             }
             else if (random <= 8)
             {
-                SpawnEel(cameraPosition);
+                if (CameraMovement.lightingLevel <= 1)
+                    SpawnElectricEel(cameraPosition);
+                else
+                    SpawnEel(cameraPosition);
             }
             else if (random <= 9)
                 SpawnSeaMine(cameraPosition);
@@ -509,6 +521,41 @@ public class SpawnManager : MonoBehaviour
         Eel.DepthCounter = -Depth + Eel.SpawnRate;
     }
 
+    void SpawnElectricEel(Vector3 camPos)
+    {
+        int randomnum = Random.Range(0, 2);
+        Quaternion rot = Quaternion.Euler(new Vector3(0, 0, 0));
+        if (randomnum == 1)
+        {
+            Eel.Offset = 9.0f;
+            rot = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
+        else
+        {
+            rot = Quaternion.Euler(new Vector3(0, 180, 0));
+            Eel.Offset = -9.0f;
+        }
+
+        Eel.SpawnPoint = new Vector3(camPos.x + Eel.Offset, camPos.y, camPos.z - 4.5f);
+        var eel = Instantiate(ElectricEel.Object, Eel.SpawnPoint, rot);
+
+        if (randomnum == 1)
+        {
+            eel.GetComponent<Eel>().SetDirection(false);
+        }
+        else
+        {
+            eel.GetComponent<Eel>().SetDirection(true);
+        }
+
+        eel.GetComponent<Eel>().Peek();
+        Destroy(eel, ObjectLifeTime);
+
+        // Setting SeaUrchin and Eel depth counter because they are together
+        SeaUrchin.DepthCounter = -Depth + SeaUrchin.SpawnRate;
+        Eel.DepthCounter = -Depth + Eel.SpawnRate;
+    }
+
     void SpawnSchoolOfFish(Vector3 camPos)
     {
         SchoolOfFish.Offset = 0;  //Random.Range(-6.5f, 6.5f);
@@ -602,6 +649,9 @@ public class SpawnManager : MonoBehaviour
             SpawnSquid(camPos);
         }
 
-
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            SpawnElectricEel(camPos);
+        }
     }
 }

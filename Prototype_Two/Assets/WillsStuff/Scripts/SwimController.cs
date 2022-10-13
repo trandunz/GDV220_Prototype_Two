@@ -175,6 +175,7 @@ public class SwimController : MonoBehaviour
             SlowTimer -= Time.deltaTime;
         else
         {
+            animator.speed = 1.0f;
             MoveSpeed = SwimSpeed;
         }
 
@@ -281,6 +282,7 @@ public class SwimController : MonoBehaviour
     {
         MoveSpeed = SlowSpeed;
         SlowTimer = SlowTime;
+        animator.speed = 0.5f;
     }
 
     void UseBubbleBuff()
@@ -568,6 +570,8 @@ public class SwimController : MonoBehaviour
         }
         else if (!IsInvulnrable)
         {
+            //StartCoroutine(InvulnrabilityFlashRoutine());
+
             Debug.Log("Player Got Hit!");
 
             Destroy(Instantiate(Bubbles, BubblesPosition.position, BubblesRotation, gameObject.transform), 5.0f);
@@ -611,6 +615,31 @@ public class SwimController : MonoBehaviour
     {
         IsInvulnrable = true;
         m_InvulnrabilityTimer = m_InvulnrabilityTime;
+    }
+
+    IEnumerator InvulnrabilityFlashRoutine()
+    {
+        float timer = 0.0f;
+        Material[] startMaterials = Mesh.materials;
+        while (m_InvulnrabilityTimer > 0)
+        {
+            foreach (Material material in startMaterials)
+            {
+                Color color = material.GetColor("_BaseColor");
+                color.a = ((Mathf.Sin(timer))/2)+0.5f;
+                material.SetColor("_BaseColor", color);
+            }
+            Mesh.materials = startMaterials;
+            timer += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        foreach (Material material in startMaterials)
+        {
+            Color color = material.GetColor("_BaseColor");
+            color.a = 1.0f;
+            material.SetColor("_BaseColor", color);
+        }
+        Mesh.materials = startMaterials;
     }
 
     void RemoveInvulnrability()

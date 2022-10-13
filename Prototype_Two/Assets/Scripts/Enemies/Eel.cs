@@ -15,6 +15,7 @@ public class Eel : MonoBehaviour
     Vector3 StartPos;
     bool bMoving = false;
     bool bPeeking = false;
+    [SerializeField] bool IsElectric = false;
     bool m_MoveRight = true;
 
     private void Start()
@@ -112,6 +113,9 @@ public class Eel : MonoBehaviour
             other.GetComponent<SwimController>().ApplyImpulse(impulse);
             
             other.GetComponent<SwimController>().HitEnemy();
+
+            if (IsElectric)
+                other.GetComponent<SwimController>().Paralyze();
         }
     }
     private void OnTriggerStay(Collider other)

@@ -19467,6 +19467,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1355289221261129712, guid: e1e62c294e1902d4eb2b6c0a056a6086, type: 3}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: ElectricEelPrefab
+      value: 
+      objectReference: {fileID: 5759047587418432666, guid: c261bd043804fa141bdcbf51de854afc, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: SchoolOfFishPrefab
       value: 
       objectReference: {fileID: 8423193014118947376, guid: 57c584d6f5637f44aa35c83ccad7f2df, type: 3}
