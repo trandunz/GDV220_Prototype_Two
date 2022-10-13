@@ -122,6 +122,10 @@ PrefabInstance:
       propertyPath: HorizontalSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6097470698861207747, guid: 24a1a01dc49021241b7c03ddbefc71ce, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5823328328694474412, guid: 24a1a01dc49021241b7c03ddbefc71ce, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 24a1a01dc49021241b7c03ddbefc71ce, type: 3}
@@ -143,6 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
+  minSpeed: 0.6
+  maxSpeed: 2.3
   target: {fileID: 1409019395}
 --- !u!4 &359425533119355477 stripped
 Transform:

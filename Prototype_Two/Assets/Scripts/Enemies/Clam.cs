@@ -12,10 +12,14 @@ public class Clam : MonoBehaviour
     [SerializeField] float m_SuctionAngle = 15.0f;
     [SerializeField] float m_SuctionRange = 5.0f;
 
+    bool m_HasAttacked = false;
+
+    Animator m_Animator;
     SwimController[] Players;
 
     private void Start()
     {
+        m_Animator = GetComponentInChildren<Animator>();
         Players = FindObjectsOfType<SwimController>();
         var shape = m_SuctionParticle.shape;
         shape.angle = m_SuctionAngle;
@@ -28,9 +32,24 @@ public class Clam : MonoBehaviour
 
     private void Update()
     {
-        Suck();
+        if (!m_HasAttacked)
+            Suck();
 
         Debug.DrawLine(transform.position, transform.position - transform.forward, Color.red);
+    }
+
+    IEnumerator AttackRoutine()
+    {
+        m_HasAttacked = true;
+        m_Animator.SetTrigger("Attack");
+        m_SuctionParticle.gameObject.SetActive(false);
+        m_LinesParticle.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        m_HasAttacked = false;
+        m_SuctionParticle.gameObject.SetActive(true);
+        m_LinesParticle.gameObject.SetActive(true);
+        m_LinesParticle.Play();
+        m_SuctionParticle.Play();
     }
 
     void Suck()
@@ -45,11 +64,20 @@ public class Clam : MonoBehaviour
             distanceToPlayer = Vector3.Distance(playerPos, transform.position);
             if (distanceToPlayer < m_SuctionRange)
             {
-                angleToPlayer = Vector3.Angle(-transform.forward, playerPos - transform.position);
-                //Debug.Log(angleToPlayer);
-                if (angleToPlayer < m_SuctionAngle)
+                if (distanceToPlayer < 2.5f)
                 {
-                    player.ApplyForce((transform.position - playerPos).normalized * m_SuctionStrength);
+                    StopAllCoroutines();
+                    StartCoroutine(AttackRoutine());
+                    return;
+                }
+                else
+                {
+                    angleToPlayer = Vector3.Angle(-transform.forward, playerPos - transform.position);
+                    //Debug.Log(angleToPlayer);
+                    if (angleToPlayer < m_SuctionAngle)
+                    {
+                        player.ApplyForce((transform.position - playerPos).normalized * m_SuctionStrength);
+                    }
                 }
             }
         }
