@@ -52,6 +52,22 @@ public class Clam : MonoBehaviour
         m_SuctionParticle.Play();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            SwimController player = other.GetComponent<SwimController>();
+            StartCoroutine(DamageRoutine(player));
+        }
+    }
+
+    IEnumerator DamageRoutine(SwimController player)
+    {
+        yield return new WaitForSeconds(0.3f);
+        player.HitEnemy();
+        player.ApplyImpulse(transform.forward * -300);
+    }
+
     void Suck()
     {
         float distanceToPlayer = 0.0f;
@@ -64,7 +80,7 @@ public class Clam : MonoBehaviour
             distanceToPlayer = Vector3.Distance(playerPos, transform.position);
             if (distanceToPlayer < m_SuctionRange)
             {
-                if (distanceToPlayer < 2.5f)
+                if (distanceToPlayer < 3.0f)
                 {
                     StopAllCoroutines();
                     StartCoroutine(AttackRoutine());
