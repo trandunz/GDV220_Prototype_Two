@@ -75,7 +75,11 @@ MonoBehaviour:
   Origin: {fileID: 0}
   finalConnection: {fileID: 0}
   YellowMaterial: {fileID: 2100000, guid: 8c16a503b956b8647afde41e9211a203, type: 2}
+  YellowMaterialHurt: {fileID: 2100000, guid: a3620e6f1384cee43909433b73afdbd6, type: 2}
+  YellowMaterialDrown: {fileID: 2100000, guid: 8aa1cec54a761f146bf78ba1ff55106b, type: 2}
   RedMaterial: {fileID: 2100000, guid: f6e75ae6c8e7203409f0bf48408be398, type: 2}
+  RedMaterialHurt: {fileID: 2100000, guid: 578df43dd7db91e49beffbb5c0cf8d07, type: 2}
+  RedMaterialDrown: {fileID: 2100000, guid: 5ee47c24b14900c4582fc36dd7743f76, type: 2}
   audioDash: {fileID: 6526108001749352514, guid: 9e461108c02b172498fe0eb2b1750388, type: 3}
   audioShoot: {fileID: 122478365868764272, guid: 21211f532a82f23469f600299dfa6c6f, type: 3}
   audioHurt: {fileID: 5935291059762974861, guid: 345c2c90990cfb24b8d0a51e75a53bd5, type: 3}

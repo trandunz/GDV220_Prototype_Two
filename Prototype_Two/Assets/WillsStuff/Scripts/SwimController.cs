@@ -71,7 +71,11 @@ public class SwimController : MonoBehaviour
 
     [Header("Materials")]
     [SerializeField] Material YellowMaterial;
+    [SerializeField] Material YellowMaterialHurt;
+    [SerializeField] Material YellowMaterialDrown;
     [SerializeField] Material RedMaterial;
+    [SerializeField] Material RedMaterialHurt;
+    [SerializeField] Material RedMaterialDrown;
 
     [Header("Audio")]
     public GameObject audioDash;
@@ -311,6 +315,10 @@ public class SwimController : MonoBehaviour
             CanMove = false;
             m_ShockEffect.Play();
             animator.SetBool("Stunned", true);
+            if (PlayerOne)
+                Mesh.material = YellowMaterialHurt;
+            else
+                Mesh.material = RedMaterialHurt;
         }
         else
         {
@@ -327,7 +335,10 @@ public class SwimController : MonoBehaviour
         m_ShockEffect.Stop();
         m_ShockEffectBubble.Stop();
         animator.SetBool("Stunned", false);
-
+        if (PlayerOne)
+            Mesh.material = YellowMaterial;
+        else
+            Mesh.material = RedMaterial;
         if (m_ActivePowerup)
         {
             IsUsingBubbleBuff = false;
@@ -544,6 +555,11 @@ public class SwimController : MonoBehaviour
     public void Die()
     {
         animator.SetBool("Dead", true);
+        if (PlayerOne)
+            Mesh.material = YellowMaterialDrown;
+        else
+            Mesh.material = RedMaterialDrown;
+
         CanMove = false;
     }
 
@@ -614,6 +630,10 @@ public class SwimController : MonoBehaviour
     {
         IsInvulnrable = true;
         m_InvulnrabilityTimer = m_InvulnrabilityTime;
+        if (PlayerOne)
+            Mesh.material = YellowMaterialHurt;
+        else
+            Mesh.material = RedMaterialHurt;
     }
 
     IEnumerator InvulnrabilityFlashRoutine()
@@ -644,7 +664,10 @@ public class SwimController : MonoBehaviour
     void RemoveInvulnrability()
     {
         IsInvulnrable = false;
-
+        if (PlayerOne)
+            Mesh.material = YellowMaterial;
+        else
+            Mesh.material = RedMaterial;
         Debug.Log("Player Ready for more.");
     }
 
