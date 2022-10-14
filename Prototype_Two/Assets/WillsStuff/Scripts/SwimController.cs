@@ -198,7 +198,6 @@ public class SwimController : MonoBehaviour
             }
         }
 
-        
         HandleAnimations();
 
         if (!IsUsingBubbleBuff)

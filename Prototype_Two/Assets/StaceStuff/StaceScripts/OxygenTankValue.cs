@@ -172,6 +172,18 @@ public class OxygenTankValue : MonoBehaviour
         while (ratio < 1)
         {
             transform.localScale = Vector3.Lerp(startScale, startScale + Vector3.up * _toAmount, ratio);
+
+            if (transform.localScale.y < 0)
+            {
+                startScale.y = 0;
+                transform.localScale = startScale;
+            }
+            else if (transform.localScale.y > 1)
+            {
+                startScale.y = 1.0f;
+                transform.localScale = startScale;
+            }
+
             ratio += Time.deltaTime* 3.0f;
             yield return new WaitForEndOfFrame();
         }
