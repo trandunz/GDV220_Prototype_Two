@@ -43,6 +43,7 @@ public class SpawnManager : MonoBehaviour
 
     [Header("Bubble Buff")]
     [SerializeField] GameObject BubleBuffChestPrefab;
+    [SerializeField] GameObject BubleBuffChestPrefabLeft;
     [SerializeField] float BubbleBuffSpawnRate = 7.0f;
 
     [Header("Sea Mine")]
@@ -436,16 +437,16 @@ public class SpawnManager : MonoBehaviour
         int random = Random.Range(-3, 4);
         if (random <= 0)
         {
-            Quaternion rotation = Quaternion.Euler(0, 180, 0);
+            Quaternion rotation = Quaternion.Euler(0, 180, 25);
             BubbleBuffChest.Offset = -6.0f;
-            BubbleBuffChest.SpawnPoint = new Vector3(camPos.x + BubbleBuffChest.Offset, camPos.y, camPos.z);
-            Destroy(Instantiate(BubbleBuffChest.Object, BubbleBuffChest.SpawnPoint, rotation), ObjectLifeTime);
+            BubbleBuffChest.SpawnPoint = new Vector3(camPos.x + BubbleBuffChest.Offset, camPos.y, camPos.z + 2);
+            Destroy(Instantiate(BubleBuffChestPrefabLeft, BubbleBuffChest.SpawnPoint, rotation), ObjectLifeTime);
         }
         else
         {
-            Quaternion rotation = Quaternion.Euler(0, 180, 0);
+            Quaternion rotation = Quaternion.Euler(0, 180, -25);
             BubbleBuffChest.Offset = 6.0f;
-            BubbleBuffChest.SpawnPoint = new Vector3(camPos.x + BubbleBuffChest.Offset, camPos.y, camPos.z);
+            BubbleBuffChest.SpawnPoint = new Vector3(camPos.x + BubbleBuffChest.Offset, camPos.y, camPos.z + 2);
             Destroy(Instantiate(BubbleBuffChest.Object, BubbleBuffChest.SpawnPoint, rotation), ObjectLifeTime);
         }
 

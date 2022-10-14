@@ -19495,6 +19495,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: BubleBuffChestPrefabLeft
+      value: 
+      objectReference: {fileID: 6449785510719610356, guid: 01365c06ce4c95e42aca2e514434b883, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: CoralPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 896144359810074006, guid: b9bff3ca7d577fd4ea002be72bf7e396, type: 3}
