@@ -217,6 +217,10 @@ public class SwimController : MonoBehaviour
         {
             PickupBubbleBuff(BubbleBuff.BUFFTYPE.SHIELD);
         }
+        if (Input.GetKey(KeyCode.Delete))
+        {
+            oxygenTank.DamageOxygenUse();
+        }
     }
 
     void FixedUpdate()

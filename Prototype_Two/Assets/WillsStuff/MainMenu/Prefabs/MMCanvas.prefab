@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSelect: {fileID: 0}
   InsertCoin: {fileID: 9213723222983026765}
+  pauseStart: 0
 --- !u!1 &1809595769572488980
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,11 +777,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4936374458916990010, guid: c35ba4484e942e848b24a1ba71041967, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1134
+      value: -1133
       objectReference: {fileID: 0}
     - target: {fileID: 4936374458916990010, guid: c35ba4484e942e848b24a1ba71041967, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 454
+      value: 395.00003
       objectReference: {fileID: 0}
     - target: {fileID: 4936374458916990010, guid: c35ba4484e942e848b24a1ba71041967, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -802,6 +803,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 95.95
       objectReference: {fileID: 0}
+    - target: {fileID: 5908940319632574737, guid: c35ba4484e942e848b24a1ba71041967, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c35ba4484e942e848b24a1ba71041967, type: 3}
 --- !u!224 &5001999406556602440 stripped
@@ -816,6 +821,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 974746503433765846}
     m_Modifications:
+    - target: {fileID: 384471045414871133, guid: 6d32824fb04af734a889f52fe3aa380d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -300
+      objectReference: {fileID: 0}
     - target: {fileID: 3423049518944978249, guid: 6d32824fb04af734a889f52fe3aa380d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -886,7 +895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3423049518944978249, guid: 6d32824fb04af734a889f52fe3aa380d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 280
+      value: 198
       objectReference: {fileID: 0}
     - target: {fileID: 3423049518944978249, guid: 6d32824fb04af734a889f52fe3aa380d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
