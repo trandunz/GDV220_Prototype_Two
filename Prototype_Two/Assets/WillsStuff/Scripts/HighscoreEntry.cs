@@ -24,7 +24,7 @@ public class HighscoreEntry : MonoBehaviour
 
     public void Continue()
     {
-        string scoreStr = PlayerPrefs.GetString("Initials") + score.ToString();
+        string scoreStr = PlayerPrefs.GetString("Initials") + score.ToString() + "m";
         Score.SetText(scoreStr);
     }
 }

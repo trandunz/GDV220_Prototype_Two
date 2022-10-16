@@ -7,10 +7,12 @@ using TMPro;
 public class EnterHighScore : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI[] characters;
+    [SerializeField] TMPro.TextMeshProUGUI newHighscore;
     [SerializeField] int[] charactersCurrentPos;
     [SerializeField] float delayBetweenInput = 0.12f;
     [SerializeField] float counterDelayBetweenInput = 0.0f;
     [SerializeField] GameObject underLine;
+
     int currentTextMesh = 0;
     char[] chars;
     public bool isOn = false;
@@ -29,6 +31,8 @@ public class EnterHighScore : MonoBehaviour
         mmb = FindObjectOfType<MainMenuButtons>();
         mmb.pauseStart = true;
         isOn = true;
+
+        newHighscore.text = "New High Score: " + PlayerPrefs.GetInt("DeepestDepth").ToString() + "m";
 
         underLine.transform.position = new Vector2(characters[currentTextMesh].transform.position.x, characters[currentTextMesh].transform.position.y - 18);
     }
@@ -104,7 +108,7 @@ public class EnterHighScore : MonoBehaviour
                 {
                     str += characters[i].GetParsedText();
                 }
-                str += ": ";
+                str += " : ";
 
                 PlayerPrefs.SetString("Initials", str);
                 hse.Continue();

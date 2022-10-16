@@ -19,6 +19,11 @@ public class DepthPanel : MonoBehaviour
             HighscoreEntry.newHighscore = true;
         }
     }
+
+    public int GetScore()
+    {
+        return Mathf.Abs((int)Camera.main.transform.position.y);
+    }
     public void AddScore(int _amount)
     {
         score += _amount ;
