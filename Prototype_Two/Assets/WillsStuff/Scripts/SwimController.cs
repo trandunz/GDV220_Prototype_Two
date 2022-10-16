@@ -77,6 +77,8 @@ public class SwimController : MonoBehaviour
     [SerializeField] Material RedMaterialHurt;
     [SerializeField] Material RedMaterialDrown;
 
+    [SerializeField] ParticleSystem MagnetParticle;
+
     [Header("Audio")]
     public GameObject audioDash;
     public GameObject audioShoot;
@@ -216,6 +218,10 @@ public class SwimController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Keypad8))
         {
             PickupBubbleBuff(BubbleBuff.BUFFTYPE.SHIELD);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad7))
+        {
+            PickupBubbleBuff(BubbleBuff.BUFFTYPE.MAGNET);
         }
         if (Input.GetKey(KeyCode.Delete))
         {
@@ -407,6 +413,8 @@ public class SwimController : MonoBehaviour
                 case BubbleBuff.BUFFTYPE.MAGNET:
                     {
                         SetBuffCooldownWidget(bubbleBuffUseTimer / BubbleBuffUseTime);
+                        if (!MagnetParticle.isPlaying)
+                            MagnetParticle.Play();
                         foreach (Oxygem oxygem in FindObjectsOfType<Oxygem>())
                         {
                             if (Vector3.Distance(oxygem.transform.position, transform.position) <= MagnetRange)
@@ -451,6 +459,7 @@ public class SwimController : MonoBehaviour
         if (m_ActivePowerup)
             Destroy(m_ActivePowerup);
 
+        MagnetParticle.Stop();
         m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.UNASSIGNED;
         SetBuffCooldownWidget(1.0f);
         IsUsingBubbleBuff = false;
