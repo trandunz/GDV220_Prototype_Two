@@ -101,7 +101,7 @@ public class EnterHighScore : MonoBehaviour
             }
 
             // enter
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace))
             {
                 string str = "";
                 for (int i = 0; i < characters.Length; i++)

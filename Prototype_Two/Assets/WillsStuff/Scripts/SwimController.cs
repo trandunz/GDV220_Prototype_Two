@@ -294,7 +294,7 @@ public class SwimController : MonoBehaviour
 
     void UseBubbleBuff()
     {
-        if (!IsUsingBubbleBuff)
+        if (!IsUsingBubbleBuff && CanMove)
         {
             StartCoroutine(BubbleBuffRoutine());
         }
