@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SwimController : MonoBehaviour
@@ -109,6 +108,7 @@ public class SwimController : MonoBehaviour
 
     [SerializeField] ParticleSystem m_ShockEffect;
     [SerializeField] ParticleSystem m_ShockEffectBubble;
+    [SerializeField] ParticleSystem m_DashParticles;
 
 
     void Start()
@@ -508,7 +508,6 @@ public class SwimController : MonoBehaviour
     
     void Boost()
     {
-   
         if (CanMove)
         {
            if (!IsBoosting)
@@ -535,6 +534,8 @@ public class SwimController : MonoBehaviour
             IsBoosting = true;
             Debug.Log("Boost! : " + (GetInput() * BoostForce).magnitude.ToString());
             m_RigidBody.velocity = GetInput() * BoostForce; //ApplyForce(GetInput() * BoostForce); // Saved incase bens boost sucks
+            if (!m_DashParticles.isPlaying)
+                m_DashParticles.Play();
 
             // Invulnerability for boost
             IsInvulnrable = true;
@@ -552,7 +553,7 @@ public class SwimController : MonoBehaviour
                 SetBuffCooldownWidget(RemainingBoostTime / BoostCooldown);
                 yield return new WaitForEndOfFrame();
             }
-
+            
             RemainingBoostTime = BoostCooldown;
             SetBuffCooldownWidget(RemainingBoostTime / BoostCooldown);
             canDash = true;

@@ -14,6 +14,7 @@ public class AnglerFish : MonoBehaviour
     [SerializeField] Material m_RedAyeMaterial;
     [SerializeField] SkinnedMeshRenderer m_Eye;
     Material[] m_Materials;
+    [SerializeField] ParticleSystem m_SwimParticles;
 
     private void Start()
     {
@@ -24,6 +25,9 @@ public class AnglerFish : MonoBehaviour
     {
         if (isMoving)
         {
+            if (!m_SwimParticles.isPlaying)
+                m_SwimParticles.Play();
+
             m_Materials[1] = m_RedAyeMaterial;
             m_Eye.materials = m_Materials;
 

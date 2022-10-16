@@ -65,6 +65,7 @@ MonoBehaviour:
   PeakDelay: 3
   BackgroundEelPrefab: {fileID: 8439472378056260102, guid: f29390100ef702243b19dbe715ddf769, type: 3}
   KnockBackForce: 500
+  IsElectric: 0
 --- !u!1001 &6281022854850632831
 PrefabInstance:
   m_ObjectHideFlags: 0
