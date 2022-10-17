@@ -13,7 +13,7 @@ public class MMBuoyManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             m_CurrentSelelection++;
             if (m_CurrentSelelection >= m_Buoys.Length)
@@ -21,7 +21,7 @@ public class MMBuoyManager : MonoBehaviour
                 m_CurrentSelelection = 0;
             }
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             m_CurrentSelelection--;
             if (m_CurrentSelelection < 0)
