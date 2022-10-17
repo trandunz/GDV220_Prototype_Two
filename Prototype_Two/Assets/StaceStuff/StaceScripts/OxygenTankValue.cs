@@ -5,7 +5,7 @@ using UnityEngine;
 public class OxygenTankValue : MonoBehaviour
 {
     [Header("Oxygem Counter")]
-    [SerializeField] private int iOxygemCount;
+    [SerializeField] public int iOxygemCount;
     [SerializeField] public GameObject[] litOxygem;
     [SerializeField] public GameObject explodedOxygem;
     private GameObject[] spawnedExplodedGems;

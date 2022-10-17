@@ -38,6 +38,7 @@ public class SuckGemFromUI : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         m_oxytank.AddOxygem();
+        m_AudioSource.pitch = 1.5f + 0.1f * m_oxytank.iOxygemCount;
         m_AudioSource.PlayOneShot(m_GemSlottedClip);
         Destroy(newGem);
     }
