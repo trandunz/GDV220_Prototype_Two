@@ -7315,6 +7315,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1468342193}
     - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioOilSlow
+      value: 
+      objectReference: {fileID: 5627436053190205447, guid: 09fe1e28605a5d6468964dc86858fa2e, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: BoostCooldown
       value: 2
       objectReference: {fileID: 0}
@@ -7322,6 +7326,10 @@ PrefabInstance:
       propertyPath: PostDashBoost
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioJellyZap
+      value: 
+      objectReference: {fileID: 6882124600816337013, guid: 66d360b81a4d4c24d965160976432d07, type: 3}
     - target: {fileID: 3221341236529356751, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -17888,6 +17896,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1743313971}
     - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioOilSlow
+      value: 
+      objectReference: {fileID: 5627436053190205447, guid: 09fe1e28605a5d6468964dc86858fa2e, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: BoostCooldown
       value: 2
       objectReference: {fileID: 0}
@@ -17895,6 +17907,10 @@ PrefabInstance:
       propertyPath: PostDashBoost
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioJellyZap
+      value: 
+      objectReference: {fileID: 6882124600816337013, guid: 66d360b81a4d4c24d965160976432d07, type: 3}
     - target: {fileID: 3221341236529356751, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0

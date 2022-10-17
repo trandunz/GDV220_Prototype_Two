@@ -85,6 +85,8 @@ public class SwimController : MonoBehaviour
     public GameObject audioDead;
     public GameObject audioOxygem;
     public GameObject audioBubble;
+    public GameObject audioOilSlow;
+    public GameObject audioJellyZap;
 
     [Header("Particles")]
     // screen shake
@@ -293,6 +295,10 @@ public class SwimController : MonoBehaviour
 
     public void Slow()
     {
+        if (SlowTimer <= 0.0f)
+        {
+            Destroy(Instantiate(audioOilSlow), 3.0f);
+        }
         MoveSpeed = SlowSpeed;
         SlowTimer = SlowTime;
         animator.speed = 0.5f;
@@ -311,6 +317,7 @@ public class SwimController : MonoBehaviour
         if (m_ParalyzeTimer <= 0)
         {
             StartCoroutine(ParalyzeRoutine());
+            Destroy(Instantiate(audioJellyZap), 3.0f);
         }
         else
         {
