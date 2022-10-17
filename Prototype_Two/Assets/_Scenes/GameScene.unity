@@ -4242,6 +4242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94ef9ecb6e3dfe46b125a09d67f2e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FrontWater: {fileID: 0}
+  BackWater: {fileID: 0}
+  Boat: {fileID: 0}
 --- !u!4 &587838035
 Transform:
   m_ObjectHideFlags: 0
@@ -6709,7 +6712,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0

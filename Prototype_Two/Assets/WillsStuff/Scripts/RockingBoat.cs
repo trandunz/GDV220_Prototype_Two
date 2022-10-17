@@ -6,14 +6,19 @@ public class RockingBoat : MonoBehaviour
 {
     [SerializeField] float rockspeed;
     Vector3 StartPosition;
+    Vector3 StartRotation;
+    [SerializeField] float xAmplitude = 2.0f;
+    [SerializeField] float zAmplitude = 3.0f;
+    [SerializeField] float yAmplitude = 0.1f;
     void Start()
     {
         StartPosition = transform.position;
+        StartRotation = transform.rotation.eulerAngles;
     }
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Euler(Mathf.Sin(Time.time * rockspeed) * 2.0f, -120.9f, Mathf.Cos(Time.time * rockspeed) * 3.0f);
-        transform.position = new Vector3(transform.position.x, StartPosition.y + Mathf.Cos(Time.time * rockspeed) * 0.1f, transform.position.z);
+        transform.rotation = Quaternion.Euler(Mathf.Sin(Time.time * rockspeed) * xAmplitude, StartRotation.y, Mathf.Cos(Time.time * rockspeed) * zAmplitude);
+        transform.position = new Vector3(transform.position.x, StartPosition.y + Mathf.Cos(Time.time * rockspeed) * yAmplitude, transform.position.z);
     }
 }
