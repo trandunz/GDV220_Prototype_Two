@@ -247,6 +247,7 @@ MonoBehaviour:
   m_RedAyeMaterial: {fileID: 2100000, guid: f5a112d3f59a3cb478d49326d987fcd0, type: 2}
   m_Eye: {fileID: 1662148629332561297}
   m_SwimParticles: {fileID: 7714829550789915777}
+  audioChomp: {fileID: 4572387778075001237, guid: 24b12363933c4e14f948130ecd2c0d64, type: 3}
 --- !u!135 &5544068347915408047
 SphereCollider:
   m_ObjectHideFlags: 0

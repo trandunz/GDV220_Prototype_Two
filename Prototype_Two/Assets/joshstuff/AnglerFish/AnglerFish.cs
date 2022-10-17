@@ -15,6 +15,7 @@ public class AnglerFish : MonoBehaviour
     [SerializeField] SkinnedMeshRenderer m_Eye;
     Material[] m_Materials;
     [SerializeField] ParticleSystem m_SwimParticles;
+    public GameObject audioChomp;
 
     private void Start()
     {
@@ -47,6 +48,7 @@ public class AnglerFish : MonoBehaviour
         {
             hasAttacked = true;
             StartCoroutine(ChompRoutine());
+            Destroy(Instantiate(audioChomp), 3.0f);
         }
         
     }
