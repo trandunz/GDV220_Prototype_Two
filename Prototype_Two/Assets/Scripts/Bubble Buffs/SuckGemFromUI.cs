@@ -5,13 +5,16 @@ using UnityEngine;
 public class SuckGemFromUI : MonoBehaviour
 {
     OxygenTankValue m_oxytank;
+    AudioSource m_AudioSource;
 
+    [SerializeField] AudioClip m_GemSlottedClip;
     [SerializeField] GameObject m_GemPrefab;
     [SerializeField] float m_LerpTime = 0.5f;
 
     void Start()
     {
         m_oxytank = FindObjectOfType<OxygenTankValue>();
+        m_AudioSource = GetComponent<AudioSource>();
 
     }
 
@@ -35,6 +38,7 @@ public class SuckGemFromUI : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         m_oxytank.AddOxygem();
+        m_AudioSource.PlayOneShot(m_GemSlottedClip);
         Destroy(newGem);
     }
 }

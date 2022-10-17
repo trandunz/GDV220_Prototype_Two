@@ -8,8 +8,6 @@ public class MainMenuButtons : MonoBehaviour
 {
     public GameObject audioSelect;
 
-    [SerializeField] TMPro.TextMeshProUGUI InsertCoin;
-
     Color originalColor;
 
     bool InsertCoinSelected = true;
@@ -25,7 +23,6 @@ public class MainMenuButtons : MonoBehaviour
     {
         if (InsertCoinSelected)
         {
-            HoverOverOption(InsertCoin);
 
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace))
             {
@@ -34,10 +31,6 @@ public class MainMenuButtons : MonoBehaviour
                     StartGame();
                 }
             }
-        }
-        else
-        {
-            HoverLeftOption(InsertCoin);
         }
     }
 
