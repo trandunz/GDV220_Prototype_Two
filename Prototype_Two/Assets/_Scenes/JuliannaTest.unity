@@ -1733,6 +1733,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockspeed: 1
+  xAmplitude: 2
+  zAmplitude: 3
+  yAmplitude: 0.1
 --- !u!1 &737508956
 GameObject:
   m_ObjectHideFlags: 0
