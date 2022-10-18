@@ -649,6 +649,7 @@ MonoBehaviour:
   - {fileID: 1260217946}
   audioSplash: {fileID: 4371919521720323470, guid: 917c9f4c4945ec241a76a8c13c38b2ae, type: 3}
   PauseMenu: {fileID: 1185125162}
+  m_StartDelay: 0.5
 --- !u!4 &492256682
 Transform:
   m_ObjectHideFlags: 0
