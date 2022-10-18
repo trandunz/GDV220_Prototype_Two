@@ -19,6 +19,9 @@ public class HighScoreMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace))
+        {
+            Destroy(gameObject);
+        }
     }
 }
