@@ -654,5 +654,10 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnElectricEel(camPos);
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            SpawnBubbleBuff(camPos);
+        }
     }
 }

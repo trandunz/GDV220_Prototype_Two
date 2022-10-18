@@ -243,6 +243,7 @@ MonoBehaviour:
   - {fileID: 7611306406447478684}
   - {fileID: 880073899535196159}
   head: {fileID: 8810907359712039381, guid: 59a932b80ddb52644965c9499a832fc8, type: 3}
+  audioSeaMine: {fileID: 1402398631015548133, guid: cbfaed296c2d085499935d68975b6480, type: 3}
 --- !u!1 &5858903302483973074
 GameObject:
   m_ObjectHideFlags: 0

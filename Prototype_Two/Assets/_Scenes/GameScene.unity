@@ -1771,9 +1771,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3815788106429423938, guid: 3aaa8e67adfb5034586160bc9543a24e, type: 3}
     - target: {fileID: 1314215809, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
+      propertyPath: audioGemUp
+      value: 
+      objectReference: {fileID: 3080187042297405422, guid: 16ac08aafc2188144ba7770a71999b7b, type: 3}
+    - target: {fileID: 1314215809, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
       propertyPath: fadeToBlack
       value: 
       objectReference: {fileID: 1255763605}
+    - target: {fileID: 1314215809, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
+      propertyPath: audioLoseGems
+      value: 
+      objectReference: {fileID: 2882828359851944159, guid: 045b0189c644f3a49af86f183711c95b, type: 3}
     - target: {fileID: 1314215809, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
       propertyPath: explodedOxygem
       value: 
@@ -4401,6 +4409,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 80ab33231e961b94cb94d9f387f7b2c8, type: 3}
     - target: {fileID: 3343001790071632644, guid: ebdc10fcdd9b4d6459af58ef24a33d86, type: 3}
+      propertyPath: m_audioMagnet
+      value: 
+      objectReference: {fileID: 5943079125212599771, guid: 5ab51af2eda45de49889ee4af7bbfa28, type: 3}
+    - target: {fileID: 3343001790071632644, guid: ebdc10fcdd9b4d6459af58ef24a33d86, type: 3}
       propertyPath: m_GemSlottedClip
       value: 
       objectReference: {fileID: 8300000, guid: a5a764d4a40e58044aca27297190f31a, type: 3}
@@ -4408,6 +4420,10 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5865888268640032458, guid: ebdc10fcdd9b4d6459af58ef24a33d86, type: 3}
+      propertyPath: m_audioMagnet
+      value: 
+      objectReference: {fileID: 5943079125212599771, guid: 5ab51af2eda45de49889ee4af7bbfa28, type: 3}
     - target: {fileID: 5865888268640032458, guid: ebdc10fcdd9b4d6459af58ef24a33d86, type: 3}
       propertyPath: m_GemSlottedClip
       value: 
@@ -7311,6 +7327,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5853650569833435349, guid: 24da9784a928631429810f3b98e505ac, type: 3}
     - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioMagnet
+      value: 
+      objectReference: {fileID: 5943079125212599771, guid: 5ab51af2eda45de49889ee4af7bbfa28, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: StretchyLine
       value: 
       objectReference: {fileID: 1468342193}
@@ -7330,6 +7350,10 @@ PrefabInstance:
       propertyPath: audioJellyZap
       value: 
       objectReference: {fileID: 6882124600816337013, guid: 66d360b81a4d4c24d965160976432d07, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioShieldPop
+      value: 
+      objectReference: {fileID: 1067580561006157421, guid: d60c22388db7e0040af6d181d7de92f0, type: 3}
     - target: {fileID: 3221341236529356751, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -17892,6 +17916,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5853650569833435349, guid: 24da9784a928631429810f3b98e505ac, type: 3}
     - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioMagnet
+      value: 
+      objectReference: {fileID: 5943079125212599771, guid: 5ab51af2eda45de49889ee4af7bbfa28, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: StretchyLine
       value: 
       objectReference: {fileID: 1743313971}
@@ -17911,6 +17939,10 @@ PrefabInstance:
       propertyPath: audioJellyZap
       value: 
       objectReference: {fileID: 6882124600816337013, guid: 66d360b81a4d4c24d965160976432d07, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioShieldPop
+      value: 
+      objectReference: {fileID: 1067580561006157421, guid: d60c22388db7e0040af6d181d7de92f0, type: 3}
     - target: {fileID: 3221341236529356751, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
