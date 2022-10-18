@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 514657343347318572}
   - component: {fileID: 8317753940366316631}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Coral_Bunch01
   m_TagString: Coral
   m_Icon: {fileID: 0}
@@ -24,9 +24,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896144359810074006}
-  m_LocalRotation: {x: 0.5548581, y: 0.6570333, z: -0.43832925, w: -0.26135662}
-  m_LocalPosition: {x: -7.719402, y: -15.712929, z: -8.5}
-  m_LocalScale: {x: 0.5141934, y: 0.5141934, z: 0.5141934}
+  m_LocalRotation: {x: 0.57336545, y: 0.6450667, z: -0.41382617, w: -0.28963593}
+  m_LocalPosition: {x: -7.6951017, y: -119.987495, z: -8.2}
+  m_LocalScale: {x: 0.44764948, y: 0.4, z: 0.44764948}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3915522066654326985}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 3915522066654326985}
   - component: {fileID: 6661859145732716987}
   - component: {fileID: 3675237086251290200}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Coral_Base1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 5432127374654520694}
   - component: {fileID: 2176344497827976280}
   - component: {fileID: 8793949982094543074}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Coral_Base3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 3085598196785862898}
   - component: {fileID: 5332428540111590990}
   - component: {fileID: 6726183255273026005}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5896765686641283303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.115, y: 0.125, z: -0.104}
+  m_LocalPosition: {x: -0.308, y: 2, z: -0.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -303,7 +303,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1015
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 7553698814163697778}
   - component: {fileID: 5469431703013406789}
   - component: {fileID: 8506002589279299345}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Coral_Base2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

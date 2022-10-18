@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7570205087646107150}
   - component: {fileID: 5656069025469525582}
   - component: {fileID: 273198322334760082}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Seaweed_Base10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3430055215689294409}
   - component: {fileID: 8946190147962074619}
   - component: {fileID: 166388121009038594}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Seaweed_Base9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 8603671523959357783}
   - component: {fileID: 7707059814403093723}
   - component: {fileID: 6811600983081009580}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Seaweed_Base7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 600218332857701723}
   - component: {fileID: 7648573130760278620}
   - component: {fileID: 6704316873620635304}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Seaweed_Base8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 8846158158407177364}
   - component: {fileID: 3465212991303268720}
   - component: {fileID: 4867172586940549133}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Seaweed_Base6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8274319530556182524}
   - component: {fileID: 4134208952961404642}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Seaweed_Bunch03
   m_TagString: SeaWeed
   m_Icon: {fileID: 0}
@@ -440,8 +440,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8763892082618176838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.70829, y: -12.763846, z: -8.5}
-  m_LocalScale: {x: 0.45674324, y: 0.45674324, z: 0.45674324}
+  m_LocalPosition: {x: -7.9248834, y: -105.04571, z: -8.2}
+  m_LocalScale: {x: 0.46199155, y: 0.46199155, z: 0.46199155}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8846158158407177364}
