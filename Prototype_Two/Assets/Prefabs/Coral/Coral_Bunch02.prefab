@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 823447364929067849}
   - component: {fileID: 2664131670580760012}
   - component: {fileID: 6054382642741502763}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Coral_Base5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6179465621262914644}
   - component: {fileID: 1977840666187603424}
   - component: {fileID: 109408808052515427}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Coral_Base4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 9045452223784995835}
   - component: {fileID: 9022435853527830053}
   - component: {fileID: 836773993405028310}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Coral_Base6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2831072375549794236}
   - component: {fileID: 8005878294359007963}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Coral_Bunch02
   m_TagString: Coral
   m_Icon: {fileID: 0}
@@ -273,9 +273,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3171147664966372614}
-  m_LocalRotation: {x: -0.20232566, y: 0.48560652, z: -0.67754287, w: 0.5139906}
-  m_LocalPosition: {x: -8.1483755, y: -9.777349, z: -8.5}
-  m_LocalScale: {x: 0.4545807, y: 0.4545807, z: 0.4545807}
+  m_LocalRotation: {x: 0.3509214, y: -0.70710033, z: 0.61388445, w: 0.0030353966}
+  m_LocalPosition: {x: 8.377866, y: -125.975365, z: -8.2}
+  m_LocalScale: {x: 0.48403832, y: 0.4, z: 0.48403832}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6179465621262914644}
@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 3996308095463553078}
   - component: {fileID: 4209870642990018989}
   - component: {fileID: 2000884057499141364}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3720639597332358526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.22, z: -0.02}
+  m_LocalPosition: {x: -0.328, y: 1.92, z: -0.227}
   m_LocalScale: {x: 0.89583987, y: 0.8958398, z: 0.89583987}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -390,7 +390,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1015
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 5228987999125978417}
   - component: {fileID: 2162817752035560714}
   - component: {fileID: 1420924168017511728}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Coral_Base8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 561684611842506980}
   - component: {fileID: 2533611047935909099}
   - component: {fileID: 5533912194933200498}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Coral_Base7
   m_TagString: Untagged
   m_Icon: {fileID: 0}

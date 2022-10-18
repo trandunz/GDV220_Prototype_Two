@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6711484257597807684}
   - component: {fileID: 6690304756425868665}
   - component: {fileID: 1182882751471954335}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6333003428861410637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.111}
+  m_LocalPosition: {x: 0, y: 0, z: -0.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -82,7 +82,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1015
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 9205759200824001391}
   - component: {fileID: 5219309873571368138}
   - component: {fileID: 8037308935205156864}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Starfish_03
   m_TagString: StarFish
   m_Icon: {fileID: 0}
@@ -140,9 +140,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8397732901060762069}
-  m_LocalRotation: {x: 0, y: 0, z: 0.22018014, w: 0.9754592}
-  m_LocalPosition: {x: 8.343301, y: -17.755684, z: -8.5}
-  m_LocalScale: {x: 0.33852756, y: 0.33852756, z: 0.33852756}
+  m_LocalRotation: {x: 0, y: 0, z: 0.6368646, w: 0.77097565}
+  m_LocalPosition: {x: -8.35256, y: -132.82886, z: -8.2}
+  m_LocalScale: {x: 0.39993367, y: 0.39993367, z: 0.39993367}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6711484257597807684}
