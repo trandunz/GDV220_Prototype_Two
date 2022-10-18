@@ -59,13 +59,15 @@ public class Clam : MonoBehaviour
         if (other.tag == "Player")
         {
             SwimController player = other.GetComponent<SwimController>();
+            StopAllCoroutines();
             StartCoroutine(DamageRoutine(player));
+            StartCoroutine(AttackRoutine());
         }
     }
 
     IEnumerator DamageRoutine(SwimController player)
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         player.HitEnemy();
         player.ApplyImpulse(transform.forward * -300);
     }
@@ -84,8 +86,6 @@ public class Clam : MonoBehaviour
             {
                 if (distanceToPlayer < 3.0f)
                 {
-                    StopAllCoroutines();
-                    StartCoroutine(AttackRoutine());
                     return;
                 }
                 else
