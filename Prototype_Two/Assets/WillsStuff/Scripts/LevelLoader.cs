@@ -30,8 +30,6 @@ public class LevelLoader : MonoBehaviour
         {
             PlayerPrefs.DeleteAll();
         }
-
-            
     }
 
     public void LoadLevel(int _scene)
@@ -42,7 +40,7 @@ public class LevelLoader : MonoBehaviour
     IEnumerator LoadAsync(int _scene)
     {
         DontDestroyOnLoad(instance);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
 
         yield return new WaitForSeconds(0.2f);
         Slider progressSlider = FindObjectOfType<Slider>();

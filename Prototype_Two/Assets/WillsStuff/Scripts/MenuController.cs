@@ -5,17 +5,10 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] Image BoathubIcon;
-    [SerializeField] Image SettingsIcon;
-    [SerializeField] TMPro.TextMeshProUGUI Title;
-    [SerializeField] GameObject Boathub;
     [SerializeField] GameObject Settings;
-
-    [SerializeField] TMPro.TextMeshProUGUI OxygemCountText;
 
     public GameObject audioSelect;
 
-    bool OnBoathub = true;
     bool OnSettings = false;
 
     private void OnEnable()
@@ -24,53 +17,35 @@ public class MenuController : MonoBehaviour
     }
     private void Start()
     {
-        BoathubIcon.color = Color.white;
         SwitchToBoathub();
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) && OnSettings)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SwitchToBoathub();
+            gameObject.SetActive(false);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) && OnBoathub)
-        {
-            SwitchToSettings();
-        }
-
-        OxygemCountText.text = "Highscore by " + PlayerPrefs.GetString("Initials") + PlayerPrefs.GetInt("DeepestDepth").ToString();
     }
 
     public void SwitchToBoathub()
     {
-        OnBoathub = true;
         OnSettings = false;
-        Title.text = "BOAT HUB";
-        HoverLeftOption(SettingsIcon);
         DisableAllMenus();
-        Boathub.SetActive(true);
-
-        HoverOverOption(BoathubIcon);
         Destroy(Instantiate(audioSelect), 2.0f);
     }
     public void SwitchToSettings()
     {
-        OnBoathub = false;
         OnSettings = true;
 
-        Title.text = "SETTINGS";
-        HoverLeftOption(BoathubIcon);
         DisableAllMenus();
         Settings.SetActive(true);
 
-        HoverOverOption(SettingsIcon);
         Destroy(Instantiate(audioSelect), 2.0f);
     }
 
     public void DisableAllMenus()
     {
-        Boathub.SetActive(false);
         Settings.SetActive(false);
     }
 

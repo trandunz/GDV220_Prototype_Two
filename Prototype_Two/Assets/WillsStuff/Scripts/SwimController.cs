@@ -79,6 +79,7 @@ public class SwimController : MonoBehaviour
     [SerializeField] ParticleSystem MagnetParticle;
 
     [Header("Audio")]
+    [SerializeField] AudioSource zapSound;
     public GameObject audioDash;
     public GameObject audioShoot;
     public GameObject audioHurt;
@@ -323,7 +324,7 @@ public class SwimController : MonoBehaviour
         if (m_ParalyzeTimer <= 0)
         {
             StartCoroutine(ParalyzeRoutine());
-            Destroy(Instantiate(audioJellyZap), 3.0f);
+            zapSound.Play();
         }
         else
         {
@@ -367,6 +368,7 @@ public class SwimController : MonoBehaviour
             IsUsingBubbleBuff = false;
             Destroy(m_ActivePowerup);
         }
+        zapSound.Stop();
         CanMove = true;
     }
 
