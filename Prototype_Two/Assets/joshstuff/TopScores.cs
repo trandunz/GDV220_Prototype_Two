@@ -77,7 +77,10 @@ public class TopScores : MonoBehaviour
 
     static void ChangeScore(int num1, int num2)
     {
-        scores[num1] = scores[num2];
+        scores[num1].score = scores[num2].score;
+        scores[num1].initials = scores[num2].initials;
+        PlayerPrefs.SetInt(scores[num1].scorePlayerPrefName, scores[num1].score);
+        PlayerPrefs.SetString(scores[num1].initialsPlayerPrefName, scores[num1].initials);
     }
 
     public static int CompareScore(int _score)
@@ -88,9 +91,9 @@ public class TopScores : MonoBehaviour
             {
                 if (i < 9)
                 {
-                    for (int j = i; j < 9; j++)
+                    for (int j = 9; j > i; j--)
                     {
-                        ChangeScore(j + 1, j);
+                        ChangeScore(j, j - 1);
                     }
                 }
                 Debug.Log(i);
