@@ -9,8 +9,10 @@ public class HighScores : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TopScores.LoadScores();
         GameObject highscore = Instantiate(HighscoreEntryPrefab, ContentArea.transform);
-        highscore.GetComponent<HighscoreEntry>().SetScore(PlayerPrefs.GetInt("DeepestDepth"));
+        int score = TopScores.CompareScore(PlayerPrefs.GetInt("DeepestDepth"));
+        highscore.GetComponent<HighscoreEntry>().SetScore(score);
     }
 
     // Update is called once per frame

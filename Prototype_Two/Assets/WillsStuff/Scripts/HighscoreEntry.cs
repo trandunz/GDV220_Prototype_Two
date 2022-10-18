@@ -14,7 +14,8 @@ public class HighscoreEntry : MonoBehaviour
         score = _score;
         if (newHighscore)
         {
-            Instantiate(Initials.gameObject);
+            EnterHighScore high = Instantiate(Initials.gameObject).GetComponent<EnterHighScore>();
+            high.Initialise(score);
         }
         else
         {
@@ -25,7 +26,7 @@ public class HighscoreEntry : MonoBehaviour
 
     public void Continue()
     {
-        string scoreStr = PlayerPrefs.GetString("Initials") + score.ToString() + "m";
+        string scoreStr = PlayerPrefs.GetString(TopScores.scores[0].initialsPlayerPrefName) + PlayerPrefs.GetInt(TopScores.scores[0].scorePlayerPrefName).ToString() + "m";
         Score.SetText(scoreStr);
     }
 }
