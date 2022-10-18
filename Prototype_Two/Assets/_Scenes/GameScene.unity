@@ -6269,7 +6269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb5f8de8fd0a344e8d234f152e0c7bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  godMode: 0
+  godMode: 1
   darknessStartingDepth: -10
   darknessChangeSpeed: 0.5
   depthPlayerLightsOn: -40
@@ -6577,7 +6577,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843676097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.5}
+  m_LocalPosition: {x: 0, y: 0, z: -4.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8228,6 +8228,10 @@ PrefabInstance:
       propertyPath: audioBubbleBuffPickup
       value: 
       objectReference: {fileID: 6429103755640261373, guid: a87e6ab342780b64a98298e93b79f6b5, type: 3}
+    - target: {fileID: 2014097822714990576, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ff6eeaf5695b1d49a862191c4cacd20, type: 3}
     - target: {fileID: 3221341236529356751, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -19371,6 +19375,10 @@ PrefabInstance:
       propertyPath: audioBubbleBuffPickup
       value: 
       objectReference: {fileID: 6429103755640261373, guid: a87e6ab342780b64a98298e93b79f6b5, type: 3}
+    - target: {fileID: 2014097822714990576, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ff6eeaf5695b1d49a862191c4cacd20, type: 3}
     - target: {fileID: 3221341236529356751, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -21550,6 +21558,10 @@ PrefabInstance:
       propertyPath: SeaMinePrefab
       value: 
       objectReference: {fileID: 5030809331485757466, guid: b856b9f9604dc3c41a7772a0ad9eb255, type: 3}
+    - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
+      propertyPath: Coral_Z_Offset
+      value: -8.2
+      objectReference: {fileID: 0}
     - target: {fileID: 229599907095208351, guid: b96695f1b4367894babe033e34dfffe1, type: 3}
       propertyPath: BubbleSpawnRate
       value: 14
