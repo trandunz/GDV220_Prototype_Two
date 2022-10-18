@@ -48,7 +48,7 @@ public class OxygenTankValue : MonoBehaviour
     public GameObject audioGemUp;
 
     private bool bHasPlayedDrownSound;
-
+    private bool bHasBubbleSpawned;
     SpawnManager spawnManager;
 
     // Start is called before the first frame update
@@ -121,7 +121,11 @@ public class OxygenTankValue : MonoBehaviour
 
         if (transform.localScale.y <= fBubbleSpawnPercent)
         {
-            spawnManager.GetComponent<SpawnManager>().SpawnBubble();
+            if (!bHasBubbleSpawned)
+            {
+                spawnManager.GetComponent<SpawnManager>().SpawnBubble();
+                bHasBubbleSpawned = true;
+            }
         }
 
         if (m_DamageTimer > 0.0f)
