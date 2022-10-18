@@ -8220,6 +8220,14 @@ PrefabInstance:
       propertyPath: audioShieldPop
       value: 
       objectReference: {fileID: 1067580561006157421, guid: d60c22388db7e0040af6d181d7de92f0, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioBubbleBuffUse
+      value: 
+      objectReference: {fileID: 6913266963291473647, guid: 0699943a0068aa641ab96399b8e65428, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioBubbleBuffPickup
+      value: 
+      objectReference: {fileID: 6429103755640261373, guid: a87e6ab342780b64a98298e93b79f6b5, type: 3}
     - target: {fileID: 3221341236529356751, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -19355,6 +19363,14 @@ PrefabInstance:
       propertyPath: audioShieldPop
       value: 
       objectReference: {fileID: 1067580561006157421, guid: d60c22388db7e0040af6d181d7de92f0, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioBubbleBuffUse
+      value: 
+      objectReference: {fileID: 6913266963291473647, guid: 0699943a0068aa641ab96399b8e65428, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: audioBubbleBuffPickup
+      value: 
+      objectReference: {fileID: 6429103755640261373, guid: a87e6ab342780b64a98298e93b79f6b5, type: 3}
     - target: {fileID: 3221341236529356751, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0

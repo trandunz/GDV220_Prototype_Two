@@ -89,6 +89,8 @@ public class SwimController : MonoBehaviour
     public GameObject audioJellyZap;
     public GameObject audioMagnet;
     public GameObject audioShieldPop;
+    public GameObject audioBubbleBuffPickup;
+    public GameObject audioBubbleBuffUse;
     bool isMagnetSoundPlaying;
 
     [Header("Particles")]
@@ -311,6 +313,7 @@ public class SwimController : MonoBehaviour
     {
         if (!IsUsingBubbleBuff && CanMove)
         {
+            Destroy(Instantiate(audioBubbleBuffUse), 3.0f);
             StartCoroutine(BubbleBuffRoutine());
         }
     }
@@ -640,6 +643,7 @@ public class SwimController : MonoBehaviour
     
     public void PickupBubbleBuff(BubbleBuff.BUFFTYPE _bubbleBuff)
     {
+        Destroy(Instantiate(audioBubbleBuffPickup), 3.0f);
         m_CurrentBubbleBuff = _bubbleBuff;
         RemainingBoostTime = 0.0f;
     }
