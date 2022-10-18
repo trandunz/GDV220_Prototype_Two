@@ -356,6 +356,7 @@ public class SwimController : MonoBehaviour
         
         while (m_ParalyzeTimer > 0)
         {
+            shake.StartShake(0.4f);
             m_ParalyzeTimer -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }

@@ -51,6 +51,8 @@ public class OxygenTankValue : MonoBehaviour
     private bool bHasBubbleSpawned;
     SpawnManager spawnManager;
 
+    [SerializeField] O2LightFlash o2LightFlash;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -234,6 +236,7 @@ public class OxygenTankValue : MonoBehaviour
             iOxygemCount = 0;
         }
         LightGems();
+        o2LightFlash.Pulse();
     }
 
     private void LightGems()
