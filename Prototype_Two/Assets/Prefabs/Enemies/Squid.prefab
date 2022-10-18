@@ -63,6 +63,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InkParticles: {fileID: 2084671897722511594}
+  m_DefaultMat: {fileID: 2100000, guid: 67c6ffa0b3571294d837b40b6d0b14fd, type: 2}
+  m_SuprisedMat: {fileID: 2100000, guid: db554a8a57aba9c48b3496df0281cc01, type: 2}
+  m_Mesh: {fileID: 545119399097821385}
   m_SwimDelay: 2
   m_SwimPower: 50
   m_SprintDelay: 0.5
@@ -240,6 +243,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6742451603483769303, guid: 5668d8f9ef76ba74b90b2de3de45d2e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 269349c7b9f4d0e40964545ace25a759, type: 2}
     - target: {fileID: -1030003008065474663, guid: 5668d8f9ef76ba74b90b2de3de45d2e4, type: 3}
       propertyPath: m_Materials.Array.size
       value: 0
@@ -266,6 +273,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5668d8f9ef76ba74b90b2de3de45d2e4, type: 3}
+--- !u!137 &545119399097821385 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6742451603483769303, guid: 5668d8f9ef76ba74b90b2de3de45d2e4, type: 3}
+  m_PrefabInstance: {fileID: 2737441772386922208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2483701885594061067 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5668d8f9ef76ba74b90b2de3de45d2e4, type: 3}
