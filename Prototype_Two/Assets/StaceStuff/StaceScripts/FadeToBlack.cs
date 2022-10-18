@@ -82,6 +82,7 @@ public class FadeToBlack : MonoBehaviour
                 if (Input.anyKeyDown)
                 {
                     pauseMenu.OnResume();
+
                     LevelLoader.instance.LoadLevel(0);
                 }
             }

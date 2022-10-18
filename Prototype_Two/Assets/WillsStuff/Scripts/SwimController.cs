@@ -37,10 +37,10 @@ public class SwimController : MonoBehaviour
     bool IsInvulnrable = false;
     float m_InvulnrabilityTimer;
 
-    BubbleBuffUI[] m_BubbleBuffUIs;
+    [SerializeField] BubbleBuffUI[] m_BubbleBuffUIs;
 
     [Header("GUI Settings")]
-    BubbleBuffPanel BubbleBuffUI;
+    [SerializeField] BubbleBuffPanel BubbleBuffUI;
     DepthPanel ScoreScript;
 
     SwimController otherPlayer = null;
@@ -125,8 +125,6 @@ public class SwimController : MonoBehaviour
     void Start()
     {
         m_DarknessLevel = FindObjectOfType<CameraMovement>();
-
-        m_BubbleBuffUIs = FindObjectsOfType<BubbleBuffUI>();
 
         MoveSpeed = SwimSpeed;
 
