@@ -25,6 +25,8 @@ public class SeaMine : MonoBehaviour
     [SerializeField] GameObject[] objectsToKeep;
     [SerializeField] GameObject head;
 
+    [SerializeField] GameObject ExplosionPart;
+
     [Header("Audio")]
     public GameObject audioSeaMine;
 
@@ -76,5 +78,6 @@ public class SeaMine : MonoBehaviour
             objectsToKeep[i].transform.SetParent(newOwner.transform);
         }
         Destroy(gameObject);
+        Destroy(Instantiate(ExplosionPart, transform.position, Quaternion.identity), 5.0f);
     }
 }

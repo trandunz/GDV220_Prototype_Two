@@ -6,7 +6,7 @@ public class BlinkingLight : MonoBehaviour
 {
     [SerializeField] float BlinkSpeed = 3.0f;
     [SerializeField] float BlinkIntensity = 3.0f;
-    Light m_Light;
+   Light m_Light;
     float m_Intensity;
     private void Start()
     {
