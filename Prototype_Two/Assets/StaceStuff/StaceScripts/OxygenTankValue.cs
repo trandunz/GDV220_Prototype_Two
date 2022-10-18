@@ -44,6 +44,9 @@ public class OxygenTankValue : MonoBehaviour
 
     [Header("Audio")]
     public GameObject audioDrown;
+    public GameObject audioLoseGems;
+    public GameObject audioGemUp;
+
     private bool bHasPlayedDrownSound;
 
     SpawnManager spawnManager;
@@ -142,6 +145,7 @@ public class OxygenTankValue : MonoBehaviour
             else
             {
                 ExplodeGems(iOxygemCount);
+                Destroy(Instantiate(audioLoseGems), 3.0f);
                 iOxygemCount = 0;
                 LightGems();
             }
@@ -222,6 +226,7 @@ public class OxygenTankValue : MonoBehaviour
         if (iOxygemCount == 10)
         {
             AddOxygen(0.8f);
+            Destroy(Instantiate(audioGemUp), 3.0f);
             iOxygemCount = 0;
         }
         LightGems();
