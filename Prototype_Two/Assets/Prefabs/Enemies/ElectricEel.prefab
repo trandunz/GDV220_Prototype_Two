@@ -317,8 +317,16 @@ PrefabInstance:
       value: P_PlayerElectricty_Directional
       objectReference: {fileID: 0}
     - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
+      propertyPath: lengthInSec
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
       propertyPath: simulationSpeed
-      value: 2
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
+      propertyPath: ShapeModule.type
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
       propertyPath: ShapeModule.angle
@@ -333,24 +341,52 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
+      propertyPath: NoiseModule.quality
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
+      propertyPath: ShapeModule.arc.value
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
+      propertyPath: NoiseModule.separateAxes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
       propertyPath: ShapeModule.radius.value
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
+      propertyPath: NoiseModule.strengthY.scalar
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
+      propertyPath: ShapeModule.randomDirectionAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 200
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 1.4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6100465957603054721, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
-      value: 0.8
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6100465957603054727, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6100465957603054727, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -358,7 +394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6100465957603054727, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.29
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 714170bba2e20f546a3758c54e3b764a, type: 3}
