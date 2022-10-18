@@ -20,6 +20,7 @@ public class HighscoreEntry : MonoBehaviour
         {
             Continue();
         }
+        newHighscore = false;
     }
 
     public void Continue()
