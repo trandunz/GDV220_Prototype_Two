@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3983445361658510822}
   - component: {fileID: 3983445361658510817}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: pole (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 3983445361660572492}
   - component: {fileID: 3983445361660572493}
   - component: {fileID: 3983445361660572494}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 3983445362168638093}
   - component: {fileID: 3983445362168638082}
   - component: {fileID: 3983445362168638083}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3983445362405681533}
   - component: {fileID: 3983445362405681532}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: O2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 3983445362639699273}
   - component: {fileID: 3983445362639699278}
   - component: {fileID: 3983445362639699272}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TankLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3983445362665441247}
   - component: {fileID: 3983445362665441246}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 3983445363016863321}
   - component: {fileID: 3983445363016863326}
   - component: {fileID: 3983445363016863327}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3983445363330658538}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: cords (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 3983445363530614163}
   - component: {fileID: 3983445363530614160}
   - component: {fileID: 3983445363530614173}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -762,7 +762,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3983445363572123994}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: cords
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -794,7 +794,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2499420125740482863}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LitGems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -825,7 +825,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6616325276295474872}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UnlitGems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -859,8 +859,16 @@ PrefabInstance:
       value: Oxygem Counter (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_RootOrder
@@ -925,8 +933,16 @@ PrefabInstance:
       value: Oxygem Counter (6)
       objectReference: {fileID: 0}
     - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_RootOrder
@@ -991,8 +1007,16 @@ PrefabInstance:
       value: Oxygem Counter (7)
       objectReference: {fileID: 0}
     - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_RootOrder
@@ -1056,6 +1080,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TankOxy (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -1117,6 +1149,14 @@ PrefabInstance:
     - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_Name
       value: TankOxy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_RootOrder
@@ -1180,6 +1220,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TankOxy (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -1241,6 +1289,14 @@ PrefabInstance:
     - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_Name
       value: TankOxy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_RootOrder
@@ -1305,8 +1361,16 @@ PrefabInstance:
       value: Oxygem Counter (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_RootOrder
@@ -1371,8 +1435,16 @@ PrefabInstance:
       value: Oxygem Counter (8)
       objectReference: {fileID: 0}
     - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_RootOrder
@@ -1435,6 +1507,14 @@ PrefabInstance:
     - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_Name
       value: TankOxy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_RootOrder
@@ -1538,9 +1618,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3750931324673273981, guid: dac432d6761be3141b45c90589ea4e7e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -2493115046828469498, guid: dac432d6761be3141b45c90589ea4e7e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -26096424362371531, guid: dac432d6761be3141b45c90589ea4e7e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 635547659545568360, guid: dac432d6761be3141b45c90589ea4e7e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dac432d6761be3141b45c90589ea4e7e, type: 3}
       propertyPath: m_Name
       value: Oxygen_Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dac432d6761be3141b45c90589ea4e7e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665878169302670358, guid: dac432d6761be3141b45c90589ea4e7e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2400892086113575397, guid: dac432d6761be3141b45c90589ea4e7e, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dac432d6761be3141b45c90589ea4e7e, type: 3}
@@ -1559,6 +1667,14 @@ PrefabInstance:
     - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_Name
       value: TankOxy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_RootOrder
@@ -1622,6 +1738,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TankOxy (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -1683,6 +1807,14 @@ PrefabInstance:
     - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_Name
       value: TankOxy (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_RootOrder
@@ -1747,8 +1879,16 @@ PrefabInstance:
       value: Oxygem Counter (5)
       objectReference: {fileID: 0}
     - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_RootOrder
@@ -1811,6 +1951,14 @@ PrefabInstance:
     - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_Name
       value: TankOxy (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_RootOrder
@@ -1875,8 +2023,16 @@ PrefabInstance:
       value: Oxygem Counter (9)
       objectReference: {fileID: 0}
     - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_RootOrder
@@ -1939,6 +2095,14 @@ PrefabInstance:
     - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_Name
       value: TankOxy (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 18554a12775ab6144b4cdf3e8e9e8f8c, type: 3}
       propertyPath: m_RootOrder
@@ -2003,8 +2167,16 @@ PrefabInstance:
       value: Oxygem Counter (4)
       objectReference: {fileID: 0}
     - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_RootOrder
@@ -2069,8 +2241,16 @@ PrefabInstance:
       value: Oxygem Counter
       objectReference: {fileID: 0}
     - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_RootOrder
@@ -2135,8 +2315,16 @@ PrefabInstance:
       value: Oxygem Counter (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3861981352874755755, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477655007140552041, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4527053553406581777, guid: 9f61b8ae654bba8468e36892defb630b, type: 3}
       propertyPath: m_RootOrder
