@@ -8,11 +8,15 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] TMPro.TMP_Dropdown ResolutionsDropdown;
     [SerializeField] Slider MasterVolumeSlider;
     [SerializeField] Slider StereoPanSlider;
+    [SerializeField] TMPro.TextMeshProUGUI VolumeText;
+    [SerializeField] TMPro.TextMeshProUGUI StereoPanText;
+    [SerializeField] Image Selector;
+    [SerializeField] TMPro.TextMeshProUGUI ReturnText;
     //List<UnityEngine.Resolution> AvailableResolutions = new List<UnityEngine.Resolution>();
+    int MenuOptionSelection = 0;
 
     private void Start()
     {
-
         //Resolution forteenFourty = new Resolution();
         //forteenFourty.height = 1080;
         //forteenFourty.width = 1440;
@@ -90,6 +94,53 @@ public class OptionsMenu : MonoBehaviour
     //    PlayerPrefs.Save();
     //}
 
+    public void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            MenuOptionSelection--;
+            if (MenuOptionSelection < 0)
+                MenuOptionSelection = 2;
+        }
+        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            if (MenuOptionSelection == 0)
+                DecreaseVolume();
+
+            if (MenuOptionSelection == 1)
+                DecreaseSP();
+        }
+        if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            MenuOptionSelection++;
+            if (MenuOptionSelection > 2)
+                MenuOptionSelection = 0;
+        }
+        if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            if (MenuOptionSelection == 0)
+                IncreaseVolume();
+
+            if (MenuOptionSelection == 1)
+                IncreaseSP();
+        }
+        if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.Backspace))
+        {
+            if (MenuOptionSelection == 2)
+                Return();
+        }
+
+
+        if (MenuOptionSelection == 0)
+            Selector.rectTransform.position = VolumeText.rectTransform.position + Vector3.left * 50.0f;
+
+        if (MenuOptionSelection == 1)
+            Selector.rectTransform.position = StereoPanText.rectTransform.position + Vector3.left * 67.5f;
+
+        if (MenuOptionSelection == 2)
+            Selector.rectTransform.position = ReturnText.rectTransform.position + Vector3.left * 50.0f;
+    }
+
     public void ToggleFullscreen()
     {
         Screen.fullScreen = !Screen.fullScreen;
@@ -109,5 +160,29 @@ public class OptionsMenu : MonoBehaviour
         }
         PlayerPrefs.SetFloat("StereoPan", StereoPanSlider.value);
         PlayerPrefs.Save();
+    }
+    public void IncreaseVolume()
+    {
+        MasterVolumeSlider.value += 0.1f;
+        UpdateVolume();
+    }
+    public void DecreaseVolume()
+    {
+        MasterVolumeSlider.value -= 0.1f;
+        UpdateVolume();
+    }
+    public void IncreaseSP()
+    {
+        StereoPanSlider.value += 0.1f;
+        UpdateStereoPan();
+    }
+    public void DecreaseSP()
+    {
+        StereoPanSlider.value -= 0.1f;
+        UpdateStereoPan();
+    }
+    public void Return()
+    {
+        gameObject.SetActive(false);
     }
 }
