@@ -5402,6 +5402,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &649926598 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4864290543004862224, guid: ebdc10fcdd9b4d6459af58ef24a33d86, type: 3}
+  m_PrefabInstance: {fileID: 649926590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649926592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa2b758187e2bde49a5c1b0e8d39005b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &649926601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3097730807545710374, guid: ebdc10fcdd9b4d6459af58ef24a33d86, type: 3}
+  m_PrefabInstance: {fileID: 649926590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649926593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa2b758187e2bde49a5c1b0e8d39005b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &651175294
 GameObject:
   m_ObjectHideFlags: 0
@@ -8197,6 +8219,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5943079125212599771, guid: 5ab51af2eda45de49889ee4af7bbfa28, type: 3}
     - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: BubbleBuffUI
+      value: 
+      objectReference: {fileID: 1391346471}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: StretchyLine
       value: 
       objectReference: {fileID: 1468342193}
@@ -8228,6 +8254,18 @@ PrefabInstance:
       propertyPath: audioBubbleBuffPickup
       value: 
       objectReference: {fileID: 6429103755640261373, guid: a87e6ab342780b64a98298e93b79f6b5, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: m_BubbleBuffUIs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: m_BubbleBuffUIs.Array.data[0]
+      value: 
+      objectReference: {fileID: 649926598}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: m_BubbleBuffUIs.Array.data[1]
+      value: 
+      objectReference: {fileID: 649926601}
     - target: {fileID: 2014097822714990576, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -16087,6 +16125,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2cc7e746855b9cc43aefcdbb20be3981, type: 3}
   m_PrefabInstance: {fileID: 378401836}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1391346471 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8940901059740702244, guid: ebdc10fcdd9b4d6459af58ef24a33d86, type: 3}
+  m_PrefabInstance: {fileID: 649926590}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25868d35818f7324b9c9bb0feaf47571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1411598833
 GameObject:
   m_ObjectHideFlags: 0
@@ -19344,6 +19393,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5943079125212599771, guid: 5ab51af2eda45de49889ee4af7bbfa28, type: 3}
     - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: BubbleBuffUI
+      value: 
+      objectReference: {fileID: 1391346471}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: StretchyLine
       value: 
       objectReference: {fileID: 1743313971}
@@ -19375,6 +19428,18 @@ PrefabInstance:
       propertyPath: audioBubbleBuffPickup
       value: 
       objectReference: {fileID: 6429103755640261373, guid: a87e6ab342780b64a98298e93b79f6b5, type: 3}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: m_BubbleBuffUIs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: m_BubbleBuffUIs.Array.data[0]
+      value: 
+      objectReference: {fileID: 649926598}
+    - target: {fileID: 936388251297128940, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
+      propertyPath: m_BubbleBuffUIs.Array.data[1]
+      value: 
+      objectReference: {fileID: 649926601}
     - target: {fileID: 2014097822714990576, guid: 87b5592ca67f6464ba0093d7e65c9377, type: 3}
       propertyPath: m_audioClip
       value: 

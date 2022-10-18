@@ -13,12 +13,17 @@ public class PauseMenuPanel : MonoBehaviour
     [SerializeField] GameObject BotPanel;
     [SerializeField] GameObject MainPanel;
 
+    FadeToBlack FadeToBlackScreen;
+
     bool IsOpen = false;
     bool OnGoHome = true;
     bool OnGoBack = false;
 
     private void Start()
     {
+        FadeToBlackScreen = FindObjectOfType<FadeToBlack>();
+
+
         HoverLeftOption(Boathub.image);
         HoverLeftOption(Resume.image);
         UpdateChildActive();
@@ -26,47 +31,51 @@ public class PauseMenuPanel : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace)) && !IsOpen)
+        if (!FadeToBlackScreen.bFading)
         {
-            TogglePauseMenu();
+            if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace)) && !IsOpen)
+            {
+                TogglePauseMenu();
 
-            IsOpen = true;
-        }
-        else if (IsOpen)
-        {
-            if (OnGoHome)
-            {
-                OnGoBack = false;
-                PointerOverBoathub();
-                PointerLeftResume();
-                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    OnGoBack = true;
-                    OnGoHome = false;
-                }
-                else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace))
-                {
-                    GotoBoathouse();
-                }
+                IsOpen = true;
             }
-            if (OnGoBack)
+            else if (IsOpen)
             {
-                OnGoHome = false;
-                PointerOverResume();
-                PointerLeftBoathub();
-                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                if (OnGoHome)
                 {
-                    OnGoHome = true;
                     OnGoBack = false;
+                    PointerOverBoathub();
+                    PointerLeftResume();
+                    if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        OnGoBack = true;
+                        OnGoHome = false;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace))
+                    {
+                        GotoBoathouse();
+                    }
                 }
-                else if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace))
+                if (OnGoBack)
                 {
-                    OnResume();
+                    OnGoHome = false;
+                    PointerOverResume();
+                    PointerLeftBoathub();
+                    if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        OnGoHome = true;
+                        OnGoBack = false;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace))
+                    {
+                        OnResume();
+                    }
                 }
             }
+
         }
 
-        
+
     }
 
     void TogglePauseMenu()
