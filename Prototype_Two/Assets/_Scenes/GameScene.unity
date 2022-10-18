@@ -2124,6 +2124,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1255763605}
     - target: {fileID: 1314215809, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
+      propertyPath: o2LightFlash
+      value: 
+      objectReference: {fileID: 3983445362683328390}
+    - target: {fileID: 1314215809, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
       propertyPath: audioLoseGems
       value: 
       objectReference: {fileID: 2882828359851944159, guid: 045b0189c644f3a49af86f183711c95b, type: 3}
@@ -21945,8 +21949,27 @@ PrefabInstance:
       propertyPath: Target
       value: 
       objectReference: {fileID: 1743313968}
+    - target: {fileID: 8781540226315458264, guid: a90c22e3c35250f4fa75b9343b5e44e4, type: 3}
+      propertyPath: PulseSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781540226315458264, guid: a90c22e3c35250f4fa75b9343b5e44e4, type: 3}
+      propertyPath: PulseIntensity
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a90c22e3c35250f4fa75b9343b5e44e4, type: 3}
+--- !u!114 &3983445362683328390 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8781540226315458264, guid: a90c22e3c35250f4fa75b9343b5e44e4, type: 3}
+  m_PrefabInstance: {fileID: 3983445362683328389}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 502b9b5f78e28a64b980613169599814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4985055529669038253
 PrefabInstance:
   m_ObjectHideFlags: 0
