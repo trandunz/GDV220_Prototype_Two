@@ -62,6 +62,9 @@ public class SwimController : MonoBehaviour
     BubbleBuff.BUFFTYPE m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.UNASSIGNED;
     public bool IsUsingBubbleBuff = false;
 
+    CameraMovement m_DarknessLevel;
+
+
     IKInitialiser cord;
     public FastIKFabric Tether;
     public float DistanceFromOrigin = 0.0f;
@@ -121,6 +124,8 @@ public class SwimController : MonoBehaviour
 
     void Start()
     {
+        m_DarknessLevel = FindObjectOfType<CameraMovement>();
+
         m_BubbleBuffUIs = FindObjectsOfType<BubbleBuffUI>();
 
         MoveSpeed = SwimSpeed;
@@ -388,7 +393,12 @@ public class SwimController : MonoBehaviour
             {
                 case BubbleBuff.BUFFTYPE.RANDOM:
                     {
-                        m_CurrentBubbleBuff = (BubbleBuff.BUFFTYPE)Random.Range(2, 6);
+                        if (m_DarknessLevel.lightingLevel < 1)
+                            m_CurrentBubbleBuff = (BubbleBuff.BUFFTYPE)Random.Range(2, 6);
+                        else
+                        {
+                            m_CurrentBubbleBuff = (BubbleBuff.BUFFTYPE)Random.Range(2, 5);
+                        }
 
                         break;
                     }
