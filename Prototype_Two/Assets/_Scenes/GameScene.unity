@@ -2101,6 +2101,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: OxygenTankUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2288084673205576712, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6276710519285553203, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8692736635721397233, guid: 1500093227e2c4f4c953d9811c4305b4, type: 3}
       propertyPath: m_RootOrder
       value: 3

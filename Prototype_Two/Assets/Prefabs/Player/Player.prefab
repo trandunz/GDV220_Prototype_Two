@@ -67,6 +67,8 @@ MonoBehaviour:
   PlayerOne: 0
   MeshObject: {fileID: 5837146483059227840}
   m_InvulnrabilityTime: 0.4
+  m_BubbleBuffUIs: []
+  BubbleBuffUI: {fileID: 0}
   MagnetRange: 5
   MagnetStrength: 1
   BubbleBuffUseTime: 10
@@ -345,7 +347,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
