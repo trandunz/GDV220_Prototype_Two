@@ -32,6 +32,15 @@ public class CameraMovement : MonoBehaviour
     // Fog
     private Color previousColor;
 
+    // Fog colors
+    private float FogTimer;
+    private Color greenFogColor = new Color(0, 255, 0);
+    private bool greenFogOn = false;
+    private Color redFogColor = new Color(255, 0, 0);
+    private bool redFogOn = false;
+    private Color pinkFogColor = new Color(255, 0, 255);
+    private bool pinkFogOn = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +62,9 @@ public class CameraMovement : MonoBehaviour
         foregroundObjects = GameObject.FindGameObjectsWithTag("ForegroundObject");
 
         previousColor = RenderSettings.fogColor;
+
+        // Set fog time
+        FogTimer = manager.GetComponent<GameManager>().fogColorSpeed;
     }
 
     // Update is called once per frame
@@ -61,9 +73,12 @@ public class CameraMovement : MonoBehaviour
         transform.Translate(0, -fCameraSpeed * Time.deltaTime, 0);
 
         // Starting darkness
-        if (transform.position.y <= darknessStartingDepth)
+        if (transform.position.y <= darknessStartingDepth && transform.position.y >= darknessStartingDepth - 5.0f)
         {
-            gettingDarker = true;
+            //if (greenFogOn == false || redFogOn == false || pinkFogOn == false)
+            //{
+                gettingDarker = true;
+            //}
         }
 
         // Getting darker
@@ -81,18 +96,21 @@ public class CameraMovement : MonoBehaviour
                     timer = maxTimer;
 
                     // Decrease color of the fog
-                    if (previousColor.r > 0)
-                        previousColor.r = previousColor.r - (3.0f / 255.0f);
-                    else
-                        previousColor.r = 0;
-                    if (previousColor.g > 0)
-                        previousColor.g -= 3.0f/255.0f;
-                    else
-                        previousColor.r = 0;
-                    if (previousColor.b > 0)
-                        previousColor.b -= 3.0f/255.0f;
-                    else
-                        previousColor.r = 0;
+                    if (greenFogOn == false || redFogOn == false || pinkFogOn == false)
+                    {
+                        if (previousColor.r > 0)
+                            previousColor.r = previousColor.r - (3.0f / 255.0f);
+                        else
+                            previousColor.r = 0;
+                        if (previousColor.g > 0)
+                            previousColor.g -= 3.0f / 255.0f;
+                        else
+                            previousColor.r = 0;
+                        if (previousColor.b > 0)
+                            previousColor.b -= 3.0f / 255.0f;
+                        else
+                            previousColor.r = 0;
+                    }
 
                     RenderSettings.fogColor = new Color(previousColor.r, previousColor.g, previousColor.b);
 
@@ -114,14 +132,126 @@ public class CameraMovement : MonoBehaviour
                             alphaValue);
                     }
                 }
+                else
+                {
+                    gettingDarker = false;
+                }
             }
         }
 
         // Turn off fog if dark
-        if (lightingLevel <= 0)
+        //if (lightingLevel <= 0)
+        //{
+        //    RenderSettings.fog = false;
+        //}
+
+        // Fog color
+        //Green
+        if (transform.position.y <= manager.GetComponent<GameManager>().greenStartDepth)
         {
-            RenderSettings.fog = false;
+            greenFogOn = true;
         }
+        if (transform.position.y <= manager.GetComponent<GameManager>().greenEndDepth)
+        {
+            greenFogOn = false;
+        }
+        
+        if (greenFogOn == true)
+        {
+            FogTimer -= Time.deltaTime;
+            
+            if (FogTimer <= 0)
+            {
+                if (RenderSettings.fogColor.g < 1.0f)
+                {
+                    previousColor.g = previousColor.g + (5.0f / 255.0f);
+                    RenderSettings.fogColor = new Color(0, previousColor.g, 0);
+
+                    FogTimer = manager.GetComponent<GameManager>().fogColorSpeed;
+                }
+            }
+        }
+
+        // Red
+        if (transform.position.y <= manager.GetComponent<GameManager>().redStartDepth)
+        {
+            redFogOn = true;
+        }
+        if (transform.position.y <= manager.GetComponent<GameManager>().redEndDepth)
+        {
+            redFogOn = false;
+        }
+
+        if (redFogOn == true)
+        {
+            FogTimer -= Time.deltaTime;
+
+            if (FogTimer <= 0)
+            {
+                if (RenderSettings.fogColor.r < 1.0f)
+                {
+                    previousColor.r = previousColor.r + (5.0f / 255.0f);
+                    RenderSettings.fogColor = new Color(previousColor.r, 0, 0);
+
+                    FogTimer = manager.GetComponent<GameManager>().fogColorSpeed;
+                }
+            }
+        }
+
+        // Pink
+        if (transform.position.y <= manager.GetComponent<GameManager>().pinkStartDepth)
+        {
+            pinkFogOn = true;
+        }
+        if (transform.position.y <= manager.GetComponent<GameManager>().pinkEndDepth)
+        {
+            pinkFogOn = false;
+        }
+
+        if (pinkFogOn == true)
+        {
+            FogTimer -= Time.deltaTime;
+
+            if (FogTimer <= 0)
+            {
+                if (RenderSettings.fogColor.r < 1.0f)
+                {
+                    previousColor.r = previousColor.r + (5.0f / 255.0f);
+                }
+                if (RenderSettings.fogColor.b < 1.0f)
+                {
+                    previousColor.b = previousColor.b + (5.0f / 255.0f);
+                }
+                RenderSettings.fogColor = new Color(previousColor.r, 0, previousColor.b);
+
+                FogTimer = manager.GetComponent<GameManager>().fogColorSpeed;
+            }
+        }
+
+        // Go back to dark
+        if (greenFogOn == false && redFogOn == false && pinkFogOn == false && transform.position.y <= manager.GetComponent<GameManager>().greenStartDepth)
+        {
+            FogTimer -= Time.deltaTime;
+
+            if (FogTimer <= 0)
+            {
+                if (RenderSettings.fogColor.r > 0.0f)
+                {
+                    previousColor.r = previousColor.r - (5.0f / 255.0f);
+                }
+                if (RenderSettings.fogColor.g > 0.0f)
+                {
+                    previousColor.g = previousColor.g - (5.0f / 255.0f);
+                }
+                if (RenderSettings.fogColor.b > 0.0f)
+                {
+                    previousColor.b = previousColor.b - (5.0f / 255.0f);
+                }
+                RenderSettings.fogColor = new Color(previousColor.r, previousColor.g, previousColor.b);
+                FogTimer = manager.GetComponent<GameManager>().fogColorSpeed;
+            }
+        }
+
 
         if (transform.position.y <= backgroundStartDepth)
         {
