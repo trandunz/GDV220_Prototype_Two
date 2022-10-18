@@ -50,6 +50,8 @@ public class Clam : MonoBehaviour
         m_LinesParticle.gameObject.SetActive(true);
         m_LinesParticle.Play();
         m_SuctionParticle.Play();
+
+
     }
 
     private void OnTriggerEnter(Collider other)

@@ -282,9 +282,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7361156119169573319, guid: 9b092e2f8da63f34db5bfb5089f3ef35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.0000001067223
+      objectReference: {fileID: 0}
+    - target: {fileID: -7361156119169573319, guid: 9b092e2f8da63f34db5bfb5089f3ef35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: -7361156119169573319, guid: 9b092e2f8da63f34db5bfb5089f3ef35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -1.6386871
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9b092e2f8da63f34db5bfb5089f3ef35, type: 3}
       propertyPath: m_Name
       value: Anim_Clam_Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981209001250642586, guid: 9b092e2f8da63f34db5bfb5089f3ef35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.00000016008391
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981209001250642586, guid: 9b092e2f8da63f34db5bfb5089f3ef35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981209001250642586, guid: 9b092e2f8da63f34db5bfb5089f3ef35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -1.6434574
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 9b092e2f8da63f34db5bfb5089f3ef35, type: 3}
       propertyPath: m_Controller
@@ -296,6 +320,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b092e2f8da63f34db5bfb5089f3ef35, type: 3}
+--- !u!1 &3839981627930296928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9b092e2f8da63f34db5bfb5089f3ef35, type: 3}
+  m_PrefabInstance: {fileID: 4146464111246638897}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4278555763116483206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3839981627930296928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eed0ee7bdc3bbe418babfaf2353ff29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClamBite: {fileID: 7475114053522321567, guid: 0ca9e913f6f2bac4b993731d0d0cd5c1, type: 3}
 --- !u!4 &4468004444184746202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9b092e2f8da63f34db5bfb5089f3ef35, type: 3}
