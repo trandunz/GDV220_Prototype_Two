@@ -24,6 +24,15 @@ public class GameManager : MonoBehaviour
     public float colorChangeStartDepth = -20.0f;
     public float colorChangeSpeed = 2.0f;
 
+    [Header("Lategame Lighting")]
+    public float fogColorSpeed;
+    public float greenStartDepth;
+    public float greenEndDepth;
+    public float redStartDepth;
+    public float redEndDepth;
+    public float pinkStartDepth;
+    public float pinkEndDepth;
+
     [Header("GameObjects")]
     public GameObject sceneCentreObject;
     public GameObject Player1;
