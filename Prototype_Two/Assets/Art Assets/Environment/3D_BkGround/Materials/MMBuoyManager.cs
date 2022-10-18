@@ -6,6 +6,7 @@ public class MMBuoyManager : MonoBehaviour
 {
     MMBuoy[] m_Buoys;
     int m_CurrentSelelection = 0;
+    public GameObject audioSplash;
 
     private void Start()
     {
@@ -15,6 +16,7 @@ public class MMBuoyManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            Destroy(Instantiate(audioSplash), 3.0f);
             m_CurrentSelelection++;
             if (m_CurrentSelelection >= m_Buoys.Length)
             {
@@ -23,6 +25,7 @@ public class MMBuoyManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
+            Destroy(Instantiate(audioSplash), 3.0f);
             m_CurrentSelelection--;
             if (m_CurrentSelelection < 0)
             {

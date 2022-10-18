@@ -601,6 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7522cf71ff44bb741adefce3e7548136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSplash: {fileID: 4371919521720323470, guid: 917c9f4c4945ec241a76a8c13c38b2ae, type: 3}
 --- !u!4 &492256682
 Transform:
   m_ObjectHideFlags: 0
