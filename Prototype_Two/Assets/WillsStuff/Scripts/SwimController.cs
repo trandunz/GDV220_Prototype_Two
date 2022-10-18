@@ -372,6 +372,7 @@ public class SwimController : MonoBehaviour
         {
             IsUsingBubbleBuff = false;
             Destroy(m_ActivePowerup);
+            Destroy(Instantiate(audioShieldPop), 3.0f);
         }
         zapSound.Stop();
         CanMove = true;
@@ -461,11 +462,11 @@ public class SwimController : MonoBehaviour
                         if (m_ActivePowerup == null)
                         {
                             m_ActivePowerup = Instantiate(ShieldBubble, transform);
-                            m_ActivePowerup.transform.position = m_ShockEffect.transform.position;
+                            m_ActivePowerup.transform.position = transform.position + transform.up * 0.33f;
                         }
                         else
                         {
-                            m_ActivePowerup.transform.position = m_ShockEffect.transform.position;
+                            m_ActivePowerup.transform.position = transform.position + transform.up * 0.33f;
                         }
 
                         break;
@@ -488,7 +489,11 @@ public class SwimController : MonoBehaviour
         }
 
         if (m_ActivePowerup)
+        {
             Destroy(m_ActivePowerup);
+            Destroy(Instantiate(audioShieldPop), 3.0f);
+        }
+            
 
         MagnetParticle.Stop();
         m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.UNASSIGNED;
