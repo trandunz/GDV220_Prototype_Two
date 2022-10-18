@@ -5,6 +5,9 @@ using UnityEngine;
 public class Squidy : MonoBehaviour
 {
     [SerializeField] ParticleSystem m_InkParticles;
+    [SerializeField] Material m_DefaultMat;
+    [SerializeField] Material m_SuprisedMat;
+    [SerializeField] SkinnedMeshRenderer m_Mesh;
     [Header("SwimSettings")]
     [SerializeField] float m_SwimDelay = 1.0f;
     [SerializeField] float m_SwimPower = 100.0f;
@@ -25,6 +28,9 @@ public class Squidy : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         Players = FindObjectsOfType<SwimController>();
         animator = GetComponentInChildren<Animator>();
+        m_Mesh = GetComponentInChildren<SkinnedMeshRenderer>();
+
+        m_Mesh.material = m_DefaultMat;
 
         m_ToPlayerVector = (GetClosestPlayer().transform.position - transform.position).normalized;
     }
@@ -42,6 +48,7 @@ public class Squidy : MonoBehaviour
                 m_SwimTimer = 0.0f;
                 rigidBody.velocity = Vector3.zero;
                 PlayerInRange = true;
+                m_Mesh.material = m_SuprisedMat;
                 m_ToPlayerVector = (transform.position - GetClosestPlayer().transform.position).normalized;
             } 
         }

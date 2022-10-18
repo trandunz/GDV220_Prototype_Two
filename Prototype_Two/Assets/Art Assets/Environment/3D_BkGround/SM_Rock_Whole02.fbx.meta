@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: pasted__m_rocks
-    second: {fileID: 2100000, guid: e6e362f65e277c6488cc7dc50e23d423, type: 2}
+    second: {fileID: 2100000, guid: eeb9a73e3592993468f7bd3eece53d42, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

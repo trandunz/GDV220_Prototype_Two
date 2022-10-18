@@ -23,14 +23,6 @@ public class MainMenuButtons : MonoBehaviour
     {
         if (InsertCoinSelected)
         {
-
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Backspace))
-            {
-                if (!pauseStart)
-                {
-                    StartGame();
-                }
-            }
         }
     }
 

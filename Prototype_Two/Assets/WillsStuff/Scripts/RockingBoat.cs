@@ -19,6 +19,12 @@ public class RockingBoat : MonoBehaviour
     void Update()
     {
         transform.rotation = Quaternion.Euler(Mathf.Sin(Time.time * rockspeed) * xAmplitude, StartRotation.y, Mathf.Cos(Time.time * rockspeed) * zAmplitude);
-        transform.position = new Vector3(transform.position.x, StartPosition.y + Mathf.Cos(Time.time * rockspeed) * yAmplitude, transform.position.z);
+
+        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, StartPosition.y + Mathf.Cos(Time.time * rockspeed) * yAmplitude, transform.position.z), Time.deltaTime * 5.0f);
+    }
+
+    public void Splash()
+    {
+        transform.position = StartPosition + Vector3.down * 0.2f;
     }
 }

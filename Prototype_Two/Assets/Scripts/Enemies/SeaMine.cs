@@ -25,6 +25,9 @@ public class SeaMine : MonoBehaviour
     [SerializeField] GameObject[] objectsToKeep;
     [SerializeField] GameObject head;
 
+    [Header("Audio")]
+    public GameObject audioSeaMine;
+
     private void Start()
     {
         shake = FindObjectOfType<ScreenShake>();
@@ -42,6 +45,7 @@ public class SeaMine : MonoBehaviour
     {
         if (other.tag == "Player" && !m_Activated)
         {
+            Destroy(Instantiate(audioSeaMine), 3.0f);
             StartCoroutine(ExplodeRoutine());
         }
     }

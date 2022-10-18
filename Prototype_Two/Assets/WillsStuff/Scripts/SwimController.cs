@@ -62,6 +62,9 @@ public class SwimController : MonoBehaviour
     BubbleBuff.BUFFTYPE m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.UNASSIGNED;
     public bool IsUsingBubbleBuff = false;
 
+    CameraMovement m_DarknessLevel;
+
+
     IKInitialiser cord;
     public FastIKFabric Tether;
     public float DistanceFromOrigin = 0.0f;
@@ -79,12 +82,20 @@ public class SwimController : MonoBehaviour
     [SerializeField] ParticleSystem MagnetParticle;
 
     [Header("Audio")]
+    [SerializeField] AudioSource zapSound;
     public GameObject audioDash;
     public GameObject audioShoot;
     public GameObject audioHurt;
     public GameObject audioDead;
     public GameObject audioOxygem;
     public GameObject audioBubble;
+    public GameObject audioOilSlow;
+    public GameObject audioJellyZap;
+    public GameObject audioMagnet;
+    public GameObject audioShieldPop;
+    public GameObject audioBubbleBuffPickup;
+    public GameObject audioBubbleBuffUse;
+    bool isMagnetSoundPlaying;
 
     [Header("Particles")]
     // screen shake
@@ -113,6 +124,8 @@ public class SwimController : MonoBehaviour
 
     void Start()
     {
+        m_DarknessLevel = FindObjectOfType<CameraMovement>();
+
         m_BubbleBuffUIs = FindObjectsOfType<BubbleBuffUI>();
 
         MoveSpeed = SwimSpeed;
@@ -293,6 +306,10 @@ public class SwimController : MonoBehaviour
 
     public void Slow()
     {
+        if (SlowTimer <= 0.0f)
+        {
+            Destroy(Instantiate(audioOilSlow), 3.0f);
+        }
         MoveSpeed = SlowSpeed;
         SlowTimer = SlowTime;
         animator.speed = 0.5f;
@@ -302,6 +319,7 @@ public class SwimController : MonoBehaviour
     {
         if (!IsUsingBubbleBuff && CanMove)
         {
+            Destroy(Instantiate(audioBubbleBuffUse), 3.0f);
             StartCoroutine(BubbleBuffRoutine());
         }
     }
@@ -311,6 +329,7 @@ public class SwimController : MonoBehaviour
         if (m_ParalyzeTimer <= 0)
         {
             StartCoroutine(ParalyzeRoutine());
+            zapSound.Play();
         }
         else
         {
@@ -320,7 +339,7 @@ public class SwimController : MonoBehaviour
 
     IEnumerator ParalyzeRoutine()
     {
-        if (!IsUsingBubbleBuff)
+        if (m_ActivePowerup == null)
         {
             CanMove = false;
             m_ShockEffect.Play();
@@ -353,7 +372,9 @@ public class SwimController : MonoBehaviour
         {
             IsUsingBubbleBuff = false;
             Destroy(m_ActivePowerup);
+            Destroy(Instantiate(audioShieldPop), 3.0f);
         }
+        zapSound.Stop();
         CanMove = true;
     }
 
@@ -373,7 +394,12 @@ public class SwimController : MonoBehaviour
             {
                 case BubbleBuff.BUFFTYPE.RANDOM:
                     {
-                        m_CurrentBubbleBuff = (BubbleBuff.BUFFTYPE)Random.Range(2, 6);
+                        if (m_DarknessLevel.lightingLevel < 1)
+                            m_CurrentBubbleBuff = (BubbleBuff.BUFFTYPE)Random.Range(2, 6);
+                        else
+                        {
+                            m_CurrentBubbleBuff = (BubbleBuff.BUFFTYPE)Random.Range(2, 5);
+                        }
 
                         break;
                     }
@@ -419,6 +445,12 @@ public class SwimController : MonoBehaviour
                         {
                             if (Vector3.Distance(oxygem.transform.position, transform.position) <= MagnetRange)
                             {
+                                if(!isMagnetSoundPlaying)
+                                {
+                                    isMagnetSoundPlaying = true;
+                                    StartCoroutine(PlayMagnetNoise());
+                                }
+
                                 oxygem.transform.position += (transform.position - oxygem.transform.position) * Time.deltaTime * MagnetStrength;
                             }
                         }
@@ -430,11 +462,11 @@ public class SwimController : MonoBehaviour
                         if (m_ActivePowerup == null)
                         {
                             m_ActivePowerup = Instantiate(ShieldBubble, transform);
-                            m_ActivePowerup.transform.position = m_ShockEffect.transform.position;
+                            m_ActivePowerup.transform.position = transform.position + transform.up * 0.33f;
                         }
                         else
                         {
-                            m_ActivePowerup.transform.position = m_ShockEffect.transform.position;
+                            m_ActivePowerup.transform.position = transform.position + transform.up * 0.33f;
                         }
 
                         break;
@@ -457,7 +489,11 @@ public class SwimController : MonoBehaviour
         }
 
         if (m_ActivePowerup)
+        {
             Destroy(m_ActivePowerup);
+            Destroy(Instantiate(audioShieldPop), 3.0f);
+        }
+            
 
         MagnetParticle.Stop();
         m_CurrentBubbleBuff = BubbleBuff.BUFFTYPE.UNASSIGNED;
@@ -595,6 +631,10 @@ public class SwimController : MonoBehaviour
     {
         if (m_ActivePowerup != null)
         {
+            if (m_CurrentBubbleBuff == BubbleBuff.BUFFTYPE.SHIELD)
+            {
+                Destroy(Instantiate(audioShieldPop), 3.0f);
+            }
             BubbleShieldHit();
         }
         else if (!IsInvulnrable)
@@ -620,6 +660,7 @@ public class SwimController : MonoBehaviour
     
     public void PickupBubbleBuff(BubbleBuff.BUFFTYPE _bubbleBuff)
     {
+        Destroy(Instantiate(audioBubbleBuffPickup), 3.0f);
         m_CurrentBubbleBuff = _bubbleBuff;
         RemainingBoostTime = 0.0f;
     }
@@ -720,5 +761,12 @@ public class SwimController : MonoBehaviour
         {
             StretchyLine.SetPosition(1, Player2Cord.GetComponentInChildren<FastIKFabric>().GetSpringPoint());
         }
+    }
+
+    IEnumerator PlayMagnetNoise()
+    {
+        Destroy(Instantiate(audioMagnet), 3.0f);
+        yield return new WaitForSeconds(3.0f);
+        isMagnetSoundPlaying = false;
     }
 }

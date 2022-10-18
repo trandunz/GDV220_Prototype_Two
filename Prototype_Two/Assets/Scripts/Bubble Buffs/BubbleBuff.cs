@@ -11,8 +11,8 @@ public class BubbleBuff : MonoBehaviour
         RANDOM,
         SHIELD,
         MAGNET,
-        FLARE,
-        GEMCHEST
+        GEMCHEST,
+        FLARE
     };
 
     [SerializeField] BUFFTYPE m_BuffType = BUFFTYPE.RANDOM;

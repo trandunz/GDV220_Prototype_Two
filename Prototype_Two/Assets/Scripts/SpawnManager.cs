@@ -57,6 +57,7 @@ public class SpawnManager : MonoBehaviour
     [Header("Coral")]
     [SerializeField] GameObject[] CoralPrefabs;
     [SerializeField] float CoralSpawnRate = 3.0f;
+    [SerializeField] float Coral_Z_Offset;
     private GameObject CachedLastCoralSpawned;
 
     [Header("Squid")]
@@ -610,7 +611,7 @@ public class SpawnManager : MonoBehaviour
         // position
         x = Random.Range(-0.5f, 0.5f);
         y = Random.Range(0.0f, 1.5f);
-        Coral.SpawnPoint = new Vector3(camPos.x + Coral.Offset + x, camPos.y + y, -8.5f);
+        Coral.SpawnPoint = new Vector3(camPos.x + Coral.Offset + x, camPos.y + y, Coral_Z_Offset);
 
         // scale
         x = Random.Range(0.3f, 0.5f);
@@ -625,7 +626,14 @@ public class SpawnManager : MonoBehaviour
         //transform.localScale = new Vector3(x, x, x);
         Coral.Object.transform.position = Coral.SpawnPoint;
         Coral.Object.transform.rotation = rot;
-        Coral.Object.transform.localScale = new Vector3(x, x, x);
+        if (Coral.Object.CompareTag("Coral"))
+        {
+            Coral.Object.transform.localScale = new Vector3(x, 0.4f, x);
+        }
+        else
+        {
+            Coral.Object.transform.localScale = new Vector3(x, x, x);
+        }
         Destroy(Instantiate(Coral.Object), ObjectLifeTime);
         Coral.DepthCounter = -Depth + Coral.SpawnRate;
     }
@@ -653,6 +661,11 @@ public class SpawnManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             SpawnElectricEel(camPos);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            SpawnBubbleBuff(camPos);
         }
     }
 }

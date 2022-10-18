@@ -4,50 +4,91 @@ using UnityEngine;
 
 public class MMBuoyManager : MonoBehaviour
 {
-    MMBuoy[] m_Buoys;
+    [SerializeField] MMBuoy[] m_Buoys;
     int m_CurrentSelelection = 0;
+    public GameObject audioSplash;
+    [SerializeField] GameObject PauseMenu;
+    bool m_inPauseMenu = false;
+    bool m_inHighScore = true;
+    bool canDoStuff = false;
+    [SerializeField] float m_StartDelay = 0.5f;
 
     private void Start()
     {
-        m_Buoys = FindObjectsOfType<MMBuoy>();
+        PauseMenu.gameObject.SetActive(false);
+        
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (m_StartDelay > 0)
         {
-            m_CurrentSelelection++;
-            if (m_CurrentSelelection >= m_Buoys.Length)
+            m_StartDelay -= Time.deltaTime;
+        }
+        else
+        {
+            if (!canDoStuff)
             {
-                m_CurrentSelelection = 0;
+                Destroy(Instantiate(audioSplash), 3.0f);
+                canDoStuff = true;
             }
-        }
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            m_CurrentSelelection--;
-            if (m_CurrentSelelection < 0)
+            
+            if (!m_inPauseMenu && !m_inHighScore)
             {
-                m_CurrentSelelection = m_Buoys.Length - 1;
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    Destroy(Instantiate(audioSplash), 3.0f);
+                    m_CurrentSelelection++;
+                    if (m_CurrentSelelection >= m_Buoys.Length)
+                    {
+                        m_CurrentSelelection = 0;
+                    }
+                    Debug.Log(m_CurrentSelelection);
+                }
+                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    Destroy(Instantiate(audioSplash), 3.0f);
+                    m_CurrentSelelection--;
+                    if (m_CurrentSelelection < 0)
+                    {
+                        m_CurrentSelelection = m_Buoys.Length - 1;
+                    }
+                    Debug.Log(m_CurrentSelelection);
+                }
+
+                if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.Backspace))
+                {
+                    Debug.Log("Option Chosen = " + m_CurrentSelelection);
+
+                    if (m_CurrentSelelection == 0)
+                        LevelLoader.instance.LoadLevel(1);
+                    else if (m_CurrentSelelection == 1)
+                        PauseMenu.SetActive(true);
+                    else if (m_CurrentSelelection == 2)
+                        LevelLoader.instance.LoadLevel(1);
+                    else if (m_CurrentSelelection == 3)
+                        Application.Quit();
+                }
+
+                for (int i = 0; i < m_Buoys.Length; i++)
+                {
+                    if (i != m_CurrentSelelection)
+                        m_Buoys[i].SetSelected(false);
+                    else
+                        m_Buoys[i].SetSelected(true);
+                }
             }
-        }
-
-        if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.Backspace))
-        {
-            if (m_CurrentSelelection == 0)
-                LevelLoader.instance.LoadLevel(1);
-            else if (m_CurrentSelelection == 1)
-                LevelLoader.instance.LoadLevel(1);
-            else if (m_CurrentSelelection == 2)
-                Application.Quit();
-        }
-
-        for(int i = 0; i < m_Buoys.Length; i++)
-        {
-            if (i != m_CurrentSelelection)
-                m_Buoys[i].SetSelected(false);
             else
-                m_Buoys[i].SetSelected(true);
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    PauseMenu.SetActive(false);
+                }
+            }
         }
+        
 
+        m_inHighScore = FindObjectOfType<EnterHighScore>();
 
+        m_inPauseMenu = PauseMenu.activeSelf;
     }
 }

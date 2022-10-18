@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2801462505429702922}
   - component: {fileID: 7223000746300108520}
   - component: {fileID: 8136969847014950485}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Seaweed_Base12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5241473805835282966}
   - component: {fileID: 2361556955527089812}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Seaweed_Bunch02
   m_TagString: SeaWeed
   m_Icon: {fileID: 0}
@@ -108,8 +108,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4897282013891129516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.794847, y: -59.762005, z: -8.5}
-  m_LocalScale: {x: 0.33579272, y: 0.33579272, z: 0.33579272}
+  m_LocalPosition: {x: 8.397248, y: -132.29585, z: -8.2}
+  m_LocalScale: {x: 0.34969372, y: 0.34969372, z: 0.34969372}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2801462505429702922}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 4796521305822834329}
   - component: {fileID: 7953329654817555154}
   - component: {fileID: 5090321229809660320}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Seaweed_Base15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 458107214781020238}
   - component: {fileID: 5665428078538704561}
   - component: {fileID: 1244511056838675522}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Seaweed_Base13
   m_TagString: Untagged
   m_Icon: {fileID: 0}

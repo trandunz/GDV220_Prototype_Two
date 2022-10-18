@@ -109,7 +109,7 @@ public class PauseMenuPanel : MonoBehaviour
     public void GotoBoathouse()
     {
         Time.timeScale = 1.0f;
-        LevelLoader.instance.LoadLevel(1);
+        LevelLoader.instance.LoadLevel(0);
     }
 
     public void OnResume()
