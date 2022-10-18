@@ -16,6 +16,7 @@ public class Flare : MonoBehaviour
     public MeshRenderer flareObjectMeshRenderer1;
     public MeshRenderer flareObjectMeshRenderer2;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +41,12 @@ public class Flare : MonoBehaviour
             flareObjectMeshRenderer1.material = redMat;
             flareObjectMeshRenderer2.material = redMat;
         }
-        transform.GetComponentInChildren<Light>().color = flareObjectMeshRenderer1.material.color;
+
+        foreach (Light light in GetComponentsInChildren<Light>())
+        {
+            light.color = flareObjectMeshRenderer1.material.color;
+        }
+        //transform.GetComponentInChildren<Light>().color = flareObjectMeshRenderer1.material.color;
     }
 
     // Update is called once per frame
