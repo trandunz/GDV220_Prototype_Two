@@ -334,7 +334,7 @@ public class SwimController : MonoBehaviour
 
     IEnumerator ParalyzeRoutine()
     {
-        if (!IsUsingBubbleBuff)
+        if (m_ActivePowerup == null)
         {
             CanMove = false;
             m_ShockEffect.Play();
