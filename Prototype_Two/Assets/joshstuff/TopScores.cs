@@ -17,9 +17,9 @@ public class TopScores : MonoBehaviour
 
     static public void LoadScores()
     {
-        scores = new ScoreValues[10];
+        scores = new ScoreValues[5];
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
             scores[i].placement = i + 1;
         }
@@ -49,7 +49,7 @@ public class TopScores : MonoBehaviour
         scores[4].initials = PlayerPrefs.GetString("FifthPlaceInitials");
         scores[4].score = PlayerPrefs.GetInt("FifthPlaceDeepestDepth");
 
-        scores[5].initialsPlayerPrefName = "SixthPlaceInitials";
+/*        scores[5].initialsPlayerPrefName = "SixthPlaceInitials";
         scores[5].scorePlayerPrefName = "SixthPlaceDeepestDepth";
         scores[5].initials = PlayerPrefs.GetString("SixthPlaceInitials");
         scores[5].score = PlayerPrefs.GetInt("SixthPlaceDeepestDepth");
@@ -72,7 +72,7 @@ public class TopScores : MonoBehaviour
         scores[9].initialsPlayerPrefName = "TenthPlaceInitials";
         scores[9].scorePlayerPrefName = "TenthPlaceDeepestDepth";
         scores[9].initials = PlayerPrefs.GetString("TenthPlaceInitials");
-        scores[9].score = PlayerPrefs.GetInt("TenthPlaceDeepestDepth");
+        scores[9].score = PlayerPrefs.GetInt("TenthPlaceDeepestDepth");*/
     }
 
     static void ChangeScore(int num1, int num2)
@@ -89,9 +89,9 @@ public class TopScores : MonoBehaviour
         {
             if (scores[i].score < _score)
             {
-                if (i < 9)
+                if (i < 4)
                 {
-                    for (int j = 9; j > i; j--)
+                    for (int j = 4; j > i; j--)
                     {
                         ChangeScore(j, j - 1);
                     }
@@ -100,7 +100,7 @@ public class TopScores : MonoBehaviour
                 return i;
             }
         }
-        return 10;
+        return 5;
     }
 
     // Start is called before the first frame update

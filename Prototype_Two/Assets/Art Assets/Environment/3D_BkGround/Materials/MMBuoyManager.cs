@@ -9,9 +9,11 @@ public class MMBuoyManager : MonoBehaviour
     public GameObject audioSplash;
     [SerializeField] GameObject PauseMenu;
     [SerializeField] GameObject FlipBook;
+    [SerializeField] GameObject Highscores;
     bool m_inPauseMenu = false;
     bool m_inHighScore = false;
     bool m_inFlipBook = false;
+    bool m_inHighScores = false;
     bool canDoStuff = false;
     [SerializeField] float m_StartDelay = 0.5f;
 
@@ -19,6 +21,7 @@ public class MMBuoyManager : MonoBehaviour
     {
         PauseMenu.gameObject.SetActive(false);
         FlipBook.SetActive(false);
+        Highscores.SetActive(false);
     }
     private void Update()
     {
@@ -34,7 +37,7 @@ public class MMBuoyManager : MonoBehaviour
                 canDoStuff = true;
             }
             
-            if (!m_inPauseMenu && !m_inHighScore && !m_inFlipBook)
+            if (!m_inPauseMenu && !m_inHighScore && !m_inFlipBook && !m_inHighScores)
             {
                 if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
@@ -66,8 +69,10 @@ public class MMBuoyManager : MonoBehaviour
                     else if (m_CurrentSelelection == 1)
                         PauseMenu.SetActive(true);
                     else if (m_CurrentSelelection == 2)
-                        FlipBook.SetActive(true);
+                        Highscores.SetActive(true);
                     else if (m_CurrentSelelection == 3)
+                        FlipBook.SetActive(true);
+                    else if (m_CurrentSelelection == 4)
                         Application.Quit();
                 }
 
@@ -92,5 +97,6 @@ public class MMBuoyManager : MonoBehaviour
         m_inHighScore = FindObjectOfType<EnterHighScore>();
         m_inFlipBook = FlipBook.activeSelf;
         m_inPauseMenu = PauseMenu.activeSelf;
+        m_inHighScores = Highscores.activeSelf;
     }
 }
