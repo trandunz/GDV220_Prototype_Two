@@ -3004,7 +3004,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 963194227}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -5440,7 +5440,12 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 80ab33231e961b94cb94d9f387f7b2c8, type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 8437086729591782479, guid: ebdc10fcdd9b4d6459af58ef24a33d86, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 124.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2937928783355265916, guid: ebdc10fcdd9b4d6459af58ef24a33d86, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ebdc10fcdd9b4d6459af58ef24a33d86, type: 3}
 --- !u!224 &649926591 stripped
 RectTransform:
