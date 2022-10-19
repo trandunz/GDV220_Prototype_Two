@@ -6544,9 +6544,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godMode: 0
-  darknessStartingDepth: -100
+  darknessStartingDepth: -5
   darknessChangeSpeed: 0.5
-  depthPlayerLightsOn: -120
+  depthPlayerLightsOn: -5
   playerLightIntensityIncrease: 2
   PlayerLightTimer: 0.1
   colorChangeStartDepth: -20
