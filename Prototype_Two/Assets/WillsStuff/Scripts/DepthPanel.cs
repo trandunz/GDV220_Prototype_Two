@@ -13,7 +13,7 @@ public class DepthPanel : MonoBehaviour
         depth += score;
         ScoreText.text = depth.ToString();
 
-        if (depth > PlayerPrefs.GetInt("TenthPlaceDeepestDepth"))
+        if (depth > PlayerPrefs.GetInt(TopScores.scores[TopScores.scores.Length - 1].scorePlayerPrefName))
         {
             PlayerPrefs.SetInt("DeepestDepth", depth);
             HighscoreEntry.newHighscore = true;
