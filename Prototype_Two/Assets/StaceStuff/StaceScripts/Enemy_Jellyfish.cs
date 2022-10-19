@@ -13,6 +13,7 @@ public class Enemy_Jellyfish : MonoBehaviour
     bool bMoving = true;
     public float fMoveSpeed;
 
+
     // Start is called before the first frame update
     void Start()
     {

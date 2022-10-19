@@ -317,6 +317,12 @@ public class SwimController : MonoBehaviour
     {
         if (!IsUsingBubbleBuff && CanMove)
         {
+            // Stops scaling the buff if used
+            if (PlayerOne)
+                BubbleBuffUI.P1UI.SetBuffUsed(false);
+            else
+                BubbleBuffUI.P2UI.SetBuffUsed(false);
+
             Destroy(Instantiate(audioBubbleBuffUse), 3.0f);
             StartCoroutine(BubbleBuffRoutine());
         }
@@ -661,6 +667,12 @@ public class SwimController : MonoBehaviour
         Destroy(Instantiate(audioBubbleBuffPickup), 3.0f);
         m_CurrentBubbleBuff = _bubbleBuff;
         RemainingBoostTime = 0.0f;
+
+        // Starts scaling the buff while unused
+        if (PlayerOne)
+            BubbleBuffUI.P1UI.SetBuffUsed(true);
+        else
+            BubbleBuffUI.P2UI.SetBuffUsed(true);
     }
 
     void SetAvailableBuffUI()
