@@ -573,7 +573,6 @@ public class SwimController : MonoBehaviour
 
             canDash = false;
             IsBoosting = true;
-            Debug.Log("Boost! : " + (GetInput() * BoostForce).magnitude.ToString());
             m_RigidBody.velocity = GetInput() * BoostForce; //ApplyForce(GetInput() * BoostForce); // Saved incase bens boost sucks
             if (!m_DashParticles.isPlaying)
                 m_DashParticles.Play();
@@ -733,7 +732,6 @@ public class SwimController : MonoBehaviour
             Mesh.material = YellowMaterial;
         else
             Mesh.material = RedMaterial;
-        Debug.Log("Player Ready for more.");
     }
 
     Vector3 GetInput()
