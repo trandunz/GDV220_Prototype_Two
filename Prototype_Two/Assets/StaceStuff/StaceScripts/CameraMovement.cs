@@ -29,6 +29,9 @@ public class CameraMovement : MonoBehaviour
     // Foreground Objects
     public GameObject[] foregroundObjects;
 
+    // Water streaks
+    public GameObject streak1;
+
     // Fog
     private Color previousColor;
 
@@ -62,6 +65,10 @@ public class CameraMovement : MonoBehaviour
         foregroundObjects = GameObject.FindGameObjectsWithTag("ForegroundObject");
 
         previousColor = RenderSettings.fogColor;
+
+        // Set particle color
+        streak1.GetComponent<ParticleSystemRenderer>().trailMaterial.color = new Color(206.0f/255.0f, 213.0f / 255.0f, 255.0f / 255.0f, 139.0f / 255.0f);
+
 
         // Set fog time
         FogTimer = manager.GetComponent<GameManager>().fogColorSpeed;
@@ -112,8 +119,16 @@ public class CameraMovement : MonoBehaviour
                             previousColor.r = 0;
                     }
 
+                    // Set fog color
                     RenderSettings.fogColor = new Color(previousColor.r, previousColor.g, previousColor.b);
 
+                    //// Change water streak alpha
+                    float streakAlpha = streak1.GetComponent<ParticleSystemRenderer>().trailMaterial.color.a;
+                    if (streakAlpha > 0)
+                    {
+                        streakAlpha -= 2.0f / 255.0f;
+                        streak1.GetComponent<ParticleSystemRenderer>().trailMaterial.color = new Color(206.0f / 255.0f, 213.0f / 255.0f, 255.0f / 255.0f, streakAlpha);
+                    }
 
                     // Foreground Objects - make more transparent over time when game gets darker
                     foreach (GameObject foregroundObject in foregroundObjects)

@@ -3277,6 +3277,7 @@ MonoBehaviour:
   backgroundObject: {fileID: 1067995727}
   timerBackground: 0
   foregroundObjects: []
+  streak1: {fileID: 2125345049}
 --- !u!114 &337692182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6544,13 +6545,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godMode: 0
-  darknessStartingDepth: -5
-  darknessChangeSpeed: 0.5
-  depthPlayerLightsOn: -5
+  darknessStartingDepth: -100
+  darknessChangeSpeed: 0.7
+  depthPlayerLightsOn: -120
   playerLightIntensityIncrease: 2
   PlayerLightTimer: 0.1
   colorChangeStartDepth: -20
-  colorChangeSpeed: 0.5
+  colorChangeSpeed: 0.7
   fogColorSpeed: 0.05
   greenStartDepth: -250
   greenEndDepth: -280
@@ -21730,6 +21731,11 @@ Transform:
   m_Father: {fileID: 980312687}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2125345049 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7286063795768749463, guid: 1c3b0534dbd222e47b80c24185096ca6, type: 3}
+  m_PrefabInstance: {fileID: 386693037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2129953018 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5563176137891869356, guid: a90c22e3c35250f4fa75b9343b5e44e4, type: 3}
