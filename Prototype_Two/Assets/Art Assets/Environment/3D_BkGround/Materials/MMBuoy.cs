@@ -34,7 +34,6 @@ public class MMBuoy : MonoBehaviour
 
                 if (lightOn)
                 {
-                    Debug.Log("Boy Selected");
                     lightmesh.material = glowingLightMat;
                 }   
                 else
@@ -55,7 +54,6 @@ public class MMBuoy : MonoBehaviour
             IsSelected = _selected;
             if (IsSelected)
             {
-                Debug.Log("Splash");
                 m_Bobscript.Splash();
                 m_Splash.Play();
             }

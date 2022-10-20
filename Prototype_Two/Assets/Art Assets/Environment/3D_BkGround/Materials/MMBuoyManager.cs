@@ -47,7 +47,6 @@ public class MMBuoyManager : MonoBehaviour
                     {
                         m_CurrentSelelection = 0;
                     }
-                    Debug.Log(m_CurrentSelelection);
                 }
                 if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
                 {
@@ -57,13 +56,10 @@ public class MMBuoyManager : MonoBehaviour
                     {
                         m_CurrentSelelection = m_Buoys.Length - 1;
                     }
-                    Debug.Log(m_CurrentSelelection);
                 }
 
                 if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.Backspace))
                 {
-                    Debug.Log("Option Chosen = " + m_CurrentSelelection);
-
                     if (m_CurrentSelelection == 0)
                         LevelLoader.instance.LoadLevel(1);
                     else if (m_CurrentSelelection == 1)

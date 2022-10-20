@@ -96,7 +96,6 @@ public class TopScores : MonoBehaviour
                         ChangeScore(j, j - 1);
                     }
                 }
-                Debug.Log(i);
                 return i;
             }
         }
