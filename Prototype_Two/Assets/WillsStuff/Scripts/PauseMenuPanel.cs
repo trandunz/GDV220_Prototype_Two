@@ -119,6 +119,7 @@ public class PauseMenuPanel : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         LevelLoader.instance.LoadLevel(0);
+        HighscoreEntry.newHighscore = false;
     }
 
     public void OnResume()
