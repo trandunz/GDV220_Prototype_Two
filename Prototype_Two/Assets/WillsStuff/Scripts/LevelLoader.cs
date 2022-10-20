@@ -26,10 +26,10 @@ public class LevelLoader : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            PlayerPrefs.DeleteAll();
-        }
+        //if (Input.GetKeyDown(KeyCode.Keypad0))
+        //{
+        //    PlayerPrefs.DeleteAll();
+        //}
     }
 
     public void LoadLevel(int _scene)
