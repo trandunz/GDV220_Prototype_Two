@@ -32,7 +32,7 @@ public class EnterHighScore : MonoBehaviour
         charactersCurrentPos = new int[characters.Length];
         for (int i = 0; i < charactersCurrentPos.Length; i++)
             charactersCurrentPos[i] = 0;
-        string str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890?!@#$%^&*()-+=:;,.<>/";
+        string str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890?!@#$%&*()-+=:;,.<>/";
         chars = str.ToCharArray();
         hse = FindObjectOfType<HighscoreEntry>();
         mmb = FindObjectOfType<MainMenuButtons>();
