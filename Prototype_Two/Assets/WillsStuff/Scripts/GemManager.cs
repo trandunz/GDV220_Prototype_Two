@@ -17,18 +17,18 @@ public class GemManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad7))
-        {
-            AddGems(1000);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad8))
-        {
-            RemoveGems(1000);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad9))
-        {
-            ResetGemCount();
-        }
+        //if (Input.GetKeyDown(KeyCode.Keypad7))
+        //{
+        //    AddGems(1000);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Keypad8))
+        //{
+        //    RemoveGems(1000);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Keypad9))
+        //{
+        //    ResetGemCount();
+        //}
     }
 
     public int GetGemCount()
