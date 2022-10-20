@@ -16,8 +16,8 @@ public class PauseMenuPanel : MonoBehaviour
     FadeToBlack FadeToBlackScreen;
 
     bool IsOpen = false;
-    bool OnGoHome = true;
-    bool OnGoBack = false;
+    bool OnGoHome = false;
+    bool OnGoBack = true;
 
     private void Start()
     {
