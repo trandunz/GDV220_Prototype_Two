@@ -112,7 +112,6 @@ public class BubbleBuffUI : MonoBehaviour
             m_BuffImage.rectTransform.localScale = scale;
             m_BorderGlow.GetComponent<Image>().color = Color.clear;
         }
-        Debug.Log(m_UnusedBuff);
     }
 
     public void SetBuffUsed(bool notUsed)

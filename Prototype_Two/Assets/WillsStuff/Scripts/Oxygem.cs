@@ -46,7 +46,6 @@ public class Oxygem : MonoBehaviour
         targetPos.z = -10.0f;
         targetPosition = targetPos;
         targetScale = Vector3.one * 9.0f;
-        Debug.Log("Exploded");
         randomSpinSpeed = Random.Range(2.0f, 10.0f);
     }
    
