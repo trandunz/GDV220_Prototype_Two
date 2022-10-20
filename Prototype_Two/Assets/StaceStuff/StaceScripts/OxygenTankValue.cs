@@ -115,7 +115,6 @@ public class OxygenTankValue : MonoBehaviour
             fFlashTimer = fFlashTimer + 1 * Time.deltaTime;
             if (fFlashTimer >= 1)
             {
-                Debug.Log("Test");
                 gameObject.GetComponent<Flash>().FlashStart();
                 fFlashTimer = 0;
             }

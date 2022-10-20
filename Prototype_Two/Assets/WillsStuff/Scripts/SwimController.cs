@@ -646,7 +646,6 @@ public class SwimController : MonoBehaviour
         {
             //StartCoroutine(InvulnrabilityFlashRoutine());
 
-            Debug.Log("Player Got Hit!");
 
             Destroy(Instantiate(Bubbles, BubblesPosition.position, BubblesRotation, gameObject.transform), 5.0f);
             Destroy(Instantiate(audioHurt), 2.0f);
