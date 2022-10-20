@@ -132,13 +132,13 @@ public class OptionsMenu : MonoBehaviour
 
 
         if (MenuOptionSelection == 0)
-            Selector.rectTransform.position = VolumeText.rectTransform.position + Vector3.left * 50.0f;
+            Selector.rectTransform.position = VolumeText.rectTransform.position + Vector3.left * 80.0f;
 
         if (MenuOptionSelection == 1)
-            Selector.rectTransform.position = StereoPanText.rectTransform.position + Vector3.left * 67.5f;
+            Selector.rectTransform.position = StereoPanText.rectTransform.position + Vector3.left * 100.0f;
 
         if (MenuOptionSelection == 2)
-            Selector.rectTransform.position = ReturnText.rectTransform.position + Vector3.left * 50.0f;
+            Selector.rectTransform.position = ReturnText.rectTransform.position + Vector3.left * 80.0f;
     }
 
     public void ToggleFullscreen()
