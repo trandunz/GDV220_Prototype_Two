@@ -45,7 +45,7 @@ public class MMBuoy : MonoBehaviour
         else
         {
             lightOn = false;
-            lightmesh.material = defualtLightMat;s
+            lightmesh.material = defualtLightMat;
         }
     }
     public void SetSelected(bool _selected)

@@ -263,7 +263,7 @@ public class SpawnManager : MonoBehaviour
             SpawnCoral(cameraPosition);
         }
 
-        DebugSpawner(cameraPosition);
+        //DebugSpawner(cameraPosition);
     }
 
     IEnumerator SquidSpawnRoutine(Vector3 camPos)

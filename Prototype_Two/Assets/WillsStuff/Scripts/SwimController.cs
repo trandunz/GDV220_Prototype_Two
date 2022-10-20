@@ -222,22 +222,22 @@ public class SwimController : MonoBehaviour
             SetAvailableBuffUI();
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad9))
-        {
-            PickupBubbleBuff(BubbleBuff.BUFFTYPE.GEMCHEST);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad8))
-        {
-            PickupBubbleBuff(BubbleBuff.BUFFTYPE.SHIELD);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad7))
-        {
-            PickupBubbleBuff(BubbleBuff.BUFFTYPE.MAGNET);
-        }
-        if (Input.GetKey(KeyCode.Delete))
-        {
-            oxygenTank.DamageOxygenUse();
-        }
+        //if (Input.GetKeyDown(KeyCode.Keypad9))
+        //{
+        //    PickupBubbleBuff(BubbleBuff.BUFFTYPE.GEMCHEST);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Keypad8))
+        //{
+        //    PickupBubbleBuff(BubbleBuff.BUFFTYPE.SHIELD);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Keypad7))
+        //{
+        //    PickupBubbleBuff(BubbleBuff.BUFFTYPE.MAGNET);
+        //}
+        //if (Input.GetKey(KeyCode.Delete))
+        //{
+        //    oxygenTank.DamageOxygenUse();
+        //}
     }
 
     void FixedUpdate()
