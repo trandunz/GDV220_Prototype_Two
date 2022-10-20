@@ -8,6 +8,7 @@ public class MMBuoy : MonoBehaviour
     [SerializeField] Material glowingLightMat;
     [SerializeField] MeshRenderer lightmesh;
     [SerializeField] float m_FlashSpeed = 2.0f;
+    [SerializeField] ParticleSystem m_Splash;
     RockingBoat m_Bobscript;
     float m_FlashTimer = 0.0f;
     bool IsSelected = false;
@@ -44,7 +45,7 @@ public class MMBuoy : MonoBehaviour
         else
         {
             lightOn = false;
-            lightmesh.material = defualtLightMat;
+            lightmesh.material = defualtLightMat;s
         }
     }
     public void SetSelected(bool _selected)
@@ -56,6 +57,7 @@ public class MMBuoy : MonoBehaviour
             {
                 Debug.Log("Splash");
                 m_Bobscript.Splash();
+                m_Splash.Play();
             }
         }
 
